@@ -5,32 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Linux &mdash; Actionschnitzel</title>
   <link rel="stylesheet" href="style.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap" rel="stylesheet">
-  <script>
-    if (localStorage.getItem("theme") === "light") {
-      document.documentElement.classList.add("theme-light");
-    }
-  </script>
 </head>
 <body>
   <nav class="navbar">
-    <a href="index.html" class="nav-logo"><img src="KI_Schnitzel.png" alt="Actionschnitzel Logo" class="nav-logo-img">Actionschnitzel</a>
+    <a href="index.html" class="nav-logo">Actionschnitzel</a>
     <div class="nav-links">
       <a href="index.html">Home</a>
-      <div class="nav-item-dropdown">
-        <a href="#">Linux</a>
-        <div class="dropdown-menu">
-          <a href="linux.html" class="active">Distributionen</a>
-          <a href="linux-gaming.html">Linux Gaming</a>
-        </div>
-      </div>
+      <a href="linux.html" class="active">Linux</a>
+      <a href="linux-gaming.html">Linux Gaming</a>
       <a href="artikel.html">Artikel</a>
       <a href="projekte.html">Meine Projekte</a>
       <a href="helfen.html">Helfen</a>
     </div>
-    <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Hell-/Dunkelmodus umschalten"></button>
   </nav>
 
   <header class="page-hero">
