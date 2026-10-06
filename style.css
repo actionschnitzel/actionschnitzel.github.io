@@ -590,6 +590,36 @@ footer {
   }
 }
 
+/* Articles Container */
+.articles-container {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  align-items: stretch;
+  flex-wrap: wrap;
+}
+
+.article-button {
+  flex: 1;
+  min-width: 280px;
+  max-width: 450px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 0.5rem;
+}
+
+.article-button h3 {
+  margin: 0;
+}
+
+.article-button p {
+  margin: 0;
+  opacity: 0.9;
+}
+
 /* Social Media Links */
 .nav-github,
 .nav-instagram {
