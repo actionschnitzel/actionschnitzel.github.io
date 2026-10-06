@@ -56,6 +56,7 @@ body {
   display: flex;
   gap: 1.5rem;
   flex-wrap: wrap;
+  align-items: center;
 }
 
 .nav-links a {
@@ -587,4 +588,27 @@ footer {
     flex: 1 1 100%;
     max-width: 100%;
   }
+}
+
+/* Social Media Links */
+.nav-github,
+.nav-instagram {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #cccccc;
+  transition: color 0.2s ease, transform 0.2s ease;
+  margin-left: -0.5rem;
+  padding: 0.25rem 0.3rem;
+}
+
+.nav-github:hover,
+.nav-instagram:hover {
+  color: #ffffff;
+  transform: scale(1.2);
+}
+
+.nav-github svg,
+.nav-instagram svg {
+  display: block;
 }
