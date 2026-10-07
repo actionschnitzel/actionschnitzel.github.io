@@ -164,6 +164,30 @@ body {
   display: flex;
   flex-direction: column;
   gap: 0;
+  position: relative;
+  padding: 2rem 2rem 15rem 2rem;
+}
+
+.hero-content::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('controller.png'), url('2000_PC.png');
+  background-position: right calc(100% - 10px), left calc(100% - 10px);
+  background-repeat: no-repeat;
+  background-size: 50%, 50%;
+  opacity: 0.3;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hero-content h1,
+.hero-content .tagline {
+  position: relative;
+  z-index: 1;
 }
 
 .logo {
