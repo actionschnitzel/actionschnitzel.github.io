@@ -49,3 +49,65 @@ if (burgerMenu) {
   });
 }
 
+// Dark Mode Toggle Functionality
+const themeToggle = document.getElementById("themeToggle");
+const html = document.documentElement;
+const sunIcon = document.querySelector(".sun-icon");
+const moonIcon = document.querySelector(".moon-icon");
+
+// Function to update theme
+function updateTheme(isDarkMode) {
+  if (isDarkMode) {
+    html.classList.remove("light-mode");
+    html.classList.add("dark-mode");
+    if (sunIcon && moonIcon) {
+      sunIcon.style.display = "none";
+      moonIcon.style.display = "block";
+    }
+  } else {
+    html.classList.remove("dark-mode");
+    html.classList.add("light-mode");
+    if (sunIcon && moonIcon) {
+      sunIcon.style.display = "block";
+      moonIcon.style.display = "none";
+    }
+  }
+}
+
+// Check for saved preference or system preference
+function initTheme() {
+  const savedTheme = localStorage.getItem("theme");
+  let isDarkMode = false;
+
+  if (savedTheme) {
+    // Use saved preference
+    isDarkMode = savedTheme === "dark";
+  } else {
+    // Check system preference
+    isDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches;
+  }
+
+  updateTheme(isDarkMode);
+}
+
+// Initialize theme on page load
+initTheme();
+
+// Handle theme toggle button click
+if (themeToggle) {
+  themeToggle.addEventListener("click", () => {
+    const isDarkMode = html.classList.contains("dark-mode");
+    const newTheme = isDarkMode ? "light" : "dark";
+    
+    localStorage.setItem("theme", newTheme);
+    updateTheme(!isDarkMode);
+  });
+}
+
+// Listen for system theme changes
+window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", (e) => {
+  // Only update if user hasn't set a preference
+  if (!localStorage.getItem("theme")) {
+    updateTheme(e.matches);
+  }
+});

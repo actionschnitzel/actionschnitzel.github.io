@@ -8,6 +8,27 @@
   --accent-light-rgb: 30, 144, 255;
 }
 
+/* Dark Mode */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #1a1a1a;
+    --text: #e0e0e0;
+    --card-bg: #2d2d2d;
+  }
+}
+
+html.dark-mode {
+  --bg: #1a1a1a;
+  --text: #e0e0e0;
+  --card-bg: #2d2d2d;
+}
+
+html.light-mode {
+  --bg: #ffffff;
+  --text: #1c1e26;
+  --card-bg: #f4f5f9;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -156,8 +177,22 @@ body {
   align-items: center;
   justify-content: center;
   text-align: center;
-  background: linear-gradient(180deg, #f9fafb 0%, var(--bg) 100%);
   padding: 2rem 1rem;
+}
+
+html.light-mode .hero,
+:root:not(.dark-mode) .hero {
+  background: linear-gradient(180deg, #f9fafb 0%, var(--bg) 100%);
+}
+
+html.dark-mode .hero {
+  background: linear-gradient(180deg, #2a2a2a 0%, var(--bg) 100%);
+}
+
+@media (prefers-color-scheme: dark) {
+  .hero {
+    background: linear-gradient(180deg, #2a2a2a 0%, var(--bg) 100%);
+  }
 }
 
 .hero-content {
@@ -182,6 +217,24 @@ body {
   opacity: 0.3;
   pointer-events: none;
   z-index: 0;
+}
+
+html.light-mode .hero-content::before,
+:root:not(.dark-mode) .hero-content::before {
+  background-image: url('controller.png'), url('2000_PC.png');
+  opacity: 0.3;
+}
+
+html.dark-mode .hero-content::before {
+  background-image: url('controlle_dark.png'), url('2000_PC_dark.png');
+  opacity: 0.2;
+}
+
+@media (prefers-color-scheme: dark) {
+  .hero-content::before {
+    background-image: url('controlle_dark.png'), url('2000_PC_dark.png');
+    opacity: 0.2;
+  }
 }
 
 .hero-content h1,
@@ -209,8 +262,22 @@ body {
   justify-content: center;
   text-align: center;
   gap: 1rem;
-  background: linear-gradient(180deg, #f9fafb 0%, var(--bg) 100%);
   padding: 2.5rem 1rem;
+}
+
+html.light-mode .page-hero,
+:root:not(.dark-mode) .page-hero {
+  background: linear-gradient(180deg, #f9fafb 0%, var(--bg) 100%);
+}
+
+html.dark-mode .page-hero {
+  background: linear-gradient(180deg, #2a2a2a 0%, var(--bg) 100%);
+}
+
+@media (prefers-color-scheme: dark) {
+  .page-hero {
+    background: linear-gradient(180deg, #2a2a2a 0%, var(--bg) 100%);
+  }
 }
 
 .page-icon {
@@ -242,8 +309,25 @@ body {
 .tagline {
   margin-top: 0.25rem;
   font-size: 1.25rem;
-  color: #000000;
   opacity: 0.85;
+}
+
+html.light-mode .tagline,
+:root:not(.dark-mode) .tagline {
+  color: #000000;
+  opacity: 1;
+}
+
+html.dark-mode .tagline {
+  color: #e0e0e0;
+  opacity: 0.85;
+}
+
+@media (prefers-color-scheme: dark) {
+  .tagline {
+    color: #e0e0e0;
+    opacity: 0.85;
+  }
 }
 
 .motto {
@@ -252,6 +336,16 @@ body {
   font-style: italic;
   color: #000000;
   opacity: 0.8;
+}
+
+html.dark-mode .motto {
+  color: #e0e0e0;
+}
+
+@media (prefers-color-scheme: dark) {
+  .motto {
+    color: #e0e0e0;
+  }
 }
 
 .cta {
@@ -264,7 +358,6 @@ body {
   text-decoration: none;
   border: 2px solid var(--accent-light);
   border-radius: 12px;
-  box-shadow: 0 0 10px var(--accent-light), inset 0 0 10px rgba(0, 255, 249, 0.2);
   transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease;
 }
 
@@ -292,6 +385,16 @@ body {
   font-size: 3rem;
   font-weight: bold;
   color: #000000;
+}
+
+html.dark-mode .construction {
+  color: #e0e0e0;
+}
+
+@media (prefers-color-scheme: dark) {
+  .construction {
+    color: #e0e0e0;
+  }
 }
 
 .cards {
@@ -360,6 +463,16 @@ blockquote {
   display: inline-block;
 }
 
+html.dark-mode blockquote {
+  color: #e0e0e0;
+}
+
+@media (prefers-color-scheme: dark) {
+  blockquote {
+    color: #e0e0e0;
+  }
+}
+
 .quote-bio {
   display: block;
   text-align: left;
@@ -403,6 +516,16 @@ blockquote {
 
 .article-intro a {
   color: #000000;
+}
+
+html.dark-mode .article-intro a {
+  color: #e0e0e0;
+}
+
+@media (prefers-color-scheme: dark) {
+  .article-intro a {
+    color: #e0e0e0;
+  }
 }
 
 .article {
@@ -665,5 +788,30 @@ footer {
 
 .nav-github svg,
 .nav-instagram svg {
+  display: block;
+}
+
+/* Dark Mode Toggle Button */
+.theme-toggle {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: #cccccc;
+  padding: 0.25rem 0.5rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s ease, transform 0.2s ease;
+  font-size: 1.3rem;
+}
+
+.theme-toggle:hover {
+  color: #ffffff;
+  transform: scale(1.2);
+}
+
+.theme-toggle svg {
+  width: 24px;
+  height: 24px;
   display: block;
 }
