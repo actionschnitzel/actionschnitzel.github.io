@@ -215,21 +215,7 @@ body {
   justify-content: center;
   text-align: center;
   padding: 2rem 1rem;
-}
-
-html.light-mode .hero,
-:root:not(.dark-mode) .hero {
-  background: linear-gradient(180deg, #f9fafb 0%, var(--bg) 100%);
-}
-
-html.dark-mode .hero {
-  background: linear-gradient(180deg, #2a2a2a 0%, var(--bg) 100%);
-}
-
-@media (prefers-color-scheme: dark) {
-  .hero {
-    background: linear-gradient(180deg, #2a2a2a 0%, var(--bg) 100%);
-  }
+  background: var(--bg);
 }
 
 .hero-content {
