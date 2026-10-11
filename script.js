@@ -111,3 +111,67 @@ window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", (e)
     updateTheme(e.matches);
   }
 });
+
+// ProtonDB Ratings Loader
+async function fetchProtonDBRatingsData() {
+  try {
+    const response = await fetch('protondb-games.json');
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+    return await response.json();
+  } catch (error) {
+    console.error('Failed to load ProtonDB games data:', error);
+    return null;
+  }
+}
+
+function getRatingClass(rating) {
+  const ratingLower = rating.toLowerCase();
+  if (ratingLower === 'platinum') return 'platinum';
+  if (ratingLower === 'gold') return 'gold';
+  if (ratingLower === 'silver') return 'silver';
+  if (ratingLower === 'bronze') return 'bronze';
+  return 'unknown';
+}
+
+async function loadProtonDBRatings() {
+  const gamesTable = document.querySelector('.games-table tbody');
+  if (!gamesTable) return;
+
+  // Lade die Spieldaten aus der JSON-Datei
+  const data = await fetchProtonDBRatingsData();
+  if (!data) {
+    console.warn('ProtonDB games data could not be loaded');
+    return;
+  }
+
+  // Erstelle ein Lookup-Object für schnellere Suche
+  const gameMap = {};
+  data.games.forEach(game => {
+    gameMap[game.name] = game;
+  });
+
+  const rows = gamesTable.querySelectorAll('tr');
+  
+  rows.forEach(row => {
+    const gameNameCell = row.querySelector('td:first-child');
+    const ratingCell = row.querySelector('td:last-child');
+    
+    if (!gameNameCell || !ratingCell) return;
+
+    const gameName = gameNameCell.textContent.trim();
+    const gameData = gameMap[gameName];
+    
+    if (gameData) {
+      const ratingClass = getRatingClass(gameData.rating);
+      const protondbUrl = `https://www.protondb.com/app/${gameData.appId}`;
+      ratingCell.innerHTML = `<span class="rating ${ratingClass}">${gameData.rating}</span> <a href="${protondbUrl}" target="_blank" class="protondb-link">Zu ProtonDB</a>`;
+    }
+  });
+}
+
+// Load ratings when DOM is ready
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', loadProtonDBRatings);
+} else {
+  loadProtonDBRatings();
+}
