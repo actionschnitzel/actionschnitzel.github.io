@@ -31,7 +31,7 @@ hero_class: page-hero-compact
           <tbody id="gogTableBody">
           {%- for game in games %}
             <tr>
-              <td>{{ game.title | escape }}{% if game.playable == false %} <span class="gog-broken">läuft nicht</span>{% endif %}</td>
+              <td>{{ game.title | escape }}{% if game.playable == false %} <span class="gog-broken">kaputt</span>{% endif %}</td>
               {%- for platform in platforms %}
               <td class="gog-flag">{% if game.via contains platform %}<span aria-label="ja">✓</span>{% endif %}</td>
               {%- endfor %}
