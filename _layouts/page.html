@@ -1,7 +1,7 @@
 ---
 layout: default
 ---
-<header class="page-hero">
+<header class="page-hero{% if page.hero_class %} {{ page.hero_class }}{% endif %}">
   {%- if page.hero_image %}
   <img src="{{ page.hero_image | relative_url }}" alt="{{ page.hero_image_alt }}" class="page-icon">
   {%- endif %}

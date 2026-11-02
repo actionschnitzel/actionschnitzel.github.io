@@ -1,6 +1,7 @@
 ---
 layout: page
 title: "GOG: Was läuft auf Linux"
+hero_class: page-hero-compact
 ---
 {%- assign games = site.data.gog_games | sort_natural: "title" -%}
 {%- assign platforms = "native,wine,heroic,lutris" | split: "," -%}
@@ -9,11 +10,6 @@ title: "GOG: Was läuft auf Linux"
         Community-Liste mit GOG-Spielen, die unter Linux laufen: ob sie laufen, wie sie laufen und was dafür nötig ist. Basiert auf dem Artikel im
         <a href="https://forum.linuxguides.de/core/index.php?article/8-gog-auf-linux-funktionierende-spiele-und-notwendige-anpassungen/" target="_blank" rel="noopener noreferrer">Linux Guides Forum</a>.
       </p>
-      <ul>
-        <li>Wine-GE, Proton-GE und Lutris-Wine lassen sich über Lutris, Heroic und ProtonUp-Qt installieren.</li>
-        <li>Von der BPjM indizierte Spiele werden nicht gelistet.</li>
-        <li>Tipp Widescreen bei Spielen mit alter Quake-Engine: Die <code>.cfg</code>-Datei im Spielverzeichnis suchen und <code>seta r_mode "-1"</code>, <code>seta r_customwidth "1920"</code> sowie <code>seta r_customheight "1080"</code> setzen. Danach nichts mehr im Spiel umstellen.</li>
-      </ul>
     </section>
 
     <section class="section">

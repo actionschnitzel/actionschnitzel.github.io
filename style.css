@@ -225,6 +225,20 @@ body {
   padding: 2.5rem 1rem;
 }
 
+.page-hero-compact {
+  min-height: 0;
+  padding: 1rem 1rem 0;
+}
+
+.page-hero-compact + main > .section {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.page-hero-compact + main .article-intro {
+  margin-bottom: 0 !important;
+}
+
 .page-icon {
   width: clamp(140px, 20vw, 220px);
   filter: drop-shadow(0 0 15px var(--accent)) drop-shadow(0 0 30px var(--accent-light));
@@ -813,6 +827,20 @@ html.dark-mode .section li strong,
   background: var(--accent-light);
   color: var(--bg);
   border-bottom-style: solid;
+}
+
+#projekte .entry-list a,
+#artikel .entry-list a {
+  background: var(--accent);
+  color: #ffffff;
+  border-color: var(--accent);
+  font-weight: 700;
+}
+
+#projekte .entry-list a:hover,
+#artikel .entry-list a:hover {
+  background: var(--accent-light);
+  color: #ffffff;
 }
 
 .section .entry-list .entry-desc {
