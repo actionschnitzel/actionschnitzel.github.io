@@ -1,0 +1,14 @@
+title: Actionschnitzel
+description: Linux & Linux-Gaming
+lang: de
+url: "https://actionschnitzel.de"
+
+plugins:
+  - jekyll-sitemap
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+  - README.md
+  - testing.md

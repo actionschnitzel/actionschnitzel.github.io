@@ -1,0 +1,53 @@
+{%- assign current = page.url | uri_escape -%}
+<nav class="navbar">
+  <a href="{{ '/' | relative_url }}" class="nav-logo"><img src="{{ '/assets/images/icons/KI_Schnitzel.png' | relative_url }}" alt="Actionschnitzel Logo" class="nav-logo-img"></a>
+  <button class="burger-menu" id="burgerMenu" aria-label="Menü">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+  <div class="nav-links" id="navLinks">
+    {%- for item in site.data.navigation %}
+    {%- if item.children %}
+    <div class="nav-item-dropdown">
+      <a href="#">{{ item.title }}</a>
+      <div class="dropdown-menu">
+        {%- for child in item.children %}
+        {%- if child.children %}
+        <div class="dropdown-submenu">
+          <a href="#" class="submenu-toggle">{{ child.title }}</a>
+          <div class="submenu-items">
+            {%- for sub in child.children %}
+            <a href="{{ sub.url | relative_url }}"{% assign target = sub.url | uri_escape %}{% if current == target %} class="active"{% endif %}>{{ sub.title }}</a>
+            {%- endfor %}
+          </div>
+        </div>
+        {%- else %}
+        <a href="{{ child.url | relative_url }}"{% assign target = child.url | uri_escape %}{% assign classes = "" %}{% if child.highlight %}{% assign classes = "submenu-toggle" %}{% endif %}{% if current == target %}{% assign classes = classes | append: " active" | strip %}{% endif %}{% if classes != "" %} class="{{ classes }}"{% endif %}>{{ child.title }}</a>
+        {%- endif %}
+        {%- endfor %}
+      </div>
+    </div>
+    {%- else %}
+    <a href="{{ item.url | relative_url }}"{% assign target = item.url | uri_escape %}{% if current == target %} class="active"{% endif %}>{{ item.title }}</a>
+    {%- endif %}
+    {%- endfor %}
+    <button class="theme-toggle" id="themeToggle" aria-label="Dark Mode Toggle">
+      <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="12" cy="12" r="5"></circle>
+        <line x1="12" y1="1" x2="12" y2="3"></line>
+        <line x1="12" y1="21" x2="12" y2="23"></line>
+        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+        <line x1="1" y1="12" x2="3" y2="12"></line>
+        <line x1="21" y1="12" x2="23" y2="12"></line>
+        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+      </svg>
+      <svg class="moon-icon" viewBox="0 0 24 24" fill="currentColor" style="display: none;">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+      </svg>
+    </button>
+  </div>
+  <p class="nav-quote">... Computer, das sind Arbeitsgeräte und keine Religion.</p>
+</nav>

@@ -1,0 +1,20 @@
+- label: User
+  icon: user
+  text: Timo Westphal aka Actionschnitzel
+  url: https://github.com/actionschnitzel
+- label: Forum
+  icon: forum
+  text: forum.linuxguides.de
+  url: https://forum.linuxguides.de/
+- label: GitHub
+  icon: github
+  text: github.com/actionschnitzel
+  url: https://github.com/actionschnitzel
+- label: Instagram
+  icon: instagram
+  text: "@actionschnitzel"
+  url: https://www.instagram.com/actionschnitzel/
+- label: E-Mail
+  icon: mail
+  text: "actionschnitzel@guideos.de"
+  url: "mailto:actionschnitzel@guideos.de"

@@ -1,0 +1,961 @@
+# GOG-Spiele unter Linux (Quelle: forum.linuxguides.de, Community-Liste).
+# Neuer Eintrag = neuer Block; die Seite sortiert alphabetisch selbst.
+#
+# title:    Spieltitel (Pflicht)
+# via:      Liste aus: native, wine, heroic, lutris
+# playable: nur setzen, wenn false (Spiel läuft nicht)
+# note:     Fix / Tweak, mehrere Zeilen mit | möglich
+# links:    optionale Liste aus title + url
+
+- title: "A Plague Tale: Innocence"
+  via: [wine]
+  note: |-
+    Wine-GE bzw. Proton-GE
+    Getestet mit Heroic
+
+- title: "Airline Tycoon – Deluxe"
+  via: [native, lutris]
+
+- title: "Alan Wake"
+  via: [heroic, lutris]
+  note: "Proton-GE"
+
+- title: "Alfred Hitchcock – Vertigo"
+  via: [wine]
+  note: |-
+    Wine-GE bzw. Proton-GE
+    Getestet mit Heroic
+
+- title: "Alien Breed: Impact"
+  via: [wine]
+  note: |-
+    Braucht Proton-GE-8-3
+    Unreal-Engine muss über Wine-Tricks nachinstalliert werden
+    /Alien Breed Impact/binaries/windows/UE3Redist.exe
+
+- title: "Alien Breed 2: Assault"
+  via: [wine]
+  note: |-
+    Braucht Proton-GE-8-3
+    Unreal-Engine muss über Wine-Tricks nachinstalliert werden
+    /Alien Breed 2: Assault/binaries/windows/UE3Redist.exe
+
+- title: "Alien Breed 3: Descent"
+  via: [wine]
+  note: |-
+    Braucht Proton-GE-8-3
+    Unreal-Engine muss über Wine-Tricks nachinstalliert werden
+    /Alien Breed 3: Descent/binaries/windows/UE3Redist.exe
+    Nvidia PhysiX muss manuell nachinstalliert werden
+
+- title: "The Alters"
+  via: [wine, heroic]
+  note: "Proton-GE"
+
+- title: "Agatha Christie – The ABC Murders"
+  via: [native]
+
+- title: "AMID EVIL"
+  via: [wine, heroic]
+  note: "Proton-GE"
+
+- title: "Anger Foot"
+  via: [wine]
+  note: "Läuft Out-of-the-box"
+
+- title: "Asterix & Obelix XXL 1: Romastered"
+  via: [wine]
+  note: "Läuft Out-of-the-box"
+
+- title: "Asterix & Obelix XXL 3"
+  via: [wine]
+  note: "Läuft Out-of-the-box"
+
+- title: "Back to the Future"
+  via: [wine]
+
+- title: "Baphomets Fluch: The Director’s Cut"
+  via: [native]
+
+- title: "Baldur’s Gate 1 – Enhanced Edition"
+  via: [native]
+
+- title: "Baldur’s Gate 2 – Enhanced Edition"
+  via: [native]
+
+- title: "Beautiful Desolation"
+  via: [native]
+
+- title: "Blackwell Series"
+  via: [native]
+
+- title: "Bioforge"
+  via: [native, lutris]
+
+- title: "BioShock ™"
+  via: [wine]
+  note: "Wine-GE (BioShock™ Remastered ist vorzuziehen wegen der besseren Grafik)"
+
+- title: "BioShock ™ Remastered"
+  via: [wine]
+  note: "Wine-GE"
+
+- title: "BioShock ™ 2 Remastered"
+  via: [wine]
+  note: |-
+    Wine-GE/Proton-GE
+    Getestet mit Heroic
+
+- title: "Blitzkrieg 2"
+  via: [wine]
+  note: "Wine-GE"
+
+- title: "Blood Fresh Supply"
+  via: [wine]
+  note: "Wine-GE"
+
+- title: "BloodRayne: Terminal Cut"
+  via: [wine]
+  note: "Wine-GE (GamePad Support)"
+
+- title: "BloodRayne 2: Terminal Cut"
+  via: [wine]
+  note: "Wine-GE (GamePad Support)"
+
+- title: "Broforce"
+  via: [native, wine]
+  note: "Wine-GE"
+
+- title: "Captain Blood"
+  via: [wine, heroic]
+  note: "Proton-GE"
+
+- title: "Carrion"
+  via: [wine]
+  note: "Wine-GE"
+
+- title: "Cat Quest II"
+  via: [wine]
+  note: "Wine-GE"
+
+- title: "Sid Meier’s – Civilization 5"
+  via: [native]
+
+- title: "Sid Meier’s – Civilization 6"
+  via: [native]
+
+- title: "Clive Barker’S Undying"
+  via: [wine]
+  note: "Wine-GE"
+  links:
+    - title: "ModDB Widescreen Patch 1.2"
+      url: "https://www.moddb.com/mods/widescreen-high-resolutions/downloads"
+
+- title: "The Coma: Recut"
+  via: [native]
+
+- title: "The Coma 2: Vicious Sisters"
+  via: [native]
+
+- title: "CONSCRIPT"
+  via: [wine]
+  note: "Wine-GE"
+
+- title: "Contra Anniversary Collection"
+  via: [wine]
+  note: "Wine-GE"
+
+- title: "Control – Ultimate Edition"
+  via: [wine]
+  note: "Wine-GE"
+
+- title: "Coromon"
+  via: [wine, lutris]
+  note: "Wine-GE"
+
+- title: "Corpse Party (2021)"
+  via: [native]
+
+- title: "Crimsonland"
+  via: [native]
+
+- title: "Croc Legend of the Gobbos"
+  via: [wine, heroic, lutris]
+  note: "Auf dem Steam Deck stürzt die UI beim Beenden ab wenn das Spiel über Heroic gestartet wird."
+
+- title: "Crosscode"
+  via: [native, wine]
+
+- title: "Crysis ® Remastered"
+  via: [wine]
+  note: "Wine-GE"
+
+- title: "Cult of the Lamb"
+  via: [wine]
+  note: "Wine-GE"
+
+- title: "Cursed to Golf"
+  via: [wine]
+  note: "Wine-GE"
+
+- title: "Darkest Dungeon ®"
+  via: [native]
+
+- title: "The Darkside Detective"
+  via: [native]
+
+- title: "Day of the Tentacle – Remastered"
+  via: [native]
+
+- title: "Dead Cells"
+  via: [native]
+
+- title: "Deponia 1-4"
+  via: [native]
+
+- title: "Desperados: Wanted Dead or Alive"
+  via: [native]
+
+- title: "Deus Ex – Mankind Divided (2016)"
+  via: [wine]
+  note: "Wine-GE-Proton8-26"
+
+- title: "Die Siedler ® 2: Gold Edition"
+  via: [wine]
+  note: "Wine-GE"
+
+- title: "Die Siedler ® 3: Ultimate Collection"
+  via: [wine]
+  note: "Wine-GE"
+
+- title: "Die Siedler ® 4: Gold Edition"
+  via: [wine]
+  note: "Wine-GE"
+  links:
+    - title: "Widescreen-Fix"
+      url: "https://www.moddb.com/games/the-settlers-iv/downloads/widescreen-fix-v10-for-gold-edition-gog"
+    - title: "German-Patch"
+      url: "https://www.compiware-forum.de/downloads/file/298-the-settlers-iv-gold-edition-german-patch/"
+
+- title: "Dino Crisis"
+  via: [wine, heroic]
+  note: |-
+    Getestet mit Heroic + GE-Proton9-23
+    Settings > environment variables:
+    Variable Name = WINEDLLOVERRIDES
+    Value= ddraw=n,b
+
+- title: "Disco Elysium – The Final Cut"
+  via: [wine]
+  note: "Wine-GE"
+
+- title: "Dishonored 2"
+  via: [wine]
+  note: "Wine-GE"
+
+- title: "Disney’s Hercules"
+  playable: false
+  via: [wine]
+  note: "Kaputt!!!"
+
+- title: "Don’t Starve"
+  via: [native]
+
+- title: "DOOM + DOOM II"
+  via: [wine]
+  note: "Wine-GE"
+
+- title: "Doom / Doom II"
+  via: [native]
+  note: |-
+    Mit GZDOOM (.WAD Files nach ~/.config/gzdoom/ kopieren)
+    GZDOOM bietet "Mouse-Look", grafische Verbesserungen und Vieles mehr. Spiel z.B. über Lutris installieren. > .WAD wie beschrieben verschieben.
+  links:
+    - title: "ZDoom"
+      url: "https://zdoom.org/downloads"
+
+- title: "Doom 3 / Doom 3: BFG Edition"
+  via: [native, wine]
+
+- title: "Doom 64"
+  via: [wine]
+
+- title: "dotAGE"
+  via: [wine]
+  note: "Wine-GE"
+
+- title: "Dread Templar"
+  via: [wine]
+  note: "Wine-GE"
+
+- title: "Dungeons 2"
+  via: [native]
+
+- title: "DUSK / DUSK HD"
+  via: [wine, heroic]
+  note: "Proton-GE"
+
+- title: "Echos of the End"
+  via: [wine, heroic]
+  note: |-
+    Getestet auf der Steam Machine. Mit Proton 11/ Proton-GE 11.1 stützt das Spiel nach eine weile regelmäßig ab.
+    Fix: Wechsel zu Proton-GE 10.25
+
+- title: "Evil West"
+  via: [wine]
+  note: |-
+    Microsoft Visual C++ nicht mitinstalliert.
+    Über Wine-Tricks:
+    dotNetFx40_Full_setup.exe, dxwebsetup.exe, oalinst.exe, vcredist_2015-2019_x64.exe,vcredist_x64.exe, xnafx40_redist.msi
+
+- title: "Enter the Gungeon"
+  via: [native, wine]
+
+- title: "Eschalon: Book I"
+  via: [native]
+
+- title: "Exit the Gungeon"
+  via: [native, wine]
+
+- title: "Everspace ™"
+  via: [native, wine]
+
+- title: "Everspace ™ 2"
+  via: [wine, heroic]
+  note: "Proton-GE"
+
+- title: "Factorio"
+  via: [native]
+
+- title: "Fallout 2"
+  via: [wine]
+  note: "Wine-GE"
+
+- title: "Fallout: New Vegas"
+  via: [wine]
+  note: "Wine-GE"
+
+- title: "Firewatch"
+  via: [native, wine, heroic, lutris]
+  note: "Wine (inkl. TKG usw.)Lutris (diverse Runner ab wine-7.x-x-proton, Proton-9 & Wine-Staging (mind. an 10er Version)Lutris Skripte sind verfügbar (nicht getestet)Wine-GEProton-GE (ggf. mit VKD3D-Proton-3)"
+
+- title: "FTL: Advanced Edition"
+  via: [native]
+
+- title: "Freedom Force"
+  via: [wine]
+  note: "Wine-GE bzw. Proton-GE"
+
+- title: "Freedom Force vs. The 3rd Reich"
+  via: [wine]
+  note: "Wine-GE bzw. Proton-GE"
+
+- title: "Frostpunk"
+  via: [wine]
+  note: "Wine-GE bzw. Proton-GE"
+
+- title: "Full Throttle – Remastered"
+  via: [native]
+
+- title: "Gemini Rue"
+  via: [native]
+
+- title: "Ghostrunner"
+  via: [wine]
+  note: "Wine-GE"
+
+- title: "Gloomhaven"
+  via: [wine]
+  note: "Wine-GE"
+
+- title: "God’s Trigger"
+  via: [wine]
+  note: "Wine-GE"
+
+- title: "Gori: Cuddly Carnage"
+  via: [wine]
+  note: "Wine-GE"
+
+- title: "Graveyard Keeper"
+  via: [native]
+
+- title: "Grim Dawn"
+  via: [wine]
+  note: "Wine-GE"
+
+- title: "Grim Fandango – Remastered"
+  via: [native]
+
+- title: "Gwent – The Witcher Card Game"
+  via: [wine]
+  note: |-
+    Wine-GE
+    Zusätzlich zu Gwent muß noch der Galaxy Launcher installiert und gestartet sein.
+
+- title: "Hard Reset – Redux"
+  via: [wine]
+  note: "Wine-GE"
+
+- title: "Hard West"
+  via: [native]
+
+- title: "Hearts of Iron III"
+  via: [wine]
+  note: "Wine-GE"
+
+- title: "Hedon Bloodrite"
+  via: [native, wine]
+
+- title: "Hellblade – Sinua’s Sacrifice"
+  via: [wine]
+  note: "Wine-GE"
+
+- title: "Heretic + Hexen"
+  via: [wine, heroic]
+  note: "Proton-GE"
+
+- title: "Heretic: Shadow of the Serpent Riders"
+  via: [native, wine, lutris]
+  note: |-
+    Kann mit GZDOOM nativ gespielt werden. Mod-bar
+    GZDOOM bietet "Mouse-Look", grafische Verbesserungen und Vieles mehr. Spiel z.B. über Lutris installieren. > .WAD wie beschrieben verschieben.
+
+- title: "Heroes of Might and Magic ® 3: Complete"
+  via: [wine]
+
+- title: "Hexen II"
+  via: [native, wine, lutris]
+  note: "Linux nativ mit Lutris"
+  links:
+    - title: "Lutris"
+      url: "https://lutris.net/games/hexen-ii/"
+
+- title: "Hexen: Beyond Heretic / Hexen: Deathkings of the Dark Citadel"
+  via: [native, wine, lutris]
+  note: |-
+    Linux nativ mit Lutris
+    GZDOOM bietet "Mouse-Look", grafische Verbesserungen und Vieles mehr. Spiel z.B. über Lutris installieren. > .WAD wie beschrieben verschieben.
+  links:
+    - title: "ZDoom"
+      url: "https://zdoom.org/downloads"
+
+- title: "Hollow Knight"
+  via: [native]
+
+- title: "Hotline Miami 2: Wrong Number"
+  via: [native]
+
+- title: "Icewind Dale – Enhanced Edition"
+  via: [native]
+
+- title: "Intravenous"
+  via: [wine]
+  note: "Wine-GE"
+
+- title: "Immortal Redneck"
+  via: [native]
+
+- title: "Ion Fury"
+  via: [native, wine]
+
+- title: "Iron Danger"
+  via: [wine]
+  note: "Wine-GE"
+
+- title: "Iron Storm"
+  via: [wine]
+  note: "Wine-GE"
+
+- title: "Jade Empire – Special Edition"
+  via: [wine]
+  note: "Wine-GE"
+
+- title: "Jagged Alliance 2"
+  via: [wine]
+  note: "Wine-GE"
+
+- title: "Jotun: Valhalla Edition"
+  via: [native]
+
+- title: "Journey to the Savage Planet"
+  via: [wine]
+  note: "Wine-GE"
+
+- title: "Kao the Kangaroo"
+  via: [wine, heroic]
+  note: "Proton-GE"
+
+- title: "Katana Zero"
+  via: [wine]
+  note: "Wine-GE"
+
+- title: "Killing Time: Resurrected base"
+  via: [wine, heroic, lutris]
+  note: "Wine-GE"
+
+- title: "Kingdom Come: Deliverance"
+  via: [wine, lutris]
+  note: "Wine-GE"
+
+- title: "Kona"
+  via: [wine]
+  note: "Linux-Version zeig nur schwarzen Bildschirm"
+
+- title: "Krush Kill ‘N Destroy 2: Krossfire"
+  via: [wine]
+  note: "Wine-GE"
+
+- title: "Lacuna"
+  via: [wine]
+  note: "Proton-GE"
+
+- title: "Legacy of Kain – Defiance"
+  via: [wine]
+  note: "Wine-GE"
+
+- title: "Legacy of Kain : Soul Reaver 2"
+  via: [wine]
+  note: "Wine-GE"
+
+- title: "Lost Ruins"
+  via: [native]
+
+- title: "Mafia: Definitive Edition"
+  via: [wine, heroic, lutris]
+  note: "Wine-GE"
+
+- title: "Maniac Mansion"
+  via: [native]
+
+- title: "The Messenger"
+  via: [wine]
+  note: "Wine-GE"
+
+- title: "METAL EDEN"
+  via: [wine, heroic]
+  note: "Proton-GE"
+
+- title: "Metal Gear Solid"
+  via: [wine, heroic]
+  note: |-
+    Proton-GE 10.34
+    Widescreen Fix
+  links:
+    - title: "PCGamingWiki"
+      url: "https://www.pcgamingwiki.com/wiki/Metal_Gear_Solid:_Integral"
+
+- title: "Metal Slug 3"
+  via: [wine]
+  note: "Wine-GE"
+
+- title: "Metro 2033 Redux"
+  via: [wine, heroic]
+  note: "Proton-GE"
+
+- title: "Metro: Last Light"
+  via: [wine, heroic]
+  note: "Proton-GE"
+
+- title: "Metro Exodus"
+  via: [wine, heroic]
+  note: "Proton-GE"
+
+- title: "Mutant Year Zero"
+  via: [wine]
+  note: "Wine-GE"
+
+- title: "My Friend Pedro"
+  via: [wine]
+  note: "Wine-GE"
+
+- title: "Narita Boy"
+  via: [native]
+
+- title: "Neon Abyss"
+  via: [wine]
+  note: "Wine-GE"
+
+- title: "Neverwinter Nights – Diamond / Neverwinter Nights – Enhanced Edition"
+  via: [native]
+
+- title: "Nine Noir Lives"
+  via: [native]
+
+- title: "No Man’s Sky"
+  via: [wine]
+  note: "Wine-GE"
+
+- title: "Observer: System Redux"
+  via: [wine]
+  note: "Wine-GE bzw. Proton-GE"
+
+- title: "Old World"
+  via: [wine, heroic]
+  note: "Proton-GE"
+
+- title: "Painkiller – Black Edition"
+  via: [wine]
+  note: "Wine-GE"
+
+- title: "Pathfinder – Kingmaker"
+  via: [native]
+
+- title: "Per Aspera"
+  via: [wine]
+  note: "Wine-GE"
+
+- title: "Pillars of Eternity"
+  via: [native]
+
+- title: "Pillars of Eternity II: Deadfire"
+  via: [native]
+
+- title: "Planescape Torment"
+  via: [native]
+
+- title: "Planescape Torment – Enhanced Edition"
+  via: [native]
+
+- title: "PowerSlave Exhumed"
+  via: [wine]
+  note: "Wine-GE"
+
+- title: "Prey"
+  via: [wine]
+  note: "Wine-GE"
+
+- title: "Prince of Persia (2008)"
+  via: [wine, heroic]
+  note: |-
+    GE-Proton.
+    Alternative Executeble wählen (prince of persia.exe) da der Launcher nicht funktioniert.
+    Settings müssen mit RegEdit über WineTricks angepasst werden.
+    Beispiel:
+    [HKEY_CURRENT_USER\Software\Ubisoft\Prince of Persia\1.0\Engine]
+    "Antialiasing"=dword:00000001
+    "AspectRatioOverride"=dword:000000a0
+    "ParticleEffectNumber"=dword:00000032
+    "PostEffects"=dword:00000001
+    "ScreenResolutionHeight"=dword:00000320
+    "ScreenResolutionWidth"=dword:00000500
+    "Shadows"=dword:00000001
+    Der Wert für DEUTSCH ist 5
+
+- title: "Prince of Persia: The Sands of Time"
+  via: [wine]
+  note: "Wine-GE (Getestet auf Steam Deck: Nebel sollte ausgeschaltet werden in den Optionen)"
+
+- title: "Prison Architect"
+  via: [native]
+
+- title: "Prodeus"
+  via: [wine]
+  note: "Wine-GE"
+
+- title: "Project Zomboid"
+  via: [native]
+
+- title: "Quake"
+  via: [wine, lutris]
+  note: |-
+    Wine-GE
+    Kann über Lutris nativ gespielt werden
+    + Extrem gute Grafik-Mod (Epsilon)
+  links:
+    - title: "Lutris"
+      url: "https://lutris.net/games/quake/"
+
+- title: "Quake – Enhanced"
+  via: [wine]
+  note: |-
+    Wine-GE
+    GamePad Support
+
+- title: "Quake II / Quake II – Original"
+  via: [wine, lutris]
+  note: |-
+    Wine-GE
+    Kann über Lutris nativ gespielt werden
+  links:
+    - title: "Lutris"
+      url: "https://lutris.net/games/quake-ii/"
+
+- title: "Quake 4"
+  via: [wine]
+  note: "Wine-GE"
+
+- title: "Rain World"
+  via: [wine]
+  note: "Wine-GE"
+
+- title: "Rainswept"
+  via: [native]
+
+- title: "Rayman 2: The Great Escape"
+  via: [wine, lutris]
+  note: "GOG + Ray2Fix Galaxy Edition + Rayman Control Panel"
+  links:
+    - title: "Lutris"
+      url: "https://lutris.net/games/rayman-2-the-great-escape/"
+
+- title: "Resonance"
+  via: [native]
+
+- title: "Return of the Obra Dinn"
+  via: [wine]
+  note: "Wine-GE bzw. Proton-GE"
+
+- title: "Roadwarden"
+  via: [native]
+
+- title: "Runaway: A Road Adventure"
+  via: [wine, heroic]
+  note: "Patch für Deutsch (komplett ins Deutsche übersetzt. Sowohl die Texte als auch die Sprache und die Videos sind im Anschluss in Deutsch)"
+  links:
+    - title: "Compiware-Forum"
+      url: "https://www.compiware-forum.de/downloads/file/423-runaway-a-road-adventure-german-patch/"
+
+- title: "Sam & Max: Hit the Road"
+  via: [native]
+
+- title: "Sanitarium"
+  via: [native]
+
+- title: "Silly Polly Beast"
+  via: [wine, heroic]
+  note: "Proton-GE"
+
+- title: "Shadow Warrior (2013)"
+  via: [native, wine, heroic]
+  note: "Native/Proton-GE"
+
+- title: "Shadow Warrior 2"
+  via: [heroic]
+  note: "Proton-GE"
+
+- title: "Shardlight"
+  via: [native]
+
+- title: "The Signifier Director’s Cut"
+  via: [wine]
+  note: "Wine-GE bzw. Proton-GE"
+
+- title: "Soldiers of Fortune II: Double Helix"
+  via: [wine]
+  note: |-
+    Wine-GE-8-26
+    (Dateien in base und Main-Ordner ersetzen)
+    drive_c/GOG Games/Soldier of Fortune 2/base/sof2sp.cfg
+    seta r_mode "-1"
+    seta r_customheight "1080"
+    seta r_customwidth "1920"
+  links:
+    - title: "Widescreen-Fix"
+      url: "https://www.moddb.com/games/soldier-of-fortune-ii/downloads/sof2-widescreen-fov-and-hud-fix"
+
+- title: "Soma"
+  via: [native]
+
+- title: "Streets of Rogue"
+  via: [native]
+
+- title: "S.T.A.L.K.E.R.: Shadow of Chornobyl - Enhanced Edition"
+  via: [wine, heroic]
+  note: |-
+    Proton-GE 10-1
+    Argument: -nointro -noprefetch -noshadows
+    Spiel stürzt andernfalls ab.
+
+- title: "Starbound 1.4"
+  via: [native]
+
+- title: "Stardew Valley"
+  via: [native, wine]
+
+- title: "Star Trek ™: Away Team"
+  via: [wine]
+  note: "Wine-GE"
+
+- title: "Star Trek ™: Elite Force"
+  via: [wine, lutris]
+  note: |-
+    Wine-GE
+    Grafik-Mods mit Lutris
+  links:
+    - title: "Lutris"
+      url: "https://lutris.net/games/star-trek-voyager-elite-force/"
+    - title: "Widescreen Fix"
+      url: "https://www.wsgf.org/dr/star-trek-voyager-elite-force"
+
+- title: "Star Trek ™: Elite Force II"
+  via: [wine, lutris]
+  note: |-
+    Wine-GE
+    Grafik-Mods mit Lutris
+  links:
+    - title: "Widescreen Fix"
+      url: "https://www.wsgf.org/dr/star-trek-elite-force-ii"
+
+- title: "Star Wars ™: Dark Force Remaster"
+  via: [wine]
+  note: "Wine-GE"
+
+- title: "Star Wars: Galactic Battlegrounds"
+  via: [wine, lutris]
+  note: |-
+    Proton-GE 9.27
+    Für HD und Widescreen-Unterstützung sollte diese Mod installiert werden, eine Anleitung ist im Download enthalten:
+  links:
+    - title: "ModDB"
+      url: "https://www.moddb.com/mods/star-wars-galactic-battlegrounds-expanding-fronts"
+
+- title: "Star Wars ™: Knights of the old Republic"
+  via: [wine]
+  note: "Wine-GE bzw. Proton-GE"
+
+- title: "Star Wars ™: Shadows of the Empire™"
+  via: [wine]
+  note: "Wine-GE"
+
+- title: "Stellaris"
+  via: [native]
+
+- title: "Stronghold HD"
+  via: [wine]
+  note: "Wine-GE"
+
+- title: "Sudden Strike 4"
+  via: [native, wine]
+
+- title: "Sinking Island"
+  via: [wine, heroic]
+  note: |-
+    Die Deutsche Version stürzt ab wenn man den Heliport betritt.
+    Abhilfe:
+    Die Englische Version an einem anderen Ort installieren und die Datei
+    ../Sinking Island/paks/world.opk
+    in der Deutschen Installation an den entsprechenden Ort kopieren und überschreiben.
+
+- title: "Stasis"
+  via: [wine, heroic]
+  note: "Heroic: Intel HD400 Grafik benötigt die Umgebungsvariable PROTON_USE_WINED3D=1 - noch nicht lange gespielt. GE Proton 10-28"
+
+- title: "Technobabylon"
+  via: [native]
+  note: |-
+    Kein Mausklick nach jedem Satz:
+    Exec=sed -i '/skipmousekey*/d' /home/BENUTZERNAME/.local/share/ags/Technobabylon/dsettings.ini && "/home/BENUTZERNAME/GOG Games/Technobabylon/start.sh" ""
+
+- title: "Terra Nil"
+  via: [native]
+
+- title: "Terraria"
+  via: [native, wine]
+
+- title: "The Suicide of Rachel Foster"
+  via: [wine]
+  note: "Wine-GE bzw. Proton-GE"
+
+- title: "The Elder Scrolls III – Morrowind – GotY"
+  via: [native, wine, lutris]
+  note: "Läst sich mit Lutris nativ spielen"
+  links:
+    - title: "OpenMW"
+      url: "https://openmw.org/"
+    - title: "Lutris"
+      url: "https://lutris.net/games/the-elder-scrolls-iii-morrowind-goty-edition/"
+
+- title: "The Evil within / The Evil within 2"
+  via: [wine]
+  note: "Wine-GE"
+
+- title: "This War of Mine"
+  via: [native]
+
+- title: "Thronebreaker: The Witcher Tales"
+  via: [wine]
+  note: "Wine-GE"
+
+- title: "Tomb Raider: Anniversary"
+  via: [wine]
+  note: "Wine-GE"
+
+- title: "The Raven – Remastered"
+  via: [native]
+
+- title: "The Witcher 2: Assassins of Kings – Enhanced Edition"
+  via: [native]
+
+- title: "Thimbleweed Park"
+  via: [native]
+
+- title: "Torchlight 2"
+  via: [native]
+
+- title: "Tropico"
+  via: [wine, lutris]
+  note: |-
+    Wine-GE
+    Über Lutris: GOG w/ dxwrapper, editing tools version
+  links:
+    - title: "Lutris"
+      url: "https://lutris.net/games/tropico/"
+
+- title: "Unreal Gold"
+  via: [native, wine, lutris]
+  note: "Mit Lutris kann Unreal nativ installiert werden"
+  links:
+    - title: "Lutris"
+      url: "https://lutris.net/games/unreal-gold/"
+
+- title: "Valfaris"
+  via: [wine]
+  note: "Wine-GE"
+
+- title: "Vampyre"
+  via: [wine]
+  note: "Wine-GE"
+
+- title: "Wall World"
+  via: [wine, heroic]
+  note: "Proton-GE"
+
+- title: "Wall World 2"
+  via: [wine, heroic]
+  note: "Proton-GE"
+
+- title: "Whispers of a Machine"
+  via: [wine]
+  note: "Wine-GE bzw. Proton-GE"
+
+- title: "Windbound"
+  via: [wine]
+  note: "Wine-GE bzw. Proton-GE"
+
+- title: "Wasteland 3"
+  via: [native]
+
+- title: "Wolfenstein: The New Order / Wolfenstein: The Old Blood"
+  via: [wine, heroic]
+  note: "Wine-GE"
+
+- title: "Wolfenstein II: The New Colossus"
+  via: [wine, heroic]
+  note: "Wine-GE"
+
+- title: "Wonder Boy: The Dragon’s Trap"
+  via: [native]
+  note: |-
+    Benötigt openal
+    sudo apt-get install libopenal-dev
+
+- title: "Xeno Crisis"
+  via: [wine]
+  note: "Wine-GE"
+
+- title: "Yooka-Laylee and the Impossible Lair"
+  via: [wine]
+  note: "Wine-GE"
+
+- title: "Zak McKracken and the Alien Mindbenders"
+  via: [native]

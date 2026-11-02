@@ -1,0 +1,12 @@
+- name: Linux Guides Community
+  icon: forum
+  items:
+    - Moderator
+    - Verantwortlich für Community-Artikel
+    - News-Team
+- name: GuideOS
+  icon: package
+  items:
+    - Wartung des Repositories
+    - Paketierung von Tools
+    - Entwicklung
