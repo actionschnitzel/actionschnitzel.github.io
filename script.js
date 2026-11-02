@@ -49,6 +49,23 @@ if (burgerMenu) {
   });
 }
 
+// Blink section heading when navigating to an anchor on the page
+function blinkHeading(hash) {
+  if (!hash || hash.length < 2) return;
+  const heading = document.querySelector(`${hash} > h2`);
+  if (!heading) return;
+  heading.classList.remove("blink");
+  void heading.offsetWidth;
+  heading.classList.add("blink");
+  heading.addEventListener("animationend", () => heading.classList.remove("blink"), { once: true });
+}
+
+document.querySelectorAll('a[href*="#"]').forEach(link => {
+  link.addEventListener("click", () => blinkHeading(new URL(link.href).hash));
+});
+
+blinkHeading(window.location.hash);
+
 // Dark Mode Toggle Functionality
 const themeToggle = document.getElementById("themeToggle");
 const html = document.documentElement;
