@@ -1,0 +1,69 @@
+---
+layout: page
+title: "GOG: Was läuft auf Linux"
+---
+{%- assign games = site.data.gog_games | sort_natural: "title" -%}
+{%- assign platforms = "native,wine,heroic,lutris" | split: "," -%}
+    <section class="section">
+      <p class="article-intro">
+        Community-Liste mit GOG-Spielen, die unter Linux laufen: ob sie laufen, wie sie laufen und was dafür nötig ist. Basiert auf dem Artikel im
+        <a href="https://forum.linuxguides.de/core/index.php?article/8-gog-auf-linux-funktionierende-spiele-und-notwendige-anpassungen/" target="_blank" rel="noopener noreferrer">Linux Guides Forum</a>.
+      </p>
+      <ul>
+        <li>Wine-GE, Proton-GE und Lutris-Wine lassen sich über Lutris, Heroic und ProtonUp-Qt installieren.</li>
+        <li>Von der BPjM indizierte Spiele werden nicht gelistet.</li>
+        <li>Tipp Widescreen bei Spielen mit alter Quake-Engine: Die <code>.cfg</code>-Datei im Spielverzeichnis suchen und <code>seta r_mode "-1"</code>, <code>seta r_customwidth "1920"</code> sowie <code>seta r_customheight "1080"</code> setzen. Danach nichts mehr im Spiel umstellen.</li>
+      </ul>
+    </section>
+
+    <section class="section">
+      <input type="search" id="gogSearch" class="table-search" placeholder="Spiel oder Hinweis suchen …" aria-label="Spiele durchsuchen" autocomplete="off">
+      <p class="table-count"><span id="gogCount">{{ games.size }}</span> von {{ games.size }} Spielen</p>
+
+      <div class="table-scroll">
+        <table class="games-table gog-table">
+          <thead>
+            <tr>
+              <th>Titel</th>
+              <th class="gog-flag">Native</th>
+              <th class="gog-flag">Wine</th>
+              <th class="gog-flag">Heroic</th>
+              <th class="gog-flag">Lutris</th>
+              <th>Fix / Tweak</th>
+            </tr>
+          </thead>
+          <tbody id="gogTableBody">
+          {%- for game in games %}
+            <tr>
+              <td>{{ game.title | escape }}{% if game.playable == false %} <span class="gog-broken">läuft nicht</span>{% endif %}</td>
+              {%- for platform in platforms %}
+              <td class="gog-flag">{% if game.via contains platform %}<span aria-label="ja">✓</span>{% endif %}</td>
+              {%- endfor %}
+              <td>
+                {%- if game.note %}{{ game.note | escape | newline_to_br }}{% endif %}
+                {%- for link in game.links %}<br><a href="{{ link.url }}" target="_blank" rel="noopener noreferrer">{{ link.title | escape }} ↗</a>{% endfor %}
+              </td>
+            </tr>
+          {%- endfor %}
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+<script>
+  (function () {
+    var input = document.getElementById('gogSearch');
+    var rows = document.querySelectorAll('#gogTableBody tr');
+    var count = document.getElementById('gogCount');
+    input.addEventListener('input', function () {
+      var q = input.value.trim().toLowerCase();
+      var shown = 0;
+      rows.forEach(function (row) {
+        var match = row.textContent.toLowerCase().indexOf(q) !== -1;
+        row.hidden = !match;
+        if (match) shown++;
+      });
+      count.textContent = shown;
+    });
+  })();
+</script>

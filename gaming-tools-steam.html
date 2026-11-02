@@ -1,0 +1,110 @@
+---
+layout: page
+title: "Steam auf Linux"
+---
+    <section class="section">
+      <p class="article-intro">
+        Steam ist die Standard-Plattform für PC-Gaming auf Linux. Mit nativer Linux-Unterstützung und Proton kannst du deine komplette Spielebibliothek spielen.
+      </p>
+    </section>
+
+    <section class="section">
+      <h3>Installation</h3>
+      <p>
+        Es gibt viele Möglichkeiten, Steam zu installieren. Empfohlen wird die offizielle .deb-Datei von Valve, da diese am zuverlässigsten funktioniert.
+      </p>
+      
+      <h4>Die richtige Installation</h4>
+      <p>
+        Lade die offizielle .deb-Datei von <a href="https://store.steampowered.com/about/" target="_blank" rel="noopener noreferrer">store.steampowered.com</a> herunter. Du solltest die Datei <code>steam_latest.deb</code> erhalten.
+      </p>
+      <p><strong>Installationsschritte:</strong></p>
+      <ol>
+        <li>Öffne deinen Dateimanager und gehe zum Download-Ordner</li>
+        <li>Mache einen Rechtsklick auf eine freie Stelle und wähle „Terminal öffnen"</li>
+        <li>Tippe folgenden Befehl ein: <code>sudo apt install ./steam_latest.deb -y</code></li>
+        <li>Bestätige mit ENTER und gebe dein Passwort ein</li>
+        <li>Beim ersten Start werden weitere Pakete installiert – bitte alle mit „J" oder „Y" bestätigen!</li>
+      </ol>
+      <img src="assets/images/games/steam-installation-terminal.png" alt="Terminal während der Installation mit Abhängigkeitsauflösung" style="max-width: 100%; height: auto; border-radius: 8px; margin: 1.5rem 0; box-shadow: 0 4px 12px rgba(0,0,0,0.3);" />
+
+      <h4>⚠️ Installationen zu vermeiden</h4>
+      <p>
+        Es gibt zwar andere Möglichkeiten, Steam zu installieren (Flatpak, Snap, Anwendungsverwaltung), allerdings führen diese häufiger zu Problemen mit Login, Grafik oder Spielstart. Nutze deshalb wenn möglich immer die offizielle .deb-Installation von Valve.
+      </p>
+    </section>
+
+    <section class="section">
+      <h3>Konfiguration</h3>
+      
+      <h4>Steam Play &amp; Proton aktivieren</h4>
+      <p>
+        Gehe zu <strong>Steam &gt; Einstellungen &gt; Kompatibilität</strong> und aktiviere beide Schalter:
+      </p>
+      <ul>
+        <li>„Steam Play für unterstützte Titel"</li>
+        <li>„Steam Play für alle anderen Titel verwenden (mit Tools wie Proton)"</li>
+      </ul>
+      <p>
+        Wähle eine Proton-Version aus, die global für alle Spiele verwendet werden soll. Starte Steam danach neu – danach ist alles bereit!
+      </p>
+      <img src="assets/images/games/steam-compatibility-settings.png" alt="Steam Kompatibilitäts-Einstellungen" style="max-width: 100%; height: auto; border-radius: 8px; margin: 1.5rem 0; box-shadow: 0 4px 12px rgba(0,0,0,0.3);" />
+
+      <h4>ProtonDB – Dein bester Freund</h4>
+      <p>
+        Bevor du ein Spiel kaufst oder spielst, solltest du auf <a href="https://www.protondb.com/" target="_blank" rel="noopener noreferrer">ProtonDB</a> nachschauen, ob es auf Linux läuft. Dort findest du:
+      </p>
+      <ul>
+        <li>Kompatibilitäts-Status (Läuft/Funktioniert mit Fixes/Inkompatibel)</li>
+        <li>Erfahrungen der Community</li>
+        <li>Spezifische Fixes und Startoptionen für jedes Spiel</li>
+      </ul>
+      <img src="assets/images/games/protondb-header.png" alt="ProtonDB - Startseite" style="max-width: 100%; height: auto; border-radius: 8px; margin: 1.5rem 0; box-shadow: 0 4px 12px rgba(0,0,0,0.3);" />
+      <img src="assets/images/games/protondb-game-example.png" alt="ProtonDB - Einzelnes Spiel mit Status" style="max-width: 100%; height: auto; border-radius: 8px; margin: 1.5rem 0; box-shadow: 0 4px 12px rgba(0,0,0,0.3);" />
+
+      <h4>Individuelle Spiel-Konfiguration</h4>
+      <p>
+        Für einzelne Spiele kannst du unterschiedliche Proton-Versionen nutzen. So geht's:
+      </p>
+      <img src="assets/images/games/steam-game-context-menu.png" alt="Rechtsklick auf Spiel → Eigenschaften" style="max-width: 100%; height: auto; border-radius: 8px; margin: 1.5rem 0; box-shadow: 0 4px 12px rgba(0,0,0,0.3);" />
+      <p>
+        Mache einen Rechtsklick auf das Spiel in deiner Bibliothek und wähle „Eigenschaften".
+      </p>
+      <img src="assets/images/games/steam-game-general-options.png" alt="Spiel-Eigenschaften: Allgemein mit Startoptionen" style="max-width: 100%; height: auto; border-radius: 8px; margin: 1.5rem 0; box-shadow: 0 4px 12px rgba(0,0,0,0.3);" />
+      <p>
+        Im Reiter „Allgemein" kannst du Startoptionen eingeben (falls von ProtonDB empfohlen).
+      </p>
+      <img src="assets/images/games/steam-game-compatibility-proton.png" alt="Spiel-Eigenschaften: Kompatibilität - Proton-Version wählen" style="max-width: 100%; height: auto; border-radius: 8px; margin: 1.5rem 0; box-shadow: 0 4px 12px rgba(0,0,0,0.3);" />
+      <p>
+        Im Reiter „Kompatibilität" kannst du eine spezifische Proton-Version für dieses Spiel auswählen.
+      </p>
+    </section>
+
+    <section class="section">
+      <h3>Tipps &amp; Tricks</h3>
+      
+      <h4>Proton-GE verwenden</h4>
+      <p>
+        Die Community empfiehlt oft <strong>Proton-GE</strong> statt der Standard-Proton-Versionen. Proton-GE ist eine Community-Version mit zusätzlichen Verbesserungen und Fixes. Mit dem Tool <strong>Proton-Up-Qt</strong> kannst du Proton-GE einfach installieren und verwalten.
+      </p>
+
+      <h4>Häufige Probleme beheben</h4>
+      <p>
+        Falls Spiele nicht starten oder Probleme haben, sind oft diese Fehlerquellen der Grund:
+      </p>
+      <ol>
+        <li><strong>Falscher Grafikkartentreiber</strong> – Stelle sicher, dass du den richtigen Treiber installiert hast (NVIDIA oder AMD)</li>
+        <li><strong>Veraltete Abhängigkeiten</strong> – Aktualisiere dein System: <code>sudo apt update &amp;&amp; sudo apt upgrade</code></li>
+        <li><strong>Falsche Proton-Version</strong> – Versuche eine andere Version oder Proton-GE</li>
+        <li><strong>Cache leeren</strong> – Manchmal hilft es, den Proton-Cache zu löschen und Steam neu zu starten</li>
+      </ol>
+
+      <h4>Weitere Ressourcen</h4>
+      <ul>
+        <li><a href="https://www.protondb.com/" target="_blank" rel="noopener noreferrer">ProtonDB</a> – Kompatibilitäts-Datenbank für Spiele</li>
+        <li><a href="https://github.com/GloriousEggroll/proton-ge-custom" target="_blank" rel="noopener noreferrer">Proton-GE auf GitHub</a> – Community-Version von Proton</li>
+        <li><a href="https://forum.linuxguides.de/" target="_blank" rel="noopener noreferrer">Linux Guides Forum</a> – Hilfe von der Community</li>
+      </ul>
+    </section>
+
+  

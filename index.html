@@ -1,28 +1,61 @@
-<!doctype html>
-<html lang="de">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Hier wird gebaut</title>
-  <style>
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      min-height: 100vh;
-      display: grid;
-      place-items: center;
-      padding: 1.5rem;
-      background: #f4f4f4;
-      font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
-    }
-    img {
-      display: block;
-      width: min(50%, 1000px);
-      height: auto;
-    }
-  </style>
-</head>
-<body>
-  <img src="baustellenschild.png" alt="Baustellenschild: Hier wird gebaut">
-</body>
-</html>
+---
+layout: home
+---
+<section class="section compact" id="willkommen">
+  <h2>Willkommen</h2>
+  <p>Schön, dass du hierher gefunden hast. Auf dieser Website findest du einen Querschnitt aus dem, womit ich mich in den vergangenen Jahren beschäftigt habe – meine Projekte, Artikel, Gedanken und gesammelten Werke.</p>
+  <p><strong>Viel Spaß beim Stöbern!</strong></p>
+</section>
+
+<section class="section compact" id="verbindungen">
+  <h2>Verbindungen <span class="section-meta">{{ site.data.connections | size }} Einträge</span></h2>
+  <ul class="entry-list connection-list">
+    {%- for item in site.data.connections %}
+    <li class="entry">
+      {% include icon.html name=item.icon %}
+      <span class="connection-label">{{ item.label }}</span>
+      <a href="{{ item.url }}" target="_blank" rel="noopener noreferrer">{{ item.text }} ↗</a>
+    </li>
+    {%- endfor %}
+  </ul>
+</section>
+
+<section class="section compact" id="aufgaben">
+  <h2>Aufgaben</h2>
+  <ul class="entry-list connection-list task-list">
+    {%- for group in site.data.tasks %}
+    <li class="entry">
+      {% include icon.html name=group.icon %}
+      <span class="connection-label">{{ group.name }}</span>
+      <span class="connection-items">
+        {%- for item in group.items %}
+        <span>{{ item }}</span>
+        {%- endfor %}
+      </span>
+    </li>
+    {%- endfor %}
+  </ul>
+</section>
+
+<section class="section compact" id="distributionen">
+  <h2>Distributionen meines Vertrauens</h2>
+  <ul class="entry-list connection-list distro-list">
+    {%- for distro in site.data.distributions %}
+    <li class="entry">
+      <img class="connection-icon" src="{{ distro.icon | relative_url }}" alt="">
+      <a href="{{ distro.url }}" target="_blank" rel="noopener noreferrer">{{ distro.name }} ↗</a>
+      <span>{{ distro.description }}</span>
+    </li>
+    {%- endfor %}
+  </ul>
+</section>
+
+<section class="section compact" id="projekte">
+  <h2>Projekte <span class="section-meta">{{ site.data.projects | size }} Einträge</span></h2>
+  {% include entry-list.html items=site.data.projects %}
+</section>
+
+<section class="section compact" id="artikel">
+  <h2>Artikel <span class="section-meta">{{ site.data.articles | size }} Einträge</span></h2>
+  {% include entry-list.html items=site.data.articles %}
+</section>

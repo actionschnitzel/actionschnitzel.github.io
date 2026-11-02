@@ -1,0 +1,18 @@
+<ul class="entry-list">
+  {%- for item in include.items %}
+  <li class="entry">
+    <div class="entry-head">
+      {%- if item.icon %}
+      <img class="entry-icon" src="{{ item.icon | relative_url }}" alt="">
+      {%- endif %}
+      <span class="entry-name">{{ item.name }}</span>
+      <span class="entry-links">
+        {%- for link in item.links %}
+        <a href="{{ link.url }}" target="_blank" rel="noopener noreferrer">{{ link.label }} ↗</a>
+        {%- endfor %}
+      </span>
+    </div>
+    <p class="entry-desc">{{ item.description }}</p>
+  </li>
+  {%- endfor %}
+</ul>

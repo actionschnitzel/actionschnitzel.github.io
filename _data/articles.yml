@@ -1,0 +1,10 @@
+- name: Fosswelt
+  description: "Artikel zu Linux, Python, Raspberry Pi, Gaming und mehr."
+  links:
+    - label: fosswelt.org
+      url: https://gnulinux.ch/searchResult?search=Actionschnitzel
+- name: Linux Guides Community
+  description: "Diskussionen, Artikel und Beiträge im Linux Guides Forum."
+  links:
+    - label: forum.linuxguides.de
+      url: https://forum.linuxguides.de/core/
