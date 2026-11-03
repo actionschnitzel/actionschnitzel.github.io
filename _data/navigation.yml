@@ -33,7 +33,7 @@
       highlight: true
     - title: "Steam Survey"
       children:
-        - title: "Hardware- & Softwareumfrage"
+        - title: "Linux in Zahlen"
           url: /gaming-steam-survey.html
 #    - title: Doom
 #      url: /gaming-doom.html
