@@ -632,14 +632,12 @@
     Settings müssen mit RegEdit über WineTricks angepasst werden.
     Beispiel:
     [HKEY_CURRENT_USER\Software\Ubisoft\Prince of Persia\1.0\Engine]
-    "Antialiasing"=dword:00000001
-    "AspectRatioOverride"=dword:000000a0
-    "ParticleEffectNumber"=dword:00000032
-    "PostEffects"=dword:00000001
-    "ScreenResolutionHeight"=dword:00000320
-    "ScreenResolutionWidth"=dword:00000500
-    "Shadows"=dword:00000001
     Der Wert für DEUTSCH ist 5
+  links:
+    - title: "PCGamingWiki"
+      url: "https://www.pcgamingwiki.com/wiki/Prince_of_Persia_(2008)"
+    - title: "ProtonDB"
+      url: "https://www.protondb.com/app/19980#TXCgMee5WV"
 
 - title: "Prince of Persia: The Sands of Time"
   via: [wine]

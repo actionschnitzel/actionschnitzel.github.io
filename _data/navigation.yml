@@ -31,6 +31,10 @@
           url: /gaming-gog.html
       
       highlight: true
+    - title: "Steam Survey"
+      children:
+        - title: "Hardware- & Softwareumfrage"
+          url: /gaming-steam-survey.html
 #    - title: Doom
 #      url: /gaming-doom.html
 #- title: Über

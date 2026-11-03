@@ -1,0 +1,39 @@
+---
+layout: default
+title: "Steam-Hard- & Softwareumfrage"
+---
+<header class="page-hero page-hero-compact">
+  <h1>Steam-Hard- &amp; Softwareumfrage: {{ site.data.steam_survey.month }}</h1>
+</header>
+
+<main>
+    <section class="section">
+      <p class="article-intro">
+        Linux-Distributionen unter den Steam-Nutzern. Die Daten stammen aus der monatlichen Umfrage von Valve und werden automatisch aktualisiert.
+      </p>
+    </section>
+
+    <section class="section">
+      <div class="table-scroll">
+        <table class="games-table">
+          <thead>
+            <tr>
+              <th>Distribution</th>
+              <th>Anteil</th>
+              <th>Änderung</th>
+            </tr>
+          </thead>
+          <tbody>
+          {%- for dist in site.data.steam_survey.distributions %}
+            <tr>
+              <td>{{ dist.name | escape }}</td>
+              <td>{{ dist.share }}</td>
+              <td>{{ dist.change }}</td>
+            </tr>
+          {%- endfor %}
+          </tbody>
+        </table>
+      </div>
+      <p>Quelle: <a href="{{ site.data.steam_survey.source }}" target="_blank" rel="noopener noreferrer">Steam Hardware Survey</a></p>
+    </section>
+</main>
