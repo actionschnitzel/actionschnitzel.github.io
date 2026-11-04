@@ -1,50 +1,45 @@
 document.getElementById("year").textContent = new Date().getFullYear();
 
-// Burger Menu Functionality
+// Burger Menu
 const burgerMenu = document.getElementById("burgerMenu");
 const navLinks = document.getElementById("navLinks");
-const dropdowns = document.querySelectorAll(".nav-item-dropdown");
+
+const isMobileNav = () => window.innerWidth <= 768;
+
+function setMenuOpen(open) {
+  navLinks.classList.toggle("active", open);
+  burgerMenu.classList.toggle("active", open);
+  burgerMenu.setAttribute("aria-expanded", String(open));
+}
 
 if (burgerMenu) {
   burgerMenu.addEventListener("click", () => {
-    navLinks.classList.toggle("active");
-    burgerMenu.classList.toggle("active");
+    setMenuOpen(!navLinks.classList.contains("active"));
   });
 
-  // Close menu when clicking on a link
-  navLinks.querySelectorAll("a").forEach(link => {
+  navLinks.querySelectorAll(".nav-item-dropdown > a").forEach(toggle => {
+    toggle.addEventListener("click", (e) => e.preventDefault());
+  });
+
+  navLinks.querySelectorAll(".dropdown-submenu > .submenu-toggle").forEach(toggle => {
+    toggle.addEventListener("click", (e) => e.preventDefault());
+  });
+
+  // Close the menu after following a real link
+  navLinks.querySelectorAll("a[href]").forEach(link => {
     link.addEventListener("click", () => {
-      // Don't close if clicking on dropdown toggle
-      if (!link.nextElementSibling?.classList.contains("dropdown-menu")) {
-        navLinks.classList.remove("active");
-        burgerMenu.classList.remove("active");
+      if (isMobileNav() && link.getAttribute("href") !== "#") {
+        setMenuOpen(false);
       }
     });
   });
 
-  // Handle dropdown menus on mobile
-  dropdowns.forEach(dropdown => {
-    const toggle = dropdown.querySelector("a");
-    const menu = dropdown.querySelector(".dropdown-menu");
-
-    toggle.addEventListener("click", (e) => {
-      if (window.innerWidth <= 768) {
-        e.preventDefault();
-        menu.classList.toggle("active");
-        dropdown.classList.toggle("active");
-      }
-    });
-  });
-
-  // Close menu when resizing to desktop
+  // Reset all mobile state when switching to desktop
   window.addEventListener("resize", () => {
-    if (window.innerWidth > 768) {
-      navLinks.classList.remove("active");
-      burgerMenu.classList.remove("active");
-      dropdowns.forEach(dropdown => {
-        dropdown.classList.remove("active");
-        dropdown.querySelector(".dropdown-menu").classList.remove("active");
-      });
+    if (!isMobileNav()) {
+      setMenuOpen(false);
+      navLinks.querySelectorAll(".nav-item-dropdown.active, .dropdown-menu.active, .dropdown-submenu.active")
+        .forEach(el => el.classList.remove("active"));
     }
   });
 }
