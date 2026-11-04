@@ -1,41 +1,10 @@
 - title: Home
   url: /
-#- title: Artikel
-#  url: /#artikel
-#- title: Projekte
-#  url: /#projekte
-- title: Linux
-  children:
-    - title: Distributionen
-      url: /linux.html
-- title: Gaming
-  children:
-#    - title: Tools
-#      children:
-#        - title: Steam
-#          url: /gaming-tools-steam.html
-#        - title: Lutris
-#          url: /gaming-tools-lutris.html
-#        - title: Heroic Games Launcher
-#          url: /gaming-tools-heroic.html
-#        - title: Proton-Up-Qt
-#          url: /gaming-tools-protonupqt.html
-
-    - title: Meine Highlights
-      children:
-        - title: "2026"
-          url: /gaming-highlights-2026.html
-    - title: "GOG"
-      children:
-        - title: "Was läuft auf Linux"
-          url: /gaming-gog.html
-      
-      highlight: true
-    - title: "Steam Survey"
-      children:
-        - title: "Linux in Zahlen"
-          url: /gaming-steam-survey.html
-#    - title: Doom
-#      url: /gaming-doom.html
-#- title: Über
-#  url: /über.html
+- title: Distributionen
+  url: /linux.html
+- title: Highlights 2026
+  url: /gaming-highlights-2026.html
+- title: GOG auf Linux
+  url: /gaming-gog.html
+- title: Linux in Zahlen
+  url: /gaming-steam-survey.html

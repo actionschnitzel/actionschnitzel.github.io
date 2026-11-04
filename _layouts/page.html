@@ -1,16 +1,17 @@
 ---
 layout: default
 ---
-<header class="page-hero{% if page.hero_class %} {{ page.hero_class }}{% endif %}">
-  {%- if page.hero_image %}
-  <img src="{{ page.hero_image | relative_url }}" alt="{{ page.hero_image_alt }}" class="page-icon">
-  {%- endif %}
-  {%- if page.hero_emoji %}
-  <span class="page-icon-emoji">{{ page.hero_emoji }}</span>
-  {%- endif %}
-  <h1>{{ page.hero_title | default: page.title }}</h1>
-</header>
+<main id="inhalt">
+  <section class="page-hero">
+    <div class="wrap">
+      {%- if page.hero_image %}
+      <img src="{{ page.hero_image | relative_url }}" alt="{{ page.hero_image_alt }}" class="page-icon">
+      {%- endif %}
+      <h1 class="page-title">{{ page.title }}</h1>
+    </div>
+  </section>
 
-<main>
-{{ content }}
+  <div class="wrap article-body">
+    {{ content }}
+  </div>
 </main>

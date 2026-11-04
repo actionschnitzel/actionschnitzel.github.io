@@ -1,3 +1,9 @@
-<footer>
-  <p>&copy; <span id="year"></span> Actionschnitzel &mdash; mit ❤️ und viel Paniermehl gemacht. | <a href="{{ '/impressum.html' | relative_url }}">Impressum</a> | <a href="{{ '/datenschutz.html' | relative_url }}">Datenschutz</a></p>
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <span>© {{ 'now' | date: '%Y' }} Actionschnitzel, mit viel Liebe und Paniermehl gemacht.</span>
+    <nav aria-label="Rechtliches">
+      <a href="{{ '/impressum.html' | relative_url }}">Impressum</a>
+      <a href="{{ '/datenschutz.html' | relative_url }}">Datenschutz</a>
+    </nav>
+  </div>
 </footer>

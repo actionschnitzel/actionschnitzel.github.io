@@ -1,65 +1,994 @@
 ---
-layout: page
-title: "GOG: Was läuft auf Linux"
-hero_class: page-hero-compact
 ---
-{%- assign games = site.data.gog_games | sort_natural: "title" -%}
-{%- assign platforms = "native,wine,heroic,lutris" | split: "," -%}
-    <section class="section">
-      <p class="article-intro">
-        Community-Liste mit GOG-Spielen, die unter Linux laufen: ob sie laufen, wie sie laufen und was dafür nötig ist. Basiert auf dem Artikel im
-        <a href="https://forum.linuxguides.de/core/index.php?article/8-gog-auf-linux-funktionierende-spiele-und-notwendige-anpassungen/" target="_blank" rel="noopener noreferrer">Linux Guides Forum</a>.
-      </p>
-    </section>
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GOG: Was läuft auf Linux · Actionschnitzel</title>
+  <meta name="description" content="Community-Liste mit GOG-Spielen, die unter Linux laufen.">
+  <meta name="theme-color" content="#1d1e20">
+  <link rel="icon" type="image/png" href="assets/redesign/img/favicon.png">
+  <link rel="apple-touch-icon" href="assets/redesign/img/apple-touch-icon.png">
+  <link rel="preload" href="assets/redesign/fonts/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/redesign/fonts/inter-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/redesign/css/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#inhalt">Zum Inhalt springen</a>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="index.html">
+        <img src="assets/redesign/img/schnitzel.png" alt="" width="48" height="48">
+        <span>Actionschnitzel</span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Menü öffnen"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+      <nav class="site-nav" id="site-nav" aria-label="Hauptnavigation">
+        <ul class="nav-list">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="linux.html">Distributionen</a></li>
+          <li><a href="gaming-highlights-2026.html">Highlights 2026</a></li>
+          <li><a href="gaming-gog.html" aria-current="page">GOG auf Linux</a></li>
+          <li><a href="gaming-steam-survey.html">Linux in Zahlen</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
-    <section class="section">
-      <input type="search" id="gogSearch" class="table-search" placeholder="Spiel oder Hinweis suchen …" aria-label="Spiele durchsuchen" autocomplete="off">
-      <p class="table-count"><span id="gogCount">{{ games.size }}</span> von {{ games.size }} Spielen</p>
-
-      <div class="table-scroll">
-        <table class="games-table gog-table">
-          <thead>
-            <tr>
-              <th>Titel</th>
-              <th class="gog-flag">Native</th>
-              <th class="gog-flag">Wine/Proton</th>
-              <th class="gog-flag">Heroic</th>
-              <th class="gog-flag">Lutris</th>
-              <th>Fix / Tweak</th>
-            </tr>
-          </thead>
-          <tbody id="gogTableBody">
-          {%- for game in games %}
-            <tr>
-              <td>{{ game.title | escape }}{% if game.playable == false %} <span class="gog-broken">kaputt</span>{% endif %}</td>
-              {%- for platform in platforms %}
-              <td class="gog-flag">{% if game.via contains platform %}<span aria-label="ja">✓</span>{% endif %}</td>
-              {%- endfor %}
-              <td>
-                {%- if game.note %}{{ game.note | escape | newline_to_br }}{% endif %}
-                {%- for link in game.links %}<br><a href="{{ link.url }}" target="_blank" rel="noopener noreferrer">{{ link.title | escape }} ↗</a>{% endfor %}
-              </td>
-            </tr>
-          {%- endfor %}
-          </tbody>
-        </table>
+  <main id="inhalt">
+    <section class="page-hero">
+      <div class="wrap">
+        <span class="eyebrow">Gaming / GOG</span>
+        <h1 class="page-title">GOG: Was läuft auf <span class="hl">Linux</span></h1>
+        <p class="lead">Community-Liste mit GOG-Spielen, die unter Linux laufen: ob sie laufen, wie sie laufen und was dafür nötig ist. Basiert auf dem Artikel im <a href="https://forum.linuxguides.de" target="_blank" rel="noopener">Linux Guides Forum</a>.</p>
       </div>
     </section>
+    {% assign games = site.data.gog_games | sort_natural: 'title' %}
+    <section style="padding-bottom: 40px">
+      <div class="wrap stats">
+        <div class="stat stat--dark"><b>{{ games | size }}</b><span>Spiele getestet</span></div>
+        <div class="stat"><b>{{ site.data.gog_games | where_exp: "g", "g.via contains 'native'" | size }}</b><span>laufen nativ</span></div>
+        <div class="stat"><b>{{ site.data.gog_games | where_exp: "g", "g.via contains 'wine'" | size }}</b><span>mit Wine/Proton</span></div>
+        <div class="stat"><b>{{ site.data.gog_games | where_exp: "g", "g.via contains 'heroic'" | size }}</b><span>über Heroic</span></div>
+        <div class="stat"><b>{{ site.data.gog_games | where_exp: "g", "g.via contains 'lutris'" | size }}</b><span>über Lutris</span></div>
+      </div>
+    </section>
+    <section style="padding-bottom: 96px">
+      <div class="wrap">
+        <div class="toolbar">
+          <div class="search">
+            <label class="sr-only" for="gog-search">Spiel oder Hinweis suchen</label>
+            <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+            <input id="gog-search" type="search" placeholder="Spiel oder Hinweis suchen …" autocomplete="off">
+          </div>
+          <div class="chips" role="group" aria-label="Nach Methode filtern"><button class="chip" type="button" data-filter="alle" aria-pressed="true">Alle</button><button class="chip" type="button" data-filter="nativ" aria-pressed="false">Nativ</button><button class="chip" type="button" data-filter="wine" aria-pressed="false">Wine/Proton</button><button class="chip" type="button" data-filter="heroic" aria-pressed="false">Heroic</button><button class="chip" type="button" data-filter="lutris" aria-pressed="false">Lutris</button></div>
+        </div>
+        <p class="count" id="gog-count" aria-live="polite">{{ games | size }} von {{ games | size }} Spielen</p>
+        <div class="table-box">
+          <table class="table" id="gog-table">
+            <thead><tr><th scope="col">Titel</th><th scope="col">Nativ</th><th scope="col">Wine/Proton</th><th scope="col">Heroic</th><th scope="col">Lutris</th><th scope="col">Fix / Tweak</th></tr></thead>
+            <tbody>
+{% for g in games %}
+          <tr data-nativ="{% if g.via contains 'native' %}1{% else %}0{% endif %}" data-wine="{% if g.via contains 'wine' %}1{% else %}0{% endif %}" data-heroic="{% if g.via contains 'heroic' %}1{% else %}0{% endif %}" data-lutris="{% if g.via contains 'lutris' %}1{% else %}0{% endif %}">
+            <td class="title">{{ g.title | escape }}</td>
+            <td>{% if g.via contains 'native' %}<span class="mark mark--yes" aria-label="ja">✓</span>{% else %}<span class="mark mark--no" aria-label="nein">·</span>{% endif %}</td>
+            <td>{% if g.via contains 'wine' %}<span class="mark mark--yes" aria-label="ja">✓</span>{% else %}<span class="mark mark--no" aria-label="nein">·</span>{% endif %}</td>
+            <td>{% if g.via contains 'heroic' %}<span class="mark mark--yes" aria-label="ja">✓</span>{% else %}<span class="mark mark--no" aria-label="nein">·</span>{% endif %}</td>
+            <td>{% if g.via contains 'lutris' %}<span class="mark mark--yes" aria-label="ja">✓</span>{% else %}<span class="mark mark--no" aria-label="nein">·</span>{% endif %}</td>
+            <td class="fix">{% if g.note %}{{ g.note | escape | newline_to_br }}{% endif %}{% for l in g.links %}{% if forloop.index > 1 or g.note %}<br>{% endif %}<a href="{{ l.url }}" target="_blank" rel="noopener">{{ l.title | escape }} ↗</a>{% endfor %}{% unless g.note or g.links %}<span aria-hidden="true">–</span>{% endunless %}</td>
+          </tr>
+{% endfor %}
+{% comment %}
+          <tr data-nativ="0" data-wine="1" data-heroic="0" data-lutris="0">
+            <td class="title">A Plague Tale: Innocence</td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix">Wine-GE bzw. Proton-GE<br>Getestet mit Heroic</td>
+          </tr>
+          <tr data-nativ="1" data-wine="0" data-heroic="0" data-lutris="0">
+            <td class="title">Agatha Christie – The ABC Murders</td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix"><span aria-hidden="true">–</span></td>
+          </tr>
+          <tr data-nativ="1" data-wine="0" data-heroic="0" data-lutris="1">
+            <td class="title">Airline Tycoon – Deluxe</td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td>
+            <td class="fix"><span aria-hidden="true">–</span></td>
+          </tr>
+          <tr data-nativ="0" data-wine="0" data-heroic="1" data-lutris="1">
+            <td class="title">Alan Wake</td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td>
+            <td class="fix">Proton-GE</td>
+          </tr>
+          <tr data-nativ="0" data-wine="1" data-heroic="0" data-lutris="0">
+            <td class="title">Alfred Hitchcock – Vertigo</td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix">Wine-GE bzw. Proton-GE<br>Getestet mit Heroic</td>
+          </tr>
+          <tr data-nativ="0" data-wine="1" data-heroic="0" data-lutris="0">
+            <td class="title">Alien Breed 2: Assault</td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix">Braucht Proton-GE-8-3<br>Unreal-Engine muss über Wine-Tricks nachinstalliert werden<br><code>/Alien Breed 2: Assault/binaries/windows/UE3Redist.exe</code></td>
+          </tr>
+          <tr data-nativ="0" data-wine="1" data-heroic="0" data-lutris="0">
+            <td class="title">Alien Breed 3: Descent</td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix">Braucht Proton-GE-8-3<br>Unreal-Engine muss über Wine-Tricks nachinstalliert werden<br><code>/Alien Breed 3: Descent/binaries/windows/UE3Redist.exe</code><br>Nvidia PhysiX muss manuell nachinstalliert werden</td>
+          </tr>
+          <tr data-nativ="0" data-wine="1" data-heroic="0" data-lutris="0">
+            <td class="title">Alien Breed: Impact</td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix">Braucht Proton-GE-8-3<br>Unreal-Engine muss über Wine-Tricks nachinstalliert werden<br><code>/Alien Breed Impact/binaries/windows/UE3Redist.exe</code></td>
+          </tr>
+          <tr data-nativ="0" data-wine="1" data-heroic="1" data-lutris="0">
+            <td class="title">AMID EVIL</td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix">Proton-GE</td>
+          </tr>
+          <tr data-nativ="0" data-wine="1" data-heroic="0" data-lutris="0">
+            <td class="title">Anger Foot</td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix">Läuft Out-of-the-box</td>
+          </tr>
+          <tr data-nativ="0" data-wine="1" data-heroic="0" data-lutris="0">
+            <td class="title">Asterix &amp; Obelix XXL 1: Romastered</td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix">Läuft Out-of-the-box</td>
+          </tr>
+          <tr data-nativ="0" data-wine="1" data-heroic="0" data-lutris="0">
+            <td class="title">Asterix &amp; Obelix XXL 3</td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix">Läuft Out-of-the-box</td>
+          </tr>
+          <tr data-nativ="0" data-wine="1" data-heroic="0" data-lutris="0">
+            <td class="title">Back to the Future</td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix"><span aria-hidden="true">–</span></td>
+          </tr>
+          <tr data-nativ="1" data-wine="0" data-heroic="0" data-lutris="0">
+            <td class="title">Baldur’s Gate 1 – Enhanced Edition</td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix"><span aria-hidden="true">–</span></td>
+          </tr>
+          <tr data-nativ="1" data-wine="0" data-heroic="0" data-lutris="0">
+            <td class="title">Baldur’s Gate 2 – Enhanced Edition</td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix"><span aria-hidden="true">–</span></td>
+          </tr>
+          <tr data-nativ="1" data-wine="0" data-heroic="0" data-lutris="0">
+            <td class="title">Baphomets Fluch: The Director’s Cut</td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix"><span aria-hidden="true">–</span></td>
+          </tr>
+          <tr data-nativ="1" data-wine="0" data-heroic="0" data-lutris="0">
+            <td class="title">Beautiful Desolation</td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix"><span aria-hidden="true">–</span></td>
+          </tr>
+          <tr data-nativ="1" data-wine="0" data-heroic="0" data-lutris="1">
+            <td class="title">Bioforge</td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td>
+            <td class="fix"><span aria-hidden="true">–</span></td>
+          </tr>
+          <tr data-nativ="0" data-wine="1" data-heroic="0" data-lutris="0">
+            <td class="title">BioShock ™</td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix">Wine-GE (BioShock™ Remastered ist vorzuziehen wegen der besseren Grafik)</td>
+          </tr>
+          <tr data-nativ="0" data-wine="1" data-heroic="0" data-lutris="0">
+            <td class="title">BioShock ™ 2 Remastered</td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix">Wine-GE/Proton-GE<br>Getestet mit Heroic</td>
+          </tr>
+          <tr data-nativ="0" data-wine="1" data-heroic="0" data-lutris="0">
+            <td class="title">BioShock ™ Remastered</td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix">Wine-GE</td>
+          </tr>
+          <tr data-nativ="1" data-wine="0" data-heroic="0" data-lutris="0">
+            <td class="title">Blackwell Series</td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix"><span aria-hidden="true">–</span></td>
+          </tr>
+          <tr data-nativ="0" data-wine="1" data-heroic="0" data-lutris="0">
+            <td class="title">Blitzkrieg 2</td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix">Wine-GE</td>
+          </tr>
+          <tr data-nativ="0" data-wine="1" data-heroic="0" data-lutris="0">
+            <td class="title">Blood Fresh Supply</td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix">Wine-GE</td>
+          </tr>
+          <tr data-nativ="0" data-wine="1" data-heroic="0" data-lutris="0">
+            <td class="title">BloodRayne 2: Terminal Cut</td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix">Wine-GE (GamePad Support)</td>
+          </tr>
+          <tr data-nativ="0" data-wine="1" data-heroic="0" data-lutris="0">
+            <td class="title">BloodRayne: Terminal Cut</td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix">Wine-GE (GamePad Support)</td>
+          </tr>
+          <tr data-nativ="1" data-wine="1" data-heroic="0" data-lutris="0">
+            <td class="title">Broforce</td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix">Wine-GE</td>
+          </tr>
+          <tr data-nativ="0" data-wine="1" data-heroic="1" data-lutris="0">
+            <td class="title">Captain Blood</td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix">Proton-GE</td>
+          </tr>
+          <tr data-nativ="0" data-wine="1" data-heroic="0" data-lutris="0">
+            <td class="title">Carrion</td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix">Wine-GE</td>
+          </tr>
+          <tr data-nativ="0" data-wine="1" data-heroic="0" data-lutris="0">
+            <td class="title">Cat Quest II</td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix">Wine-GE</td>
+          </tr>
+          <tr data-nativ="0" data-wine="1" data-heroic="0" data-lutris="0">
+            <td class="title">Clive Barker’S Undying</td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix">Wine-GE<br><a href="https://www.moddb.com/mods/widescreen-high-resolutions/downloads" target="_blank" rel="noopener">ModDB Widescreen Patch 1.2 ↗</a></td>
+          </tr>
+          <tr data-nativ="0" data-wine="1" data-heroic="0" data-lutris="0">
+            <td class="title">CONSCRIPT</td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix">Wine-GE</td>
+          </tr>
+          <tr data-nativ="0" data-wine="1" data-heroic="0" data-lutris="0">
+            <td class="title">Contra Anniversary Collection</td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix">Wine-GE</td>
+          </tr>
+          <tr data-nativ="0" data-wine="1" data-heroic="0" data-lutris="0">
+            <td class="title">Control – Ultimate Edition</td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix">Wine-GE</td>
+          </tr>
+          <tr data-nativ="0" data-wine="1" data-heroic="0" data-lutris="1">
+            <td class="title">Coromon</td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td>
+            <td class="fix">Wine-GE</td>
+          </tr>
+          <tr data-nativ="1" data-wine="0" data-heroic="0" data-lutris="0">
+            <td class="title">Corpse Party (2021)</td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix"><span aria-hidden="true">–</span></td>
+          </tr>
+          <tr data-nativ="1" data-wine="0" data-heroic="0" data-lutris="0">
+            <td class="title">Crimsonland</td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix"><span aria-hidden="true">–</span></td>
+          </tr>
+          <tr data-nativ="0" data-wine="1" data-heroic="1" data-lutris="1">
+            <td class="title">Croc Legend of the Gobbos</td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td>
+            <td class="fix">Auf dem Steam Deck stürzt die UI beim Beenden ab wenn das Spiel über Heroic gestartet wird.</td>
+          </tr>
+          <tr data-nativ="1" data-wine="1" data-heroic="0" data-lutris="0">
+            <td class="title">Crosscode</td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix"><span aria-hidden="true">–</span></td>
+          </tr>
+          <tr data-nativ="0" data-wine="1" data-heroic="0" data-lutris="0">
+            <td class="title">Crysis ® Remastered</td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix">Wine-GE</td>
+          </tr>
+          <tr data-nativ="0" data-wine="1" data-heroic="0" data-lutris="0">
+            <td class="title">Cult of the Lamb</td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix">Wine-GE</td>
+          </tr>
+          <tr data-nativ="0" data-wine="1" data-heroic="0" data-lutris="0">
+            <td class="title">Cursed to Golf</td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix">Wine-GE</td>
+          </tr>
+          <tr data-nativ="1" data-wine="0" data-heroic="0" data-lutris="0">
+            <td class="title">Darkest Dungeon ®</td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix"><span aria-hidden="true">–</span></td>
+          </tr>
+          <tr data-nativ="1" data-wine="0" data-heroic="0" data-lutris="0">
+            <td class="title">Day of the Tentacle – Remastered</td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix"><span aria-hidden="true">–</span></td>
+          </tr>
+          <tr data-nativ="1" data-wine="0" data-heroic="0" data-lutris="0">
+            <td class="title">Dead Cells</td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix"><span aria-hidden="true">–</span></td>
+          </tr>
+          <tr data-nativ="1" data-wine="0" data-heroic="0" data-lutris="0">
+            <td class="title">Deponia 1-4</td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix"><span aria-hidden="true">–</span></td>
+          </tr>
+          <tr data-nativ="1" data-wine="0" data-heroic="0" data-lutris="0">
+            <td class="title">Desperados: Wanted Dead or Alive</td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix"><span aria-hidden="true">–</span></td>
+          </tr>
+          <tr data-nativ="0" data-wine="1" data-heroic="0" data-lutris="0">
+            <td class="title">Deus Ex – Mankind Divided (2016)</td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix">Wine-GE-Proton8-26</td>
+          </tr>
+          <tr data-nativ="0" data-wine="1" data-heroic="0" data-lutris="0">
+            <td class="title">Die Siedler ® 2: Gold Edition</td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix">Wine-GE</td>
+          </tr>
+          <tr data-nativ="0" data-wine="1" data-heroic="0" data-lutris="0">
+            <td class="title">Die Siedler ® 3: Ultimate Collection</td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix">Wine-GE</td>
+          </tr>
+          <tr data-nativ="0" data-wine="1" data-heroic="0" data-lutris="0">
+            <td class="title">Die Siedler ® 4: Gold Edition</td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix">Wine-GE<br><a href="https://www.moddb.com/games/the-settlers-iv/downloads/widescreen-fix-v10-for-gold-edition-gog" target="_blank" rel="noopener">Widescreen-Fix ↗</a><br><a href="https://www.compiware-forum.de/downloads/file/298-the-settlers-iv-gold-edition-german-patch/" target="_blank" rel="noopener">German-Patch ↗</a></td>
+          </tr>
+          <tr data-nativ="0" data-wine="1" data-heroic="1" data-lutris="0">
+            <td class="title">Dino Crisis</td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix">Getestet mit Heroic + GE-Proton9-23<br>Settings &gt; environment variables:<br>Variable Name = WINEDLLOVERRIDES<br>Value= ddraw=n,b</td>
+          </tr>
+          <tr data-nativ="0" data-wine="1" data-heroic="0" data-lutris="0">
+            <td class="title">Disco Elysium – The Final Cut</td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix">Wine-GE</td>
+          </tr>
+          <tr data-nativ="0" data-wine="1" data-heroic="0" data-lutris="0">
+            <td class="title">Dishonored 2</td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix">Wine-GE</td>
+          </tr>
+          <tr data-nativ="0" data-wine="1" data-heroic="0" data-lutris="0">
+            <td class="title">Disney’s Hercules kaputt</td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix">Kaputt!!!</td>
+          </tr>
+          <tr data-nativ="1" data-wine="0" data-heroic="0" data-lutris="0">
+            <td class="title">Don’t Starve</td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix"><span aria-hidden="true">–</span></td>
+          </tr>
+          <tr data-nativ="0" data-wine="1" data-heroic="0" data-lutris="0">
+            <td class="title">DOOM + DOOM II</td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix">Wine-GE</td>
+          </tr>
+          <tr data-nativ="1" data-wine="0" data-heroic="0" data-lutris="0">
+            <td class="title">Doom / Doom II</td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix">Mit GZDOOM (.WAD Files nach ~/.config/gzdoom/ kopieren)<br>GZDOOM bietet &quot;Mouse-Look&quot;, grafische Verbesserungen und Vieles mehr. Spiel z.B. über Lutris installieren. &gt; .WAD wie beschrieben verschieben.<br><a href="https://zdoom.org/downloads" target="_blank" rel="noopener">ZDoom ↗</a></td>
+          </tr>
+          <tr data-nativ="1" data-wine="1" data-heroic="0" data-lutris="0">
+            <td class="title">Doom 3 / Doom 3: BFG Edition</td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix"><span aria-hidden="true">–</span></td>
+          </tr>
+          <tr data-nativ="0" data-wine="1" data-heroic="0" data-lutris="0">
+            <td class="title">Doom 64</td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix"><span aria-hidden="true">–</span></td>
+          </tr>
+          <tr data-nativ="0" data-wine="1" data-heroic="0" data-lutris="0">
+            <td class="title">dotAGE</td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix">Wine-GE</td>
+          </tr>
+          <tr data-nativ="0" data-wine="1" data-heroic="0" data-lutris="0">
+            <td class="title">Dread Templar</td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix">Wine-GE</td>
+          </tr>
+          <tr data-nativ="1" data-wine="0" data-heroic="0" data-lutris="0">
+            <td class="title">Dungeons 2</td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix"><span aria-hidden="true">–</span></td>
+          </tr>
+          <tr data-nativ="0" data-wine="1" data-heroic="1" data-lutris="0">
+            <td class="title">DUSK / DUSK HD</td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix">Proton-GE</td>
+          </tr>
+          <tr data-nativ="0" data-wine="1" data-heroic="1" data-lutris="0">
+            <td class="title">Echos of the End</td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix">Getestet auf der Steam Machine. Mit Proton 11/ Proton-GE 11.1 stützt das Spiel nach eine weile regelmäßig ab.<br>Fix: Wechsel zu Proton-GE 10.25</td>
+          </tr>
+          <tr data-nativ="1" data-wine="1" data-heroic="0" data-lutris="0">
+            <td class="title">Enter the Gungeon</td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix"><span aria-hidden="true">–</span></td>
+          </tr>
+          <tr data-nativ="1" data-wine="0" data-heroic="0" data-lutris="0">
+            <td class="title">Eschalon: Book I</td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix"><span aria-hidden="true">–</span></td>
+          </tr>
+          <tr data-nativ="1" data-wine="1" data-heroic="0" data-lutris="0">
+            <td class="title">Everspace ™</td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix"><span aria-hidden="true">–</span></td>
+          </tr>
+          <tr data-nativ="0" data-wine="1" data-heroic="1" data-lutris="0">
+            <td class="title">Everspace ™ 2</td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix">Proton-GE</td>
+          </tr>
+          <tr data-nativ="0" data-wine="1" data-heroic="0" data-lutris="0">
+            <td class="title">Evil West</td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix">Microsoft Visual C++ nicht mitinstalliert.<br>Über Wine-Tricks:<br>dotNetFx40_Full_setup.exe, dxwebsetup.exe, oalinst.exe, vcredist_2015-2019_x64.exe,vcredist_x64.exe, xnafx40_redist.msi</td>
+          </tr>
+          <tr data-nativ="1" data-wine="1" data-heroic="0" data-lutris="0">
+            <td class="title">Exit the Gungeon</td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix"><span aria-hidden="true">–</span></td>
+          </tr>
+          <tr data-nativ="1" data-wine="0" data-heroic="0" data-lutris="0">
+            <td class="title">Factorio</td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix"><span aria-hidden="true">–</span></td>
+          </tr>
+          <tr data-nativ="0" data-wine="1" data-heroic="0" data-lutris="0">
+            <td class="title">Fallout 2</td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix">Wine-GE</td>
+          </tr>
+          <tr data-nativ="0" data-wine="1" data-heroic="0" data-lutris="0">
+            <td class="title">Fallout: New Vegas</td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix">Wine-GE</td>
+          </tr>
+          <tr data-nativ="1" data-wine="1" data-heroic="1" data-lutris="1">
+            <td class="title">Firewatch</td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td>
+            <td class="fix">Wine (inkl. TKG usw.)Lutris (diverse Runner ab wine-7.x-x-proton, Proton-9 &amp; Wine-Staging (mind. an 10er Version)Lutris Skripte sind verfügbar (nicht getestet)Wine-GEProton-GE (ggf. mit VKD3D-Proton-3)</td>
+          </tr>
+          <tr data-nativ="0" data-wine="1" data-heroic="0" data-lutris="0">
+            <td class="title">Freedom Force</td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix">Wine-GE bzw. Proton-GE</td>
+          </tr>
+          <tr data-nativ="0" data-wine="1" data-heroic="0" data-lutris="0">
+            <td class="title">Freedom Force vs. The 3rd Reich</td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix">Wine-GE bzw. Proton-GE</td>
+          </tr>
+          <tr data-nativ="0" data-wine="1" data-heroic="0" data-lutris="0">
+            <td class="title">Frostpunk</td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix">Wine-GE bzw. Proton-GE</td>
+          </tr>
+          <tr data-nativ="1" data-wine="0" data-heroic="0" data-lutris="0">
+            <td class="title">FTL: Advanced Edition</td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix"><span aria-hidden="true">–</span></td>
+          </tr>
+          <tr data-nativ="1" data-wine="0" data-heroic="0" data-lutris="0">
+            <td class="title">Full Throttle – Remastered</td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix"><span aria-hidden="true">–</span></td>
+          </tr>
+          <tr data-nativ="1" data-wine="0" data-heroic="0" data-lutris="0">
+            <td class="title">Gemini Rue</td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix"><span aria-hidden="true">–</span></td>
+          </tr>
+          <tr data-nativ="0" data-wine="1" data-heroic="0" data-lutris="0">
+            <td class="title">Ghostrunner</td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix">Wine-GE</td>
+          </tr>
+          <tr data-nativ="0" data-wine="1" data-heroic="0" data-lutris="0">
+            <td class="title">Gloomhaven</td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix">Wine-GE</td>
+          </tr>
+          <tr data-nativ="0" data-wine="1" data-heroic="0" data-lutris="0">
+            <td class="title">God’s Trigger</td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix">Wine-GE</td>
+          </tr>
+          <tr data-nativ="0" data-wine="1" data-heroic="0" data-lutris="0">
+            <td class="title">Gori: Cuddly Carnage</td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix">Wine-GE</td>
+          </tr>
+          <tr data-nativ="1" data-wine="0" data-heroic="0" data-lutris="0">
+            <td class="title">Graveyard Keeper</td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix"><span aria-hidden="true">–</span></td>
+          </tr>
+          <tr data-nativ="0" data-wine="1" data-heroic="0" data-lutris="0">
+            <td class="title">Grim Dawn</td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix">Wine-GE</td>
+          </tr>
+          <tr data-nativ="1" data-wine="0" data-heroic="0" data-lutris="0">
+            <td class="title">Grim Fandango – Remastered</td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix"><span aria-hidden="true">–</span></td>
+          </tr>
+          <tr data-nativ="0" data-wine="1" data-heroic="0" data-lutris="0">
+            <td class="title">Gwent – The Witcher Card Game</td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix">Wine-GE<br>Zusätzlich zu Gwent muß noch der Galaxy Launcher installiert und gestartet sein.</td>
+          </tr>
+          <tr data-nativ="0" data-wine="1" data-heroic="0" data-lutris="0">
+            <td class="title">Hard Reset – Redux</td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix">Wine-GE</td>
+          </tr>
+          <tr data-nativ="1" data-wine="0" data-heroic="0" data-lutris="0">
+            <td class="title">Hard West</td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix"><span aria-hidden="true">–</span></td>
+          </tr>
+          <tr data-nativ="0" data-wine="1" data-heroic="0" data-lutris="0">
+            <td class="title">Hearts of Iron III</td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix">Wine-GE</td>
+          </tr>
+          <tr data-nativ="1" data-wine="1" data-heroic="0" data-lutris="0">
+            <td class="title">Hedon Bloodrite</td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix"><span aria-hidden="true">–</span></td>
+          </tr>
+          <tr data-nativ="0" data-wine="1" data-heroic="0" data-lutris="0">
+            <td class="title">Hellblade – Sinua’s Sacrifice</td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix">Wine-GE</td>
+          </tr>
+          <tr data-nativ="0" data-wine="1" data-heroic="1" data-lutris="0">
+            <td class="title">Heretic + Hexen</td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix">Proton-GE</td>
+          </tr>
+          <tr data-nativ="1" data-wine="1" data-heroic="0" data-lutris="1">
+            <td class="title">Heretic: Shadow of the Serpent Riders</td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td>
+            <td class="fix">Kann mit GZDOOM nativ gespielt werden. Mod-bar<br>GZDOOM bietet &quot;Mouse-Look&quot;, grafische Verbesserungen und Vieles mehr. Spiel z.B. über Lutris installieren. &gt; .WAD wie beschrieben verschieben.</td>
+          </tr>
+          <tr data-nativ="0" data-wine="1" data-heroic="0" data-lutris="0">
+            <td class="title">Heroes of Might and Magic ® 3: Complete</td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix"><span aria-hidden="true">–</span></td>
+          </tr>
+          <tr data-nativ="1" data-wine="1" data-heroic="0" data-lutris="1">
+            <td class="title">Hexen II</td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td>
+            <td class="fix">Linux nativ mit Lutris<br><a href="https://lutris.net/games/hexen-ii/" target="_blank" rel="noopener">Lutris ↗</a></td>
+          </tr>
+          <tr data-nativ="1" data-wine="1" data-heroic="0" data-lutris="1">
+            <td class="title">Hexen: Beyond Heretic / Hexen: Deathkings of the Dark Citadel</td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td>
+            <td class="fix">Linux nativ mit Lutris<br>GZDOOM bietet &quot;Mouse-Look&quot;, grafische Verbesserungen und Vieles mehr. Spiel z.B. über Lutris installieren. &gt; .WAD wie beschrieben verschieben.<br><a href="https://zdoom.org/downloads" target="_blank" rel="noopener">ZDoom ↗</a></td>
+          </tr>
+          <tr data-nativ="1" data-wine="0" data-heroic="0" data-lutris="0">
+            <td class="title">Hollow Knight</td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix"><span aria-hidden="true">–</span></td>
+          </tr>
+          <tr data-nativ="1" data-wine="0" data-heroic="0" data-lutris="0">
+            <td class="title">Hotline Miami 2: Wrong Number</td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix"><span aria-hidden="true">–</span></td>
+          </tr>
+          <tr data-nativ="1" data-wine="0" data-heroic="0" data-lutris="0">
+            <td class="title">Icewind Dale – Enhanced Edition</td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix"><span aria-hidden="true">–</span></td>
+          </tr>
+          <tr data-nativ="1" data-wine="0" data-heroic="0" data-lutris="0">
+            <td class="title">Immortal Redneck</td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix"><span aria-hidden="true">–</span></td>
+          </tr>
+          <tr data-nativ="0" data-wine="1" data-heroic="0" data-lutris="0">
+            <td class="title">Intravenous</td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix">Wine-GE</td>
+          </tr>
+          <tr data-nativ="1" data-wine="1" data-heroic="0" data-lutris="0">
+            <td class="title">Ion Fury</td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix"><span aria-hidden="true">–</span></td>
+          </tr>
+          <tr data-nativ="0" data-wine="1" data-heroic="0" data-lutris="0">
+            <td class="title">Iron Danger</td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix">Wine-GE</td>
+          </tr>
+          <tr data-nativ="0" data-wine="1" data-heroic="0" data-lutris="0">
+            <td class="title">Iron Storm</td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix">Wine-GE</td>
+          </tr>
+          <tr data-nativ="0" data-wine="1" data-heroic="0" data-lutris="0">
+            <td class="title">Jade Empire – Special Edition</td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix">Wine-GE</td>
+          </tr>
+          <tr data-nativ="0" data-wine="1" data-heroic="0" data-lutris="0">
+            <td class="title">Jagged Alliance 2</td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix">Wine-GE</td>
+          </tr>
+          <tr data-nativ="1" data-wine="0" data-heroic="0" data-lutris="0">
+            <td class="title">Jotun: Valhalla Edition</td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix"><span aria-hidden="true">–</span></td>
+          </tr>
+          <tr data-nativ="0" data-wine="1" data-heroic="0" data-lutris="0">
+            <td class="title">Journey to the Savage Planet</td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix">Wine-GE</td>
+          </tr>
+          <tr data-nativ="0" data-wine="1" data-heroic="1" data-lutris="0">
+            <td class="title">Kao the Kangaroo</td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix">Proton-GE</td>
+          </tr>
+          <tr data-nativ="0" data-wine="1" data-heroic="0" data-lutris="0">
+            <td class="title">Katana Zero</td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix">Wine-GE</td>
+          </tr>
+          <tr data-nativ="0" data-wine="1" data-heroic="1" data-lutris="1">
+            <td class="title">Killing Time: Resurrected base</td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td>
+            <td class="fix">Wine-GE</td>
+          </tr>
+          <tr data-nativ="0" data-wine="1" data-heroic="0" data-lutris="1">
+            <td class="title">Kingdom Come: Deliverance</td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td>
+            <td class="fix">Wine-GE</td>
+          </tr>
+          <tr data-nativ="0" data-wine="1" data-heroic="0" data-lutris="0">
+            <td class="title">Kona</td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix">Linux-Version zeig nur schwarzen Bildschirm</td>
+          </tr>
+          <tr data-nativ="0" data-wine="1" data-heroic="0" data-lutris="0">
+            <td class="title">Krush Kill ‘N Destroy 2: Krossfire</td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix">Wine-GE</td>
+          </tr>
+          <tr data-nativ="0" data-wine="1" data-heroic="0" data-lutris="0">
+            <td class="title">Lacuna</td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix">Proton-GE</td>
+          </tr>
+          <tr data-nativ="0" data-wine="1" data-heroic="0" data-lutris="0">
+            <td class="title">Legacy of Kain : Soul Reaver 2</td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix">Wine-GE</td>
+          </tr>
+          <tr data-nativ="0" data-wine="1" data-heroic="0" data-lutris="0">
+            <td class="title">Legacy of Kain – Defiance</td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix">Wine-GE</td>
+          </tr>
+          <tr data-nativ="1" data-wine="0" data-heroic="0" data-lutris="0">
+            <td class="title">Lost Ruins</td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix"><span aria-hidden="true">–</span></td>
+          </tr>
+          <tr data-nativ="0" data-wine="1" data-heroic="1" data-lutris="1">
+            <td class="title">Mafia: Definitive Edition</td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td>
+            <td class="fix">Wine-GE</td>
+          </tr>
+          <tr data-nativ="1" data-wine="0" data-heroic="0" data-lutris="0">
+            <td class="title">Maniac Mansion</td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix"><span aria-hidden="true">–</span></td>
+          </tr>
+          <tr data-nativ="0" data-wine="1" data-heroic="1" data-lutris="0">
+            <td class="title">METAL EDEN</td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix">Proton-GE</td>
+          </tr>
+          <tr data-nativ="0" data-wine="1" data-heroic="1" data-lutris="0">
+            <td class="title">Metal Gear Solid</td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix">Proton-GE 10.34<br>Widescreen Fix<br><a href="https://www.pcgamingwiki.com/wiki/Metal_Gear_Solid:_Integral" target="_blank" rel="noopener">PCGamingWiki ↗</a></td>
+          </tr>
+          <tr data-nativ="0" data-wine="1" data-heroic="0" data-lutris="0">
+            <td class="title">Metal Slug 3</td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix">Wine-GE</td>
+          </tr>
+          <tr data-nativ="0" data-wine="1" data-heroic="1" data-lutris="0">
+            <td class="title">Metro 2033 Redux</td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix">Proton-GE</td>
+          </tr>
+          <tr data-nativ="0" data-wine="1" data-heroic="1" data-lutris="0">
+            <td class="title">Metro Exodus</td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix">Proton-GE</td>
+          </tr>
+          <tr data-nativ="0" data-wine="1" data-heroic="1" data-lutris="0">
+            <td class="title">Metro: Last Light</td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix">Proton-GE</td>
+          </tr>
+          <tr data-nativ="0" data-wine="1" data-heroic="0" data-lutris="0">
+            <td class="title">Mutant Year Zero</td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix">Wine-GE</td>
+          </tr>
+          <tr data-nativ="0" data-wine="1" data-heroic="0" data-lutris="0">
+            <td class="title">My Friend Pedro</td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix">Wine-GE</td>
+          </tr>
+          <tr data-nativ="1" data-wine="0" data-heroic="0" data-lutris="0">
+            <td class="title">Narita Boy</td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix"><span aria-hidden="true">–</span></td>
+          </tr>
+          <tr data-nativ="0" data-wine="1" data-heroic="0" data-lutris="0">
+            <td class="title">Neon Abyss</td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix">Wine-GE</td>
+          </tr>
+          <tr data-nativ="1" data-wine="0" data-heroic="0" data-lutris="0">
+            <td class="title">Neverwinter Nights – Diamond / Neverwinter Nights – Enhanced Edition</td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix"><span aria-hidden="true">–</span></td>
+          </tr>
+          <tr data-nativ="1" data-wine="0" data-heroic="0" data-lutris="0">
+            <td class="title">Nine Noir Lives</td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix"><span aria-hidden="true">–</span></td>
+          </tr>
+          <tr data-nativ="0" data-wine="1" data-heroic="0" data-lutris="0">
+            <td class="title">No Man’s Sky</td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix">Wine-GE</td>
+          </tr>
+          <tr data-nativ="0" data-wine="1" data-heroic="0" data-lutris="0">
+            <td class="title">Observer: System Redux</td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix">Wine-GE bzw. Proton-GE</td>
+          </tr>
+          <tr data-nativ="0" data-wine="1" data-heroic="1" data-lutris="0">
+            <td class="title">Old World</td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix">Proton-GE</td>
+          </tr>
+          <tr data-nativ="0" data-wine="1" data-heroic="0" data-lutris="0">
+            <td class="title">Painkiller – Black Edition</td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix">Wine-GE</td>
+          </tr>
+          <tr data-nativ="1" data-wine="0" data-heroic="0" data-lutris="0">
+            <td class="title">Pathfinder – Kingmaker</td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix"><span aria-hidden="true">–</span></td>
+          </tr>
+          <tr data-nativ="0" data-wine="1" data-heroic="0" data-lutris="0">
+            <td class="title">Per Aspera</td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix">Wine-GE</td>
+          </tr>
+          <tr data-nativ="1" data-wine="0" data-heroic="0" data-lutris="0">
+            <td class="title">Pillars of Eternity</td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix"><span aria-hidden="true">–</span></td>
+          </tr>
+          <tr data-nativ="1" data-wine="0" data-heroic="0" data-lutris="0">
+            <td class="title">Pillars of Eternity II: Deadfire</td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix"><span aria-hidden="true">–</span></td>
+          </tr>
+          <tr data-nativ="1" data-wine="0" data-heroic="0" data-lutris="0">
+            <td class="title">Planescape Torment</td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix"><span aria-hidden="true">–</span></td>
+          </tr>
+          <tr data-nativ="1" data-wine="0" data-heroic="0" data-lutris="0">
+            <td class="title">Planescape Torment – Enhanced Edition</td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix"><span aria-hidden="true">–</span></td>
+          </tr>
+          <tr data-nativ="0" data-wine="1" data-heroic="0" data-lutris="0">
+            <td class="title">PowerSlave Exhumed</td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix">Wine-GE</td>
+          </tr>
+          <tr data-nativ="0" data-wine="1" data-heroic="0" data-lutris="0">
+            <td class="title">Prey</td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix">Wine-GE</td>
+          </tr>
+          <tr data-nativ="0" data-wine="1" data-heroic="1" data-lutris="0">
+            <td class="title">Prince of Persia (2008)</td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix">GE-Proton.<br>Alternative Executeble wählen (prince of persia.exe) da der Launcher nicht funktioniert.<br>Settings müssen mit RegEdit über WineTricks angepasst werden.<br>Beispiel:<br><code>[HKEY_CURRENT_USER\Software\Ubisoft\Prince of Persia\1.0\Engine]</code><br>Der Wert für DEUTSCH ist 5<br><a href="https://www.pcgamingwiki.com/wiki/Prince_of_Persia_(2008)" target="_blank" rel="noopener">PCGamingWiki ↗</a><br><a href="https://www.protondb.com/app/19980" target="_blank" rel="noopener">ProtonDB ↗</a></td>
+          </tr>
+          <tr data-nativ="0" data-wine="1" data-heroic="0" data-lutris="0">
+            <td class="title">Prince of Persia: The Sands of Time</td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix">Wine-GE (Getestet auf Steam Deck: Nebel sollte ausgeschaltet werden in den Optionen)</td>
+          </tr>
+          <tr data-nativ="1" data-wine="0" data-heroic="0" data-lutris="0">
+            <td class="title">Prison Architect</td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix"><span aria-hidden="true">–</span></td>
+          </tr>
+          <tr data-nativ="0" data-wine="1" data-heroic="0" data-lutris="0">
+            <td class="title">Prodeus</td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix">Wine-GE</td>
+          </tr>
+          <tr data-nativ="1" data-wine="0" data-heroic="0" data-lutris="0">
+            <td class="title">Project Zomboid</td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix"><span aria-hidden="true">–</span></td>
+          </tr>
+          <tr data-nativ="0" data-wine="1" data-heroic="0" data-lutris="1">
+            <td class="title">Quake</td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td>
+            <td class="fix">Wine-GE<br>Kann über Lutris nativ gespielt werden<br>+ Extrem gute Grafik-Mod (Epsilon)<br><a href="https://lutris.net/games/quake/" target="_blank" rel="noopener">Lutris ↗</a></td>
+          </tr>
+          <tr data-nativ="0" data-wine="1" data-heroic="0" data-lutris="0">
+            <td class="title">Quake 4</td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix">Wine-GE</td>
+          </tr>
+          <tr data-nativ="0" data-wine="1" data-heroic="0" data-lutris="1">
+            <td class="title">Quake II / Quake II – Original</td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td>
+            <td class="fix">Wine-GE<br>Kann über Lutris nativ gespielt werden<br><a href="https://lutris.net/games/quake-ii/" target="_blank" rel="noopener">Lutris ↗</a></td>
+          </tr>
+          <tr data-nativ="0" data-wine="1" data-heroic="0" data-lutris="0">
+            <td class="title">Quake – Enhanced</td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix">Wine-GE<br>GamePad Support</td>
+          </tr>
+          <tr data-nativ="0" data-wine="1" data-heroic="0" data-lutris="0">
+            <td class="title">Rain World</td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix">Wine-GE</td>
+          </tr>
+          <tr data-nativ="1" data-wine="0" data-heroic="0" data-lutris="0">
+            <td class="title">Rainswept</td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix"><span aria-hidden="true">–</span></td>
+          </tr>
+          <tr data-nativ="0" data-wine="1" data-heroic="0" data-lutris="1">
+            <td class="title">Rayman 2: The Great Escape</td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td>
+            <td class="fix">GOG + Ray2Fix Galaxy Edition + Rayman Control Panel<br><a href="https://lutris.net/games/rayman-2-the-great-escape/" target="_blank" rel="noopener">Lutris ↗</a></td>
+          </tr>
+          <tr data-nativ="1" data-wine="0" data-heroic="0" data-lutris="0">
+            <td class="title">Resonance</td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix"><span aria-hidden="true">–</span></td>
+          </tr>
+          <tr data-nativ="0" data-wine="1" data-heroic="0" data-lutris="0">
+            <td class="title">Return of the Obra Dinn</td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix">Wine-GE bzw. Proton-GE</td>
+          </tr>
+          <tr data-nativ="1" data-wine="0" data-heroic="0" data-lutris="0">
+            <td class="title">Roadwarden</td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix"><span aria-hidden="true">–</span></td>
+          </tr>
+          <tr data-nativ="0" data-wine="1" data-heroic="1" data-lutris="0">
+            <td class="title">Runaway: A Road Adventure</td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix">Patch für Deutsch (komplett ins Deutsche übersetzt. Sowohl die Texte als auch die Sprache und die Videos sind im Anschluss in Deutsch)<br><a href="https://www.compiware-forum.de/downloads/file/423-runaway-a-road-adventure-german-patch/" target="_blank" rel="noopener">Compiware-Forum ↗</a></td>
+          </tr>
+          <tr data-nativ="0" data-wine="1" data-heroic="1" data-lutris="0">
+            <td class="title">S.T.A.L.K.E.R.: Shadow of Chornobyl - Enhanced Edition</td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix">Proton-GE 10-1<br>Argument: -nointro -noprefetch -noshadows<br>Spiel stürzt andernfalls ab.</td>
+          </tr>
+          <tr data-nativ="1" data-wine="0" data-heroic="0" data-lutris="0">
+            <td class="title">Sam &amp; Max: Hit the Road</td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix"><span aria-hidden="true">–</span></td>
+          </tr>
+          <tr data-nativ="1" data-wine="0" data-heroic="0" data-lutris="0">
+            <td class="title">Sanitarium</td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix"><span aria-hidden="true">–</span></td>
+          </tr>
+          <tr data-nativ="1" data-wine="1" data-heroic="1" data-lutris="0">
+            <td class="title">Shadow Warrior (2013)</td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix">Native/Proton-GE</td>
+          </tr>
+          <tr data-nativ="0" data-wine="0" data-heroic="1" data-lutris="0">
+            <td class="title">Shadow Warrior 2</td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix">Proton-GE</td>
+          </tr>
+          <tr data-nativ="1" data-wine="0" data-heroic="0" data-lutris="0">
+            <td class="title">Shardlight</td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix"><span aria-hidden="true">–</span></td>
+          </tr>
+          <tr data-nativ="1" data-wine="0" data-heroic="0" data-lutris="0">
+            <td class="title">Sid Meier’s – Civilization 5</td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix"><span aria-hidden="true">–</span></td>
+          </tr>
+          <tr data-nativ="1" data-wine="0" data-heroic="0" data-lutris="0">
+            <td class="title">Sid Meier’s – Civilization 6</td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix"><span aria-hidden="true">–</span></td>
+          </tr>
+          <tr data-nativ="0" data-wine="1" data-heroic="1" data-lutris="0">
+            <td class="title">Silly Polly Beast</td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix">Proton-GE</td>
+          </tr>
+          <tr data-nativ="0" data-wine="1" data-heroic="1" data-lutris="0">
+            <td class="title">Sinking Island</td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix">Die Deutsche Version stürzt ab wenn man den Heliport betritt.<br>Abhilfe:<br>Die Englische Version an einem anderen Ort installieren und die Datei<br><code>../Sinking Island/paks/world.opk</code><br>in der Deutschen Installation an den entsprechenden Ort kopieren und überschreiben.</td>
+          </tr>
+          <tr data-nativ="0" data-wine="1" data-heroic="0" data-lutris="0">
+            <td class="title">Soldiers of Fortune II: Double Helix</td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix">Wine-GE-8-26<br>(Dateien in base und Main-Ordner ersetzen)<br><code>drive_c/GOG Games/Soldier of Fortune 2/base/sof2sp.cfg</code><br><code>seta r_mode &quot;-1&quot;</code><br><code>seta r_customheight &quot;1080&quot;</code><br><code>seta r_customwidth &quot;1920&quot;</code><br><a href="https://www.moddb.com/games/soldier-of-fortune-ii/downloads/sof2-widescreen-fov-and-hud-fix" target="_blank" rel="noopener">Widescreen-Fix ↗</a></td>
+          </tr>
+          <tr data-nativ="1" data-wine="0" data-heroic="0" data-lutris="0">
+            <td class="title">Soma</td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix"><span aria-hidden="true">–</span></td>
+          </tr>
+          <tr data-nativ="0" data-wine="1" data-heroic="0" data-lutris="0">
+            <td class="title">Star Trek ™: Away Team</td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix">Wine-GE</td>
+          </tr>
+          <tr data-nativ="0" data-wine="1" data-heroic="0" data-lutris="1">
+            <td class="title">Star Trek ™: Elite Force</td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td>
+            <td class="fix">Wine-GE<br>Grafik-Mods mit Lutris<br><a href="https://lutris.net/games/star-trek-voyager-elite-force/" target="_blank" rel="noopener">Lutris ↗</a><br><a href="https://www.wsgf.org/dr/star-trek-voyager-elite-force" target="_blank" rel="noopener">Widescreen Fix ↗</a></td>
+          </tr>
+          <tr data-nativ="0" data-wine="1" data-heroic="0" data-lutris="1">
+            <td class="title">Star Trek ™: Elite Force II</td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td>
+            <td class="fix">Wine-GE<br>Grafik-Mods mit Lutris<br><a href="https://www.wsgf.org/dr/star-trek-elite-force-ii" target="_blank" rel="noopener">Widescreen Fix ↗</a></td>
+          </tr>
+          <tr data-nativ="0" data-wine="1" data-heroic="0" data-lutris="0">
+            <td class="title">Star Wars ™: Dark Force Remaster</td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix">Wine-GE</td>
+          </tr>
+          <tr data-nativ="0" data-wine="1" data-heroic="0" data-lutris="0">
+            <td class="title">Star Wars ™: Knights of the old Republic</td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix">Wine-GE bzw. Proton-GE</td>
+          </tr>
+          <tr data-nativ="0" data-wine="1" data-heroic="0" data-lutris="0">
+            <td class="title">Star Wars ™: Shadows of the Empire™</td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix">Wine-GE</td>
+          </tr>
+          <tr data-nativ="0" data-wine="1" data-heroic="0" data-lutris="1">
+            <td class="title">Star Wars: Galactic Battlegrounds</td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td>
+            <td class="fix">Proton-GE 9.27<br>Für HD und Widescreen-Unterstützung sollte diese Mod installiert werden, eine Anleitung ist im Download enthalten:<br><a href="https://www.moddb.com/mods/star-wars-galactic-battlegrounds-expanding-fronts" target="_blank" rel="noopener">ModDB ↗</a></td>
+          </tr>
+          <tr data-nativ="1" data-wine="0" data-heroic="0" data-lutris="0">
+            <td class="title">Starbound 1.4</td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix"><span aria-hidden="true">–</span></td>
+          </tr>
+          <tr data-nativ="1" data-wine="1" data-heroic="0" data-lutris="0">
+            <td class="title">Stardew Valley</td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix"><span aria-hidden="true">–</span></td>
+          </tr>
+          <tr data-nativ="0" data-wine="1" data-heroic="1" data-lutris="0">
+            <td class="title">Stasis</td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix">Heroic: Intel HD400 Grafik benötigt die Umgebungsvariable PROTON_USE_WINED3D=1 - noch nicht lange gespielt. GE Proton 10-28</td>
+          </tr>
+          <tr data-nativ="1" data-wine="0" data-heroic="0" data-lutris="0">
+            <td class="title">Stellaris</td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix"><span aria-hidden="true">–</span></td>
+          </tr>
+          <tr data-nativ="1" data-wine="0" data-heroic="0" data-lutris="0">
+            <td class="title">Streets of Rogue</td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix"><span aria-hidden="true">–</span></td>
+          </tr>
+          <tr data-nativ="0" data-wine="1" data-heroic="0" data-lutris="0">
+            <td class="title">Stronghold HD</td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix">Wine-GE</td>
+          </tr>
+          <tr data-nativ="1" data-wine="1" data-heroic="0" data-lutris="0">
+            <td class="title">Sudden Strike 4</td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix"><span aria-hidden="true">–</span></td>
+          </tr>
+          <tr data-nativ="1" data-wine="0" data-heroic="0" data-lutris="0">
+            <td class="title">Technobabylon</td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix">Kein Mausklick nach jedem Satz:<br><code>Exec=sed -i &#x27;/skipmousekey*/d&#x27; /home/BENUTZERNAME/.local/share/ags/Technobabylon/dsettings.ini &amp;&amp; &quot;/home/BENUTZERNAME/GOG Games/Technobabylon/start.sh&quot; &quot;&quot;</code></td>
+          </tr>
+          <tr data-nativ="1" data-wine="0" data-heroic="0" data-lutris="0">
+            <td class="title">Terra Nil</td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix"><span aria-hidden="true">–</span></td>
+          </tr>
+          <tr data-nativ="1" data-wine="1" data-heroic="0" data-lutris="0">
+            <td class="title">Terraria</td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix"><span aria-hidden="true">–</span></td>
+          </tr>
+          <tr data-nativ="0" data-wine="1" data-heroic="1" data-lutris="0">
+            <td class="title">The Alters</td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix">Proton-GE</td>
+          </tr>
+          <tr data-nativ="1" data-wine="0" data-heroic="0" data-lutris="0">
+            <td class="title">The Coma 2: Vicious Sisters</td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix"><span aria-hidden="true">–</span></td>
+          </tr>
+          <tr data-nativ="1" data-wine="0" data-heroic="0" data-lutris="0">
+            <td class="title">The Coma: Recut</td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix"><span aria-hidden="true">–</span></td>
+          </tr>
+          <tr data-nativ="1" data-wine="0" data-heroic="0" data-lutris="0">
+            <td class="title">The Darkside Detective</td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix"><span aria-hidden="true">–</span></td>
+          </tr>
+          <tr data-nativ="1" data-wine="1" data-heroic="0" data-lutris="1">
+            <td class="title">The Elder Scrolls III – Morrowind – GotY</td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td>
+            <td class="fix">Läst sich mit Lutris nativ spielen<br><a href="https://openmw.org/" target="_blank" rel="noopener">OpenMW ↗</a><br><a href="https://lutris.net/games/the-elder-scrolls-iii-morrowind-goty-edition/" target="_blank" rel="noopener">Lutris ↗</a></td>
+          </tr>
+          <tr data-nativ="0" data-wine="1" data-heroic="0" data-lutris="0">
+            <td class="title">The Evil within / The Evil within 2</td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix">Wine-GE</td>
+          </tr>
+          <tr data-nativ="0" data-wine="1" data-heroic="0" data-lutris="0">
+            <td class="title">The Messenger</td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix">Wine-GE</td>
+          </tr>
+          <tr data-nativ="1" data-wine="0" data-heroic="0" data-lutris="0">
+            <td class="title">The Raven – Remastered</td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix"><span aria-hidden="true">–</span></td>
+          </tr>
+          <tr data-nativ="0" data-wine="1" data-heroic="0" data-lutris="0">
+            <td class="title">The Signifier Director’s Cut</td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix">Wine-GE bzw. Proton-GE</td>
+          </tr>
+          <tr data-nativ="0" data-wine="1" data-heroic="0" data-lutris="0">
+            <td class="title">The Suicide of Rachel Foster</td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix">Wine-GE bzw. Proton-GE</td>
+          </tr>
+          <tr data-nativ="1" data-wine="0" data-heroic="0" data-lutris="0">
+            <td class="title">The Witcher 2: Assassins of Kings – Enhanced Edition</td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix"><span aria-hidden="true">–</span></td>
+          </tr>
+          <tr data-nativ="1" data-wine="0" data-heroic="0" data-lutris="0">
+            <td class="title">Thimbleweed Park</td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix"><span aria-hidden="true">–</span></td>
+          </tr>
+          <tr data-nativ="1" data-wine="0" data-heroic="0" data-lutris="0">
+            <td class="title">This War of Mine</td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix"><span aria-hidden="true">–</span></td>
+          </tr>
+          <tr data-nativ="0" data-wine="1" data-heroic="0" data-lutris="0">
+            <td class="title">Thronebreaker: The Witcher Tales</td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix">Wine-GE</td>
+          </tr>
+          <tr data-nativ="0" data-wine="1" data-heroic="0" data-lutris="0">
+            <td class="title">Tomb Raider: Anniversary</td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix">Wine-GE</td>
+          </tr>
+          <tr data-nativ="1" data-wine="0" data-heroic="0" data-lutris="0">
+            <td class="title">Torchlight 2</td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix"><span aria-hidden="true">–</span></td>
+          </tr>
+          <tr data-nativ="0" data-wine="1" data-heroic="0" data-lutris="1">
+            <td class="title">Tropico</td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td>
+            <td class="fix">Wine-GE<br>Über Lutris: GOG w/ dxwrapper, editing tools version<br><a href="https://lutris.net/games/tropico/" target="_blank" rel="noopener">Lutris ↗</a></td>
+          </tr>
+          <tr data-nativ="1" data-wine="1" data-heroic="0" data-lutris="1">
+            <td class="title">Unreal Gold</td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td>
+            <td class="fix">Mit Lutris kann Unreal nativ installiert werden<br><a href="https://lutris.net/games/unreal-gold/" target="_blank" rel="noopener">Lutris ↗</a></td>
+          </tr>
+          <tr data-nativ="0" data-wine="1" data-heroic="0" data-lutris="0">
+            <td class="title">Valfaris</td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix">Wine-GE</td>
+          </tr>
+          <tr data-nativ="0" data-wine="1" data-heroic="0" data-lutris="0">
+            <td class="title">Vampyre</td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix">Wine-GE</td>
+          </tr>
+          <tr data-nativ="0" data-wine="1" data-heroic="1" data-lutris="0">
+            <td class="title">Wall World</td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix">Proton-GE</td>
+          </tr>
+          <tr data-nativ="0" data-wine="1" data-heroic="1" data-lutris="0">
+            <td class="title">Wall World 2</td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix">Proton-GE</td>
+          </tr>
+          <tr data-nativ="1" data-wine="0" data-heroic="0" data-lutris="0">
+            <td class="title">Wasteland 3</td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix"><span aria-hidden="true">–</span></td>
+          </tr>
+          <tr data-nativ="0" data-wine="1" data-heroic="0" data-lutris="0">
+            <td class="title">Whispers of a Machine</td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix">Wine-GE bzw. Proton-GE</td>
+          </tr>
+          <tr data-nativ="0" data-wine="1" data-heroic="0" data-lutris="0">
+            <td class="title">Windbound</td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix">Wine-GE bzw. Proton-GE</td>
+          </tr>
+          <tr data-nativ="0" data-wine="1" data-heroic="1" data-lutris="0">
+            <td class="title">Wolfenstein II: The New Colossus</td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix">Wine-GE</td>
+          </tr>
+          <tr data-nativ="0" data-wine="1" data-heroic="1" data-lutris="0">
+            <td class="title">Wolfenstein: The New Order / Wolfenstein: The Old Blood</td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix">Wine-GE</td>
+          </tr>
+          <tr data-nativ="1" data-wine="0" data-heroic="0" data-lutris="0">
+            <td class="title">Wonder Boy: The Dragon’s Trap</td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix">Benötigt openal<br><code>sudo apt-get install libopenal-dev</code></td>
+          </tr>
+          <tr data-nativ="0" data-wine="1" data-heroic="0" data-lutris="0">
+            <td class="title">Xeno Crisis</td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix">Wine-GE</td>
+          </tr>
+          <tr data-nativ="0" data-wine="1" data-heroic="0" data-lutris="0">
+            <td class="title">Yooka-Laylee and the Impossible Lair</td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix">Wine-GE</td>
+          </tr>
+          <tr data-nativ="1" data-wine="0" data-heroic="0" data-lutris="0">
+            <td class="title">Zak McKracken and the Alien Mindbenders</td><td><span class="mark mark--yes" aria-label="ja">✓</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td><td><span class="mark mark--no" aria-label="nein">·</span></td>
+            <td class="fix"><span aria-hidden="true">–</span></td>
+          </tr>
+{% endcomment %}
+            </tbody>
+          </table>
+          <p class="empty" id="gog-empty" hidden>Keine Treffer für diese Suche.</p>
+        </div>
+      </div>
+    </section>
+  </main>
 
-<script>
-  (function () {
-    var input = document.getElementById('gogSearch');
-    var rows = document.querySelectorAll('#gogTableBody tr');
-    var count = document.getElementById('gogCount');
-    input.addEventListener('input', function () {
-      var q = input.value.trim().toLowerCase();
-      var shown = 0;
-      rows.forEach(function (row) {
-        var match = row.textContent.toLowerCase().indexOf(q) !== -1;
-        row.hidden = !match;
-        if (match) shown++;
-      });
-      count.textContent = shown;
-    });
-  })();
-</script>
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <span>© 2026 Actionschnitzel, mit viel Liebe und Paniermehl gemacht.</span>
+      <nav aria-label="Rechtliches">
+        <a href="impressum.html">Impressum</a>
+        <a href="datenschutz.html">Datenschutz</a>
+      </nav>
+    </div>
+  </footer>
+  <script src="assets/redesign/js/main.js" defer></script>
+</body>
+</html>

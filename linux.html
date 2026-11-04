@@ -1,13 +1,101 @@
----
-layout: page
-title: "Linux"
-hero_image: /assets/images/heroes/cute_cap_tux_pink.png
-hero_image_alt: "Tux mit pinker Mütze"
----
-    <section class="section construction">
-      <p>🚧 Hier wird gebaut 🚧</p>
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Linux · Actionschnitzel</title>
+  <meta name="description" content="Linux und Distributionen meines Vertrauens.">
+  <meta name="theme-color" content="#1d1e20">
+  <link rel="icon" type="image/png" href="assets/redesign/img/favicon.png">
+  <link rel="apple-touch-icon" href="assets/redesign/img/apple-touch-icon.png">
+  <link rel="preload" href="assets/redesign/fonts/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/redesign/fonts/inter-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/redesign/css/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#inhalt">Zum Inhalt springen</a>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="index.html">
+        <img src="assets/redesign/img/schnitzel.png" alt="" width="48" height="48">
+        <span>Actionschnitzel</span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Menü öffnen"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+      <nav class="site-nav" id="site-nav" aria-label="Hauptnavigation">
+        <ul class="nav-list">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="linux.html" aria-current="page">Distributionen</a></li>
+          <li><a href="gaming-highlights-2026.html">Highlights 2026</a></li>
+          <li><a href="gaming-gog.html">GOG auf Linux</a></li>
+          <li><a href="gaming-steam-survey.html">Linux in Zahlen</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="inhalt">
+    <section class="hero">
+      <div class="wrap">
+        <div class="hero-text">
+          <span class="eyebrow">Linux / Distributionen</span>
+          <h1 class="page-title">Linux</h1>
+          <p class="lead">Hier wird gebaut. Diese Seite ist noch in Arbeit und füllt sich bald mit Inhalten rund um Linux und meine Distributionen.</p>
+          <div class="btn-row">
+            <a class="btn btn--primary" href="index.html"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg> Zur Startseite</a>
+            <a class="btn btn--ghost" href="https://forum.linuxguides.de" target="_blank" rel="noopener">Linux Guides Forum ↗</a>
+          </div>
+        </div>
+        <div class="terminal" role="img" aria-label="Terminal: Die Linux-Seite wird gerade installiert. Hier wird gebaut.">
+          <div class="terminal-bar" aria-hidden="true"><i></i><i></i><i></i><span>sudo apt install linux-seite</span></div>
+          <div class="terminal-body" aria-hidden="true">
+            <div><span class="p">$</span> sudo apt install linux-seite</div>
+            <div>Paketlisten werden gelesen... Fertig</div>
+            <div>Abhängigkeitsbaum wird aufgebaut... Fertig</div>
+            <div class="progress"><span class="progress-track"><span></span></span><span class="out">[ Baustelle ]</span></div>
+            <div class="out gap">Hier wird gebaut<span class="cursor"></span></div>
+          </div>
+        </div>
+      </div>
     </section>
 
+    <section style="padding-bottom: 96px">
+      <div class="wrap">
+        <h2 style="font-size: 1.5rem; margin-bottom: 28px">Bis dahin: Distributionen meines Vertrauens</h2>
+        <div class="grid" style="--min: 240px">
+          <a class="card distro" href="https://ubuntu.com" target="_blank" rel="noopener">
+            <span class="distro-logo"><img src="assets/redesign/img/ubuntu.svg" alt="Ubuntu Logo" width="34" height="34" loading="lazy"></span>
+            <span class="distro-name">Ubuntu <span aria-hidden="true">↗</span></span>
+            <p>Mein Alltagsbegleiter. Privat und beruflich.</p>
+          </a>
+          <a class="card distro" href="https://www.debian.org" target="_blank" rel="noopener">
+            <span class="distro-logo"><img src="assets/redesign/img/debian.svg" alt="Debian Logo" width="34" height="34" loading="lazy"></span>
+            <span class="distro-name">Debian <span aria-hidden="true">↗</span></span>
+            <p>Die stabile Basis, auf der ich entwickle.</p>
+          </a>
+          <a class="card distro" href="https://guideos.de" target="_blank" rel="noopener">
+            <span class="distro-logo"><img src="assets/redesign/img/guideos.png" alt="GuideOS Logo" width="34" height="34" loading="lazy"></span>
+            <span class="distro-name">GuideOS <span aria-hidden="true">↗</span></span>
+            <p>Die Community-Distribution, an der ich selbst mitentwickle.</p>
+          </a>
+          <a class="card distro" href="https://store.steampowered.com/steamos" target="_blank" rel="noopener">
+            <span class="distro-logo"><img src="assets/redesign/img/steamdeck.svg" alt="SteamOS Logo" width="34" height="34" loading="lazy"></span>
+            <span class="distro-name">SteamOS <span aria-hidden="true">↗</span></span>
+            <p>Das Linux-System von Valve für Steam Deck und Steam Machine.</p>
+          </a>
+        </div>
+      </div>
     </section>
+  </main>
 
-  
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <span>© 2026 Actionschnitzel, mit viel Liebe und Paniermehl gemacht.</span>
+      <nav aria-label="Rechtliches">
+        <a href="impressum.html">Impressum</a>
+        <a href="datenschutz.html">Datenschutz</a>
+      </nav>
+    </div>
+  </footer>
+  <script src="assets/redesign/js/main.js" defer></script>
+</body>
+</html>
