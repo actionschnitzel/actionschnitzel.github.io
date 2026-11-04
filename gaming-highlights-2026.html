@@ -2,68 +2,79 @@
 layout: page
 title: "Gaming-Highlights 2026"
 ---
-    <section class="section">
-      <p>Alle Bilder und Daten werden von ProtonDB bezogen.</p>
-      
-      <table class="games-table">
-        <thead>
-          <tr>
-            <th></th>
-            <th>Spiel</th>
-            <th>Proton</th>
-            <th>Beschreibung</th>
-          </tr>
-        </thead>
-        <tbody id="gamesTableBody">
-          <!-- Rows will be generated dynamically -->
-        </tbody>
-      </table>
+    <section class="section">    
+      <div class="game-card">
+        <div class="game-card-header">
+          <a href="https://store.steampowered.com/app/219990" target="_blank" rel="noopener noreferrer">Grim Dawn - Fangs of Asterkarn</a>
+        </div>
+        <div class="game-card-body">
+          <div class="game-card-info">
+            <p>In einer düsteren Fantasywelt steht die Menschheit kurz vor dem Untergang. Eisen ist wertvoller als Gold, und Vertrauen muss man sich hart erarbeiten. Das Action-Rollenspiel bietet eine umfangreiche Charakterentwicklung, Hunderte einzigartige Gegenstände, ein Crafting-System und Quests, deren Verlauf durch eigene Entscheidungen beeinflusst wird.</p>
+          </div>
+          <div class="game-card-image">
+            <img src="/assets/images/games/steam-219990-header.jpg" alt="Grim Dawn - Fangs of Asterkarn">
+            <div class="game-card-meta">
+              <a href="https://www.protondb.com/app/219990" target="_blank" rel="noopener noreferrer"><span class="proton-badge proton-badge-platinum">Platinum</span></a>
+              <a class="steam-button" href="https://store.steampowered.com/app/219990" target="_blank" rel="noopener noreferrer">Zur Steam-Seite ↗</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="game-card">
+        <div class="game-card-header">
+          <a href="https://store.steampowered.com/app/3404260" target="_blank" rel="noopener noreferrer">Dead as Disco</a>
+        </div>
+        <div class="game-card-body">
+          <div class="game-card-info">
+            <p>In Dead as Disco treffen Martial Arts auf Musikvideo-Ästhetik. Das neonbeleuchtete Beat ’em up verbindet actionreiche Kämpfe mit dem Rhythmus der Musik, sodass jeder Schlag, Tritt und jede Kombo im Takt ausgeführt wird. Gemeinsam mit Charlie Disco gilt es, sich den schurkischen Idols entgegenzustellen und die Band wiederzuvereinen.</p>
+          </div>
+          <div class="game-card-image">
+            <img src="/assets/images/games/steam-3404260-header.jpg" alt="Dead as Disco">
+            <div class="game-card-meta">
+              <a href="https://www.protondb.com/app/3404260" target="_blank" rel="noopener noreferrer"><span class="proton-badge proton-badge-platinum">Platinum</span></a>
+              <a class="steam-button" href="https://store.steampowered.com/app/3404260" target="_blank" rel="noopener noreferrer">Zur Steam-Seite ↗</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="game-card">
+        <div class="game-card-header">
+          <a href="https://store.steampowered.com/app/1808500" target="_blank" rel="noopener noreferrer">Arc Raiders</a>
+        </div>
+        <div class="game-card-body">
+          <div class="game-card-info">
+            <p>ARC Raiders ist ein Multiplayer-Extraction-Spiel, das in einer tödlichen Zukunft spielt. Die Erde wurde von einer mysteriösen Bedrohung heimgesucht: mechanischen Kreaturen, die als ARC bekannt sind.</p>
+          </div>
+          <div class="game-card-image">
+            <img src="/assets/images/games/steam-1808500-header.jpg" alt="Arc Raiders">
+            <div class="game-card-meta">
+              <a href="https://www.protondb.com/app/1808500" target="_blank" rel="noopener noreferrer"><span class="proton-badge proton-badge-platinum">Platinum</span></a>
+              <a class="steam-button" href="https://store.steampowered.com/app/1808500" target="_blank" rel="noopener noreferrer">Zur Steam-Seite ↗</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="game-card">
+        <div class="game-card-header">
+          <a href="https://store.steampowered.com/app/2643390" target="_blank" rel="noopener noreferrer">Star Trek: Voyager - Across the Unknown</a>
+        </div>
+        <div class="game-card-body">
+          <div class="game-card-info">
+            <p>Ein Traum für Star-Trek-Fans. Interaktive Adventure-Story, die sich wie eine echte Episode anfühlt.</p>
+          </div>
+          <div class="game-card-image">
+            <img src="/assets/images/games/steam-2643390-header.jpg" alt="Star Trek: Voyager - Across the Unknown">
+            <div class="game-card-meta">
+              <a href="https://www.protondb.com/app/2643390" target="_blank" rel="noopener noreferrer"><span class="proton-badge proton-badge-platinum">Platinum</span></a>
+              <a class="steam-button" href="https://store.steampowered.com/app/2643390" target="_blank" rel="noopener noreferrer">Zur Steam-Seite ↗</a>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
   
 
-<script>
-    // Load ProtonDB ratings and populate table dynamically
-    async function loadProtonDBRatings() {
-      try {
-        const response = await fetch('protondb-ratings.json');
-        const data = await response.json();
-        
-        const tableBody = document.getElementById('gamesTableBody');
-        tableBody.innerHTML = ''; // Clear any existing content
-        
-        // Generate table rows from JSON data
-        data.games.forEach(game => {
-          const tierClass = `proton-badge-${game.tier.toLowerCase()}`;
-          const tierText = getTierText(game.tier);
-          
-          const row = document.createElement('tr');
-          row.innerHTML = `
-            <td class="game-header-img"><img src="${game.steamHeaderImage}" alt="${game.name}"></td>
-            <td>${game.name}</td>
-            <td><a href="${game.protondbUrl}" target="_blank" rel="noopener noreferrer"><span class="proton-badge ${tierClass}">${tierText}</span></a></td>
-            <td>${game.description}</td>
-          `;
-          tableBody.appendChild(row);
-        });
-      } catch (error) {
-        console.error('Could not load ProtonDB ratings:', error);
-      }
-    }
-    
-    // Get text for tier (without emoji)
-    function getTierText(tier) {
-      const texts = {
-        'platinum': 'Platinum',
-        'gold': 'Gold',
-        'silver': 'Silver',
-        'bronze': 'Bronze',
-        'unsupported': 'Unsupported',
-        'unknown': 'Check'
-      };
-      return texts[tier.toLowerCase()] || 'Check';
-    }
-    
-    // Load ratings when page loads
-    document.addEventListener('DOMContentLoaded', loadProtonDBRatings);
-  </script>

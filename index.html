@@ -2,14 +2,13 @@
 layout: home
 ---
 <section class="section compact" id="willkommen">
-  <h2>Willkommen</h2>
-  <p style="text-align: center; font-size: 18px; font-style: italic; padding: 16px 0;">... Computer, das sind Arbeitsgeräte und keine Religion.</p>
+  <p style="text-align: center; font-size: 18px; font-style: italic; padding: 20px 0;">... Computer, das sind Arbeitsgeräte und keine Religion.</p>
   <p>Schön, dass du hierher gefunden hast. Auf dieser Website findest du einen Querschnitt aus dem, womit ich mich in den vergangenen Jahren beschäftigt habe – meine Projekte, Artikel, Gedanken und gesammelten Werke.</p>
   <p><strong>Viel Spaß beim Stöbern!</strong></p>
 </section>
 
 <section class="section compact" id="verbindungen">
-  <h2>Verbindungen <span class="section-meta">{{ site.data.connections | size }} Einträge</span></h2>
+  <h2>Verbindungen</h2>
   <ul class="entry-list connection-list">
     {%- for item in site.data.connections %}
     <li class="entry">
@@ -52,11 +51,11 @@ layout: home
 </section>
 
 <section class="section compact" id="projekte">
-  <h2>Projekte <span class="section-meta">{{ site.data.projects | size }} Einträge</span></h2>
+  <h2>Projekte</h2>
   {% include entry-list.html items=site.data.projects %}
 </section>
 
 <section class="section compact" id="artikel">
-  <h2>Artikel <span class="section-meta">{{ site.data.articles | size }} Einträge</span></h2>
+  <h2>Artikel</h2>
   {% include entry-list.html items=site.data.articles %}
 </section>

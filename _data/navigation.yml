@@ -1,13 +1,13 @@
 - title: Home
   url: /
-- title: Artikel
-  url: /#artikel
-- title: Projekte
-  url: /#projekte
-#- title: Linux
-#  children:
-#    - title: Distributionen
-#      url: /linux.html
+#- title: Artikel
+#  url: /#artikel
+#- title: Projekte
+#  url: /#projekte
+- title: Linux
+  children:
+    - title: Distributionen
+      url: /linux.html
 - title: Gaming
   children:
 #    - title: Tools
