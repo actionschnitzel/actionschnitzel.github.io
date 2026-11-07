@@ -35,6 +35,10 @@
       children:
         - title: "Linux in Zahlen"
           url: /gaming-steam-survey.html
+    - title: "Links"
+      children:
+        - title: "Gaming Websites"
+          url: /gaming-websites.html
 #    - title: Doom
 #      url: /gaming-doom.html
 #- title: Über

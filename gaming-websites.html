@@ -1,0 +1,24 @@
+---
+layout: page
+title: "Gaming Websites"
+---
+    <section class="section">
+      <p>Zocken auf Linux ist so einfach wie nie zuvor, trotzdem braucht man manchmal hilfreiche Websites, um das Beste aus seinem System herauszuholen. Hier findest du eine Auswahl an nützlichen Seiten rund ums Gaming auf Linux, die dir dabei helfen können.</p>
+      {%- for site_item in site.data.websites %}
+      <div class="game-card">
+        <div class="game-card-header">
+          <a href="{{ site_item.url }}" target="_blank" rel="noopener noreferrer">{{ site_item.title | escape }}</a>
+        </div>
+        <div class="game-card-body">
+          <div class="game-card-info">
+            <p>{{ site_item.description | escape }}</p>
+          </div>
+          <div class="game-card-image">
+            <div class="game-card-meta game-card-meta-end">
+              <a class="steam-button" href="{{ site_item.url }}" target="_blank" rel="noopener noreferrer">Zur Website ↗</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      {%- endfor %}
+    </section>

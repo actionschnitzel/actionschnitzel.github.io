@@ -891,6 +891,15 @@ html.dark-mode .section li strong,
   margin-top: 0.75rem;
 }
 
+.game-card-meta-end {
+  justify-content: flex-end;
+}
+
+.game-card-body:has(.game-card-meta-end) .game-card-image {
+  flex: 0 0 auto;
+  max-width: none;
+}
+
 .steam-button {
   display: inline-block;
   padding: calc(0.5rem - 1px) calc(1rem - 1px);

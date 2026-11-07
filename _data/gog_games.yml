@@ -7,6 +7,18 @@
 # note:     Fix / Tweak, mehrere Zeilen mit | möglich
 # links:    optionale Liste aus title + url
 
+# Beispiel für alle Einträge:
+# - title: "Beispielspiel"
+#   via: [native, wine, heroic, lutris]
+#   playable: false
+#   note: |-
+#     Erste Zeile des Fixes
+#     Zweite Zeile des Fixes
+#   links:
+#     - title: "Beispiel-Link"
+#       url: "https://example.com/"
+
+
 - title: "A Plague Tale: Innocence"
   via: [wine]
   note: |-
@@ -481,9 +493,10 @@
   via: [wine]
   note: "Wine-GE"
 
-- title: "Kao the Kangaroo"
+- title: "Kao the Kangaroo Trilogy"
   via: [wine, heroic]
-  note: "Proton-GE"
+  note: "Proton-GE; Alles drei Spiele laufen einwandfrei."
+
 
 - title: "Katana Zero"
   via: [wine]
@@ -678,6 +691,15 @@
     - title: "Lutris"
       url: "https://lutris.net/games/quake-ii/"
 
+- title: "Quake III Arena"
+  via: [wine, lutris, heroic,native]
+  note: |-
+    Wine-GE, GE-Proton
+    Kann über Lutris nativ gespielt werden
+  links:
+    - title: "Lutris"
+      url: "https://lutris.net/games/quake-iii-arena/"
+
 - title: "Quake 4"
   via: [wine]
   note: "Wine-GE"
@@ -702,6 +724,13 @@
 - title: "Return of the Obra Dinn"
   via: [wine]
   note: "Wine-GE bzw. Proton-GE"
+
+- title: "Return to Castle Wolfenstein"
+  via: [wine, heroic, lutris]
+  note: "GE-Proton"
+  links:
+    - title: "PCGamingWiki - Fix Guide"
+      url: "https://www.pcgamingwiki.com/wiki/Return_to_Castle_Wolfenstein"
 
 - title: "Roadwarden"
   via: [native]

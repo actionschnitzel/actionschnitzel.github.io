@@ -1,0 +1,26 @@
+# Wichtige Websites für Gaming unter Linux.
+# Neuer Eintrag = neuer Block; die Seite zeigt die Einträge in dieser Reihenfolge.
+#
+# title:       Name der Website (Pflicht)
+# url:         Link zur Website (Pflicht)
+# description: Kurze Beschreibung (Pflicht)
+
+- title: "Lutris"
+  url: "https://lutris.net/games"
+  description: "Datenbank und Launcher für Spiele unter Linux. Lutris stellt Installationsskripte für viele Spiele bereit, auch für Windows-Titel, die über Wine laufen."
+
+- title: "ProtonDB"
+  url: "https://www.protondb.com/"
+  description: "Community-Datenbank mit Kompatibilitätsberichten zu Spielen unter Linux mit Proton. Die Bewertungen reichen von Platinum bis Borked."
+
+- title: "Steam Deck HQ"
+  url: "https://steamdeckhq.com/"
+  description: "News, Tests und Tipps rund um das Steam Deck und die Spiele auf dem Handheld."
+
+- title: "GamingOnLinux"
+  url: "https://www.gamingonlinux.com/"
+  description: "News, Reviews und Berichte über Spiele und Linux-Gaming, inklusive neuer Veröffentlichungen für Linux."
+
+- title: "PCGamingWiki"
+  url: "https://www.pcgamingwiki.com/wiki/Home"
+  description: "Wiki mit Informationen zu PC-Spielen, unter anderem zu Fixes, Tweaks und Kompatibilität für Linux und das Steam Deck."
