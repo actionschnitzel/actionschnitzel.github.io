@@ -1118,18 +1118,6 @@ html.dark-mode .section li strong,
   flex: 1;
 }
 
-.avatar {
-  align-self: stretch;
-  width: clamp(110px, 14vw, 170px);
-  object-fit: contain;
-}
-
-@media (max-width: 768px) {
-  .avatar {
-    display: none;
-  }
-}
-
 .connection-items span {
   display: block;
   position: relative;
