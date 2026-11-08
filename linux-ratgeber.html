@@ -168,6 +168,26 @@ hero_image_alt: "Tux mit pinker Mütze"
     </div>
   </div>
 
+  <div class="ratgeber-question" data-question="28" data-type="single">
+    <span class="ratgeber-category">Fähigkeiten</span>
+    <h3>Wenn etwas auf dem PC nicht funktioniert, wie gehst du vor?</h3>
+    <div class="ratgeber-options">
+      <button type="button" class="ratgeber-option" data-score="2" data-tags="erfahren" aria-pressed="false">Ich recherchiere selbst und probiere Lösungen aus</button>
+      <button type="button" class="ratgeber-option" data-score="1" data-tags="lernen" aria-pressed="false">Manchmal recherchiere ich, manchmal frage ich nach</button>
+      <button type="button" class="ratgeber-option" data-score="0" data-tags="einsteiger" aria-pressed="false">Ich frage lieber Freunde, Verwandte oder Bekannte</button>
+    </div>
+  </div>
+
+  <div class="ratgeber-question" data-question="29" data-type="single">
+    <span class="ratgeber-category">Fähigkeiten</span>
+    <h3>Wie gehst du mit Anleitungen aus Tutorials auf YouTube um?</h3>
+    <div class="ratgeber-options">
+      <button type="button" class="ratgeber-option" data-score="2" data-tags="erfahren" aria-pressed="false">Ich prüfe Befehle und Quellen, bevor ich sie ausführe</button>
+      <button type="button" class="ratgeber-option" data-score="1" data-tags="lernen" aria-pressed="false">Je nach Thema prüfe ich genauer</button>
+      <button type="button" class="ratgeber-option" data-score="0" data-tags="einsteiger" aria-pressed="false">Ich übernehme einfach, was im Video gezeigt wird</button>
+    </div>
+  </div>
+
   <div class="ratgeber-question" data-question="2" data-type="single">
     <span class="ratgeber-category">Erfahrung</span>
     <h3>Hast du schon einmal einen PC selbst zusammengebaut?</h3>
@@ -493,10 +513,12 @@ hero_image_alt: "Tux mit pinker Mütze"
       { id: "mx", name: "MX Linux", text: "Debian-Basis mit schlanker XFCE-Oberfläche, sehr stabil und auch auf älterer Hardware flott. Für Einsteiger mit etwas Lernbereitschaft, da die Standardwerkzeuge weniger Erklärungen bieten als bei Mint. Für Fortgeschrittene ein verlässliches Arbeitssystem." },
       { id: "suse", name: "openSUSE", text: "Zwei Varianten: Leap mit festen, stabilen Versionen und Tumbleweed mit rollenden Updates. Das Werkzeug YaST hilft bei der Einrichtung. Für Nutzer mit Grundkenntnissen, die nicht bei jedem Problem gleich im Terminal suchen wollen." },
       { id: "xubu", name: "Xubuntu", text: "Ubuntu mit der schlanken XFCE-Oberfläche. Für Einsteiger mit älterer Hardware (über 6 Jahre), die Ubuntu mögen, aber weniger Ressourcen brauchen." },
+      { id: "elem", name: "elementary OS", text: "Ubuntu-Basis mit aufgeräumter, macOS-ähnlicher Oberfläche. Für Einsteiger, die eine schlichte, geführte Oberfläche ohne Windows-Optik wollen. Für Fortgeschrittene eine ruhige Arbeitsumgebung mit wenig Anpassungsspielraum." },
       { id: "fedw", name: "Fedora Workstation", text: "Aktuelle Software mit GNOME-Oberfläche. Für Nutzer mit Grundkenntnissen, die Neuerungen mögen und bei Problemen auch mal recherchieren." },
       { id: "fedk", name: "Fedora KDE Plasma", text: "Aktuelle Software mit der KDE-Plasma-Oberfläche. Für Nutzer mit Grundkenntnissen, die eine windowsähnlichere Oberfläche und frische Software wollen." },
       { id: "deb", name: "Debian", text: "Sehr stabil, dafür kommen Neuerungen seltener. Für Fortgeschrittene, die Wert auf Stabilität legen. Die glibc ist alt, daher funktionieren neuere Tools in seltenen Fällen nicht." },
       { id: "arch", name: "Arch Linux", text: "Das System wird Schritt für Schritt aus Einzelkomponenten aufgebaut und ist maximal gestaltbar. Für Nutzer mit hohem Kenntnisstand, die gern Anleitungen lesen und Wartung selbst übernehmen." },
+      { id: "manj", name: "Manjaro", text: "Arch-Basis mit grafischer Installation und geprüften Updates. Für Nutzer mit Grundkenntnissen, die Arch-Pakete nutzen möchten, aber Updates im Blick behalten." },
       { id: "endo", name: "EndeavourOS", text: "Arch-Basis mit geführter Installation. Für Nutzer mit Grundkenntnissen, die Arch ausprobieren möchten, aber Updates und Fehlerbehebung selbst übernehmen." },
       { id: "cachy", name: "CachyOS", text: "Arch-Basis, auf Leistung und Gaming optimiert. Für Fortgeschrittene mit Gaming-Fokus, die Updates im Blick behalten." },
       { id: "bazz", name: "Bazzite", text: "Gaming-Distribution mit unveränderlichem Grundsystem, dadurch zuverlässige Updates. Für Einsteiger mit Gaming-Wunsch, die kaum selbst konfigurieren wollen." },
@@ -525,7 +547,9 @@ hero_image_alt: "Tux mit pinker Mütze"
       21: ["arch1 deb1 endo1 suse1 fedw1", "arch1 deb1 endo1 suse1 fedw1", "", "", "", "", "", "arch1 deb1 endo1 suse1 fedw1", ""],
       22: ["pop2 bazz2 nob2 mint1 ubu1 zorin1 kubu1 mx1 xubu1 arch-1 endo-1 deb-1 fedw-1 cachy-1", "", "pop1 mint1 ubu1"],
       23: ["", "", "", "bazz-2 cachy-2 nob-1", "bazz-2 cachy-2 nob-1", "", "", ""],
-      24: ["", "arch-1 endo-1 cachy-2", "arch-3 endo-3 cachy-5 mint1 zorin1 ubu1"]
+      24: ["", "arch-1 endo-1 cachy-2", "arch-3 endo-3 cachy-5 mint1 zorin1 ubu1"],
+      28: ["arch2 endo2 deb2 cachy1 fedw2 fedk2 nob1 suse1 bazz1", "mint1 zorin1 ubu1 kubu1 pop1 mx1", "mint2 zorin2 ubu2 kubu2 pop2 mx1 xubu1"],
+      29: ["arch2 endo2 deb2 cachy2 fedw1 fedk1 nob1 suse1", "mint1 zorin1 ubu1 kubu1 pop1 mx1", "mint2 zorin2 ubu2 kubu1 pop1 mx1 xubu1"]
     };
 
     function distroPoints() {
@@ -541,6 +565,8 @@ hero_image_alt: "Tux mit pinker Mütze"
           });
         });
       });
+      // Varianten erhalten die Punkte ihrer Basis-Distribution
+      Object.entries({ elem: "ubu", manj: "endo" }).forEach(([id, base]) => { points[id] = points[base]; });
       return points;
     }
 
@@ -623,7 +649,7 @@ hero_image_alt: "Tux mit pinker Mütze"
       }
     });
 
-    const readinessIds = new Set(["1", "2", "3", "4", "7", "14", "15", "16", "17", "19", "20", "21", "24", "27"]);
+    const readinessIds = new Set(["1", "2", "3", "4", "7", "14", "15", "16", "17", "19", "20", "21", "24", "27", "28", "29"]);
 
     function ratioOf(list) {
       if (!list.length) return 0;
@@ -773,18 +799,22 @@ hero_image_alt: "Tux mit pinker Mütze"
       const homepages = {
         mint: "https://linuxmint.com", zorin: "https://zorin.com/os", ubu: "https://ubuntu.com",
         kubu: "https://kubuntu.org", pop: "https://system76.com/pop", mx: "https://mxlinux.org",
-        suse: "https://www.opensuse.org", xubu: "https://xubuntu.org", fedw: "https://fedoraproject.org/workstation",
+        suse: "https://www.opensuse.org", xubu: "https://xubuntu.org", elem: "https://elementary.io", manj: "https://manjaro.org", fedw: "https://fedoraproject.org/workstation",
         fedk: "https://fedoraproject.org/kde", deb: "https://www.debian.org", arch: "https://archlinux.org",
         endo: "https://endeavouros.com", cachy: "https://cachyos.org", bazz: "https://bazzite.gg", nob: "https://nobaraproject.org"
       };
       const maxShown = 8;
       const points = distroPoints();
-      const archBased = new Set(["arch", "endo", "cachy"]);
+      const archBased = new Set(["arch", "endo", "cachy", "manj"]);
       const fedoraBased = new Set(["fedw", "fedk", "nob"]);
+      const advancedOnly = new Set(["deb"]);
       const lowExperience = answers.get("24")?.score <= 1;
+      const blindTrust = answers.get("29")?.score === 0;
       const ranked = distros
         .map(d => ({ d, pts: points[d.id] }))
-        .filter(x => x.pts > 0 && !(lowExperience && (archBased.has(x.d.id) || fedoraBased.has(x.d.id))))
+        .filter(x => x.pts > 0
+          && !((lowExperience || blindTrust) && archBased.has(x.d.id))
+          && !(lowExperience && (fedoraBased.has(x.d.id) || advancedOnly.has(x.d.id))))
         .sort((a, b) => b.pts - a.pts)
         .slice(0, maxShown)
         .map(x => x.d);
