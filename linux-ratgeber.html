@@ -150,11 +150,21 @@ hero_image_alt: "Tux mit pinker Mütze"
 
   <div class="ratgeber-question" data-question="24" data-type="single">
     <span class="ratgeber-category">Erfahrung</span>
-    <h3>Kannst du unter Windows Programme installieren, und wenn ja, klickst du einfach weiter, bis es fertig ist?</h3>
+    <h3>Weißt du, wie man unter Windows Programme installiert?</h3>
     <div class="ratgeber-options">
-      <button type="button" class="ratgeber-option" data-score="2" data-tags="erfahren" aria-pressed="false">Ja, ohne nachzudenken</button>
-      <button type="button" class="ratgeber-option" data-score="1" data-tags="lernen" aria-pressed="false">Ja, aber manchmal muss ich nachschauen</button>
-      <button type="button" class="ratgeber-option" data-score="0" data-tags="einsteiger" aria-pressed="false">Nein, oder ich weiß nicht, was ich dabei tue</button>
+      <button type="button" class="ratgeber-option" data-score="2" data-tags="erfahren" aria-pressed="false">Ja</button>
+      <button type="button" class="ratgeber-option" data-score="1" data-tags="lernen" aria-pressed="false">Ungefähr, ich muss manchmal nachschauen</button>
+      <button type="button" class="ratgeber-option" data-score="0" data-tags="einsteiger" aria-pressed="false">Nein</button>
+    </div>
+  </div>
+
+  <div class="ratgeber-question" data-question="27" data-type="single">
+    <span class="ratgeber-category">Erfahrung</span>
+    <h3>Klickst du bei der Installation einfach weiter, bis das Programm fertig ist?</h3>
+    <div class="ratgeber-options">
+      <button type="button" class="ratgeber-option" data-score="2" data-tags="erfahren" aria-pressed="false">Ja, ohne groß nachzudenken</button>
+      <button type="button" class="ratgeber-option" data-score="1" data-tags="lernen" aria-pressed="false">Teils, teils, bei manchen Fenstern lese ich genauer</button>
+      <button type="button" class="ratgeber-option" data-score="0" data-tags="einsteiger" aria-pressed="false">Nein, ich habe noch nie ein Programm installiert</button>
     </div>
   </div>
 
@@ -171,7 +181,7 @@ hero_image_alt: "Tux mit pinker Mütze"
 
   <div class="ratgeber-question" data-question="3" data-type="single">
     <span class="ratgeber-category">Erfahrung</span>
-    <h3>Hast du schon einmal in der Eingabeaufforderung (CMD) oder mit .cmd- / .bat-Dateien gearbeitet?</h3>
+    <h3>Hast du schon einmal in der Eingabeaufforderung (CMD), in PowerShell oder mit .cmd-, .bat- oder .ps1-Dateien gearbeitet?</h3>
     <div class="ratgeber-options">
       <button type="button" class="ratgeber-option" data-score="2" data-tags="erfahren terminal" aria-pressed="false">Ja, regelmäßig</button>
       <button type="button" class="ratgeber-option" data-score="1" data-tags="terminal topic:terminal" aria-pressed="false">Ein paar Mal</button>
@@ -201,7 +211,7 @@ hero_image_alt: "Tux mit pinker Mütze"
 
   <div class="ratgeber-question" data-question="25" data-type="single">
     <span class="ratgeber-category">Hardware</span>
-    <h3>Hast du mindestens 50 GB freien Speicher auf deiner Festplatte oder SSD?</h3>
+    <h3>Hast du mindestens 100 GiB freien Speicher auf deiner Festplatte oder SSD?</h3>
     <div class="ratgeber-options">
       <button type="button" class="ratgeber-option" data-score="2" aria-pressed="false">Ja</button>
       <button type="button" class="ratgeber-option" data-score="1" aria-pressed="false">Weiß ich nicht</button>
@@ -243,7 +253,7 @@ hero_image_alt: "Tux mit pinker Mütze"
 
   <div class="ratgeber-question" data-question="9" data-type="single">
     <span class="ratgeber-category">Software</span>
-    <h3>Brauchst du professionelle Grafik-, Foto- oder Videoprogramme (z. B. Adobe Photoshop oder Premiere)?</h3>
+    <h3>Brauchst du für Grafik-, Foto- oder Videobearbeitung professionelle Programme wie Adobe Photoshop oder Premiere?</h3>
     <div class="ratgeber-options">
       <button type="button" class="ratgeber-option" data-score="0" data-blocker="Adobe-Programme sind für dich unverzichtbar und laufen unter Linux nicht nativ." aria-pressed="false">Ja, unverzichtbar (gekaufte Lizenz oder beruflich genutzt)</button>
       <button type="button" class="ratgeber-option" data-score="1" data-tags="grafisch" aria-pressed="false">Ja, aber es gibt Alternativen für mich</button>
@@ -384,6 +394,16 @@ hero_image_alt: "Tux mit pinker Mütze"
     <button type="button" class="ratgeber-next">Weiter</button>
   </div>
 
+  <div class="ratgeber-question" data-question="26" data-type="single">
+    <span class="ratgeber-category">Software</span>
+    <h3>Nutzt du Open-Source-Programme, die es auch für Windows gibt, z. B. Firefox, GIMP, VLC oder Thunderbird?</h3>
+    <div class="ratgeber-options">
+      <button type="button" class="ratgeber-option" data-score="2" data-tags="os-software" aria-pressed="false">Ja, die meisten davon</button>
+      <button type="button" class="ratgeber-option" data-score="1" data-tags="os-software" aria-pressed="false">Ein paar davon</button>
+      <button type="button" class="ratgeber-option" data-score="1" aria-pressed="false">Nein, ich nutze andere Programme</button>
+    </div>
+  </div>
+
   <div class="ratgeber-question" data-question="22" data-type="single">
     <span class="ratgeber-category">Hardware</span>
     <h3>Nutzt du eine Nvidia-Grafikkarte?</h3>
@@ -396,13 +416,15 @@ hero_image_alt: "Tux mit pinker Mütze"
 
   <div class="ratgeber-question" data-question="23" data-type="single" data-show-if="nvidia">
     <span class="ratgeber-category">Hardware</span>
-    <h3>Welche Nvidia-Grafikkarte hast du?</h3>
+    <h3>Welche Nvidia-Grafikkarte hast du? Den Namen findest du im Gerätemanager.</h3>
     <div class="ratgeber-options">
       <button type="button" class="ratgeber-option" data-score="2" data-tags="nvidia-modern" aria-pressed="false">RTX 50er, 40er, 30er oder 20er Serie</button>
       <button type="button" class="ratgeber-option" data-score="2" data-tags="nvidia-modern" aria-pressed="false">GTX 16er Serie (z. B. GTX 1660, 1650)</button>
       <button type="button" class="ratgeber-option" data-score="1" data-tags="nvidia topic:nvidia" aria-pressed="false">GTX 10er Serie oder GT 1030 (z. B. GTX 1080, 1060)</button>
       <button type="button" class="ratgeber-option" data-score="0" data-tags="nouveau topic:nvidia" aria-pressed="false">GTX 900er Serie oder GTX 750 (z. B. GTX 970, 960)</button>
       <button type="button" class="ratgeber-option" data-score="0" data-tags="nouveau topic:nvidia" aria-pressed="false">GT 700er, 600er, 500er oder 400er Serie (z. B. GT 730, GT 710, GT 640)</button>
+      <button type="button" class="ratgeber-option" data-score="1" data-tags="nvidia topic:nvidia" aria-pressed="false">MX-Serie oder Laptop-Grafik (z. B. MX450, MX150)</button>
+      <button type="button" class="ratgeber-option" data-score="1" data-tags="nvidia topic:nvidia" aria-pressed="false">Profi-Karte (Quadro, RTX A-Serie oder Tesla)</button>
       <button type="button" class="ratgeber-option" data-score="1" data-tags="topic:nvidia" aria-pressed="false">Weiß ich nicht</button>
     </div>
   </div>
@@ -425,7 +447,7 @@ hero_image_alt: "Tux mit pinker Mütze"
       <p><strong>Tipp:</strong> Schreibe eine Liste mit ALLEN Programmen, Diensten und Services, die du am PC nutzt. Recherchiere genau, wie diese unter Linux laufen. Du kannst dich auch in einem Forum anmelden und dich von erfahrenen Usern beraten lassen.</p>
     </aside>
     <h3>Passende Distributionen</h3>
-    <p>Die Distributionsauswahl ist stark subjektiv, und ein Algorithmus kann nicht alle Feinheiten abdecken. Die generelle Empfehlung für Umsteiger ist immer Linux Mint, Zorin OS oder Ubuntu.</p>
+    <p>Die Distributionsauswahl ist stark subjektiv, und ein Algorithmus kann nicht alle Feinheiten abdecken. Die generelle Empfehlung für Umsteiger ist immer Linux Mint, Zorin OS oder Ubuntu. Die aufgeführten Distributionen sind in keiner bestimmten Reihenfolge angeordnet.</p>
     <ol class="ratgeber-distros" id="ratgeber-distros"></ol>
     <button type="button" class="ratgeber-reset" id="ratgeber-reset">Neu starten</button>
   </div>
@@ -462,22 +484,65 @@ hero_image_alt: "Tux mit pinker Mütze"
       nvidia: "Nvidia-Treiber installieren oder Nouveau einrichten"
     };
 
-    // Tags describe what the answer implies; distros match against them.
     const distros = [
-      { name: "Linux Mint", tags: ["grafisch", "einfach", "windowsnah", "leicht", "stabil", "erfahren", "terminal"], text: "Sehr einsteigerfreundlich, wenig Aufwand, stabil." },
-      { name: "Zorin OS", tags: ["windowsnah", "grafisch", "einfach", "leicht", "erfahren", "terminal"], text: "Speziell für Umsteiger von Windows mit vertrauter Oberfläche." },
-      { name: "Ubuntu LTS", tags: ["einfach", "grafisch", "office-alt", "stabil", "erfahren", "terminal", "lernen"], text: "Großes Ökosystem, lange Unterstützung, gute Hardwareerkennung. Die GNOME-Oberfläche wirkt nicht wie Windows; für eine Windows-Optik eher Kubuntu nehmen." },
-      { name: "Fedora Workstation", tags: ["lernen", "grafisch", "erfahren"], avoid: ["einfach", "stabil", "einsteiger"], text: "Aktuelle Software mit GNOME-Oberfläche." },
-      { name: "Fedora KDE Plasma", tags: ["lernen", "erfahren", "windowsnah"], avoid: ["einfach", "stabil", "einsteiger"], text: "Aktuelle Software mit der KDE-Plasma-Oberfläche." },
-      { name: "Debian", tags: ["erfahren", "terminal", "stabil"], avoid: ["einsteiger"], text: "Sehr stabil, dafür kommen Neuerungen seltener. Die glibc ist alt, daher funktionieren neuere Tools in seltenen Fällen nicht." },
-      { name: "Arch Linux", tags: ["lernen", "erfahren", "terminal", "gamer"], avoid: ["einsteiger"], text: "Maximal selbst gestaltbar, für alle, die gern lernen und Anleitungen lesen." },
-      { name: "EndeavourOS", tags: ["lernen", "terminal", "gaming"], avoid: ["einsteiger"], text: "Arch-Basis mit einfacherer Installation." },
-      { name: "CachyOS", tags: ["gaming", "gamer", "erfahren", "terminal", "lernen"], avoid: ["einfach", "stabil", "nouveau", "einsteiger"], text: "Arch-Basis, auf Leistung und Gaming optimiert." },
-      { name: "Bazzite", tags: ["gaming", "gamer", "einfach"], avoid: ["nouveau"], text: "Auf Gaming ausgelegt, mit stabilem, unveränderlichem Grundsystem." },
-      { name: "Nobara", tags: ["gaming", "gamer", "erfahren"], avoid: ["einfach", "nouveau", "einsteiger"], text: "Fedora-Basis, für Gaming vorkonfiguriert." }
+      { id: "mint", name: "Linux Mint", text: "Die einfachste Wahl für Einsteiger: Die Oberfläche ähnelt Windows, Updates laufen unkompliziert und deutschsprachige Anleitungen gibt es reichlich. Für Fortgeschrittene ein zuverlässiger Alltagsbegleiter, wenn nicht viel experimentiert werden soll." },
+      { id: "zorin", name: "Zorin OS", text: "Für Umsteiger ohne Linux-Vorerfahrung: Startmenü und Taskleiste lassen sich wie unter Windows gestalten, die Einrichtung ist geführt. Fortgeschrittene finden hier weniger Spielraum, weil Anpassungen auf die vorgegebenen Layouts begrenzt sind." },
+      { id: "ubu", name: "Ubuntu LTS", text: "Die größte Community und viele Anleitungen, daher gut für Einsteiger, die bereit sind, sich einzulesen. Die GNOME-Oberfläche wirkt nicht wie Windows; für eine Windows-Optik eher Kubuntu nehmen. Für Fortgeschrittene eine solide Basis mit langer Unterstützung." },
+      { id: "kubu", name: "Kubuntu", text: "Ubuntu-Basis mit KDE-Plasma-Oberfläche, die sich stark an Windows anlehnt. Für Einsteiger mit Anpassungswunsch, die dabei ohne Terminal auskommen möchten." },
+      { id: "pop", name: "Pop!_OS", text: "Ubuntu-Basis mit eigener Oberfläche und vorinstallierten Nvidia-Treibern. Für Einsteiger mit Gaming-Wunsch, da kaum Einrichtung nötig ist. Für Fortgeschrittene eine praktische Arbeitsumgebung mit Fenster-Kacheln für Tastaturnutzer." },
+      { id: "mx", name: "MX Linux", text: "Debian-Basis mit schlanker XFCE-Oberfläche, sehr stabil und auch auf älterer Hardware flott. Für Einsteiger mit etwas Lernbereitschaft, da die Standardwerkzeuge weniger Erklärungen bieten als bei Mint. Für Fortgeschrittene ein verlässliches Arbeitssystem." },
+      { id: "suse", name: "openSUSE", text: "Zwei Varianten: Leap mit festen, stabilen Versionen und Tumbleweed mit rollenden Updates. Das Werkzeug YaST hilft bei der Einrichtung. Für Nutzer mit Grundkenntnissen, die nicht bei jedem Problem gleich im Terminal suchen wollen." },
+      { id: "xubu", name: "Xubuntu", text: "Ubuntu mit der schlanken XFCE-Oberfläche. Für Einsteiger mit älterer Hardware (über 6 Jahre), die Ubuntu mögen, aber weniger Ressourcen brauchen." },
+      { id: "fedw", name: "Fedora Workstation", text: "Aktuelle Software mit GNOME-Oberfläche. Für Nutzer mit Grundkenntnissen, die Neuerungen mögen und bei Problemen auch mal recherchieren." },
+      { id: "fedk", name: "Fedora KDE Plasma", text: "Aktuelle Software mit der KDE-Plasma-Oberfläche. Für Nutzer mit Grundkenntnissen, die eine windowsähnlichere Oberfläche und frische Software wollen." },
+      { id: "deb", name: "Debian", text: "Sehr stabil, dafür kommen Neuerungen seltener. Für Fortgeschrittene, die Wert auf Stabilität legen. Die glibc ist alt, daher funktionieren neuere Tools in seltenen Fällen nicht." },
+      { id: "arch", name: "Arch Linux", text: "Das System wird Schritt für Schritt aus Einzelkomponenten aufgebaut und ist maximal gestaltbar. Für Nutzer mit hohem Kenntnisstand, die gern Anleitungen lesen und Wartung selbst übernehmen." },
+      { id: "endo", name: "EndeavourOS", text: "Arch-Basis mit geführter Installation. Für Nutzer mit Grundkenntnissen, die Arch ausprobieren möchten, aber Updates und Fehlerbehebung selbst übernehmen." },
+      { id: "cachy", name: "CachyOS", text: "Arch-Basis, auf Leistung und Gaming optimiert. Für Fortgeschrittene mit Gaming-Fokus, die Updates im Blick behalten." },
+      { id: "bazz", name: "Bazzite", text: "Gaming-Distribution mit unveränderlichem Grundsystem, dadurch zuverlässige Updates. Für Einsteiger mit Gaming-Wunsch, die kaum selbst konfigurieren wollen." },
+      { id: "nob", name: "Nobara", text: "Fedora-Basis, für Gaming vorkonfiguriert. Für Nutzer mit Grundkenntnissen, die Spiele ohne viel Einrichtung starten möchten." }
     ];
-    const zorin = distros.find(d => d.name === "Zorin OS");
-    const beginnerDistros = ["Linux Mint", "Zorin OS", "Ubuntu LTS"];
+    // Punkte je Antwortoption in Markup-Reihenfolge; Format: distroId + Punkte.
+    const weights = {
+      1: ["arch1 endo1 deb1 fedw1 fedk1 suse1 cachy1 nob1", "mint1 zorin1 ubu1 mx1 suse1 deb1", "mint2 zorin2 ubu2 pop1 mx1 xubu1 kubu1"],
+      2: ["arch2 endo1 deb1 cachy1 suse1 fedk1 nob1", "arch1 deb1 endo1 suse1 fedw1 cachy1", "mint1 zorin1 ubu1 mx1 bazz1 pop1", "mint1 zorin1 ubu1 mx1 pop1"],
+      3: ["arch2 endo2 deb2 cachy2 suse1 fedw1 nob1", "arch1 endo1 deb1 suse1 fedw1 mint1", "mint1 zorin2 ubu1 kubu1 pop1 bazz1"],
+      4: ["arch1 deb1 endo1 fedw1 cachy1 suse1", "mint1 zorin1 ubu1 pop1", "mint2 zorin2 ubu2 kubu1 pop1 mx1 xubu1"],
+      5: ["fedw1 fedk1 cachy1 bazz1 nob1", "", "xubu3 mx3 mint1"],
+      6: ["mint3 zorin3 ubu2 kubu3 pop2 fedk1", "mint2 zorin2 ubu1 kubu2 pop1 fedk1", "arch2 endo2 deb2 cachy1 suse1 fedw1 nob1"],
+      7: ["arch2 endo2 deb2 fedw1 suse2 cachy1 nob1", "deb2 mint2 mx2 ubu2 suse1 zorin1 xubu1", "zorin3 kubu3 mint3 fedk2 pop1 ubu1", "mint1 ubu1 zorin1 pop1", "arch2 endo2 deb1 suse1 fedk1 fedw1 cachy1"],
+      10: ["", "bazz1 pop1 nob1 cachy1", "bazz3 cachy3 nob3 pop3 endo1 arch1 fedw1"],
+      11: ["", "", "", "", "bazz1 nob1 cachy1 pop1", "bazz1 nob1 cachy1 pop1", "", "bazz1 nob1 cachy1"],
+      12: ["arch2 fedw2 fedk2 cachy1 endo1 nob1 bazz1 suse1", "suse1 mint1 ubu1 kubu1 pop1", "deb3 mx3 mint2 ubu2 xubu1 zorin1"],
+      13: ["arch2 fedw2 fedk2 cachy2 nob1 endo1 bazz1", "fedk1 fedw1 suse1 pop1 endo1", "deb3 mx3 mint2 ubu2 xubu1 zorin1"],
+      14: ["deb1 arch1 endo1 fedw1 suse1", "mint1 zorin1 ubu1 pop1 mx1", "mint2 zorin2 ubu2 pop1 kubu1 xubu1 mx1"],
+      15: ["arch1 deb1 endo1 suse1 fedw1 cachy1", "mint1 ubu1 zorin1 suse1 fedk1", "mint2 zorin2 ubu2 pop1 kubu1 mx1 xubu1"],
+      16: ["arch1 deb1 endo1 fedw1 suse1 cachy1", "mint1 ubu1 pop1 zorin1", "mint2 zorin2 ubu2 pop1"],
+      17: ["arch1 deb1 endo1 suse1 fedw1", "mint1 ubu1 zorin1 mx1 pop1 kubu1", "mint2 zorin2 ubu2 pop1 kubu1 xubu1 mx1"],
+      18: ["", "", "mint1 ubu1 zorin1 pop1 mx1 kubu1"],
+      19: ["arch1 deb1 endo1 fedw1 suse1 cachy1 nob1", "", "mint2 zorin2 ubu2 kubu1 pop1 xubu1 mx1"],
+      20: ["arch1 endo1 deb1 cachy1", "", "mint2 zorin2 ubu2 kubu1 pop1 mx1 xubu1"],
+      21: ["arch1 deb1 endo1 suse1 fedw1", "arch1 deb1 endo1 suse1 fedw1", "", "", "", "", "", "arch1 deb1 endo1 suse1 fedw1", ""],
+      22: ["pop2 bazz2 nob2 mint1 ubu1 zorin1 kubu1 mx1 xubu1 arch-1 endo-1 deb-1 fedw-1 cachy-1", "", "pop1 mint1 ubu1"],
+      23: ["", "", "", "bazz-2 cachy-2 nob-1", "bazz-2 cachy-2 nob-1", "", "", ""],
+      24: ["", "arch-1 endo-1 cachy-2", "arch-3 endo-3 cachy-5 mint1 zorin1 ubu1"]
+    };
+
+    function distroPoints() {
+      const points = Object.fromEntries(distros.map(d => [d.id, 0]));
+      questions.forEach(q => {
+        if (!answers.has(q.dataset.question)) return;
+        const table = weights[q.dataset.question] || [];
+        [...q.querySelectorAll(".ratgeber-option")].forEach((btn, i) => {
+          if (btn.getAttribute("aria-pressed") !== "true" || !table[i]) return;
+          table[i].split(" ").forEach(token => {
+            const [, id, pts] = token.match(/^([a-z]+)(-?\d+)$/);
+            points[id] += Number(pts);
+          });
+        });
+      });
+      return points;
+    }
 
     let current = 0;
 
@@ -558,7 +623,7 @@ hero_image_alt: "Tux mit pinker Mütze"
       }
     });
 
-    const readinessIds = new Set(["1", "2", "3", "4", "7", "14", "15", "16", "17", "19", "20", "21", "24"]);
+    const readinessIds = new Set(["1", "2", "3", "4", "7", "14", "15", "16", "17", "19", "20", "21", "24", "27"]);
 
     function ratioOf(list) {
       if (!list.length) return 0;
@@ -574,12 +639,15 @@ hero_image_alt: "Tux mit pinker Mütze"
       const has = tag => [...answers.values()].some(a => a.tags.includes(tag));
       const lines = [];
 
-      const experience = avg([1, 2, 3, 15, 17, 24]);
+      const experience = avg([1, 2, 3, 15, 17, 24, 27]);
       lines.push(experience >= 0.7
         ? "Die Installation und Einrichtung sollte dir wenig Mühe machen."
         : experience >= 0.35
           ? "Bei Installation und Einrichtung wirst du an einzelnen Stellen nachschlagen müssen, etwa bei Partitionen oder Festplatten."
           : "Installation und Einrichtung sind für dich neu; plane für die ersten Schritte viel Zeit ein.");
+
+      if (score(27) === 2) lines.push("Du klickst Installationen gern einfach durch. Unter Linux musst du Meldungen und Rückfragen des Systems bewusst lesen, sonst übersiehst du wichtige Hinweise.");
+      else if (score(27) === 1) lines.push("Lies bei Installationen und Eingabeaufforderungen genau, was der Computer von dir will; unter Linux ist das besonders wichtig.");
 
       const willingness = avg([7, 12, 13, 20]);
       lines.push(willingness >= 0.6
@@ -593,6 +661,7 @@ hero_image_alt: "Tux mit pinker Mütze"
       if (has("ausprobieren")) lines.push("Ein Live-System zeigt dir unverbindlich, wie gut deine Hardware unter Linux läuft.");
       if (has("gaming") || has("gamer")) lines.push("Für Spiele musst du Treiber und Kompatibilität (z. B. Proton) prüfen.");
       if (has("office-alt")) lines.push("LibreOffice ersetzt Word und Excel, Formatierungen können aber abweichen.");
+      if (has("os-software")) lines.push("Die Open-Source-Programme, die du nutzt, gibt es auch für Linux; du kannst die meisten unverändert weiterverwenden.");
 
       const english = avg([19, 20]);
       if (english < 0.7) lines.push(english >= 0.35
@@ -655,14 +724,14 @@ hero_image_alt: "Tux mit pinker Mütze"
 
       storageNote.textContent = profile.has("speicher-knapp")
         ? "Du hast nach eigener Angabe nicht genug freien Speicher. Gib zuerst Speicher frei, etwa durch Löschen oder Verkleinern einer Partition, oder plane eine weitere SSD oder HDD ein."
-        : "Plane mindestens 30 bis 50 GB freien Speicher ein, besser mehr. Lässt sich dieser nicht durch Partitionierung freigeben, brauchst du eine weitere SSD oder HDD.";
+        : "Plane mindestens 100 GiB freien Speicher ein, besser mehr. Lässt sich dieser nicht durch Partitionierung freigeben, brauchst du eine weitere SSD oder HDD.";
 
       nvidiaNote.textContent = profile.has("nouveau")
         ? "Für deine ältere Nvidia-Karte wäre der Open-Source-Treiber Nouveau die Standardlösung. Er läuft für den Desktop meist stabil, bietet aber oft weniger Leistung und ist für Spiele eingeschränkt. Prüfe auf der Nvidia-Seite, ob für deine Karte noch ein proprietärer Treiber verfügbar ist, denn die Unterstützung ändert sich mit neuen Treiberversionen."
         : "";
       nvidiaNote.hidden = !profile.has("nouveau");
       if (profile.has("nvidia") || profile.has("nvidia-modern") || profile.has("nouveau")) {
-        const manual = "Bei Debian, Arch, EndeavourOS, Fedora und CachyOS musst du den Nvidia-Treiber in der Regel selbst nachinstallieren. Linux Mint, Ubuntu, Zorin, Bazzite und Nobara bringen ihn bereits mit oder über einen Treiber-Manager.";
+        const manual = "Bei Debian, Arch, EndeavourOS, Fedora und CachyOS musst du den Nvidia-Treiber in der Regel selbst nachinstallieren. Linux Mint, Ubuntu, Zorin, Pop!_OS, Bazzite und Nobara bringen ihn bereits mit oder über einen Treiber-Manager.";
         nvidiaNote.textContent = nvidiaNote.textContent ? `${nvidiaNote.textContent} ${manual}` : manual;
         nvidiaNote.hidden = false;
       }
@@ -676,7 +745,7 @@ hero_image_alt: "Tux mit pinker Mütze"
 
       const skillBoxes = document.getElementById("ratgeber-skills");
       const skillAreas = [
-        ["Windows-Installation", [1, 24]],
+        ["Windows-Installation", [1, 24, 27]],
         ["Terminal", [3]],
         ["Hardware und Treiber", [4]],
         ["Partitionen und Festplatten", [15, 17]],
@@ -701,29 +770,36 @@ hero_image_alt: "Tux mit pinker Mütze"
         return [box];
       }));
 
-      const learnHigh = readinessRatio >= 0.6;
-      const beginnerOrder = d => (profile.has("einsteiger") && beginnerDistros.includes(d.name) ? beginnerDistros.indexOf(d.name) : beginnerDistros.length);
-      const ranked = [];
-      let advancedCount = 0;
-      for (const d of distros
-        .filter(d => !(d.avoid || []).some(t => profile.has(t) && !(learnHigh && t === "einsteiger")))
-        .map(d => ({ d, match: d.tags.filter(t => profile.has(t)).length }))
-        .filter(x => x.match > 0)
-        .sort((a, b) => beginnerOrder(a.d) - beginnerOrder(b.d) || b.match - a.match)
-        .map(x => x.d)) {
-        const beginner = beginnerDistros.includes(d.name);
-        if (!beginner && advancedCount >= 3) continue;
-        if (!beginner) advancedCount++;
-        ranked.push(d);
-        if (ranked.length === 5) break;
-      }
-      if (!ranked.includes(zorin) && (profile.has("windowsnah") || profile.has("einsteiger"))) ranked.push(zorin);
+      const homepages = {
+        mint: "https://linuxmint.com", zorin: "https://zorin.com/os", ubu: "https://ubuntu.com",
+        kubu: "https://kubuntu.org", pop: "https://system76.com/pop", mx: "https://mxlinux.org",
+        suse: "https://www.opensuse.org", xubu: "https://xubuntu.org", fedw: "https://fedoraproject.org/workstation",
+        fedk: "https://fedoraproject.org/kde", deb: "https://www.debian.org", arch: "https://archlinux.org",
+        endo: "https://endeavouros.com", cachy: "https://cachyos.org", bazz: "https://bazzite.gg", nob: "https://nobaraproject.org"
+      };
+      const maxShown = 8;
+      const points = distroPoints();
+      const archBased = new Set(["arch", "endo", "cachy"]);
+      const fedoraBased = new Set(["fedw", "fedk", "nob"]);
+      const lowExperience = answers.get("24")?.score <= 1;
+      const ranked = distros
+        .map(d => ({ d, pts: points[d.id] }))
+        .filter(x => x.pts > 0 && !(lowExperience && (archBased.has(x.d.id) || fedoraBased.has(x.d.id))))
+        .sort((a, b) => b.pts - a.pts)
+        .slice(0, maxShown)
+        .map(x => x.d);
 
+      ranked.sort((a, b) => a.name.localeCompare(b.name, "de"));
       distroList.replaceChildren(...ranked.map(d => {
         const li = document.createElement("li");
         const name = document.createElement("strong");
         name.textContent = d.name;
-        li.append(name, `: ${d.text}`);
+        const link = document.createElement("a");
+        link.href = homepages[d.id];
+        link.textContent = "Zur Website";
+        link.target = "_blank";
+        link.rel = "noopener noreferrer";
+        li.append(name, `: ${d.text} `, link);
         return li;
       }));
 
