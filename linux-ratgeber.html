@@ -418,19 +418,20 @@ hero_image_alt: "Tux mit pinker Mütze"
 
     // Tags describe what the answer implies; distros match against them.
     const distros = [
-      { name: "Linux Mint", tags: ["grafisch", "einfach", "windowsnah", "leicht", "stabil"], text: "Sehr einsteigerfreundlich, Oberfläche nah an Windows, wenig Aufwand." },
-      { name: "Zorin OS", tags: ["windowsnah", "grafisch", "einfach", "leicht"], text: "Speziell für Umsteiger von Windows mit vertrauter Oberfläche." },
-      { name: "Ubuntu LTS", tags: ["einfach", "grafisch", "office-alt", "stabil"], text: "Großes Ökosystem, lange Unterstützung, gute Hardwareerkennung." },
-      { name: "Fedora Workstation", tags: ["lernen", "grafisch", "erfahren"], avoid: ["einfach", "stabil"], text: "Aktuelle Software mit GNOME-Oberfläche." },
-      { name: "Fedora KDE Plasma", tags: ["lernen", "erfahren", "windowsnah"], avoid: ["einfach", "stabil"], text: "Aktuelle Software mit einer Windows-ähnlichen KDE-Oberfläche." },
-      { name: "Debian", tags: ["einfach", "erfahren", "terminal", "stabil"], text: "Sehr stabil, dafür kommen Neuerungen seltener." },
-      { name: "Arch Linux", tags: ["lernen", "erfahren", "terminal", "gamer"], text: "Maximal selbst gestaltbar, für alle, die gern lernen und Anleitungen lesen." },
-      { name: "EndeavourOS", tags: ["lernen", "terminal", "gaming"], text: "Arch-Basis mit einfacherer Installation." },
-      { name: "CachyOS", tags: ["gaming", "gamer", "erfahren", "terminal", "lernen"], avoid: ["einfach", "stabil"], text: "Arch-Basis, auf Leistung und Gaming optimiert." },
-      { name: "Bazzite", tags: ["gaming", "gamer", "einfach"], text: "Auf Gaming ausgelegt, mit stabilem, unveränderlichem Grundsystem." },
-      { name: "Nobara", tags: ["gaming", "gamer", "erfahren"], text: "Fedora-Basis, für Gaming vorkonfiguriert." }
+      { name: "Linux Mint", tags: ["grafisch", "einfach", "windowsnah", "leicht", "stabil", "erfahren", "terminal"], text: "Sehr einsteigerfreundlich, Oberfläche nah an Windows, wenig Aufwand." },
+      { name: "Zorin OS", tags: ["windowsnah", "grafisch", "einfach", "leicht", "erfahren", "terminal"], text: "Speziell für Umsteiger von Windows mit vertrauter Oberfläche." },
+      { name: "Ubuntu LTS", tags: ["einfach", "grafisch", "office-alt", "stabil", "erfahren", "terminal"], text: "Großes Ökosystem, lange Unterstützung, gute Hardwareerkennung." },
+      { name: "Fedora Workstation", tags: ["lernen", "grafisch", "erfahren"], avoid: ["einfach", "stabil", "einsteiger"], text: "Aktuelle Software mit GNOME-Oberfläche." },
+      { name: "Fedora KDE Plasma", tags: ["lernen", "erfahren", "windowsnah"], avoid: ["einfach", "stabil", "einsteiger"], text: "Aktuelle Software mit einer Windows-ähnlichen KDE-Oberfläche." },
+      { name: "Debian", tags: ["erfahren", "terminal", "stabil"], avoid: ["einsteiger"], text: "Sehr stabil, dafür kommen Neuerungen seltener." },
+      { name: "Arch Linux", tags: ["lernen", "erfahren", "terminal", "gamer"], avoid: ["einsteiger"], text: "Maximal selbst gestaltbar, für alle, die gern lernen und Anleitungen lesen." },
+      { name: "EndeavourOS", tags: ["lernen", "terminal", "gaming"], avoid: ["einsteiger"], text: "Arch-Basis mit einfacherer Installation." },
+      { name: "CachyOS", tags: ["gaming", "gamer", "erfahren", "terminal", "lernen"], avoid: ["einfach", "stabil", "nouveau", "einsteiger"], text: "Arch-Basis, auf Leistung und Gaming optimiert." },
+      { name: "Bazzite", tags: ["gaming", "gamer", "einfach"], avoid: ["nouveau"], text: "Auf Gaming ausgelegt, mit stabilem, unveränderlichem Grundsystem." },
+      { name: "Nobara", tags: ["gaming", "gamer", "erfahren"], avoid: ["einfach", "nouveau", "einsteiger"], text: "Fedora-Basis, für Gaming vorkonfiguriert." }
     ];
     const zorin = distros.find(d => d.name === "Zorin OS");
+    const beginnerDistros = ["Linux Mint", "Zorin OS", "Ubuntu LTS"];
 
     let current = 0;
 
@@ -511,16 +512,31 @@ hero_image_alt: "Tux mit pinker Mütze"
       }
     });
 
+    const readinessIds = new Set(["1", "2", "3", "4", "7", "14", "15", "16", "17", "19", "20", "21"]);
+
+    function ratioOf(list) {
+      if (!list.length) return 0;
+      return list.reduce((sum, a) => sum + a.score, 0) / (list.length * 2);
+    }
+
     function showResult() {
-      const values = [...answers.values()];
-      const score = values.reduce((sum, a) => sum + a.score, 0);
-      const ratio = score / (values.length * 2);
+      const entries = [...answers.entries()];
+      const values = entries.map(([, a]) => a);
+      const ratio = ratioOf(values);
+      const fitRatio = ratioOf(entries.filter(([id]) => !readinessIds.has(id)).map(([, a]) => a));
+      const readinessRatio = ratioOf(entries.filter(([id]) => readinessIds.has(id)).map(([, a]) => a));
       const blockers = [...new Set(values.flatMap(a => a.blockers))];
       const profile = new Set(values.flatMap(a => a.tags));
 
       if (blockers.length) {
         title.textContent = "Linux ist für dich nur eingeschränkt geeignet";
         text.textContent = "Mindestens eine deiner Anforderungen lässt sich unter Linux nur schwer oder gar nicht umsetzen:";
+      } else if (fitRatio < 0.45) {
+        title.textContent = "Linux ist für dich eher nicht die beste Wahl";
+        text.textContent = "Deine Anforderungen an Software und Hardware passen nur eingeschränkt zu Linux.";
+      } else if (readinessRatio < 0.45) {
+        title.textContent = "Linux passt zu deinen Anforderungen, du musst dich aber einarbeiten";
+        text.textContent = "Software und Hardware passen gut. Für den Einstieg brauchst du Zeit und etwas Lernbereitschaft; Anleitungen und ein Live-USB-Stick helfen dabei.";
       } else if (ratio >= 0.75) {
         title.textContent = "Linux passt sehr gut zu dir";
         text.textContent = "Deine Anforderungen lassen sich unter Linux gut abdecken.";
@@ -567,13 +583,20 @@ hero_image_alt: "Tux mit pinker Mütze"
         return li;
       }));
 
-      const ranked = distros
+      const ranked = [];
+      let advancedCount = 0;
+      for (const d of distros
         .filter(d => !(d.avoid || []).some(t => profile.has(t)))
         .map(d => ({ d, match: d.tags.filter(t => profile.has(t)).length }))
         .filter(x => x.match > 0)
         .sort((a, b) => b.match - a.match)
-        .slice(0, 5)
-        .map(x => x.d);
+        .map(x => x.d)) {
+        const beginner = beginnerDistros.includes(d.name);
+        if (!beginner && advancedCount >= 3) continue;
+        if (!beginner) advancedCount++;
+        ranked.push(d);
+        if (ranked.length === 5) break;
+      }
       if (!ranked.includes(zorin)) ranked.push(zorin);
 
       distroList.replaceChildren(...ranked.map(d => {
