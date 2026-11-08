@@ -1,4 +1,4 @@
 ```
-cd ~/Github/actionschnitzel.github.io
+c ~/Github/actionschnitzel.github.io
 bundle exec jekyll serve --livereload
 ```

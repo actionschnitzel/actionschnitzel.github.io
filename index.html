@@ -8,16 +8,21 @@ layout: home
 </section>
 
 <section class="section compact" id="verbindungen">
-  <h2>Verbindungen</h2>
-  <ul class="entry-list connection-list">
-    {%- for item in site.data.connections %}
-    <li class="entry">
-      {% include icon.html name=item.icon %}
-      <span class="connection-label">{{ item.label }}</span>
-      <a href="{{ item.url }}" target="_blank" rel="noopener noreferrer">{{ item.text }} ↗</a>
-    </li>
-    {%- endfor %}
-  </ul>
+  <div class="connection-card">
+    <h2>Verbindungen</h2>
+    <div class="connection-body">
+      <ul class="entry-list connection-list">
+        {%- for item in site.data.connections %}
+        <li class="entry">
+          {% include icon.html name=item.icon %}
+          <span class="connection-label">{{ item.label }}</span>
+          <a href="{{ item.url }}" target="_blank" rel="noopener noreferrer">{{ item.text }} ↗</a>
+        </li>
+        {%- endfor %}
+      </ul>
+      <img class="avatar" src="{{ '/assets/images/avatar.jpg' | relative_url }}" alt="Avatar">
+    </div>
+  </div>
 </section>
 
 <section class="section compact" id="aufgaben">

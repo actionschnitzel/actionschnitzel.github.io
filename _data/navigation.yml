@@ -8,6 +8,8 @@
   children:
     - title: Distributionen
       url: /linux.html
+    - title: Ratgeber
+      url: /linux-ratgeber.html
 - title: Gaming
   children:
 #    - title: Tools
