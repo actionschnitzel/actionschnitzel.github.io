@@ -80,6 +80,24 @@ hero_image_alt: "Tux mit pinker Mütze"
     color: var(--accent);
   }
 
+  .ratgeber-skills {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .ratgeber-skillbox {
+    border: 1px solid var(--accent);
+    padding: 0.75rem;
+  }
+
+  .ratgeber-tipp {
+    border-left: 4px solid var(--accent);
+    padding: 0.5rem 1rem;
+    margin: 1.5rem 0;
+  }
+
   .ratgeber-distros {
     padding-left: 1.25rem;
     margin-bottom: 1rem;
@@ -130,6 +148,16 @@ hero_image_alt: "Tux mit pinker Mütze"
     </div>
   </div>
 
+  <div class="ratgeber-question" data-question="24" data-type="single">
+    <span class="ratgeber-category">Erfahrung</span>
+    <h3>Kannst du unter Windows Programme installieren, und wenn ja, klickst du einfach weiter, bis es fertig ist?</h3>
+    <div class="ratgeber-options">
+      <button type="button" class="ratgeber-option" data-score="2" data-tags="erfahren" aria-pressed="false">Ja, ohne nachzudenken</button>
+      <button type="button" class="ratgeber-option" data-score="1" data-tags="lernen" aria-pressed="false">Ja, aber manchmal muss ich nachschauen</button>
+      <button type="button" class="ratgeber-option" data-score="0" data-tags="einsteiger" aria-pressed="false">Nein, oder ich weiß nicht, was ich dabei tue</button>
+    </div>
+  </div>
+
   <div class="ratgeber-question" data-question="2" data-type="single">
     <span class="ratgeber-category">Erfahrung</span>
     <h3>Hast du schon einmal einen PC selbst zusammengebaut?</h3>
@@ -171,6 +199,16 @@ hero_image_alt: "Tux mit pinker Mütze"
     </div>
   </div>
 
+  <div class="ratgeber-question" data-question="25" data-type="single">
+    <span class="ratgeber-category">Hardware</span>
+    <h3>Hast du mindestens 50 GB freien Speicher auf deiner Festplatte oder SSD?</h3>
+    <div class="ratgeber-options">
+      <button type="button" class="ratgeber-option" data-score="2" aria-pressed="false">Ja</button>
+      <button type="button" class="ratgeber-option" data-score="1" aria-pressed="false">Weiß ich nicht</button>
+      <button type="button" class="ratgeber-option" data-score="1" data-tags="speicher-knapp" aria-pressed="false">Nein</button>
+    </div>
+  </div>
+
   <div class="ratgeber-question" data-question="6" data-type="single">
     <span class="ratgeber-category">Nutzung</span>
     <h3>Wie wichtig ist dir, alles grafisch erledigen zu können?</h3>
@@ -198,7 +236,7 @@ hero_image_alt: "Tux mit pinker Mütze"
     <h3>Brauchst du Microsoft Office?</h3>
     <div class="ratgeber-options">
       <button type="button" class="ratgeber-option" data-score="0" data-blocker="Microsoft Office ist für dich unverzichtbar und hat unter Linux keinen gleichwertigen Ersatz." aria-pressed="false">Ja, die Desktop-Version ist unverzichtbar</button>
-      <button type="button" class="ratgeber-option" data-score="1" data-tags="office-alt topic:office" aria-pressed="false">Ja, aber die Web-Version oder LibreOffice reicht mir</button>
+      <button type="button" class="ratgeber-option" data-score="1" data-tags="office-alt" aria-pressed="false">Ja, aber die Web-Version oder LibreOffice reicht mir</button>
       <button type="button" class="ratgeber-option" data-score="2" aria-pressed="false">Nein</button>
     </div>
   </div>
@@ -304,7 +342,7 @@ hero_image_alt: "Tux mit pinker Mütze"
     <h3>Willst du Linux neben Windows nutzen oder Windows komplett ersetzen?</h3>
     <div class="ratgeber-options">
       <button type="button" class="ratgeber-option" data-score="1" data-tags="komplett" aria-pressed="false">Windows komplett ersetzen</button>
-      <button type="button" class="ratgeber-option" data-score="1" data-tags="dualboot topic:dualboot" aria-pressed="false">Linux neben Windows (Dual-Boot)</button>
+      <button type="button" class="ratgeber-option" data-score="1" data-tags="dualboot" aria-pressed="false">Linux neben Windows (Dual-Boot)</button>
       <button type="button" class="ratgeber-option" data-score="1" data-tags="ausprobieren topic:live" aria-pressed="false">Erst einmal ausprobieren</button>
     </div>
   </div>
@@ -314,8 +352,8 @@ hero_image_alt: "Tux mit pinker Mütze"
     <h3>Wie gut kannst du Englisch lesen?</h3>
     <div class="ratgeber-options">
       <button type="button" class="ratgeber-option" data-score="2" data-tags="englisch-gut" aria-pressed="false">Gut, ich verstehe englische Texte meist ohne Hilfe</button>
-      <button type="button" class="ratgeber-option" data-score="1" data-tags="topic:english" aria-pressed="false">Grundkenntnisse, mit Übersetzer komme ich klar</button>
-      <button type="button" class="ratgeber-option" data-score="0" data-tags="englisch-schwach topic:english" aria-pressed="false">Kaum</button>
+      <button type="button" class="ratgeber-option" data-score="1" aria-pressed="false">Grundkenntnisse, mit Übersetzer komme ich klar</button>
+      <button type="button" class="ratgeber-option" data-score="0" data-tags="englisch-schwach" aria-pressed="false">Kaum</button>
     </div>
   </div>
 
@@ -325,7 +363,7 @@ hero_image_alt: "Tux mit pinker Mütze"
     <div class="ratgeber-options">
       <button type="button" class="ratgeber-option" data-score="2" data-tags="englisch-gut" aria-pressed="false">Gerne, ich suche auch auf Englisch</button>
       <button type="button" class="ratgeber-option" data-score="1" aria-pressed="false">Nur wenn deutsche Quellen nicht reichen</button>
-      <button type="button" class="ratgeber-option" data-score="0" data-tags="englisch-schwach topic:english" aria-pressed="false">Ich möchte möglichst nur deutsche Hilfe</button>
+      <button type="button" class="ratgeber-option" data-score="0" data-tags="englisch-schwach" aria-pressed="false">Ich möchte möglichst nur deutsche Hilfe</button>
     </div>
   </div>
 
@@ -378,9 +416,14 @@ hero_image_alt: "Tux mit pinker Mütze"
     <p id="ratgeber-dualboot" hidden></p>
     <p id="ratgeber-english" hidden></p>
     <p id="ratgeber-nvidia" hidden></p>
-    <p><strong>Speicherplatz:</strong> Plane mindestens 30 bis 50 GB freien Speicher ein, besser mehr. Lässt sich dieser nicht durch Partitionierung freigeben, brauchst du eine weitere SSD oder HDD.</p>
+    <p><strong>Speicherplatz:</strong> <span id="ratgeber-storage"></span></p>
+    <h3>Dein Kenntnisstand</h3>
+    <div class="ratgeber-skills" id="ratgeber-skills"></div>
     <h3>Was auf dich zukommt</h3>
     <ul class="ratgeber-distros" id="ratgeber-profile"></ul>
+    <aside class="ratgeber-tipp">
+      <p><strong>Tipp:</strong> Schreibe eine Liste mit ALLEN Programmen, Diensten und Services, die du am PC nutzt. Recherchiere genau, wie diese unter Linux laufen. Du kannst dich auch in einem Forum anmelden und dich von erfahrenen Usern beraten lassen.</p>
+    </aside>
     <h3>Passende Distributionen</h3>
     <p>Die Distributionsauswahl ist stark subjektiv, und ein Algorithmus kann nicht alle Feinheiten abdecken. Die generelle Empfehlung für Umsteiger ist immer Linux Mint, Zorin OS oder Ubuntu.</p>
     <ol class="ratgeber-distros" id="ratgeber-distros"></ol>
@@ -402,6 +445,7 @@ hero_image_alt: "Tux mit pinker Mütze"
     const distroList = document.getElementById("ratgeber-distros");
     const englishNote = document.getElementById("ratgeber-english");
     const nvidiaNote = document.getElementById("ratgeber-nvidia");
+    const storageNote = document.getElementById("ratgeber-storage");
     const profileList = document.getElementById("ratgeber-profile");
 
     const topicLabels = {
@@ -413,11 +457,8 @@ hero_image_alt: "Tux mit pinker Mütze"
       terminal: "Befehle im Terminal eingeben und Fehlermeldungen lesen",
       hardware: "Hardware erkennen und Treiber prüfen",
       wartung: "Updates einspielen und Probleme nach Updates beheben",
-      office: "Office-Alternativen wie LibreOffice einrichten",
-      dualboot: "Dual-Boot einrichten und Windows parallel verwalten",
       live: "Linux über einen Live-USB-Stick testen",
       paket: "Software über Paketmanager installieren und aktualisieren",
-      english: "Englische Fehlermeldungen und Anleitungen verstehen",
       nvidia: "Nvidia-Treiber installieren oder Nouveau einrichten"
     };
 
@@ -517,7 +558,7 @@ hero_image_alt: "Tux mit pinker Mütze"
       }
     });
 
-    const readinessIds = new Set(["1", "2", "3", "4", "7", "14", "15", "16", "17", "19", "20", "21"]);
+    const readinessIds = new Set(["1", "2", "3", "4", "7", "14", "15", "16", "17", "19", "20", "21", "24"]);
 
     function ratioOf(list) {
       if (!list.length) return 0;
@@ -533,7 +574,7 @@ hero_image_alt: "Tux mit pinker Mütze"
       const has = tag => [...answers.values()].some(a => a.tags.includes(tag));
       const lines = [];
 
-      const experience = avg([1, 2, 3, 15, 17]);
+      const experience = avg([1, 2, 3, 15, 17, 24]);
       lines.push(experience >= 0.7
         ? "Die Installation und Einrichtung sollte dir wenig Mühe machen."
         : experience >= 0.35
@@ -557,17 +598,6 @@ hero_image_alt: "Tux mit pinker Mütze"
       if (english < 0.7) lines.push(english >= 0.35
         ? "Englische Fehlermeldungen brauchen gelegentlich einen Übersetzer."
         : "Viele Anleitungen und Fehlermeldungen gibt es nur auf Englisch; ohne Übersetzer wird es schwer.");
-
-      const gaps = [
-        [3, "Lerne die Grundbefehle im Terminal, denn bei Fehlern landest du oft dort."],
-        [4, "Finde heraus, welche Hardware in deinem PC steckt, bevor du installierst."],
-        [14, "Lerne, wie du einen Installationsstick erstellst."],
-        [15, "Lerne Partitionen kennen, bevor du Dual-Boot versuchst."],
-        [16, "Kläre Secure Boot und die UEFI/BIOS-Einstellungen vor der Installation."],
-        [17, "Lerne den Einbau und das Einbinden zusätzlicher Festplatten, falls dir Speicherplatz fehlt."],
-        [21, "Kläre die IT-Begriffe, die in Anleitungen ständig auftauchen."]
-      ].filter(([id]) => score(id) !== undefined && score(id) < 2).map(([, text]) => text);
-      lines.push(...(gaps.length ? gaps : ["Für die abgefragten Bereiche bringst du das nötige Wissen mit."]));
 
       return lines;
     }
@@ -619,9 +649,13 @@ hero_image_alt: "Tux mit pinker Mütze"
       dualboot.hidden = !dualbootText;
 
       englishNote.textContent = profile.has("englisch-schwach")
-        ? "Viele Lösungen, Anleitungen und Fehlermeldungen findest du nur auf Englisch. Deutschsprachige Anlaufstellen wie ubuntuusers.de helfen weiter, lohnt sich aber trotzdem, die wichtigsten englischen Begriffe nach und nach zu lernen."
+        ? "Viele Lösungen, Anleitungen und Fehlermeldungen findest du nur auf Englisch. Deutschsprachige Anlaufstellen wie ubuntuusers.de oder die Linux Guides Community helfen weiter, lohnt sich aber trotzdem, die wichtigsten englischen Begriffe nach und nach zu lernen."
         : "";
       englishNote.hidden = !profile.has("englisch-schwach");
+
+      storageNote.textContent = profile.has("speicher-knapp")
+        ? "Du hast nach eigener Angabe nicht genug freien Speicher. Gib zuerst Speicher frei, etwa durch Löschen oder Verkleinern einer Partition, oder plane eine weitere SSD oder HDD ein."
+        : "Plane mindestens 30 bis 50 GB freien Speicher ein, besser mehr. Lässt sich dieser nicht durch Partitionierung freigeben, brauchst du eine weitere SSD oder HDD.";
 
       nvidiaNote.textContent = profile.has("nouveau")
         ? "Für deine ältere Nvidia-Karte wäre der Open-Source-Treiber Nouveau die Standardlösung. Er läuft für den Desktop meist stabil, bietet aber oft weniger Leistung und ist für Spiele eingeschränkt. Prüfe auf der Nvidia-Seite, ob für deine Karte noch ein proprietärer Treiber verfügbar ist, denn die Unterstützung ändert sich mit neuen Treiberversionen."
@@ -638,6 +672,33 @@ hero_image_alt: "Tux mit pinker Mütze"
         const li = document.createElement("li");
         li.textContent = text;
         return li;
+      }));
+
+      const skillBoxes = document.getElementById("ratgeber-skills");
+      const skillAreas = [
+        ["Windows-Installation", [1, 24]],
+        ["Terminal", [3]],
+        ["Hardware und Treiber", [4]],
+        ["Partitionen und Festplatten", [15, 17]],
+        ["Boot und UEFI", [16]],
+        ["Englisch", [19, 20]],
+        ["IT-Grundbegriffe", [21]]
+      ];
+      skillBoxes.replaceChildren(...skillAreas.flatMap(([label, ids]) => {
+        const values = ids.map(id => answers.get(String(id))?.score).filter(v => v !== undefined);
+        if (!values.length) return [];
+        const ratio = values.reduce((a, b) => a + b, 0) / (values.length * 2);
+        const level = ratio >= 0.7 ? 3 : ratio >= 0.35 ? 2 : 1;
+        const box = document.createElement("div");
+        box.className = "ratgeber-skillbox";
+        const name = document.createElement("strong");
+        name.textContent = label;
+        const bar = document.createElement("div");
+        bar.textContent = "■".repeat(level) + "□".repeat(3 - level);
+        const text = document.createElement("div");
+        text.textContent = ["Gering", "Mittel", "Hoch"][level - 1];
+        box.append(name, bar, text);
+        return [box];
       }));
 
       const learnHigh = readinessRatio >= 0.6;
