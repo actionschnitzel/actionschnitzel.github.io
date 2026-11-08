@@ -117,7 +117,7 @@ hero_image_alt: "Tux mit pinker Mütze"
 </section>
 
 <section class="section">
-  <p class="ratgeber-progress" id="ratgeber-progress">Frage 1 von 18</p>
+  <p class="ratgeber-progress" id="ratgeber-progress">Frage 1 von 21</p>
 
   <div class="ratgeber-question" data-question="1" data-type="single">
     <span class="ratgeber-category">Erfahrung</span>
@@ -141,11 +141,11 @@ hero_image_alt: "Tux mit pinker Mütze"
 
   <div class="ratgeber-question" data-question="3" data-type="single">
     <span class="ratgeber-category">Erfahrung</span>
-    <h3>Hast du schon einmal in der PowerShell gearbeitet?</h3>
+    <h3>Hast du schon einmal in der PowerShell, der Eingabeaufforderung (CMD) oder mit .cmd- / .bat-Dateien gearbeitet?</h3>
     <div class="ratgeber-options">
       <button type="button" class="ratgeber-option" data-score="2" data-tags="erfahren terminal" aria-pressed="false">Ja, regelmäßig</button>
       <button type="button" class="ratgeber-option" data-score="1" data-tags="terminal topic:terminal" aria-pressed="false">Ein paar Mal</button>
-      <button type="button" class="ratgeber-option" data-score="0" data-tags="topic:terminal" aria-pressed="false">Nein, ich kenne sie nicht</button>
+      <button type="button" class="ratgeber-option" data-score="0" data-tags="topic:terminal" aria-pressed="false">Nein, das kenne ich nicht</button>
     </div>
   </div>
 
@@ -304,6 +304,65 @@ hero_image_alt: "Tux mit pinker Mütze"
       <button type="button" class="ratgeber-option" data-score="1" data-tags="ausprobieren topic:live" aria-pressed="false">Erst einmal ausprobieren</button>
     </div>
   </div>
+
+  <div class="ratgeber-question" data-question="19" data-type="single">
+    <span class="ratgeber-category">Sprache</span>
+    <h3>Wie gut kannst du Englisch lesen?</h3>
+    <div class="ratgeber-options">
+      <button type="button" class="ratgeber-option" data-score="2" data-tags="englisch-gut" aria-pressed="false">Gut, ich verstehe englische Texte meist ohne Hilfe</button>
+      <button type="button" class="ratgeber-option" data-score="1" data-tags="topic:english" aria-pressed="false">Grundkenntnisse, mit Übersetzer komme ich klar</button>
+      <button type="button" class="ratgeber-option" data-score="0" data-tags="englisch-schwach topic:english" aria-pressed="false">Kaum</button>
+    </div>
+  </div>
+
+  <div class="ratgeber-question" data-question="20" data-type="single">
+    <span class="ratgeber-category">Sprache</span>
+    <h3>Wie bereit bist du, englischsprachige Anleitungen und Foren zu nutzen? Die deutschsprachige Community ist groß, aber vieles gibt es nur auf Englisch.</h3>
+    <div class="ratgeber-options">
+      <button type="button" class="ratgeber-option" data-score="2" data-tags="englisch-gut" aria-pressed="false">Gerne, ich suche auch auf Englisch</button>
+      <button type="button" class="ratgeber-option" data-score="1" aria-pressed="false">Nur wenn deutsche Quellen nicht reichen</button>
+      <button type="button" class="ratgeber-option" data-score="0" data-tags="englisch-schwach topic:english" aria-pressed="false">Ich möchte möglichst nur deutsche Hilfe</button>
+    </div>
+  </div>
+
+  <div class="ratgeber-question" data-question="21" data-type="multi" data-scoring="known">
+    <span class="ratgeber-category">Fachwissen</span>
+    <h3>Welche dieser IT-Begriffe kennst du? Markiere alle, die du einordnen kannst. (Mehrfachauswahl)</h3>
+    <div class="ratgeber-options">
+      <button type="button" class="ratgeber-option" data-tags="topic:terminal" aria-pressed="false">Terminal / Shell</button>
+      <button type="button" class="ratgeber-option" data-tags="topic:paket" aria-pressed="false">Paketmanager (z. B. apt, dnf)</button>
+      <button type="button" class="ratgeber-option" data-tags="topic:hardware" aria-pressed="false">Treiber</button>
+      <button type="button" class="ratgeber-option" data-tags="topic:secureboot" aria-pressed="false">BIOS / UEFI</button>
+      <button type="button" class="ratgeber-option" data-tags="topic:partition" aria-pressed="false">Partition</button>
+      <button type="button" class="ratgeber-option" data-tags="topic:partition" aria-pressed="false">Dateisystem (z. B. ext4, NTFS)</button>
+      <button type="button" class="ratgeber-option" data-tags="topic:dualboot" aria-pressed="false">Bootloader (z. B. GRUB)</button>
+      <button type="button" class="ratgeber-option" data-tags="topic:terminal" aria-pressed="false">Root-Rechte / sudo</button>
+      <button type="button" class="ratgeber-option" data-tags="topic:hdd" aria-pressed="false">Einhängen (mount)</button>
+    </div>
+    <button type="button" class="ratgeber-next">Weiter</button>
+  </div>
+
+  <div class="ratgeber-question" data-question="22" data-type="single">
+    <span class="ratgeber-category">Hardware</span>
+    <h3>Nutzt du eine Nvidia-Grafikkarte?</h3>
+    <div class="ratgeber-options">
+      <button type="button" class="ratgeber-option" data-score="1" data-tags="nvidia" aria-pressed="false">Ja</button>
+      <button type="button" class="ratgeber-option" data-score="2" aria-pressed="false">Nein, AMD, Intel oder keine dedizierte Karte</button>
+      <button type="button" class="ratgeber-option" data-score="1" data-tags="topic:nvidia" aria-pressed="false">Weiß ich nicht</button>
+    </div>
+  </div>
+
+  <div class="ratgeber-question" data-question="23" data-type="single" data-show-if="nvidia">
+    <span class="ratgeber-category">Hardware</span>
+    <h3>Welche Nvidia-Grafikkarte hast du?</h3>
+    <div class="ratgeber-options">
+      <button type="button" class="ratgeber-option" data-score="2" data-tags="nvidia-modern" aria-pressed="false">RTX 20er Serie oder neuer</button>
+      <button type="button" class="ratgeber-option" data-score="2" data-tags="nvidia-modern" aria-pressed="false">GTX 16er Serie</button>
+      <button type="button" class="ratgeber-option" data-score="1" data-tags="nouveau topic:nvidia" aria-pressed="false">GTX 10er Serie</button>
+      <button type="button" class="ratgeber-option" data-score="0" data-tags="nouveau topic:nvidia" aria-pressed="false">GTX 900er Serie oder älter</button>
+      <button type="button" class="ratgeber-option" data-score="1" data-tags="topic:nvidia" aria-pressed="false">Weiß ich nicht</button>
+    </div>
+  </div>
 </section>
 
 <section class="section">
@@ -312,6 +371,8 @@ hero_image_alt: "Tux mit pinker Mütze"
     <p id="ratgeber-text"></p>
     <ul class="ratgeber-warning" id="ratgeber-warnings" hidden></ul>
     <p id="ratgeber-dualboot" hidden></p>
+    <p id="ratgeber-english" hidden></p>
+    <p id="ratgeber-nvidia" hidden></p>
     <p><strong>Speicherplatz:</strong> Linux braucht mindestens 100 GiB freien Plattenspeicher. Lässt sich dieser nicht durch Partitionierung freigeben, brauchst du eine weitere SSD oder HDD.</p>
     <h3 id="ratgeber-topics-heading">Das solltest du lernen</h3>
     <ul class="ratgeber-distros" id="ratgeber-topics"></ul>
@@ -335,6 +396,8 @@ hero_image_alt: "Tux mit pinker Mütze"
     const distroList = document.getElementById("ratgeber-distros");
     const topicList = document.getElementById("ratgeber-topics");
     const topicHeading = document.getElementById("ratgeber-topics-heading");
+    const englishNote = document.getElementById("ratgeber-english");
+    const nvidiaNote = document.getElementById("ratgeber-nvidia");
 
     const topicLabels = {
       install: "Ein Betriebssystem installieren und einrichten",
@@ -347,7 +410,10 @@ hero_image_alt: "Tux mit pinker Mütze"
       wartung: "Updates einspielen und Probleme nach Updates beheben",
       office: "Office-Alternativen wie LibreOffice einrichten",
       dualboot: "Dual-Boot einrichten und Windows parallel verwalten",
-      live: "Linux über einen Live-USB-Stick testen"
+      live: "Linux über einen Live-USB-Stick testen",
+      paket: "Software über Paketmanager installieren und aktualisieren",
+      english: "Englische Fehlermeldungen und Anleitungen verstehen",
+      nvidia: "Nvidia-Treiber installieren oder Nouveau einrichten"
     };
 
     // Tags describe what the answer implies; distros match against them.
@@ -368,10 +434,23 @@ hero_image_alt: "Tux mit pinker Mütze"
 
     let current = 0;
 
+    function isVisible(question) {
+      const need = question.dataset.showIf;
+      return !need || [...answers.values()].some(a => a.tags.includes(need));
+    }
+
+    function nextVisible(from) {
+      for (let i = from + 1; i < total; i++) {
+        if (isVisible(questions[i])) return i;
+      }
+      return -1;
+    }
+
     function showQuestion(index) {
       current = index;
       questions.forEach((q, i) => q.classList.toggle("active", i === index));
-      progress.textContent = `Frage ${index + 1} von ${total}`;
+      const visible = questions.filter(isVisible);
+      progress.textContent = `Frage ${visible.indexOf(questions[index]) + 1} von ${visible.length}`;
     }
 
     function readOption(btn) {
@@ -384,11 +463,12 @@ hero_image_alt: "Tux mit pinker Mütze"
 
     function saveAnswer(question, score, tags, blockers) {
       answers.set(question.dataset.question, { score, tags, blockers });
-      if (current < total - 1) {
-        showQuestion(current + 1);
+      const nextIndex = nextVisible(current);
+      if (nextIndex !== -1) {
+        showQuestion(nextIndex);
       } else {
         questions.forEach(q => q.classList.remove("active"));
-        progress.textContent = `${total} von ${total} beantwortet`;
+        progress.textContent = `${answers.size} von ${answers.size} beantwortet`;
         showResult();
       }
     }
@@ -413,6 +493,16 @@ hero_image_alt: "Tux mit pinker Mütze"
       if (next) {
         next.addEventListener("click", () => {
           if (question !== questions[current]) return;
+          if (question.dataset.scoring === "known") {
+            const options = [...question.querySelectorAll(".ratgeber-option")];
+            const known = options.filter(b => b.getAttribute("aria-pressed") === "true");
+            const ratio = known.length / options.length;
+            const unknownTags = options
+              .filter(b => b.getAttribute("aria-pressed") !== "true")
+              .flatMap(b => readOption(b).tags);
+            saveAnswer(question, ratio >= 0.6 ? 2 : ratio >= 0.3 ? 1 : 0, unknownTags, []);
+            return;
+          }
           const picked = [...question.querySelectorAll(".ratgeber-option[aria-pressed='true']")].map(readOption);
           const blockers = picked.flatMap(p => p.blockers);
           const tags = picked.flatMap(p => p.tags);
@@ -424,7 +514,7 @@ hero_image_alt: "Tux mit pinker Mütze"
     function showResult() {
       const values = [...answers.values()];
       const score = values.reduce((sum, a) => sum + a.score, 0);
-      const ratio = score / (total * 2);
+      const ratio = score / (values.length * 2);
       const blockers = [...new Set(values.flatMap(a => a.blockers))];
       const profile = new Set(values.flatMap(a => a.tags));
 
@@ -458,6 +548,16 @@ hero_image_alt: "Tux mit pinker Mütze"
       }
       dualboot.textContent = dualbootText;
       dualboot.hidden = !dualbootText;
+
+      englishNote.textContent = profile.has("englisch-schwach")
+        ? "Viele Lösungen, Anleitungen und Fehlermeldungen findest du nur auf Englisch. Deutschsprachige Anlaufstellen wie ubuntuusers.de helfen weiter, lohnt sich aber trotzdem, die wichtigsten englischen Begriffe nach und nach zu lernen."
+        : "";
+      englishNote.hidden = !profile.has("englisch-schwach");
+
+      nvidiaNote.textContent = profile.has("nouveau")
+        ? "Für deine ältere Nvidia-Karte wäre der Open-Source-Treiber Nouveau die Standardlösung. Er läuft für den Desktop meist stabil, bietet aber oft weniger Leistung und ist für Spiele eingeschränkt. Prüfe auf der Nvidia-Seite, ob für deine Karte noch ein proprietärer Treiber verfügbar ist, denn die Unterstützung ändert sich mit neuen Treiberversionen."
+        : "";
+      nvidiaNote.hidden = !profile.has("nouveau");
 
       const topics = [...new Set([...profile].filter(t => t.startsWith("topic:")).map(t => topicLabels[t.slice(6)]))];
       topicHeading.hidden = topicList.hidden = topics.length === 0;
