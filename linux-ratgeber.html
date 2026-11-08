@@ -117,7 +117,7 @@ hero_image_alt: "Tux mit pinker Mütze"
 </section>
 
 <section class="section">
-  <p class="ratgeber-progress" id="ratgeber-progress">Frage 1 von 11</p>
+  <p class="ratgeber-progress" id="ratgeber-progress">Frage 1 von 18</p>
 
   <div class="ratgeber-question" data-question="1" data-type="single">
     <span class="ratgeber-category">Erfahrung</span>
@@ -294,6 +294,16 @@ hero_image_alt: "Tux mit pinker Mütze"
       <button type="button" class="ratgeber-option" data-score="0" data-tags="einfach topic:hdd" aria-pressed="false">Nein</button>
     </div>
   </div>
+
+  <div class="ratgeber-question" data-question="18" data-type="single">
+    <span class="ratgeber-category">System</span>
+    <h3>Willst du Linux neben Windows nutzen oder Windows komplett ersetzen?</h3>
+    <div class="ratgeber-options">
+      <button type="button" class="ratgeber-option" data-score="1" data-tags="komplett" aria-pressed="false">Windows komplett ersetzen</button>
+      <button type="button" class="ratgeber-option" data-score="1" data-tags="dualboot topic:dualboot" aria-pressed="false">Linux neben Windows (Dual-Boot)</button>
+      <button type="button" class="ratgeber-option" data-score="1" data-tags="ausprobieren topic:live" aria-pressed="false">Erst einmal ausprobieren</button>
+    </div>
+  </div>
 </section>
 
 <section class="section">
@@ -301,7 +311,8 @@ hero_image_alt: "Tux mit pinker Mütze"
     <h2 id="ratgeber-title"></h2>
     <p id="ratgeber-text"></p>
     <ul class="ratgeber-warning" id="ratgeber-warnings" hidden></ul>
-    <p id="ratgeber-dualboot" hidden>Du musst auf Linux nicht verzichten: Mit einer Dualboot-Installation kannst du Linux und Windows parallel nutzen und die Software oder das Spiel unter Windows starten.</p>
+    <p id="ratgeber-dualboot" hidden></p>
+    <p><strong>Speicherplatz:</strong> Linux braucht mindestens 100 GiB freien Plattenspeicher. Lässt sich dieser nicht durch Partitionierung freigeben, brauchst du eine weitere SSD oder HDD.</p>
     <h3 id="ratgeber-topics-heading">Das solltest du lernen</h3>
     <ul class="ratgeber-distros" id="ratgeber-topics"></ul>
     <h3>Passende Distributionen</h3>
@@ -334,7 +345,9 @@ hero_image_alt: "Tux mit pinker Mütze"
       terminal: "Befehle im Terminal eingeben und Fehlermeldungen lesen",
       hardware: "Hardware erkennen und Treiber prüfen",
       wartung: "Updates einspielen und Probleme nach Updates beheben",
-      office: "Office-Alternativen wie LibreOffice einrichten"
+      office: "Office-Alternativen wie LibreOffice einrichten",
+      dualboot: "Dual-Boot einrichten und Windows parallel verwalten",
+      live: "Linux über einen Live-USB-Stick testen"
     };
 
     // Tags describe what the answer implies; distros match against them.
@@ -435,7 +448,16 @@ hero_image_alt: "Tux mit pinker Mütze"
         return li;
       }));
       warnings.hidden = blockers.length === 0;
-      dualboot.hidden = blockers.length === 0;
+      let dualbootText = "";
+      if (blockers.length && profile.has("komplett")) {
+        dualbootText = "Da du Windows komplett ersetzen willst, musst du für diese Software oder dieses Spiel auf Linux verzichten. Alternativ kannst du Windows parallel behalten (Dual-Boot).";
+      } else if (blockers.length) {
+        dualbootText = "Du musst auf Linux nicht verzichten: Mit einer Dualboot-Installation kannst du Linux und Windows parallel nutzen und die Software oder das Spiel unter Windows starten.";
+      } else if (profile.has("dualboot")) {
+        dualbootText = "Du willst Linux neben Windows nutzen. Plane dafür eine eigene Partition ein und sichere deine Daten vorher.";
+      }
+      dualboot.textContent = dualbootText;
+      dualboot.hidden = !dualbootText;
 
       const topics = [...new Set([...profile].filter(t => t.startsWith("topic:")).map(t => topicLabels[t.slice(6)]))];
       topicHeading.hidden = topicList.hidden = topics.length === 0;
