@@ -1,0 +1,124 @@
+---
+layout: page
+title: "Linux-Ratgeber: Manifest"
+---
+
+<style>
+  .ratgeber-manifest h2 {
+    margin-top: 2.25rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 2px solid var(--accent);
+  }
+
+  .ratgeber-manifest li {
+    margin-bottom: 0.4rem;
+  }
+
+  .ratgeber-manifest ol,
+  .ratgeber-manifest ul {
+    padding-left: 1.25rem;
+  }
+
+  .ratgeber-formula {
+    background: var(--card-bg);
+    border-left: 4px solid var(--accent);
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    font-family: monospace;
+  }
+
+  .ratgeber-scale {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+  }
+
+  .ratgeber-scale th,
+  .ratgeber-scale td {
+    text-align: left;
+    padding: 0.5rem 0.75rem;
+    border-bottom: 1px solid rgba(var(--accent-rgb), 0.3);
+  }
+
+  .ratgeber-scale th {
+    color: var(--accent);
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 0.05em;
+  }
+</style>
+
+<section class="section ratgeber-manifest">
+  <h2>Zweck</h2>
+  <p>Der Linux-Ratgeber prüft, ob ein Umstieg von Windows auf Linux zu deinem PC, deinen Programmen und deinen Fähigkeiten passt. Am Ende steht eine Einschätzung und eine Auswahl an Distributionen, die für dich infrage kommen.</p>
+  <p>Der Ratgeber arbeitet komplett im Browser. Es werden keine Daten gesammelt oder weitergegeben.</p>
+
+  <h2>Was der Ratgeber über deinen Umstieg verrät</h2>
+  <p>Aus deinen Antworten ergibt sich ein Bild in vier Bereichen:</p>
+  <ul>
+    <li><strong>System:</strong> Wie gut deine Hardware unter Linux läuft (Grafikkarte, WLAN, Drucker).</li>
+    <li><strong>Kenntnisstand:</strong> Wie vertraut du mit Installation, Terminal und Fachbegriffen bist.</li>
+    <li><strong>Wille:</strong> Wie bereit du bist, Probleme selbst zu lösen und dich einzuarbeiten.</li>
+    <li><strong>Software:</strong> Wie viele deiner Programme unter Linux laufen oder ersetzt werden können.</li>
+  </ul>
+  <p>Zusätzlich fallen auf:</p>
+  <ul>
+    <li><strong>Blocker:</strong> Programme oder Spiele, die unter Linux nicht laufen (z. B. Microsoft Office Desktop, Adobe Photoshop, Spiele mit Kernel-Anti-Cheat). Ein Blocker bedeutet nicht automatisch „kein Linux“, sondern zeigt, worauf du verzichten müsstest oder wo Dual-Boot hilft.</li>
+    <li><strong>Speicherplatz:</strong> Linux braucht mindestens 100 GiB freien Speicher.</li>
+    <li><strong>Nvidia-Grafikkarte:</strong> Hinweise, ob der Treiber selbst nachinstalliert werden muss.</li>
+  </ul>
+
+  <h2>Bewertung der Antworten</h2>
+  <p>Jede Antwort erhält einen Wert von 0 bis 2:</p>
+  <ul>
+    <li><strong>2:</strong> Passt gut zu Linux.</li>
+    <li><strong>1:</strong> Passt mit Einschränkungen.</li>
+    <li><strong>0:</strong> Passt nicht oder ist ein Problem.</li>
+  </ul>
+  <p>Bei Mehrfachauswahl (z. B. bei Software) gilt:</p>
+  <ul>
+    <li>Ein gewählter Blocker setzt die Frage auf 0.</li>
+    <li>Ohne Blocker erhält die Frage 2.</li>
+    <li>Bei Fragen mit „Kennst du diese Programme?“ zählt der Anteil der bekannten Programme: mindestens 60 % ergeben 2, mindestens 30 % ergeben 1, sonst 0.</li>
+  </ul>
+
+  <h2>Berechnung der Scores</h2>
+  <p>Für jeden Bereich gilt:</p>
+  <p class="ratgeber-formula">Bereichswert = Summe der Antwortwerte / (2 × Anzahl der Fragen)</p>
+  <p>Der Wert liegt zwischen 0 und 1. Daraus ergibt sich die Stufe der Anzeige:</p>
+  <table class="ratgeber-scale">
+    <thead>
+      <tr><th>Wert</th><th>Stufe</th><th>Anzeige</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>ab 0,70</td><td>Hoch</td><td>■■■</td></tr>
+      <tr><td>ab 0,35</td><td>Mittel</td><td>■■□</td></tr>
+      <tr><td>darunter</td><td>Gering</td><td>■□□</td></tr>
+    </tbody>
+  </table>
+  <p>Die vier Bereiche werden jeweils mit einer Aussage zur eigenen Ausgangslage angezeigt. Die Aussage passt zur Stufe. Bei „Gering“ im Bereich Wille oder Kenntnisstand wird ausdrücklich darauf hingewiesen, dass die Einarbeitung mehr Zeit braucht, als man zunächst annimmt.</p>
+
+  <h2>Ergebnis</h2>
+  <p>Aus dem Gesamtwert und dem Kenntnisstand wird das Ergebnis gebildet. Die Prüfung läuft in dieser Reihenfolge:</p>
+  <ol>
+    <li><strong>Blocker vorhanden:</strong> „Linux ist für dich nur eingeschränkt geeignet“. Die Blocker werden einzeln aufgelistet.</li>
+    <li><strong>Gesamtwert unter 0,45:</strong> „Linux ist für dich eher nicht die beste Wahl“ (Software und Hardware passen nur eingeschränkt).</li>
+    <li><strong>Kenntnisstand unter 0,45:</strong> „Linux passt zu deinen Anforderungen, du musst dich aber einarbeiten“.</li>
+    <li><strong>Gesamtwert ab 0,75:</strong> „Linux passt sehr gut zu dir“.</li>
+    <li><strong>Gesamtwert ab 0,45:</strong> „Linux könnte für dich passen“. Empfohlen wird ein Test über einen Live-USB-Stick oder Dual-Boot.</li>
+    <li><strong>Sonst:</strong> „Linux ist für dich eher nicht die beste Wahl“. Windows ist vermutlich bequemer.</li>
+  </ol>
+  <p>Zu jedem Ergebnis gibt es zusätzlich:</p>
+  <ul>
+    <li><strong>Was auf dich zukommt:</strong> Hinweise, die aus deinen Antworten abgeleitet werden (z. B. Installation, Englisch, Spiele, Drucker).</li>
+    <li><strong>Distributionen:</strong> Eine Liste für Einsteiger und eine für Fortgeschrittene. Die Einsteigerliste beginnt mit Linux Mint, Ubuntu LTS, Kubuntu und Zorin OS.</li>
+  </ul>
+
+  <h2>Einschränkungen</h2>
+  <ul>
+    <li>Der Ratgeber ist eine Orientierung und kein Gutachten. Die Hardware-Aussagen sind allgemein gehalten.</li>
+    <li>Die Einstufung ist eine Testphase und noch nicht vollständig geprüft.</li>
+  </ul>
+
+  <p><a href="linux-ratgeber.html">Zurück zum Linux-Ratgeber</a></p>
+</section>

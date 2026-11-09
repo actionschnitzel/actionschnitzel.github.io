@@ -8,7 +8,7 @@
   children:
     - title: Distributionen
       url: /linux.html
-    - title: Ratgeber
+    - title: Ist Linux etwas für mich?
       url: /linux-ratgeber.html
 - title: Gaming
   children:

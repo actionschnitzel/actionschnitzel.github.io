@@ -263,6 +263,11 @@ body {
   color: var(--accent-light);
 }
 
+.page-subtitle {
+  font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+  margin: 0;
+}
+
 .section {
   max-width: 900px;
   margin: 0 auto;

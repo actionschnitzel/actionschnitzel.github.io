@@ -9,6 +9,9 @@ layout: default
   <span class="page-icon-emoji">{{ page.hero_emoji }}</span>
   {%- endif %}
   <h1>{{ page.hero_title | default: page.title }}</h1>
+  {%- if page.hero_subtitle %}
+  <p class="page-subtitle">{{ page.hero_subtitle }}</p>
+  {%- endif %}
 </header>
 
 <main>

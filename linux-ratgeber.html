@@ -1,6 +1,7 @@
 ---
 layout: page
 title: "Linux-Ratgeber"
+hero_subtitle: "Ist Linux etwas für mich?"
 hero_image: /assets/images/heroes/cute_cap_tux_pink.png
 hero_image_alt: "Tux mit pinker Mütze"
 ---
@@ -8,6 +9,34 @@ hero_image_alt: "Tux mit pinker Mütze"
   .ratgeber-question {
     display: none;
     margin-bottom: 1.75rem;
+  }
+
+  .ratgeber-procon {
+    list-style: none;
+    padding-left: 0;
+    margin: 0.2rem 0;
+  }
+
+  .ratgeber-procon li {
+    margin: 0;
+  }
+
+  .ratgeber-pro {
+    color: #1a7f37;
+  }
+
+  .ratgeber-con {
+    color: #cf222e;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .ratgeber-pro {
+      color: #3fb950;
+    }
+
+    .ratgeber-con {
+      color: #ff7b72;
+    }
   }
 
   .ratgeber-question.active {
@@ -81,8 +110,8 @@ hero_image_alt: "Tux mit pinker Mütze"
   }
 
   .ratgeber-skills {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
+    display: flex;
+    flex-direction: column;
     gap: 0.75rem;
     margin-bottom: 1.5rem;
   }
@@ -128,12 +157,7 @@ hero_image_alt: "Tux mit pinker Mütze"
   }
 
   .ratgeber-distro-list li {
-    padding: 0.75rem 0;
-    border-bottom: 1px solid rgba(var(--accent-rgb), 0.3);
-  }
-
-  .ratgeber-distro-list li:last-child {
-    border-bottom: none;
+    padding: 0.4rem 0;
   }
 
   .ratgeber-reset,
@@ -162,6 +186,7 @@ hero_image_alt: "Tux mit pinker Mütze"
   <p class="ratgeber-testhinweis">Achtung: Der Ratgeber befindet sich in der Testphase und ist noch nicht aussagekräftig.</p>
   <p>Seit dem Ende von Windows 10 rückt Linux stärker in den Fokus, und viele stellen es als einfachen Windows-Ersatz dar. Dieser Ratgeber prüft, ob Linux wirklich zu dir passt und welche Distribution für dich infrage kommt. Dafür beantwortest du einen kurzen Fragebogen zu deinen bisherigen Erfahrungen mit Windows, deiner Software und deiner Bereitschaft, dich einzuarbeiten. Am Ende erhältst du eine realistische Einschätzung, was der Umstieg für dich bedeutet, und eine Auswahl passender Distributionen.</p>
   <p>Der Wille zu lernen lässt sich schlecht berechnen. Sollte dir von Linux abgeraten werden, beherzige einfach die Ratschläge im Ergebnis. Es werden natürlich keine Daten gesammelt oder weitergegeben.</p>
+  <p><a href="linux-ratgeber-manifest.html" target="_blank" rel="noopener">Mehr erfahren</a></p>
 </section>
 
 <section class="section">
@@ -511,7 +536,7 @@ hero_image_alt: "Tux mit pinker Mütze"
     <p id="ratgeber-nvidia" hidden></p>
     <p><strong>Speicherplatz:</strong> <span id="ratgeber-storage"></span></p>
     <h3>Deine Ausgangslage</h3>
-    <p>Jeder Bereich zeigt, wo du gerade stehst, und gibt dir einen konkreten Tipp dazu: ■□□ Gering, ■■□ Mittel, ■■■ Hoch. Arbeite bei „Gering“ zuerst die Tipps durch, bei „Mittel“ schlägst du gezielt nach.</p>
+    <p>Jeder Bereich zeigt, wo du gerade stehst, und was das für den Wechsel zu Linux bedeutet: ■□□ Gering, ■■□ Mittel, ■■■ Hoch.</p>
     <div class="ratgeber-skills" id="ratgeber-skills"></div>
     <h3>Was auf dich zukommt</h3>
     <ul class="ratgeber-distros" id="ratgeber-profile"></ul>
@@ -564,23 +589,23 @@ hero_image_alt: "Tux mit pinker Mütze"
     };
 
     const distros = [
-      { id: "mint", name: "Linux Mint", text: "Mint fühlt sich vertraut an: Menüs, Taskleiste und Dateiverwaltung arbeiten wie unter Windows, und Multimedia-Codecs sind schon dabei. Updates kommen über den Update-Manager und fallen meist kaum auf. Stolperstein: Bei neuer Hardware wie aktuellen Grafikkarten muss man ab und zu in der Treiberverwaltung nachhelfen." },
-      { id: "zorin", name: "Zorin OS", text: "Zorin wirkt wie ein Windows mit Linux darunter: Layouts lassen sich mit einem Klick umschalten, und Office-Aufgaben erledigt man über Web-Apps oder Wine. Stolperstein: Einige Layouts und Extras gibt es nur in der kostenpflichtigen Pro-Version, die kostenlose Core-Version reicht für den Alltag meist aus." },
-      { id: "ubu", name: "Ubuntu LTS", text: "Wer sich an GNOME gewöhnt hat, kommt mit Ubuntu gut zurecht, und zu fast jedem Problem findet man eine Anleitung. Stolperstein: Firefox und andere Programme kommen als Snap-Paket, das beim ersten Start spürbar länger braucht. Ubuntu drängt außerdem gern auf eigene Dienste wie Ubuntu Pro oder den Snap-Store." },
-      { id: "kubu", name: "Kubuntu", text: "KDE Plasma erinnert stark an Windows: Startmenü, Taskleiste und Systemeinstellungen sind leicht zu finden, und vieles lässt sich per Klick anpassen. Stolperstein: Auch hier kommen einige Programme als Snap-Paket, und die vielen Einstellungen können anfangs überfordern." },
-      { id: "pop", name: "Pop!_OS", text: "Mit einer Nvidia-Grafikkarte läuft die Installation ohne Umwege, und Spiele starten meist direkt. Fenster lassen sich per Tastatur sauber anordnen. Stolperstein: Der neue Desktop COSMIC ist noch sehr jung und lässt sich in Umfang und Stabilität nicht mit dem bisherigen Pop!_OS-Desktop vergleichen, und der Wechsel auf neue Versionen verläuft nicht immer reibungslos." },
-      { id: "mx", name: "MX Linux", text: "MX arbeitet ruhig und zuverlässig, auch auf älteren Rechnern mit wenig Arbeitsspeicher. Viele Einstellungen erledigt man zentral über das eigene MX-Tools-Menü. Stolperstein: Manches muss über Menü oder Terminal eingerichtet werden, und es gibt weniger Erklärungen als bei Mint." },
-      { id: "suse", name: "openSUSE", text: "YaST bündelt Einstellungen, Treiber und Software an einer Stelle, und Snapper legt Snapshots an, mit denen sich fehlerhafte Updates zurückrollen lassen. Stolperstein: Bei Tumbleweed kommen Updates fast täglich, und ab und zu bricht etwas, das man dann selbst reparieren muss." },
-      { id: "xubu", name: "Xubuntu", text: "Xubuntu läuft flott und schlicht, die XFCE-Oberfläche bleibt auch auf älteren Geräten reaktionsschnell. Stolperstein: Auch hier kommen einige Programme als Snap-Paket, und die Oberfläche bietet weniger moderne Komfortfunktionen." },
-      { id: "fedw", name: "Fedora Workstation", text: "Man bekommt aktuelle Software und eine saubere GNOME-Oberfläche. Stolperstein: Fedora wird nach etwa 13 Monaten nicht mehr gepflegt, daher steht alle halbe Jahre ein Versionswechsel an. Nvidia-Treiber und Multimedia-Codecs muss man über RPM Fusion selbst hinzufügen." },
-      { id: "fedk", name: "Fedora KDE Plasma", text: "KDE Plasma kombiniert mit frischer Software ergibt ein vertrautes Bild mit aktuellen Programmen. Stolperstein: Wie bei Fedora Workstation endet die Unterstützung nach etwa 13 Monaten, und Nvidia-Treiber sowie Codecs sind nicht vorinstalliert." },
-      { id: "deb", name: "Debian", text: "Das System läuft sehr ruhig, weil sich wenig ändert und Updates selten etwas brechen. Stolperstein: Programme sind oft älter als bei anderen Distributionen, und Nvidia-Treiber oder WLAN-Chips verlangen bei der Installation die Option für nicht-freie Software." },
-      { id: "arch", name: "Arch Linux", text: "Man bekommt das System, das man sich selbst zusammengestellt hat, mit aktueller Software. Stolperstein: Die Installation läuft komplett über das Terminal, und Updates erfordern gelegentlich manuelle Eingriffe, die auf der Arch-Startseite angekündigt werden. Wer Updates länger liegen lässt, riskiert Probleme." },
-      { id: "manj", name: "Manjaro", text: "Die grafische Installation und Oberfläche funktionieren gut, und Updates werden vor der Auslieferung geprüft. Stolperstein: Manche Updates kommen verzögert, und Kernel-Wechsel oder Treiberprobleme muss man ab und zu von Hand lösen." },
-      { id: "endo", name: "EndeavourOS", text: "Die Installation ist geführt, und man bekommt ein Arch-System mit eigenen Hilfswerkzeugen für Updates. Stolperstein: Bei Updates kann es wie bei Arch zu Problemen kommen, die man im Forum oder in den Neuigkeiten nachlesen muss." },
-      { id: "cachy", name: "CachyOS", text: "Der Assistent installiert Treiber und Gaming-Werkzeuge gleich mit, und Spiele laufen oft flott. Stolperstein: Als Arch-Basis braucht es bei Updates ab und zu manuelle Eingriffe, daher sollte man die Neuigkeiten zu Updates lesen." },
-      { id: "bazz", name: "Bazzite", text: "Bazzite ist ausschließlich auf Gaming ausgelegt: Steam, Proton und Nvidia-Treiber laufen sofort, und das Grundsystem bleibt auch nach Updates stabil. Für Büro und Alltag ist es nicht gedacht. Stolperstein: Programme installiert man über den Software-Store als Flatpak oder in einer Container-Umgebung, und Systemänderungen laufen anders als gewohnt." },
-      { id: "nob", name: "Nobara", text: "Gaming-Werkzeuge und Treiber sind vorkonfiguriert, sodass Spiele ohne viel Einrichtung starten. Stolperstein: Das Projekt wird von wenigen Personen gepflegt, und größere Updates bringen manchmal Änderungen, die man beachten muss." }
+      { id: "mint", name: "Linux Mint", pro: ["Vertraut wie unter Windows: Menüs, Taskleiste und Dateiverwaltung", "Multimedia-Codecs sind schon dabei", "Updates über den Update-Manager fallen kaum auf"], con: ["Bei neuer Hardware wie aktuellen Grafikkarten ab und zu Nachhilfe in der Treiberverwaltung"] },
+      { id: "zorin", name: "Zorin OS", pro: ["Layouts lassen sich mit einem Klick umschalten", "Office-Aufgaben über Web-Apps oder Wine"], con: ["Einige Layouts und Extras nur in der kostenpflichtigen Pro-Version"] },
+      { id: "ubu", name: "Ubuntu LTS", pro: ["Zu fast jedem Problem findet man eine Anleitung", "GNOME-Oberfläche, an die man sich schnell gewöhnt"], con: ["Firefox und andere Programme als Snap, beim ersten Start spürbar langsamer", "Drängt auf eigene Dienste wie Ubuntu Pro oder den Snap-Store"] },
+      { id: "kubu", name: "Kubuntu", pro: ["KDE Plasma erinnert stark an Windows", "Vieles lässt sich per Klick anpassen"], con: ["Einige Programme als Snap-Paket", "Die vielen Einstellungen können anfangs überfordern"] },
+      { id: "pop", name: "Pop!_OS", pro: ["Installation mit Nvidia-Grafikkarte ohne Umwege", "Spiele starten meist direkt", "Fenster lassen sich per Tastatur gut anordnen"], con: ["Der neue Desktop COSMIC ist noch sehr jung", "Wechsel auf neue Versionen verläuft nicht immer reibungslos"] },
+      { id: "mx", name: "MX Linux", pro: ["Ruhig und zuverlässig", "Läuft auch auf älteren Rechnern mit wenig Arbeitsspeicher", "Viele Einstellungen zentral über das MX-Tools-Menü"], con: ["Manches nur über Menü oder Terminal einzurichten", "Weniger Erklärungen als bei Mint"] },
+      { id: "suse", name: "openSUSE", pro: ["YaST bündelt Einstellungen, Treiber und Software", "Snapper-Snapshots zum Zurückrollen fehlerhafter Updates"], con: ["Bei Tumbleweed fast tägliche Updates", "Ab und zu bricht etwas, das man selbst reparieren muss"] },
+      { id: "xubu", name: "Xubuntu", pro: ["Läuft flott und schlicht", "XFCE bleibt auch auf älteren Geräten reaktionsschnell"], con: ["Einige Programme als Snap-Paket", "Weniger moderne Komfortfunktionen"] },
+      { id: "fedw", name: "Fedora Workstation", pro: ["Aktuelle Software", "Saubere GNOME-Oberfläche"], con: ["Jede Version wird nur etwa 13 Monate gepflegt, Versionswechsel etwa alle halbe Jahre", "Nvidia-Treiber und Codecs über RPM Fusion selbst nachrüsten"] },
+      { id: "fedk", name: "Fedora KDE Plasma", pro: ["KDE Plasma mit aktueller Software", "Vertrautes Bild"], con: ["Unterstützung endet nach etwa 13 Monaten", "Nvidia-Treiber und Codecs nicht vorinstalliert"] },
+      { id: "deb", name: "Debian", pro: ["Sehr ruhiges System, Updates brechen selten etwas"], con: ["Programme oft älter als bei anderen Distributionen", "Nvidia-Treiber oder WLAN-Chips brauchen die Option für nicht-freie Software"] },
+      { id: "arch", name: "Arch Linux", pro: ["System nach eigenen Wünschen zusammengestellt", "Aktuelle Software"], con: ["Installation komplett über das Terminal", "Updates brauchen gelegentlich manuelle Eingriffe, Updates länger liegen lassen ist riskant"] },
+      { id: "manj", name: "Manjaro", pro: ["Grafische Installation und Oberfläche funktionieren gut", "Updates werden vor der Auslieferung geprüft"], con: ["Manche Updates kommen verzögert", "Kernel-Wechsel oder Treiberprobleme ab und zu von Hand lösen"] },
+      { id: "endo", name: "EndeavourOS", pro: ["Geführte Installation", "Eigene Hilfswerkzeuge für Updates"], con: ["Wie bei Arch können Updates Probleme machen", "Lösungen oft nur im Forum oder in den Neuigkeiten"] },
+      { id: "cachy", name: "CachyOS", pro: ["Der Assistent installiert Treiber und Gaming-Werkzeuge gleich mit", "Spiele laufen oft flott"], con: ["Als Arch-Basis ab und zu manuelle Eingriffe bei Updates", "Die Neuigkeiten zu Updates sollte man lesen"] },
+      { id: "bazz", name: "Bazzite", pro: ["Auf Gaming ausgelegt, Steam, Proton und Nvidia-Treiber laufen sofort", "Grundsystem bleibt auch nach Updates stabil"], con: ["Nicht für Büro und Alltag gedacht", "Programme als Flatpak oder in einer Container-Umgebung, Systemänderungen laufen anders als gewohnt"] },
+      { id: "nob", name: "Nobara", pro: ["Gaming-Werkzeuge und Treiber vorkonfiguriert"], con: ["Das Projekt wird von wenigen Personen gepflegt", "Größere Updates bringen manchmal Änderungen, die man beachten muss"] }
     ];
     let current = 0;
 
@@ -662,10 +687,10 @@ hero_image_alt: "Tux mit pinker Mütze"
     });
 
     const dimensions = [
-      { label: "Dein System", ids: [4, 5, 22, 23, 25], tips: ["Teste vorher mit einem Live-USB-Stick, ob Grafik, WLAN und Drucker funktionieren.", "Prüfe die Hardware-Liste der Distribution, bevor du installierst."] },
-      { label: "Dein Kenntnisstand", ids: [1, 2, 3, 14, 15, 16, 17, 19, 20, 21, 24, 27, 28, 29], tips: ["Lies die Anleitung vollständig durch und plane mehrere Stunden ein.", "Eine Anleitung neben dir reicht meist; bei der Festplatte genau lesen."] },
-      { label: "Dein Wille", ids: [6, 12, 13, 18, 30], tips: ["Wähle eine Distribution mit viel Vorkonfiguration, etwa Mint oder Zorin.", "Suche bei Problemen nach der genauen Fehlermeldung."] },
-      { label: "Deine Software", ids: [7, 8, 10, 11, 32], tips: ["Prüfe deine Programmliste auf Linux-Alternativen, bevor du wechselst.", "Einige Programme brauchen Wine oder Proton; prüfe sie vorab."] }
+      { label: "Dein System", ids: [4, 5, 22, 23, 25], meanings: ["Deine Hardware ist eher ungewöhnlich oder neu. Beim Wechsel können Grafik, WLAN oder Drucker Probleme machen.", "Deine Hardware wird unter Linux meist erkannt; bei einzelnen Geräten musst du nachsehen.", "Deine Hardware ist weit verbreitet und dürfte unter Linux ohne größere Probleme laufen."] },
+      { label: "Dein Kenntnisstand", ids: [1, 2, 3, 14, 15, 16, 17, 19, 20, 21, 24, 27, 28, 29], meanings: ["Du bist mit Installation und Fachbegriffen noch wenig vertraut. Der Wechsel braucht mehr Zeit und Einarbeitung, als man auf den ersten Blick denkt.", "Du kommst mit dem Computer zurecht und kannst dich einarbeiten, brauchst bei der Installation aber ab und zu Hilfe.", "Du kennst dich mit Installation und Einrichtung aus, der Wechsel zu Linux fällt dir leicht."] },
+      { label: "Dein Wille", ids: [6, 12, 13, 18, 30], meanings: ["Du setzt dich mit Problemen nur ungern auseinander. Linux löst nicht alles von selbst; wer sich nicht einarbeiten möchte, wird schnell frustriert und ist mit einer stark vorkonfigurierten Distribution besser beraten.", "Du bist bereit, ab und zu nachzuschlagen, wenn etwas nicht klappt.", "Du löst Probleme gern selbst und bist bereit, dich in Linux einzuarbeiten."] },
+      { label: "Deine Software", ids: [7, 8, 10, 11, 32], meanings: ["Ein Teil deiner Programme gibt es unter Linux nicht. Du brauchst Alternativen oder musst auf sie verzichten.", "Einige deiner Programme brauchen Alternativen oder Kompatibilitätsschichten wie Wine oder Proton.", "Deine Programme gibt es größtenteils auch für Linux, bei der Software ist der Wechsel unproblematisch."] }
     ];
 
     function ratioOf(list) {
@@ -794,8 +819,8 @@ hero_image_alt: "Tux mit pinker Mütze"
       }));
 
       const skillBoxes = document.getElementById("ratgeber-skills");
-      const skillAreas = dimensions.map(d => [d.label, d.ids, d.tips]);
-      skillBoxes.replaceChildren(...skillAreas.flatMap(([label, ids, tips]) => {
+      const skillAreas = dimensions.map(d => [d.label, d.ids, d.meanings]);
+      skillBoxes.replaceChildren(...skillAreas.flatMap(([label, ids, meanings]) => {
         const values = ids.map(id => answers.get(String(id))?.score).filter(v => v !== undefined);
         if (!values.length) return [];
         const ratio = values.reduce((a, b) => a + b, 0) / (values.length * 2);
@@ -808,9 +833,9 @@ hero_image_alt: "Tux mit pinker Mütze"
         bar.textContent = "■".repeat(level) + "□".repeat(3 - level);
         const text = document.createElement("div");
         text.textContent = ["Gering", "Mittel", "Hoch"][level - 1];
-        const tip = document.createElement("div");
-        tip.textContent = tips[level - 1] ?? "";
-        box.append(name, bar, text, tip);
+        const meaning = document.createElement("div");
+        meaning.textContent = meanings[level - 1];
+        box.append(name, bar, text, meaning);
         return [box];
       }));
 
@@ -827,12 +852,18 @@ hero_image_alt: "Tux mit pinker Mütze"
         const li = document.createElement("li");
         const name = document.createElement("strong");
         name.textContent = d.name;
+        const procon = document.createElement("ul");
+        procon.className = "ratgeber-procon";
+        procon.append(
+          ...d.pro.map(t => Object.assign(document.createElement("li"), { className: "ratgeber-pro", textContent: `+ ${t}` })),
+          ...d.con.map(t => Object.assign(document.createElement("li"), { className: "ratgeber-con", textContent: `− ${t}` }))
+        );
         const link = document.createElement("a");
         link.href = homepages[d.id];
         link.textContent = "Zur Website";
         link.target = "_blank";
         link.rel = "noopener noreferrer";
-        li.append(name, `: ${d.text} `, link);
+        li.append(name, procon, link);
         return li;
       }));
       const priority = ["mint", "ubu", "kubu", "zorin"];
