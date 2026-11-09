@@ -107,6 +107,35 @@ hero_image_alt: "Tux mit pinker Mütze"
     margin-bottom: 0.25rem;
   }
 
+  .ratgeber-distro-box {
+    border: 1px solid var(--accent);
+    border-radius: 8px;
+    background: var(--card-bg);
+    padding: 0.5rem 1.25rem;
+    margin-bottom: 1rem;
+  }
+
+  .ratgeber-distro-box summary {
+    cursor: pointer;
+    font-weight: 600;
+    padding: 0.6rem 0;
+  }
+
+  .ratgeber-distro-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .ratgeber-distro-list li {
+    padding: 0.75rem 0;
+    border-bottom: 1px solid rgba(var(--accent-rgb), 0.3);
+  }
+
+  .ratgeber-distro-list li:last-child {
+    border-bottom: none;
+  }
+
   .ratgeber-reset,
   .ratgeber-next {
     font: inherit;
@@ -131,8 +160,8 @@ hero_image_alt: "Tux mit pinker Mütze"
 
 <section class="section">
   <p class="ratgeber-testhinweis">Achtung: Der Ratgeber befindet sich in der Testphase und ist noch nicht aussagekräftig.</p>
-  <p>Durch das Ende von Windows 10 ist Linux stärker in den Fokus der breiten Masse gerückt. Zudem gibt es immer mehr Stimmen, die Linux als einfach und als kompletten Windows-Ersatz darstellen. Dieser kleine Fragebogen versucht, dein IT-Wissen einzufangen, und zeigt dir am Ende realistisch auf, was auf dich zukommt, wenn du auf Linux umsteigen willst. Der Wille zu lernen ist ein Faktor, der schlecht berechnet werden kann. Sollte dir von Linux abgeraten werden, beherzige einfach die Ratschläge im Ergebnis.</p>
-  <p>Es werden natürlich keine Daten gesammelt oder weitergegeben.</p>
+  <p>Seit dem Ende von Windows 10 rückt Linux stärker in den Fokus, und viele stellen es als einfachen Windows-Ersatz dar. Dieser Ratgeber prüft, ob Linux wirklich zu dir passt und welche Distribution für dich infrage kommt. Dafür beantwortest du einen kurzen Fragebogen zu deinen bisherigen Erfahrungen mit Windows, deiner Software und deiner Bereitschaft, dich einzuarbeiten. Am Ende erhältst du eine realistische Einschätzung, was der Umstieg für dich bedeutet, und eine Auswahl passender Distributionen.</p>
+  <p>Der Wille zu lernen lässt sich schlecht berechnen. Sollte dir von Linux abgeraten werden, beherzige einfach die Ratschläge im Ergebnis. Es werden natürlich keine Daten gesammelt oder weitergegeben.</p>
 </section>
 
 <section class="section">
@@ -261,37 +290,36 @@ hero_image_alt: "Tux mit pinker Mütze"
     </div>
   </div>
 
-  <div class="ratgeber-question" data-question="8" data-type="single">
+  <div class="ratgeber-question" data-question="8" data-type="multi">
     <span class="ratgeber-category">Software</span>
-    <h3>Brauchst du Microsoft Office?</h3>
+    <h3>Welche dieser Programme nutzt du unter Windows? (Mehrfachauswahl)</h3>
     <div class="ratgeber-options">
-      <button type="button" class="ratgeber-option" data-score="0" data-blocker="Microsoft Office ist für dich unverzichtbar und hat unter Linux keinen gleichwertigen Ersatz." aria-pressed="false">Ja, die Desktop-Version ist unverzichtbar</button>
-      <button type="button" class="ratgeber-option" data-score="1" data-tags="office-alt" aria-pressed="false">Ja, aber die Web-Version oder LibreOffice reicht mir</button>
-      <button type="button" class="ratgeber-option" data-score="2" aria-pressed="false">Nein</button>
+      <button type="button" class="ratgeber-option" data-blocker="Microsoft Word, Excel oder PowerPoint (Desktop-Version) laufen nicht unter Linux; LibreOffice oder Office im Browser ersetzen sie nur eingeschränkt." aria-pressed="false">Microsoft Word, Excel oder PowerPoint (Desktop)</button>
+      <button type="button" class="ratgeber-option" data-tags="office-alt outlook" aria-pressed="false">Microsoft Outlook</button>
+      <button type="button" class="ratgeber-option" data-blocker="Adobe Photoshop läuft unter Linux nicht; GIMP oder Krita sind Alternativen mit anderem Funktionsumfang." aria-pressed="false">Adobe Photoshop</button>
+      <button type="button" class="ratgeber-option" data-blocker="Adobe Premiere Pro läuft unter Linux nicht; Kdenlive oder DaVinci Resolve sind Alternativen." aria-pressed="false">Adobe Premiere Pro</button>
+      <button type="button" class="ratgeber-option" data-blocker="Adobe Lightroom läuft unter Linux nicht; darktable oder RawTherapee sind Alternativen." aria-pressed="false">Adobe Lightroom</button>
+      <button type="button" class="ratgeber-option" data-blocker="AutoCAD läuft unter Linux nicht; FreeCAD oder LibreCAD sind Alternativen mit eingeschränktem Funktionsumfang." aria-pressed="false">AutoCAD</button>
+      <button type="button" class="ratgeber-option" data-tags="os-software office-alt" aria-pressed="false">LibreOffice</button>
+      <button type="button" class="ratgeber-option" data-tags="os-software" aria-pressed="false">Firefox</button>
+      <button type="button" class="ratgeber-option" data-tags="os-software" aria-pressed="false">Thunderbird</button>
+      <button type="button" class="ratgeber-option" data-tags="os-software" aria-pressed="false">VLC</button>
+      <button type="button" class="ratgeber-option" data-tags="os-software" aria-pressed="false">GIMP</button>
     </div>
-  </div>
-
-  <div class="ratgeber-question" data-question="9" data-type="single">
-    <span class="ratgeber-category">Software</span>
-    <h3>Brauchst du für Grafik-, Foto- oder Videobearbeitung professionelle Programme wie Adobe Photoshop oder Premiere?</h3>
-    <div class="ratgeber-options">
-      <button type="button" class="ratgeber-option" data-score="0" data-blocker="Adobe-Programme sind für dich unverzichtbar und laufen unter Linux nicht nativ." aria-pressed="false">Ja, unverzichtbar (gekaufte Lizenz oder beruflich genutzt)</button>
-      <button type="button" class="ratgeber-option" data-score="1" data-tags="grafisch" aria-pressed="false">Ja, aber es gibt Alternativen für mich</button>
-      <button type="button" class="ratgeber-option" data-score="2" aria-pressed="false">Nein</button>
-    </div>
+    <button type="button" class="ratgeber-next">Weiter</button>
   </div>
 
   <div class="ratgeber-question" data-question="10" data-type="single">
     <span class="ratgeber-category">Gaming</span>
     <h3>Wie viel zockst du?</h3>
     <div class="ratgeber-options">
-      <button type="button" class="ratgeber-option" data-score="2" aria-pressed="false">Kaum oder gar nicht</button>
-      <button type="button" class="ratgeber-option" data-score="1" data-tags="gaming" aria-pressed="false">Gelegentlich</button>
+      <button type="button" class="ratgeber-option" data-score="2" aria-pressed="false">Nein, ich zocke nicht</button>
+      <button type="button" class="ratgeber-option" data-score="1" data-tags="gaming" aria-pressed="false">Kaum oder gelegentlich</button>
       <button type="button" class="ratgeber-option" data-score="0" data-tags="gaming gamer" aria-pressed="false">Regelmäßig</button>
     </div>
   </div>
 
-  <div class="ratgeber-question" data-question="11" data-type="multi">
+  <div class="ratgeber-question" data-question="11" data-type="multi" data-show-if="gaming">
     <span class="ratgeber-category">Gaming</span>
     <h3>Welche Spiele zockst du? (Mehrfachauswahl)</h3>
     <div class="ratgeber-options">
@@ -414,15 +442,26 @@ hero_image_alt: "Tux mit pinker Mütze"
     <button type="button" class="ratgeber-next">Weiter</button>
   </div>
 
-  <div class="ratgeber-question" data-question="26" data-type="single">
-    <span class="ratgeber-category">Software</span>
-    <h3>Nutzt du Open-Source-Programme, die es auch für Windows gibt, z. B. Firefox, GIMP, VLC oder Thunderbird?</h3>
+  <div class="ratgeber-question" data-question="30" data-type="single">
+    <span class="ratgeber-category">Einrichtung</span>
+    <h3>Soll das System nach der Installation sofort einsatzbereit sein, mit allen wichtigen Programmen?</h3>
     <div class="ratgeber-options">
-      <button type="button" class="ratgeber-option" data-score="2" data-tags="os-software" aria-pressed="false">Ja, die meisten davon</button>
-      <button type="button" class="ratgeber-option" data-score="1" data-tags="os-software" aria-pressed="false">Ein paar davon</button>
-      <button type="button" class="ratgeber-option" data-score="1" aria-pressed="false">Nein, ich nutze andere Programme</button>
+      <button type="button" class="ratgeber-option" data-score="2" data-tags="einfach" aria-pressed="false">Ja, alles Wichtige sollte sofort da sein</button>
+      <button type="button" class="ratgeber-option" data-score="1" aria-pressed="false">Teils, ich möchte aber einiges selbst auswählen</button>
+      <button type="button" class="ratgeber-option" data-score="2" data-tags="lernen" aria-pressed="false">Nein, ich will selbst festlegen, was installiert wird</button>
     </div>
   </div>
+
+  <div class="ratgeber-question" data-question="32" data-type="single">
+    <span class="ratgeber-category">Software</span>
+    <h3>Ist dir wichtig, dass deine Software frei (Open Source) ist?</h3>
+    <div class="ratgeber-options">
+      <button type="button" class="ratgeber-option" data-score="2" data-tags="frei" aria-pressed="false">Ja, möglichst nur freie Software</button>
+      <button type="button" class="ratgeber-option" data-score="1" aria-pressed="false">Teils, dort wo es sinnvoll ist</button>
+      <button type="button" class="ratgeber-option" data-score="1" aria-pressed="false">Nein, Hauptsache es funktioniert</button>
+    </div>
+  </div>
+
 
   <div class="ratgeber-question" data-question="22" data-type="single">
     <span class="ratgeber-category">Hardware</span>
@@ -448,6 +487,18 @@ hero_image_alt: "Tux mit pinker Mütze"
       <button type="button" class="ratgeber-option" data-score="1" data-tags="topic:nvidia" aria-pressed="false">Weiß ich nicht</button>
     </div>
   </div>
+
+  <div class="ratgeber-question" data-question="34" data-type="multi">
+    <span class="ratgeber-category">Hardware</span>
+    <h3>Nutzt du Spezial-Hardware mit eigener Software? (Mehrfachauswahl)</h3>
+    <div class="ratgeber-options">
+      <button type="button" class="ratgeber-option" data-tags="logitech" aria-pressed="false">Logitech-Maus oder -Tastatur mit G HUB oder Options+</button>
+      <button type="button" class="ratgeber-option" data-tags="rgb" aria-pressed="false">RGB-Beleuchtung mit Herstellersoftware (z. B. iCUE, Razer Synapse, SteelSeries GG)</button>
+      <button type="button" class="ratgeber-option" data-tags="spezial-hw" aria-pressed="false">Anderes Spezialgerät (z. B. Grafiktablett, Lenkrad, VR-Brille)</button>
+      <button type="button" class="ratgeber-option" data-tags="drucker" aria-pressed="false">Drucker oder Scanner</button>
+    </div>
+    <button type="button" class="ratgeber-next">Weiter</button>
+  </div>
 </section>
 
 <section class="section">
@@ -459,16 +510,23 @@ hero_image_alt: "Tux mit pinker Mütze"
     <p id="ratgeber-english" hidden></p>
     <p id="ratgeber-nvidia" hidden></p>
     <p><strong>Speicherplatz:</strong> <span id="ratgeber-storage"></span></p>
-    <h3>Dein Kenntnisstand</h3>
+    <h3>Deine Ausgangslage</h3>
+    <p>Jeder Bereich zeigt, wo du gerade stehst, und gibt dir einen konkreten Tipp dazu: ■□□ Gering, ■■□ Mittel, ■■■ Hoch. Arbeite bei „Gering“ zuerst die Tipps durch, bei „Mittel“ schlägst du gezielt nach.</p>
     <div class="ratgeber-skills" id="ratgeber-skills"></div>
     <h3>Was auf dich zukommt</h3>
     <ul class="ratgeber-distros" id="ratgeber-profile"></ul>
     <aside class="ratgeber-tipp">
       <p><strong>Tipp:</strong> Schreibe eine Liste mit ALLEN Programmen, Diensten und Services, die du am PC nutzt. Recherchiere genau, wie diese unter Linux laufen. Du kannst dich auch in einem Forum anmelden und dich von erfahrenen Usern beraten lassen.</p>
     </aside>
-    <h3>Passende Distributionen</h3>
-    <p>Die Distributionsauswahl ist stark subjektiv, und ein Algorithmus kann nicht alle Feinheiten abdecken. Die generelle Empfehlung für Umsteiger ist immer Linux Mint, Zorin OS oder Ubuntu. Die aufgeführten Distributionen sind in keiner bestimmten Reihenfolge angeordnet.</p>
-    <ol class="ratgeber-distros" id="ratgeber-distros"></ol>
+    <h3>Gängige Distributionen</h3>
+    <details class="ratgeber-distro-box">
+      <summary>Für Einsteiger</summary>
+      <ul class="ratgeber-distro-list" id="ratgeber-distros-einsteiger"></ul>
+    </details>
+    <details class="ratgeber-distro-box">
+      <summary>Für Fortgeschrittene</summary>
+      <ul class="ratgeber-distro-list" id="ratgeber-distros-fortgeschritten"></ul>
+    </details>
     <button type="button" class="ratgeber-reset" id="ratgeber-reset">Neu starten</button>
   </div>
 </section>
@@ -484,92 +542,46 @@ hero_image_alt: "Tux mit pinker Mütze"
     const text = document.getElementById("ratgeber-text");
     const warnings = document.getElementById("ratgeber-warnings");
     const dualboot = document.getElementById("ratgeber-dualboot");
-    const distroList = document.getElementById("ratgeber-distros");
+    const beginnerList = document.getElementById("ratgeber-distros-einsteiger");
+    const advancedList = document.getElementById("ratgeber-distros-fortgeschritten");
     const englishNote = document.getElementById("ratgeber-english");
     const nvidiaNote = document.getElementById("ratgeber-nvidia");
     const storageNote = document.getElementById("ratgeber-storage");
     const profileList = document.getElementById("ratgeber-profile");
 
     const topicLabels = {
-      install: "Ein Betriebssystem installieren und einrichten",
-      stick: "Ein Installationsmedium (USB-Stick) erstellen",
-      partition: "Partitionen und Festplattenaufteilung verstehen",
-      secureboot: "Secure Boot und die UEFI/BIOS-Einstellungen",
-      hdd: "Zusätzliche Festplatten einbauen und einbinden",
-      terminal: "Befehle im Terminal eingeben und Fehlermeldungen lesen",
-      hardware: "Hardware erkennen und Treiber prüfen",
+      install: "Linux auf den PC aufspielen: Sprache, Benutzername und Festplatte auswählen, bis das System zum ersten Mal startet",
+      stick: "Einen USB-Stick mit dem Linux-Installationsprogramm beschreiben, z. B. mit Ventoy oder balenaEtcher",
+      partition: "Die Festplatte in Bereiche aufteilen (Partitionen), z. B. einen Teil für Linux und einen für Windows",
+      secureboot: "Im BIOS/UEFI-Menü des PCs Secure Boot prüfen, wenn Linux nach der Installation nicht startet",
+      hdd: "Eine zweite Festplatte so einrichten, dass Linux sie bei jedem Start automatisch einbindet",
+      terminal: "Textbefehle im Terminal eintippen, z. B. „sudo apt update“, und Fehlermeldungen lesen",
+      hardware: "Herausfinden, welche Teile im PC stecken (Grafikkarte, WLAN, Drucker), und prüfen, ob Linux sie erkennt",
       wartung: "Updates einspielen und Probleme nach Updates beheben",
-      live: "Linux über einen Live-USB-Stick testen",
-      paket: "Software über Paketmanager installieren und aktualisieren",
+      live: "Linux über einen Live-USB-Stick testen, ohne etwas auf der Festplatte zu ändern",
+      paket: "Programme über den Software-Manager oder Befehle wie „sudo apt install“ installieren und aktualisieren",
       nvidia: "Nvidia-Treiber installieren oder Nouveau einrichten"
     };
 
     const distros = [
-      { id: "mint", name: "Linux Mint", text: "Die einfachste Wahl für Einsteiger: Die Oberfläche ähnelt Windows, Updates laufen unkompliziert und deutschsprachige Anleitungen gibt es reichlich. Für Fortgeschrittene ein zuverlässiger Alltagsbegleiter, wenn nicht viel experimentiert werden soll." },
-      { id: "zorin", name: "Zorin OS", text: "Für Umsteiger ohne Linux-Vorerfahrung: Startmenü und Taskleiste lassen sich wie unter Windows gestalten, die Einrichtung ist geführt. Fortgeschrittene finden hier weniger Spielraum, weil Anpassungen auf die vorgegebenen Layouts begrenzt sind." },
-      { id: "ubu", name: "Ubuntu LTS", text: "Die größte Community und viele Anleitungen, daher gut für Einsteiger, die bereit sind, sich einzulesen. Die GNOME-Oberfläche wirkt nicht wie Windows; für eine Windows-Optik eher Kubuntu nehmen. Für Fortgeschrittene eine solide Basis mit langer Unterstützung." },
-      { id: "kubu", name: "Kubuntu", text: "Ubuntu-Basis mit KDE-Plasma-Oberfläche, die sich stark an Windows anlehnt. Für Einsteiger mit Anpassungswunsch, die dabei ohne Terminal auskommen möchten." },
-      { id: "pop", name: "Pop!_OS", text: "Ubuntu-Basis mit eigener Oberfläche und vorinstallierten Nvidia-Treibern. Für Einsteiger mit Gaming-Wunsch, da kaum Einrichtung nötig ist. Für Fortgeschrittene eine praktische Arbeitsumgebung mit Fenster-Kacheln für Tastaturnutzer." },
-      { id: "mx", name: "MX Linux", text: "Debian-Basis mit schlanker XFCE-Oberfläche, sehr stabil und auch auf älterer Hardware flott. Für Einsteiger mit etwas Lernbereitschaft, da die Standardwerkzeuge weniger Erklärungen bieten als bei Mint. Für Fortgeschrittene ein verlässliches Arbeitssystem." },
-      { id: "suse", name: "openSUSE", text: "Zwei Varianten: Leap mit festen, stabilen Versionen und Tumbleweed mit rollenden Updates. Das Werkzeug YaST hilft bei der Einrichtung. Für Nutzer mit Grundkenntnissen, die nicht bei jedem Problem gleich im Terminal suchen wollen." },
-      { id: "xubu", name: "Xubuntu", text: "Ubuntu mit der schlanken XFCE-Oberfläche. Für Einsteiger mit älterer Hardware (über 6 Jahre), die Ubuntu mögen, aber weniger Ressourcen brauchen." },
-      { id: "elem", name: "elementary OS", text: "Ubuntu-Basis mit aufgeräumter, macOS-ähnlicher Oberfläche. Für Einsteiger, die eine schlichte, geführte Oberfläche ohne Windows-Optik wollen. Für Fortgeschrittene eine ruhige Arbeitsumgebung mit wenig Anpassungsspielraum." },
-      { id: "fedw", name: "Fedora Workstation", text: "Aktuelle Software mit GNOME-Oberfläche. Für Nutzer mit Grundkenntnissen, die Neuerungen mögen und bei Problemen auch mal recherchieren." },
-      { id: "fedk", name: "Fedora KDE Plasma", text: "Aktuelle Software mit der KDE-Plasma-Oberfläche. Für Nutzer mit Grundkenntnissen, die eine windowsähnlichere Oberfläche und frische Software wollen." },
-      { id: "deb", name: "Debian", text: "Sehr stabil, dafür kommen Neuerungen seltener. Für Fortgeschrittene, die Wert auf Stabilität legen. Die glibc ist alt, daher funktionieren neuere Tools in seltenen Fällen nicht." },
-      { id: "arch", name: "Arch Linux", text: "Das System wird Schritt für Schritt aus Einzelkomponenten aufgebaut und ist maximal gestaltbar. Für Nutzer mit hohem Kenntnisstand, die gern Anleitungen lesen und Wartung selbst übernehmen." },
-      { id: "manj", name: "Manjaro", text: "Arch-Basis mit grafischer Installation und geprüften Updates. Für Nutzer mit Grundkenntnissen, die Arch-Pakete nutzen möchten, aber Updates im Blick behalten." },
-      { id: "endo", name: "EndeavourOS", text: "Arch-Basis mit geführter Installation. Für Nutzer mit Grundkenntnissen, die Arch ausprobieren möchten, aber Updates und Fehlerbehebung selbst übernehmen." },
-      { id: "cachy", name: "CachyOS", text: "Arch-Basis, auf Leistung und Gaming optimiert. Für Fortgeschrittene mit Gaming-Fokus, die Updates im Blick behalten." },
-      { id: "bazz", name: "Bazzite", text: "Gaming-Distribution mit unveränderlichem Grundsystem, dadurch zuverlässige Updates. Für Einsteiger mit Gaming-Wunsch, die kaum selbst konfigurieren wollen." },
-      { id: "nob", name: "Nobara", text: "Fedora-Basis, für Gaming vorkonfiguriert. Für Nutzer mit Grundkenntnissen, die Spiele ohne viel Einrichtung starten möchten." }
+      { id: "mint", name: "Linux Mint", text: "Mint fühlt sich vertraut an: Menüs, Taskleiste und Dateiverwaltung arbeiten wie unter Windows, und Multimedia-Codecs sind schon dabei. Updates kommen über den Update-Manager und fallen meist kaum auf. Stolperstein: Bei neuer Hardware wie aktuellen Grafikkarten muss man ab und zu in der Treiberverwaltung nachhelfen." },
+      { id: "zorin", name: "Zorin OS", text: "Zorin wirkt wie ein Windows mit Linux darunter: Layouts lassen sich mit einem Klick umschalten, und Office-Aufgaben erledigt man über Web-Apps oder Wine. Stolperstein: Einige Layouts und Extras gibt es nur in der kostenpflichtigen Pro-Version, die kostenlose Core-Version reicht für den Alltag meist aus." },
+      { id: "ubu", name: "Ubuntu LTS", text: "Wer sich an GNOME gewöhnt hat, kommt mit Ubuntu gut zurecht, und zu fast jedem Problem findet man eine Anleitung. Stolperstein: Firefox und andere Programme kommen als Snap-Paket, das beim ersten Start spürbar länger braucht. Ubuntu drängt außerdem gern auf eigene Dienste wie Ubuntu Pro oder den Snap-Store." },
+      { id: "kubu", name: "Kubuntu", text: "KDE Plasma erinnert stark an Windows: Startmenü, Taskleiste und Systemeinstellungen sind leicht zu finden, und vieles lässt sich per Klick anpassen. Stolperstein: Auch hier kommen einige Programme als Snap-Paket, und die vielen Einstellungen können anfangs überfordern." },
+      { id: "pop", name: "Pop!_OS", text: "Mit einer Nvidia-Grafikkarte läuft die Installation ohne Umwege, und Spiele starten meist direkt. Fenster lassen sich per Tastatur sauber anordnen. Stolperstein: Der neue Desktop COSMIC ist noch sehr jung und lässt sich in Umfang und Stabilität nicht mit dem bisherigen Pop!_OS-Desktop vergleichen, und der Wechsel auf neue Versionen verläuft nicht immer reibungslos." },
+      { id: "mx", name: "MX Linux", text: "MX arbeitet ruhig und zuverlässig, auch auf älteren Rechnern mit wenig Arbeitsspeicher. Viele Einstellungen erledigt man zentral über das eigene MX-Tools-Menü. Stolperstein: Manches muss über Menü oder Terminal eingerichtet werden, und es gibt weniger Erklärungen als bei Mint." },
+      { id: "suse", name: "openSUSE", text: "YaST bündelt Einstellungen, Treiber und Software an einer Stelle, und Snapper legt Snapshots an, mit denen sich fehlerhafte Updates zurückrollen lassen. Stolperstein: Bei Tumbleweed kommen Updates fast täglich, und ab und zu bricht etwas, das man dann selbst reparieren muss." },
+      { id: "xubu", name: "Xubuntu", text: "Xubuntu läuft flott und schlicht, die XFCE-Oberfläche bleibt auch auf älteren Geräten reaktionsschnell. Stolperstein: Auch hier kommen einige Programme als Snap-Paket, und die Oberfläche bietet weniger moderne Komfortfunktionen." },
+      { id: "fedw", name: "Fedora Workstation", text: "Man bekommt aktuelle Software und eine saubere GNOME-Oberfläche. Stolperstein: Fedora wird nach etwa 13 Monaten nicht mehr gepflegt, daher steht alle halbe Jahre ein Versionswechsel an. Nvidia-Treiber und Multimedia-Codecs muss man über RPM Fusion selbst hinzufügen." },
+      { id: "fedk", name: "Fedora KDE Plasma", text: "KDE Plasma kombiniert mit frischer Software ergibt ein vertrautes Bild mit aktuellen Programmen. Stolperstein: Wie bei Fedora Workstation endet die Unterstützung nach etwa 13 Monaten, und Nvidia-Treiber sowie Codecs sind nicht vorinstalliert." },
+      { id: "deb", name: "Debian", text: "Das System läuft sehr ruhig, weil sich wenig ändert und Updates selten etwas brechen. Stolperstein: Programme sind oft älter als bei anderen Distributionen, und Nvidia-Treiber oder WLAN-Chips verlangen bei der Installation die Option für nicht-freie Software." },
+      { id: "arch", name: "Arch Linux", text: "Man bekommt das System, das man sich selbst zusammengestellt hat, mit aktueller Software. Stolperstein: Die Installation läuft komplett über das Terminal, und Updates erfordern gelegentlich manuelle Eingriffe, die auf der Arch-Startseite angekündigt werden. Wer Updates länger liegen lässt, riskiert Probleme." },
+      { id: "manj", name: "Manjaro", text: "Die grafische Installation und Oberfläche funktionieren gut, und Updates werden vor der Auslieferung geprüft. Stolperstein: Manche Updates kommen verzögert, und Kernel-Wechsel oder Treiberprobleme muss man ab und zu von Hand lösen." },
+      { id: "endo", name: "EndeavourOS", text: "Die Installation ist geführt, und man bekommt ein Arch-System mit eigenen Hilfswerkzeugen für Updates. Stolperstein: Bei Updates kann es wie bei Arch zu Problemen kommen, die man im Forum oder in den Neuigkeiten nachlesen muss." },
+      { id: "cachy", name: "CachyOS", text: "Der Assistent installiert Treiber und Gaming-Werkzeuge gleich mit, und Spiele laufen oft flott. Stolperstein: Als Arch-Basis braucht es bei Updates ab und zu manuelle Eingriffe, daher sollte man die Neuigkeiten zu Updates lesen." },
+      { id: "bazz", name: "Bazzite", text: "Bazzite ist ausschließlich auf Gaming ausgelegt: Steam, Proton und Nvidia-Treiber laufen sofort, und das Grundsystem bleibt auch nach Updates stabil. Für Büro und Alltag ist es nicht gedacht. Stolperstein: Programme installiert man über den Software-Store als Flatpak oder in einer Container-Umgebung, und Systemänderungen laufen anders als gewohnt." },
+      { id: "nob", name: "Nobara", text: "Gaming-Werkzeuge und Treiber sind vorkonfiguriert, sodass Spiele ohne viel Einrichtung starten. Stolperstein: Das Projekt wird von wenigen Personen gepflegt, und größere Updates bringen manchmal Änderungen, die man beachten muss." }
     ];
-    // Punkte je Antwortoption in Markup-Reihenfolge; Format: distroId + Punkte.
-    const weights = {
-      1: ["arch1 endo1 deb1 fedw1 fedk1 suse1 cachy1 nob1", "mint1 zorin1 ubu1 mx1 suse1 deb1", "mint2 zorin2 ubu2 pop1 mx1 xubu1 kubu1"],
-      2: ["arch2 endo1 deb1 cachy1 suse1 fedk1 nob1", "arch1 deb1 endo1 suse1 fedw1 cachy1", "mint1 zorin1 ubu1 mx1 bazz1 pop1", "mint1 zorin1 ubu1 mx1 pop1"],
-      3: ["arch2 endo2 deb2 cachy2 suse1 fedw1 nob1", "arch1 endo1 deb1 suse1 fedw1 mint1", "mint1 zorin2 ubu1 kubu1 pop1 bazz1"],
-      4: ["arch1 deb1 endo1 fedw1 cachy1 suse1", "mint1 zorin1 ubu1 pop1", "mint2 zorin2 ubu2 kubu1 pop1 mx1 xubu1"],
-      5: ["fedw1 fedk1 cachy1 bazz1 nob1", "", "xubu3 mx3 mint1"],
-      6: ["mint3 zorin3 ubu2 kubu3 pop2 fedk1", "mint2 zorin2 ubu1 kubu2 pop1 fedk1", "arch2 endo2 deb2 cachy1 suse1 fedw1 nob1"],
-      7: ["arch2 endo2 deb2 fedw1 suse2 cachy1 nob1", "deb2 mint2 mx2 ubu2 suse1 zorin1 xubu1", "zorin3 kubu3 mint3 fedk2 pop1 ubu1", "mint1 ubu1 zorin1 pop1", "arch2 endo2 deb1 suse1 fedk1 fedw1 cachy1"],
-      10: ["", "bazz1 pop1 nob1 cachy1", "bazz3 cachy3 nob3 pop3 endo1 arch1 fedw1"],
-      11: ["", "", "", "", "bazz1 nob1 cachy1 pop1", "bazz1 nob1 cachy1 pop1", "", "bazz1 nob1 cachy1"],
-      12: ["arch2 fedw2 fedk2 cachy1 endo1 nob1 bazz1 suse1", "suse1 mint1 ubu1 kubu1 pop1", "deb3 mx3 mint2 ubu2 xubu1 zorin1"],
-      13: ["arch2 fedw2 fedk2 cachy2 nob1 endo1 bazz1", "fedk1 fedw1 suse1 pop1 endo1", "deb3 mx3 mint2 ubu2 xubu1 zorin1"],
-      14: ["deb1 arch1 endo1 fedw1 suse1", "mint1 zorin1 ubu1 pop1 mx1", "mint2 zorin2 ubu2 pop1 kubu1 xubu1 mx1"],
-      15: ["arch1 deb1 endo1 suse1 fedw1 cachy1", "mint1 ubu1 zorin1 suse1 fedk1", "mint2 zorin2 ubu2 pop1 kubu1 mx1 xubu1"],
-      16: ["arch1 deb1 endo1 fedw1 suse1 cachy1", "mint1 ubu1 pop1 zorin1", "mint2 zorin2 ubu2 pop1"],
-      17: ["arch1 deb1 endo1 suse1 fedw1", "mint1 ubu1 zorin1 mx1 pop1 kubu1", "mint2 zorin2 ubu2 pop1 kubu1 xubu1 mx1"],
-      18: ["", "", "mint1 ubu1 zorin1 pop1 mx1 kubu1"],
-      19: ["arch1 deb1 endo1 fedw1 suse1 cachy1 nob1", "", "mint2 zorin2 ubu2 kubu1 pop1 xubu1 mx1"],
-      20: ["arch1 endo1 deb1 cachy1", "", "mint2 zorin2 ubu2 kubu1 pop1 mx1 xubu1"],
-      21: ["arch1 deb1 endo1 suse1 fedw1", "arch1 deb1 endo1 suse1 fedw1", "", "", "", "", "", "arch1 deb1 endo1 suse1 fedw1", ""],
-      22: ["pop2 bazz2 nob2 mint1 ubu1 zorin1 kubu1 mx1 xubu1 arch-1 endo-1 deb-1 fedw-1 cachy-1", "", "pop1 mint1 ubu1"],
-      23: ["", "", "", "bazz-2 cachy-2 nob-1", "bazz-2 cachy-2 nob-1", "", "", ""],
-      24: ["", "arch-1 endo-1 cachy-2", "arch-3 endo-3 cachy-5 mint1 zorin1 ubu1"],
-      28: ["arch2 endo2 deb2 cachy1 fedw2 fedk2 nob1 suse1 bazz1", "mint1 zorin1 ubu1 kubu1 pop1 mx1", "mint2 zorin2 ubu2 kubu2 pop2 mx1 xubu1"],
-      29: ["arch2 endo2 deb2 cachy2 fedw1 fedk1 nob1 suse1", "mint1 zorin1 ubu1 kubu1 pop1 mx1", "mint2 zorin2 ubu2 kubu1 pop1 mx1 xubu1"]
-    };
-
-    function distroPoints() {
-      const points = Object.fromEntries(distros.map(d => [d.id, 0]));
-      questions.forEach(q => {
-        if (!answers.has(q.dataset.question)) return;
-        const table = weights[q.dataset.question] || [];
-        [...q.querySelectorAll(".ratgeber-option")].forEach((btn, i) => {
-          if (btn.getAttribute("aria-pressed") !== "true" || !table[i]) return;
-          table[i].split(" ").forEach(token => {
-            const [, id, pts] = token.match(/^([a-z]+)(-?\d+)$/);
-            points[id] += Number(pts);
-          });
-        });
-      });
-      // Varianten erhalten die Punkte ihrer Basis-Distribution
-      Object.entries({ elem: "ubu", manj: "endo" }).forEach(([id, base]) => { points[id] = points[base]; });
-      return points;
-    }
-
     let current = 0;
 
     function isVisible(question) {
@@ -649,7 +661,12 @@ hero_image_alt: "Tux mit pinker Mütze"
       }
     });
 
-    const readinessIds = new Set(["1", "2", "3", "4", "7", "14", "15", "16", "17", "19", "20", "21", "24", "27", "28", "29"]);
+    const dimensions = [
+      { label: "Dein System", ids: [4, 5, 22, 23, 25], tips: ["Teste vorher mit einem Live-USB-Stick, ob Grafik, WLAN und Drucker funktionieren.", "Prüfe die Hardware-Liste der Distribution, bevor du installierst."] },
+      { label: "Dein Kenntnisstand", ids: [1, 2, 3, 14, 15, 16, 17, 19, 20, 21, 24, 27, 28, 29], tips: ["Lies die Anleitung vollständig durch und plane mehrere Stunden ein.", "Eine Anleitung neben dir reicht meist; bei der Festplatte genau lesen."] },
+      { label: "Dein Wille", ids: [6, 12, 13, 18, 30], tips: ["Wähle eine Distribution mit viel Vorkonfiguration, etwa Mint oder Zorin.", "Suche bei Problemen nach der genauen Fehlermeldung."] },
+      { label: "Deine Software", ids: [7, 8, 10, 11, 32], tips: ["Prüfe deine Programmliste auf Linux-Alternativen, bevor du wechselst.", "Einige Programme brauchen Wine oder Proton; prüfe sie vorab."] }
+    ];
 
     function ratioOf(list) {
       if (!list.length) return 0;
@@ -667,32 +684,37 @@ hero_image_alt: "Tux mit pinker Mütze"
 
       const experience = avg([1, 2, 3, 15, 17, 24, 27]);
       lines.push(experience >= 0.7
-        ? "Die Installation und Einrichtung sollte dir wenig Mühe machen."
+        ? "Du kennst dich mit der Einrichtung eines Computers aus. Die Installation sollte dir kaum Mühe machen, und neue Begriffe erschließst du dir schnell."
         : experience >= 0.35
-          ? "Bei Installation und Einrichtung wirst du an einzelnen Stellen nachschlagen müssen, etwa bei Partitionen oder Festplatten."
-          : "Installation und Einrichtung sind für dich neu; plane für die ersten Schritte viel Zeit ein.");
+          ? "Bei der Installation brauchst du an einzelnen Stellen Hilfe. Vor allem die Festplatteneinteilung (Partitionen) solltest du mit einer Anleitung neben dir durchgehen."
+          : "Die Installation ist für dich Neuland. Du wirst dich mit Begriffen wie „Partition“, „Bootloader“ und „Treiber“ vertraut machen müssen; plane für die ersten Tage mehrere Stunden ein.");
 
-      if (score(27) === 2) lines.push("Du klickst Installationen gern einfach durch. Unter Linux musst du Meldungen und Rückfragen des Systems bewusst lesen, sonst übersiehst du wichtige Hinweise.");
-      else if (score(27) === 1) lines.push("Lies bei Installationen und Eingabeaufforderungen genau, was der Computer von dir will; unter Linux ist das besonders wichtig.");
+      if (score(27) === 2) lines.push("Du klickst Installationen gern schnell durch. Der Installer fragt aber auch nach der Festplatte; lies jede Seite genau, sonst löschst du im schlimmsten Fall deine Windows-Daten.");
+      else if (score(27) === 1) lines.push("Lies bei der Installation jede Frage genau. Gerade bei der Festplatte entscheidet eine falsche Auswahl darüber, ob Daten verloren gehen.");
 
       const willingness = avg([7, 12, 13, 20]);
       lines.push(willingness >= 0.6
-        ? "Probleme wirst du mit Recherche lösen; deine Bereitschaft dazu trägt dich über Hürden hinweg."
+        ? "Wenn etwas nicht funktioniert, suchst du die Fehlermeldung im Internet und probierst die Lösungen aus. Diese Bereitschaft hilft dir über die meisten Hürden."
         : willingness >= 0.3
-          ? "Ab und zu wirst du für ein Problem recherchieren müssen."
-          : "Wenn etwas nicht sofort funktioniert, brauchst du Geduld, denn du willst wenig Einarbeitung betreiben.");
+          ? "Ab und zu musst du bei einem Problem nachschlagen, etwa wenn ein Gerät nicht erkannt wird."
+          : "Linux verlangt, dass du dich mit Problemen auseinandersetzt. Wenn du das nicht willst, ist eine Distribution mit viel Vorkonfiguration die bessere Wahl.");
 
-      if (has("komplett")) lines.push("Programme ohne Linux-Version brauchen eine Alternative oder Wine/Proton; prüfe deine Software vorab.");
-      if (has("dualboot")) lines.push("Ein Windows-Update kann den Bootloader überschreiben; darauf musst du beim Dual-Boot vorbereitet sein.");
-      if (has("ausprobieren")) lines.push("Ein Live-System zeigt dir unverbindlich, wie gut deine Hardware unter Linux läuft.");
-      if (has("gaming") || has("gamer")) lines.push("Für Spiele musst du Treiber und Kompatibilität (z. B. Proton) prüfen.");
-      if (has("office-alt")) lines.push("LibreOffice ersetzt Word und Excel, Formatierungen können aber abweichen.");
-      if (has("os-software")) lines.push("Die Open-Source-Programme, die du nutzt, gibt es auch für Linux; du kannst die meisten unverändert weiterverwenden.");
+      if (has("komplett")) lines.push("Programme, die es nur für Windows gibt, musst du durch Alternativen ersetzen. Mit Wine oder Proton (Kompatibilitätsschichten) laufen manche trotzdem; prüfe deine Liste vorab.");
+      if (has("dualboot")) lines.push("Ein Windows-Update kann den Startmanager (Bootloader) überschreiben, dann startet Linux nicht mehr. Die Linux-Installation lässt sich meist mit einer Reparaturanleitung wiederherstellen.");
+      if (has("ausprobieren")) lines.push("Ein Live-USB-Stick startet Linux direkt vom Stick, ohne etwas auf deiner Festplatte zu ändern. So siehst du, ob Grafik, WLAN und Drucker funktionieren.");
+      if (has("gaming") || has("gamer")) lines.push("Für Spiele musst du Treiber und Kompatibilität prüfen. Ob ein Spiel unter Linux läuft, zeigt dir <a href=\"https://www.protondb.com\" target=\"_blank\" rel=\"noopener\">ProtonDB</a>, wo Nutzer die Kompatibilität mit Proton bewerten.");
+      if (has("office-alt")) lines.push("LibreOffice kann Word- und Excel-Dateien öffnen und speichern. Layout, Schriften und Formeln können sich aber verschieben; prüfe wichtige Dokumente nach dem Öffnen.");
+      if (has("outlook")) lines.push("Microsoft Outlook gibt es für Linux nicht als Desktop-Programm. Thunderbird ist eine gute Alternative; Outlook läuft im Browser über die Weboberfläche.");
+      if (has("logitech")) lines.push("Logitech-Software wie G HUB oder Options+ gibt es nicht für Linux. Solaar und Piper übernehmen einen Teil der Einstellungen; Beleuchtung und Makros lassen sich dann nur eingeschränkt anpassen.");
+      if (has("rgb")) lines.push("Die Herstellersoftware für RGB (z. B. iCUE oder Razer Synapse) fehlt unter Linux meist. OpenRGB steuert viele Geräte, bei einigen Modellen ist die Steuerung aber eingeschränkt.");
+      if (has("spezial-hw")) lines.push("Spezialgeräte wie Grafiktabletts oder Lenkräder brauchen oft eigene Treiber. Prüfe vorab, ob dein Modell unter Linux unterstützt wird.");
+      if (has("drucker")) lines.push("Viele Drucker laufen unter Linux über CUPS, das Drucksystem von Linux. Bei Scannern und Multifunktionsgeräten prüfe vorher, ob dein Modell unterstützt wird.");
+      if (has("os-software")) lines.push("Die Programme, die du nutzt, gibt es auch für Linux. Du kannst die meisten direkt über den Software-Manager installieren.");
 
       const english = avg([19, 20]);
       if (english < 0.7) lines.push(english >= 0.35
-        ? "Englische Fehlermeldungen brauchen gelegentlich einen Übersetzer."
-        : "Viele Anleitungen und Fehlermeldungen gibt es nur auf Englisch; ohne Übersetzer wird es schwer.");
+        ? "Englische Fehlermeldungen brauchen gelegentlich einen Übersetzer, etwa über die Übersetzungsfunktion deines Browsers."
+        : "Viele Anleitungen und Fehlermeldungen gibt es nur auf Englisch. Ohne Übersetzer wird die Fehlersuche schwer; wichtige Begriffe wie „Partition“ oder „Treiber“ solltest du lernen.");
 
       return lines;
     }
@@ -700,9 +722,11 @@ hero_image_alt: "Tux mit pinker Mütze"
     function showResult() {
       const entries = [...answers.entries()];
       const values = entries.map(([, a]) => a);
-      const ratio = ratioOf(values);
-      const fitRatio = ratioOf(entries.filter(([id]) => !readinessIds.has(id)).map(([, a]) => a));
-      const readinessRatio = ratioOf(entries.filter(([id]) => readinessIds.has(id)).map(([, a]) => a));
+      const answersFor = ids => entries.filter(([id]) => ids.includes(Number(id))).map(([, a]) => a);
+      const dimensionRatios = dimensions.map(d => answersFor(d.ids)).filter(list => list.length).map(list => ratioOf(list));
+      const ratio = dimensionRatios.length ? dimensionRatios.reduce((a, b) => a + b, 0) / dimensionRatios.length : 0;
+      const fitRatio = ratio;
+      const readinessRatio = ratioOf(answersFor(dimensions[1].ids));
       const blockers = [...new Set(values.flatMap(a => a.blockers))];
       const profile = new Set(values.flatMap(a => a.tags));
 
@@ -765,21 +789,13 @@ hero_image_alt: "Tux mit pinker Mütze"
       const topics = [...new Set([...profile].filter(t => t.startsWith("topic:")).map(t => topicLabels[t.slice(6)]))];
       profileList.replaceChildren(...[...describeUser(), ...topics].map(text => {
         const li = document.createElement("li");
-        li.textContent = text;
+        li.innerHTML = text;
         return li;
       }));
 
       const skillBoxes = document.getElementById("ratgeber-skills");
-      const skillAreas = [
-        ["Windows-Installation", [1, 24, 27]],
-        ["Terminal", [3]],
-        ["Hardware und Treiber", [4]],
-        ["Partitionen und Festplatten", [15, 17]],
-        ["Boot und UEFI", [16]],
-        ["Englisch", [19, 20]],
-        ["IT-Grundbegriffe", [21]]
-      ];
-      skillBoxes.replaceChildren(...skillAreas.flatMap(([label, ids]) => {
+      const skillAreas = dimensions.map(d => [d.label, d.ids, d.tips]);
+      skillBoxes.replaceChildren(...skillAreas.flatMap(([label, ids, tips]) => {
         const values = ids.map(id => answers.get(String(id))?.score).filter(v => v !== undefined);
         if (!values.length) return [];
         const ratio = values.reduce((a, b) => a + b, 0) / (values.length * 2);
@@ -792,35 +808,22 @@ hero_image_alt: "Tux mit pinker Mütze"
         bar.textContent = "■".repeat(level) + "□".repeat(3 - level);
         const text = document.createElement("div");
         text.textContent = ["Gering", "Mittel", "Hoch"][level - 1];
-        box.append(name, bar, text);
+        const tip = document.createElement("div");
+        tip.textContent = tips[level - 1] ?? "";
+        box.append(name, bar, text, tip);
         return [box];
       }));
 
       const homepages = {
         mint: "https://linuxmint.com", zorin: "https://zorin.com/os", ubu: "https://ubuntu.com",
         kubu: "https://kubuntu.org", pop: "https://system76.com/pop", mx: "https://mxlinux.org",
-        suse: "https://www.opensuse.org", xubu: "https://xubuntu.org", elem: "https://elementary.io", manj: "https://manjaro.org", fedw: "https://fedoraproject.org/workstation",
+        suse: "https://www.opensuse.org", xubu: "https://xubuntu.org", manj: "https://manjaro.org", fedw: "https://fedoraproject.org/workstation",
         fedk: "https://fedoraproject.org/kde", deb: "https://www.debian.org", arch: "https://archlinux.org",
         endo: "https://endeavouros.com", cachy: "https://cachyos.org", bazz: "https://bazzite.gg", nob: "https://nobaraproject.org"
       };
-      const maxShown = 8;
-      const points = distroPoints();
-      const archBased = new Set(["arch", "endo", "cachy", "manj"]);
-      const fedoraBased = new Set(["fedw", "fedk", "nob"]);
-      const advancedOnly = new Set(["deb"]);
-      const lowExperience = answers.get("24")?.score <= 1;
-      const blindTrust = answers.get("29")?.score === 0;
-      const ranked = distros
-        .map(d => ({ d, pts: points[d.id] }))
-        .filter(x => x.pts > 0
-          && !((lowExperience || blindTrust) && archBased.has(x.d.id))
-          && !(lowExperience && (fedoraBased.has(x.d.id) || advancedOnly.has(x.d.id))))
-        .sort((a, b) => b.pts - a.pts)
-        .slice(0, maxShown)
-        .map(x => x.d);
-
-      ranked.sort((a, b) => a.name.localeCompare(b.name, "de"));
-      distroList.replaceChildren(...ranked.map(d => {
+      const beginnerIds = ["mint", "zorin", "ubu", "kubu", "pop", "mx", "xubu", "bazz"];
+      const sorted = [...distros].sort((a, b) => a.name.localeCompare(b.name, "de"));
+      const renderDistros = (list, items) => list.replaceChildren(...items.map(d => {
         const li = document.createElement("li");
         const name = document.createElement("strong");
         name.textContent = d.name;
@@ -832,6 +835,13 @@ hero_image_alt: "Tux mit pinker Mütze"
         li.append(name, `: ${d.text} `, link);
         return li;
       }));
+      const priority = ["mint", "ubu", "kubu", "zorin"];
+      const beginners = [
+        ...priority.map(id => distros.find(d => d.id === id)),
+        ...sorted.filter(d => beginnerIds.includes(d.id) && !priority.includes(d.id))
+      ];
+      renderDistros(beginnerList, beginners);
+      renderDistros(advancedList, sorted.filter(d => !beginnerIds.includes(d.id)));
 
       result.hidden = false;
       result.scrollIntoView({ behavior: "smooth", block: "start" });

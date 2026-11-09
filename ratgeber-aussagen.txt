@@ -1,0 +1,92 @@
+Aussagen des Linux-Ratgebers
+============================
+
+Texte im Ergebnis und in den Hinweisen
+--------------------------------------
+- ratgeber-distros-einsteiger
+- ratgeber-distros-fortgeschritten
+- Linux auf den PC aufspielen: Sprache, Benutzername und Festplatte auswählen, bis das System zum ersten Mal startet
+- Einen USB-Stick mit dem Linux-Installationsprogramm beschreiben, z. B. mit Ventoy oder balenaEtcher
+- Die Festplatte in Bereiche aufteilen (Partitionen), z. B. einen Teil für Linux und einen für Windows
+- Im BIOS/UEFI-Menü des PCs Secure Boot prüfen, wenn Linux nach der Installation nicht startet
+- Eine zweite Festplatte so einrichten, dass Linux sie bei jedem Start automatisch einbindet
+- Textbefehle im Terminal eintippen, z. B. „sudo apt update“, und Fehlermeldungen lesen
+- Herausfinden, welche Teile im PC stecken (Grafikkarte, WLAN, Drucker), und prüfen, ob Linux sie erkennt
+- Updates einspielen und Probleme nach Updates beheben
+- Linux über einen Live-USB-Stick testen, ohne etwas auf der Festplatte zu ändern
+- Programme über den Software-Manager oder Befehle wie „sudo apt install“ installieren und aktualisieren
+- Nvidia-Treiber installieren oder Nouveau einrichten
+- Mint fühlt sich vertraut an: Menüs, Taskleiste und Dateiverwaltung arbeiten wie unter Windows, und Multimedia-Codecs sind schon dabei. Updates kommen über den Update-Manager und fallen meist kaum auf. Stolperstein: Bei neuer Hardware wie aktuellen Grafikkarten muss man ab und zu in der Treiberverwaltung nachhelfen.
+- Zorin wirkt wie ein Windows mit Linux darunter: Layouts lassen sich mit einem Klick umschalten, und Office-Aufgaben erledigt man über Web-Apps oder Wine. Stolperstein: Einige Layouts und Extras gibt es nur in der kostenpflichtigen Pro-Version, die kostenlose Core-Version reicht für den Alltag meist aus.
+- Wer sich an GNOME gewöhnt hat, kommt mit Ubuntu gut zurecht, und zu fast jedem Problem findet man eine Anleitung. Stolperstein: Firefox und andere Programme kommen als Snap-Paket, das beim ersten Start spürbar länger braucht. Ubuntu drängt außerdem gern auf eigene Dienste wie Ubuntu Pro oder den Snap-Store.
+- KDE Plasma erinnert stark an Windows: Startmenü, Taskleiste und Systemeinstellungen sind leicht zu finden, und vieles lässt sich per Klick anpassen. Stolperstein: Auch hier kommen einige Programme als Snap-Paket, und die vielen Einstellungen können anfangs überfordern.
+- Mit einer Nvidia-Grafikkarte läuft die Installation ohne Umwege, und Spiele starten meist direkt. Fenster lassen sich per Tastatur sauber anordnen. Stolperstein: Die Oberfläche unterscheidet sich deutlich von Windows, und der Wechsel auf neue Pop!_OS-Versionen verläuft nicht immer reibungslos.
+- MX arbeitet ruhig und zuverlässig, auch auf älteren Rechnern mit wenig Arbeitsspeicher. Viele Einstellungen erledigt man zentral über das eigene MX-Tools-Menü. Stolperstein: Manches muss über Menü oder Terminal eingerichtet werden, und es gibt weniger Erklärungen als bei Mint.
+- YaST bündelt Einstellungen, Treiber und Software an einer Stelle, und Snapper legt Snapshots an, mit denen sich fehlerhafte Updates zurückrollen lassen. Stolperstein: Bei Tumbleweed kommen Updates fast täglich, und ab und zu bricht etwas, das man dann selbst reparieren muss.
+- Xubuntu läuft flott und schlicht, die XFCE-Oberfläche bleibt auch auf älteren Geräten reaktionsschnell. Stolperstein: Auch hier kommen einige Programme als Snap-Paket, und die Oberfläche bietet weniger moderne Komfortfunktionen.
+- Man bekommt aktuelle Software und eine saubere GNOME-Oberfläche. Stolperstein: Fedora wird nach etwa 13 Monaten nicht mehr gepflegt, daher steht alle halbe Jahre ein Versionswechsel an. Nvidia-Treiber und Multimedia-Codecs muss man über RPM Fusion selbst hinzufügen.
+- KDE Plasma kombiniert mit frischer Software ergibt ein vertrautes Bild mit aktuellen Programmen. Stolperstein: Wie bei Fedora Workstation endet die Unterstützung nach etwa 13 Monaten, und Nvidia-Treiber sowie Codecs sind nicht vorinstalliert.
+- Das System läuft sehr ruhig, weil sich wenig ändert und Updates selten etwas brechen. Stolperstein: Programme sind oft älter als bei anderen Distributionen, und Nvidia-Treiber oder WLAN-Chips verlangen bei der Installation die Option für nicht-freie Software.
+- Man bekommt das System, das man sich selbst zusammengestellt hat, mit aktueller Software. Stolperstein: Die Installation läuft komplett über das Terminal, und Updates erfordern gelegentlich manuelle Eingriffe, die auf der Arch-Startseite angekündigt werden. Wer Updates länger liegen lässt, riskiert Probleme.
+- Die grafische Installation und Oberfläche funktionieren gut, und Updates werden vor der Auslieferung geprüft. Stolperstein: Manche Updates kommen verzögert, und Kernel-Wechsel oder Treiberprobleme muss man ab und zu von Hand lösen.
+- Die Installation ist geführt, und man bekommt ein Arch-System mit eigenen Hilfswerkzeugen für Updates. Stolperstein: Bei Updates kann es wie bei Arch zu Problemen kommen, die man im Forum oder in den Neuigkeiten nachlesen muss.
+- Der Assistent installiert Treiber und Gaming-Werkzeuge gleich mit, und Spiele laufen oft flott. Stolperstein: Als Arch-Basis braucht es bei Updates ab und zu manuelle Eingriffe, daher sollte man die Neuigkeiten zu Updates lesen.
+- Steam, Proton und Nvidia-Treiber laufen sofort, und das Grundsystem bleibt auch nach Updates stabil. Stolperstein: Programme installiert man über den Software-Store als Flatpak oder in einer Container-Umgebung, und Systemänderungen laufen anders als gewohnt.
+- Gaming-Werkzeuge und Treiber sind vorkonfiguriert, sodass Spiele ohne viel Einrichtung starten. Stolperstein: Das Projekt wird von wenigen Personen gepflegt, und größere Updates bringen manchmal Änderungen, die man beachten muss.
+- .ratgeber-option[aria-pressed='true']
+- Du kennst dich mit der Einrichtung eines Computers aus. Die Installation sollte dir kaum Mühe machen, und neue Begriffe erschließst du dir schnell.
+- Bei der Installation brauchst du an einzelnen Stellen Hilfe. Vor allem die Festplatteneinteilung (Partitionen) solltest du mit einer Anleitung neben dir durchgehen.
+- Die Installation ist für dich Neuland. Du wirst dich mit Begriffen wie „Partition“, „Bootloader“ und „Treiber“ vertraut machen müssen; plane für die ersten Tage mehrere Stunden ein.
+- Du klickst Installationen gern schnell durch. Der Installer fragt aber auch nach der Festplatte; lies jede Seite genau, sonst löschst du im schlimmsten Fall deine Windows-Daten.
+- Lies bei der Installation jede Frage genau. Gerade bei der Festplatte entscheidet eine falsche Auswahl darüber, ob Daten verloren gehen.
+- Wenn etwas nicht funktioniert, suchst du die Fehlermeldung im Internet und probierst die Lösungen aus. Diese Bereitschaft hilft dir über die meisten Hürden.
+- Ab und zu musst du bei einem Problem nachschlagen, etwa wenn ein Gerät nicht erkannt wird.
+- Linux verlangt, dass du dich mit Problemen auseinandersetzt. Wenn du das nicht willst, ist eine Distribution mit viel Vorkonfiguration die bessere Wahl.
+- Programme, die es nur für Windows gibt, musst du durch Alternativen ersetzen. Mit Wine oder Proton (Kompatibilitätsschichten) laufen manche trotzdem; prüfe deine Liste vorab.
+- Ein Windows-Update kann den Startmanager (Bootloader) überschreiben, dann startet Linux nicht mehr. Die Linux-Installation lässt sich meist mit einer Reparaturanleitung wiederherstellen.
+- Ein Live-USB-Stick startet Linux direkt vom Stick, ohne etwas auf deiner Festplatte zu ändern. So siehst du, ob Grafik, WLAN und Drucker funktionieren.
+- Für Spiele musst du Treiber und Kompatibilität prüfen. Ob ein Spiel unter Linux läuft, zeigt dir <a href="https://www.protondb.com" target="_blank" rel="noopener">ProtonDB</a>, wo Nutzer die Kompatibilität mit Proton bewerten.
+- LibreOffice kann Word- und Excel-Dateien öffnen und speichern. Layout, Schriften und Formeln können sich aber verschieben; prüfe wichtige Dokumente nach dem Öffnen.
+- Microsoft Outlook gibt es für Linux nicht als Desktop-Programm. Thunderbird ist eine gute Alternative; Outlook läuft im Browser über die Weboberfläche.
+- Logitech-Software wie G HUB oder Options+ gibt es nicht für Linux. Solaar und Piper übernehmen einen Teil der Einstellungen; Beleuchtung und Makros lassen sich dann nur eingeschränkt anpassen.
+- Die Herstellersoftware für RGB (z. B. iCUE oder Razer Synapse) fehlt unter Linux meist. OpenRGB steuert viele Geräte, bei einigen Modellen ist die Steuerung aber eingeschränkt.
+- Spezialgeräte wie Grafiktabletts oder Lenkräder brauchen oft eigene Treiber. Prüfe vorab, ob dein Modell unter Linux unterstützt wird.
+- Viele Drucker laufen unter Linux über CUPS, das Drucksystem von Linux. Bei Scannern und Multifunktionsgeräten prüfe vorher, ob dein Modell unterstützt wird.
+- Die Programme, die du nutzt, gibt es auch für Linux. Du kannst die meisten direkt über den Software-Manager installieren.
+- Englische Fehlermeldungen brauchen gelegentlich einen Übersetzer, etwa über die Übersetzungsfunktion deines Browsers.
+- Viele Anleitungen und Fehlermeldungen gibt es nur auf Englisch. Ohne Übersetzer wird die Fehlersuche schwer; wichtige Begriffe wie „Partition“ oder „Treiber“ solltest du lernen.
+- Linux ist für dich nur eingeschränkt geeignet
+- Mindestens eine deiner Anforderungen lässt sich unter Linux nur schwer oder gar nicht umsetzen:
+- Linux ist für dich eher nicht die beste Wahl
+- Deine Anforderungen an Software und Hardware passen nur eingeschränkt zu Linux.
+- Linux passt zu deinen Anforderungen, du musst dich aber einarbeiten
+- Software und Hardware passen gut. Für den Einstieg brauchst du Zeit und etwas Lernbereitschaft; Anleitungen und ein Live-USB-Stick helfen dabei.
+- Linux passt sehr gut zu dir
+- Deine Anforderungen lassen sich unter Linux gut abdecken.
+- Linux könnte für dich passen
+- Prüfe vorher einige Punkte. Probier Linux am besten erst über einen Live-USB-Stick oder Dual-Boot aus.
+- Mit deinen Anforderungen ist Windows vermutlich bequemer. Ausprobieren kann trotzdem interessant sein.
+- Da du Windows komplett ersetzen willst, musst du für diese Software oder dieses Spiel auf Linux verzichten. Alternativ kannst du Windows parallel behalten (Dual-Boot).
+- Du musst auf Linux nicht verzichten: Mit einer Dualboot-Installation kannst du Linux und Windows parallel nutzen und die Software oder das Spiel unter Windows starten.
+- Du willst Linux neben Windows nutzen. Plane dafür eine eigene Partition ein und sichere deine Daten vorher.
+- Viele Lösungen, Anleitungen und Fehlermeldungen findest du nur auf Englisch. Deutschsprachige Anlaufstellen wie ubuntuusers.de oder die Linux Guides Community helfen weiter, lohnt sich aber trotzdem, die wichtigsten englischen Begriffe nach und nach zu lernen.
+- Du hast nach eigener Angabe nicht genug freien Speicher. Gib zuerst Speicher frei, etwa durch Löschen oder Verkleinern einer Partition, oder plane eine weitere SSD oder HDD ein.
+- Plane mindestens 100 GiB freien Speicher ein, besser mehr. Lässt sich dieser nicht durch Partitionierung freigeben, brauchst du eine weitere SSD oder HDD.
+- Für deine ältere Nvidia-Karte wäre der Open-Source-Treiber Nouveau die Standardlösung. Er läuft für den Desktop meist stabil, bietet aber oft weniger Leistung und ist für Spiele eingeschränkt. Prüfe auf der Nvidia-Seite, ob für deine Karte noch ein proprietärer Treiber verfügbar ist, denn die Unterstützung ändert sich mit neuen Treiberversionen.
+- Bei Debian, Arch, EndeavourOS, Fedora und CachyOS musst du den Nvidia-Treiber in der Regel selbst nachinstallieren. Linux Mint, Ubuntu, Zorin, Pop!_OS, Bazzite und Nobara bringen ihn bereits mit oder über einen Treiber-Manager.
+- https://fedoraproject.org/workstation
+- https://fedoraproject.org/kde
+- https://nobaraproject.org
+- ).forEach(o => o.setAttribute(
+
+Hinweise bei Auswahl bestimmter Programme oder Spiele (Blocker)
+---------------------------------------------------------------
+- Microsoft Word, Excel oder PowerPoint (Desktop-Version) laufen nicht unter Linux; LibreOffice oder Office im Browser ersetzen sie nur eingeschränkt.
+- Adobe Photoshop läuft unter Linux nicht; GIMP oder Krita sind Alternativen mit anderem Funktionsumfang.
+- Adobe Premiere Pro läuft unter Linux nicht; Kdenlive oder DaVinci Resolve sind Alternativen.
+- Adobe Lightroom läuft unter Linux nicht; darktable oder RawTherapee sind Alternativen.
+- AutoCAD läuft unter Linux nicht; FreeCAD oder LibreCAD sind Alternativen mit eingeschränktem Funktionsumfang.
+- Valorant nutzt Kernel-Anti-Cheat und läuft unter Linux nicht.
+- League of Legends nutzt Kernel-Anti-Cheat und läuft unter Linux nicht.
+- Call of Duty nutzt Kernel-Anti-Cheat und läuft unter Linux nicht.
+- Battlefield 6 nutzt Kernel-Anti-Cheat und läuft unter Linux nicht.
