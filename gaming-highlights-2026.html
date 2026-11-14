@@ -2,79 +2,25 @@
 layout: page
 title: "Gaming-Highlights 2026"
 ---
-    <section class="section">    
-      <div class="game-card">
-        <div class="game-card-header">
-          <a href="https://store.steampowered.com/app/219990" target="_blank" rel="noopener noreferrer">Grim Dawn - Fangs of Asterkarn</a>
-        </div>
-        <div class="game-card-body">
-          <div class="game-card-info">
-            <p>In einer düsteren Fantasywelt steht die Menschheit kurz vor dem Untergang. Eisen ist wertvoller als Gold, und Vertrauen muss man sich hart erarbeiten. Das Action-Rollenspiel bietet eine umfangreiche Charakterentwicklung, Hunderte einzigartige Gegenstände, ein Crafting-System und Quests, deren Verlauf durch eigene Entscheidungen beeinflusst wird.</p>
-          </div>
-          <div class="game-card-image">
-            <img src="/assets/images/games/steam-219990-header.jpg" alt="Grim Dawn - Fangs of Asterkarn">
-            <div class="game-card-meta">
-              <a href="https://www.protondb.com/app/219990" target="_blank" rel="noopener noreferrer"><span class="proton-badge proton-badge-platinum">Platinum</span></a>
-              <a class="steam-button" href="https://store.steampowered.com/app/219990" target="_blank" rel="noopener noreferrer">Zur Steam-Seite ↗</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="game-card">
-        <div class="game-card-header">
-          <a href="https://store.steampowered.com/app/3404260" target="_blank" rel="noopener noreferrer">Dead as Disco</a>
-        </div>
-        <div class="game-card-body">
-          <div class="game-card-info">
-            <p>In Dead as Disco treffen Martial Arts auf Musikvideo-Ästhetik. Das neonbeleuchtete Beat ’em up verbindet actionreiche Kämpfe mit dem Rhythmus der Musik, sodass jeder Schlag, Tritt und jede Kombo im Takt ausgeführt wird. Gemeinsam mit Charlie Disco gilt es, sich den schurkischen Idols entgegenzustellen und die Band wiederzuvereinen.</p>
-          </div>
-          <div class="game-card-image">
-            <img src="/assets/images/games/steam-3404260-header.jpg" alt="Dead as Disco">
-            <div class="game-card-meta">
-              <a href="https://www.protondb.com/app/3404260" target="_blank" rel="noopener noreferrer"><span class="proton-badge proton-badge-platinum">Platinum</span></a>
-              <a class="steam-button" href="https://store.steampowered.com/app/3404260" target="_blank" rel="noopener noreferrer">Zur Steam-Seite ↗</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="game-card">
-        <div class="game-card-header">
-          <a href="https://store.steampowered.com/app/1808500" target="_blank" rel="noopener noreferrer">Arc Raiders</a>
-        </div>
-        <div class="game-card-body">
-          <div class="game-card-info">
-            <p>ARC Raiders ist ein Multiplayer-Extraction-Spiel, das in einer tödlichen Zukunft spielt. Die Erde wurde von einer mysteriösen Bedrohung heimgesucht: mechanischen Kreaturen, die als ARC bekannt sind.</p>
-          </div>
-          <div class="game-card-image">
-            <img src="/assets/images/games/steam-1808500-header.jpg" alt="Arc Raiders">
-            <div class="game-card-meta">
-              <a href="https://www.protondb.com/app/1808500" target="_blank" rel="noopener noreferrer"><span class="proton-badge proton-badge-platinum">Platinum</span></a>
-              <a class="steam-button" href="https://store.steampowered.com/app/1808500" target="_blank" rel="noopener noreferrer">Zur Steam-Seite ↗</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="game-card">
-        <div class="game-card-header">
-          <a href="https://store.steampowered.com/app/2643390" target="_blank" rel="noopener noreferrer">Star Trek: Voyager - Across the Unknown</a>
-        </div>
-        <div class="game-card-body">
-          <div class="game-card-info">
-            <p>Ein Traum für Star-Trek-Fans. Interaktive Adventure-Story, die sich wie eine echte Episode anfühlt.</p>
-          </div>
-          <div class="game-card-image">
-            <img src="/assets/images/games/steam-2643390-header.jpg" alt="Star Trek: Voyager - Across the Unknown">
-            <div class="game-card-meta">
-              <a href="https://www.protondb.com/app/2643390" target="_blank" rel="noopener noreferrer"><span class="proton-badge proton-badge-platinum">Platinum</span></a>
-              <a class="steam-button" href="https://store.steampowered.com/app/2643390" target="_blank" rel="noopener noreferrer">Zur Steam-Seite ↗</a>
-            </div>
-          </div>
-        </div>
+    <section class="section">
+      <div class="table-scroll">
+        <table class="games-table games-table-top">
+          <tbody>
+            {%- for game in site.data.gaming_highlights %}
+            <tr>
+              <td>
+                <img src="/assets/images/games/steam-{{ game.appid }}-header.jpg" alt="{{ game.name }}">
+                <div><a href="https://www.protondb.com/app/{{ game.appid }}" target="_blank" rel="noopener noreferrer"><span class="proton-badge proton-badge-{{ game.rating | downcase }}">{{ game.rating }}</span></a> <a class="link-pill" href="https://store.steampowered.com/app/{{ game.appid }}" target="_blank" rel="noopener noreferrer">Steam-Seite ↗</a></div>
+                <small>Bild: <a href="https://store.steampowered.com/app/{{ game.appid }}" target="_blank" rel="noopener noreferrer">Steam / Valve</a></small>
+              </td>
+              <td><strong>{{ game.name }}</strong><br>{{ game.description }}</td>
+            </tr>
+            {%- endfor %}
+          </tbody>
+        </table>
       </div>
     </section>
+
 
   
 

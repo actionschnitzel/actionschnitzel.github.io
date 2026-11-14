@@ -26,6 +26,7 @@ layout: home
 </section>
 
 <section class="section compact" id="aufgaben">
+  <div class="connection-card">
   <h2>Aufgaben</h2>
   <ul class="entry-list connection-list task-list">
     {%- for group in site.data.tasks %}
@@ -40,22 +41,12 @@ layout: home
     </li>
     {%- endfor %}
   </ul>
+  </div>
 </section>
 </div>
 
-<div class="home-row">
-  <section class="section compact" id="projekte">
-    <h2>Projekte</h2>
-    {% include entry-list.html items=site.data.projects %}
-  </section>
-
-  <section class="section compact" id="artikel">
-    <h2>Artikel</h2>
-    {% include entry-list.html items=site.data.articles %}
-  </section>
-</div>
-
 <section class="section compact" id="distributionen">
+  <div class="connection-card">
   <h2>Distributionen meines Vertrauens</h2>
   <ul class="entry-list connection-list distro-list">
     {%- for distro in site.data.distributions %}
@@ -66,4 +57,5 @@ layout: home
     </li>
     {%- endfor %}
   </ul>
+  </div>
 </section>

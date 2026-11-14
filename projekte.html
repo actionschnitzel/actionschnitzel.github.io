@@ -1,0 +1,37 @@
+---
+layout: page
+title: "Projekte"
+---
+<section class="section" id="projekte">
+  <div class="project-grid">
+  {%- for project in site.data.projects %}
+  <div class="game-card">
+    <div class="game-card-header">
+      {%- if project.icon %}
+      <img class="entry-icon" src="{{ project.icon | relative_url }}" alt="">
+      {%- endif %}
+      <span>{{ project.name }}</span>
+    </div>
+    <div class="game-card-body">
+      <div class="game-card-info">
+        <p>{{ project.description }}</p>
+      </div>
+      <div class="game-card-image">
+        {%- if project.screenshot %}
+        <a class="project-screenshot" href="{{ project.screenshot | relative_url }}" target="_blank" rel="noopener noreferrer" title="Screenshot groß öffnen">
+          <img src="{{ project.screenshot | relative_url }}" alt="Screenshot von {{ project.name }}">
+        </a>
+        {%- else %}
+        <div class="project-screenshot-placeholder" role="img" aria-label="Screenshot folgt">Screenshot folgt</div>
+        {%- endif %}
+        <div class="game-card-meta">
+          {%- for link in project.links %}
+          <a class="steam-button" href="{{ link.url }}" target="_blank" rel="noopener noreferrer">{{ link.label }} ↗</a>
+          {%- endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+  {%- endfor %}
+  </div>
+</section>

@@ -1,0 +1,25 @@
+---
+layout: page
+title: "Artikel"
+---
+<section class="section" id="artikel">
+  <div class="project-grid">
+  {%- for article in site.data.articles %}
+  <div class="game-card">
+    <div class="game-card-header">
+      <span>{{ article.name }}</span>
+    </div>
+    <div class="game-card-body">
+      <div class="game-card-info">
+        <p>{{ article.description }}</p>
+        <div class="game-card-meta">
+          {%- for link in article.links %}
+          <a class="steam-button" href="{{ link.url }}" target="_blank" rel="noopener noreferrer">{{ link.label }} ↗</a>
+          {%- endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+  {%- endfor %}
+  </div>
+</section>

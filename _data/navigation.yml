@@ -1,9 +1,9 @@
 - title: Home
   url: /
-#- title: Artikel
-#  url: /#artikel
-#- title: Projekte
-#  url: /#projekte
+- title: Projekte
+  url: /projekte.html
+- title: Artikel
+  url: /artikel.html
 - title: Linux
   children:
     - title: Distributionen

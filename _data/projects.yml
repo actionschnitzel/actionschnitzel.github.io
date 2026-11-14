@@ -1,5 +1,6 @@
 - name: GuideOS
   icon: /assets/images/icons/logo_guideos.png
+  screenshot: /assets/images/projects/guideos-screenshot.jpg
   description: "Community-Experiment statt „nächste große Distribution“: Bei GuideOS entscheidet die Community selbst mit, wie die Linux-Distribution aussehen und funktionieren soll."
   links:
     - label: guideos.de
@@ -8,13 +9,26 @@
       url: https://github.com/GuideOS
 - name: PiGro - Just Click it!
   icon: /assets/images/icons/logo_pigro.png
+  screenshot: /assets/images/projects/pigro-screenshot.png
   description: "Grafische Oberfläche für fast alle Einstellungen eines Raspberry Pi: Monitoring, Updates, Autostarts, Übertakten, Desktop-Wechsel und mehr. Läuft auf Raspberry Pi OS, Ubuntu, MX Linux u. a."
   links:
     - label: github
       url: https://github.com/actionschnitzel/PiGro-Aid-
 - name: NuDebi
   icon: /assets/images/icons/logo_nedebi.png
+  screenshot: /assets/images/projects/nudebi-screenshot.png
   description: "gDebi-artige GTK4-Anwendung zum Prüfen und Installieren lokaler .deb-Pakete — mit Paketinfos, Abhängigkeitsanzeige und Dateimanager-Integration."
   links:
     - label: github
       url: https://github.com/actionschnitzel/nudebi
+- name: ActionGrooveNC
+  screenshot: /assets/images/projects/nextgroove-screenshot.png
+  description: "GNOME-Client für Nextcloud Music."
+  links:
+    - label: github
+      url: https://github.com/actionschnitzel/nextgroove
+- name: Naughty Schnitzel Extension
+  description: "Sammlung von Nautilus-Erweiterungen, die über das Kontextmenü laufen: versteckte Dateien ein- und ausblenden, Symlinks einfach erstellen und Pfade in die Zwischenablage kopieren."
+  links:
+    - label: github
+      url: https://github.com/actionschnitzel/naughty-schnitzel-extension
