@@ -940,6 +940,72 @@ html.dark-mode .section li strong,
   }
 }
 
+/* Startseite: einheitliche Breite, Abschnitte paarweise nebeneinander auf dem Desktop.
+   Zeilen (main) und Spalten (.home-row) nutzen denselben Abstand --home-gap. */
+main:has(> #willkommen) {
+  --home-gap: 1rem;
+  display: grid;
+  gap: var(--home-gap);
+  align-content: start;
+}
+
+#willkommen,
+.home-row,
+#distributionen {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding-inline: 1.5rem;
+  justify-self: center;
+}
+
+#willkommen {
+  padding-bottom: 0;
+}
+
+#distributionen {
+  padding-top: 0;
+}
+
+.home-row > .section.compact {
+  padding: 0;
+}
+
+.home-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--home-gap);
+}
+
+@media (min-width: 769px) {
+  .home-row {
+    grid-template-columns: 1fr 1fr;
+    align-items: stretch;
+  }
+
+  .home-row > .section {
+    display: flex;
+    flex-direction: column;
+    max-width: none;
+    margin: 0;
+    min-width: 0;
+  }
+
+  .home-row > .section > .entry-list,
+  .home-row > .section > .connection-card {
+    flex: 1;
+  }
+
+  .home-row > .section > .connection-card {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .home-row > .section > .connection-card .connection-body {
+    flex: 1;
+  }
+}
+
 /* Kompakte Abschnitte und Eintragslisten (Startseite) */
 .section.compact {
   padding: 0.75rem 1.5rem;
