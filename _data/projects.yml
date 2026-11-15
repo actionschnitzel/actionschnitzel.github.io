@@ -22,12 +22,15 @@
     - label: github
       url: https://github.com/actionschnitzel/nudebi
 - name: ActionGrooveNC
+  icon: /assets/images/icons/actiongroove.svg
   screenshot: /assets/images/projects/nextgroove-screenshot.png
   description: "GNOME-Client für Nextcloud Music."
   links:
     - label: github
       url: https://github.com/actionschnitzel/nextgroove
 - name: Naughty Schnitzel Extension
+  icon: /assets/images/icons/logo_naughty.svg
+  screenshot: /assets/images/projects/naughty-screenshot.png
   description: "Sammlung von Nautilus-Erweiterungen, die über das Kontextmenü laufen: versteckte Dateien ein- und ausblenden, Symlinks einfach erstellen und Pfade in die Zwischenablage kopieren."
   links:
     - label: github
