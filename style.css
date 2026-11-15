@@ -6,6 +6,7 @@
   --card-bg: #f4f5f9;
   --accent-rgb: 0, 120, 212;
   --accent-light-rgb: 30, 144, 255;
+  --line-gradient: linear-gradient(to right, #50a7fc 20%, #4ccbe3 52%, #51eec2 88%, #67e1ca);
 }
 
 /* Dark Mode */
@@ -55,6 +56,7 @@ body {
   padding: 1rem 2rem;
   background: rgba(29, 30, 32, 0.95);
   border-bottom: 2px solid var(--accent);
+  border-image: var(--line-gradient) 1;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3), 0 0 20px rgba(0, 120, 212, 0.5), 0 0 30px rgba(0, 120, 212, 0.2);
   position: sticky;
   top: 0;
@@ -122,6 +124,10 @@ body {
 .nav-item-dropdown {
   position: relative;
   display: inline-block;
+}
+
+.mobile-submenu-items {
+  display: none;
 }
 
 .nav-item-dropdown > a {
@@ -477,6 +483,20 @@ footer {
     position: static;
     display: block;
     width: 100%;
+  }
+
+  .nav-item-mobile-links {
+    width: 100%;
+  }
+
+  .nav-links .mobile-submenu-items {
+    display: block;
+    background-color: rgba(30, 30, 30, 0.98);
+  }
+
+  .nav-links .mobile-submenu-items a {
+    padding: 0.6rem 1.5rem 0.6rem 3rem;
+    font-size: 0.95rem;
   }
 
   .nav-item-dropdown > a::after {
@@ -950,8 +970,7 @@ main:has(> #willkommen) {
 }
 
 #willkommen,
-.home-row,
-#distributionen {
+.home-row {
   width: 100%;
   max-width: 1400px;
   margin: 0 auto;
@@ -961,10 +980,6 @@ main:has(> #willkommen) {
 
 #willkommen {
   padding-bottom: 0;
-}
-
-#distributionen {
-  padding-top: 0;
 }
 
 .home-row > .section.compact {
@@ -1336,6 +1351,7 @@ main:has(> #willkommen) {
   background: none;
   border: none;
   border-bottom: 1px solid var(--adw-separator);
+  border-image: var(--line-gradient) 1;
   border-radius: 0;
 }
 
@@ -1432,6 +1448,16 @@ main:has(> #willkommen) {
   border-bottom: 1px solid var(--adw-separator);
 }
 
+.gog-table thead,
+#gamingPanelSurvey .games-table thead {
+  background: var(--line-gradient) bottom / 100% 1px no-repeat;
+}
+
+.gog-table th,
+#gamingPanelSurvey .games-table th {
+  border-bottom: none;
+}
+
 .games-table td {
   border-bottom: 1px solid var(--adw-separator);
 }
@@ -1450,6 +1476,7 @@ main:has(> #willkommen) {
   background: none;
   color: var(--text);
   border-bottom: 1px solid var(--adw-separator);
+  border-image: var(--line-gradient) 1;
 }
 
 .game-card-header a {
@@ -1519,13 +1546,13 @@ main:has(> #willkommen) {
   align-content: start;
 }
 
-.page-main > .section {
+:is(.page-main, .linux-ratgeber-content) > .section {
   max-width: none;
   margin: 0;
   min-width: 0;
 }
 
-.page-main > .section:not(:has(.game-card, .project-grid, .games-table, .article-intro, .construction, .ratgeber-manifest)) {
+:is(.page-main, .linux-ratgeber-content) > .section:not(:has(.game-card, .project-grid, .games-table, .article-intro, .construction, .ratgeber-manifest)) {
   padding: 0;
   background: var(--card-bg);
   border: 1px solid var(--adw-border);
@@ -1534,7 +1561,7 @@ main:has(> #willkommen) {
   overflow: hidden;
 }
 
-.page-main > .section:not(:has(.game-card, .project-grid, .games-table, .article-intro, .construction, .ratgeber-manifest)) > h2 {
+:is(.page-main, .linux-ratgeber-content) > .section:not(:has(.game-card, .project-grid, .games-table, .article-intro, .construction, .ratgeber-manifest)) > h2 {
   margin: 0;
   padding: 0.6rem 1rem;
   font-size: 1.1rem;
@@ -1542,10 +1569,76 @@ main:has(> #willkommen) {
   color: var(--text);
   background: none;
   border-bottom: 1px solid var(--adw-separator);
+  border-image: var(--line-gradient) 1;
 }
 
-.page-main > .section:not(:has(.game-card, .project-grid, .games-table, .article-intro, .construction, .ratgeber-manifest)) > :not(h2) {
+:is(.page-main, .linux-ratgeber-content) > .section:not(:has(.game-card, .project-grid, .games-table, .article-intro, .construction, .ratgeber-manifest)) > :not(h2) {
   margin-inline: 1.25rem;
+}
+
+.tabbed-page {
+  min-width: 0;
+}
+
+.content-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--adw-separator);
+}
+
+@media (max-width: 768px) {
+  .content-tabs {
+    display: none;
+  }
+}
+
+.content-tabs [role="tab"] {
+  padding: 0.55rem 1rem;
+  color: var(--text);
+  font: inherit;
+  background: var(--card-bg);
+  border: 1px solid var(--adw-border);
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.content-tabs [role="tab"][aria-selected="true"] {
+  color: #ffffff;
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.content-tabs [role="tab"]:focus-visible {
+  outline: 2px solid var(--accent-light);
+  outline-offset: 2px;
+}
+
+.content-panel.section {
+  max-width: none;
+  margin: 0;
+  padding: 1.5rem 0;
+}
+
+.content-panel > #distributionen {
+  max-width: none;
+  margin: 0;
+  padding: 1.5rem 0;
+}
+
+.content-panel .article-intro {
+  color: var(--text);
+}
+
+.content-panel[hidden] {
+  display: none;
+}
+
+.linux-ratgeber-content:not([hidden]) {
+  display: grid;
+  gap: 1rem;
+  padding-top: 1.5rem;
 }
 
 .games-table-top td {

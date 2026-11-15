@@ -1,47 +1,24 @@
 - title: Home
   url: /
-- title: Projekte
+- title: Meine Projekte
   url: /projekte.html
 - title: Artikel
   url: /artikel.html
 - title: Linux
-  children:
+  url: /linux.html
+  mobile_children:
     - title: Distributionen
-      url: /linux.html
+      url: /linux.html#linuxPanelDistros
     - title: Ist Linux etwas für mich?
-      url: /linux-ratgeber.html
+      url: /linux.html#linuxPanelGuide
 - title: Gaming
-  children:
-#    - title: Tools
-#      children:
-#        - title: Steam
-#          url: /gaming-tools-steam.html
-#        - title: Lutris
-#          url: /gaming-tools-lutris.html
-#        - title: Heroic Games Launcher
-#          url: /gaming-tools-heroic.html
-#        - title: Proton-Up-Qt
-#          url: /gaming-tools-protonupqt.html
-
-    - title: Meine Highlights
-      children:
-        - title: "2026"
-          url: /gaming-highlights-2026.html
-    - title: "GOG"
-      children:
-        - title: "Was läuft auf Linux"
-          url: /gaming-gog.html
-      
-      highlight: true
-    - title: "Steam Survey"
-      children:
-        - title: "Linux in Zahlen"
-          url: /gaming-steam-survey.html
-    - title: "Links"
-      children:
-        - title: "Gaming Websites"
-          url: /gaming-websites.html
-#    - title: Doom
-#      url: /gaming-doom.html
+  url: /gaming.html
+  mobile_children:
+    - title: GOG-Check
+      url: /gaming.html#gamingPanelGog
+    - title: Steam-Umfrage
+      url: /gaming.html#gamingPanelSurvey
+    - title: Links
+      url: /gaming.html#gamingPanelLinks
 #- title: Über
 #  url: /über.html

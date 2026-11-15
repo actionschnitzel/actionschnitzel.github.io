@@ -1,13 +1,32 @@
 ---
 layout: page
 title: "Linux"
-hero_image: /assets/images/heroes/cute_cap_tux_pink.png
-hero_image_alt: "Tux mit pinker Mütze"
+hero_class: page-hero-compact
 ---
-    <section class="section construction">
-      <p>🚧 Hier wird gebaut 🚧</p>
-    </section>
+<div class="tabbed-page">
+  <div class="content-tabs" role="tablist" aria-label="Linux-Inhalte">
+    <button id="linuxTabDistros" type="button" role="tab" aria-selected="true" aria-controls="linuxPanelDistros">Distributionen</button>
+    <button id="linuxTabGuide" type="button" role="tab" aria-selected="false" aria-controls="linuxPanelGuide" tabindex="-1">Ist Linux etwas für mich?</button>
+  </div>
 
+  <div id="linuxPanelDistros" class="content-panel" role="tabpanel" aria-labelledby="linuxTabDistros" tabindex="0">
+    <section class="section compact" id="distributionen">
+      <div class="connection-card">
+        <h2>Distributionen meines Vertrauens</h2>
+        <ul class="entry-list connection-list distro-list">
+          {%- for distro in site.data.distributions %}
+          <li class="entry">
+            <img class="connection-icon" src="{{ distro.icon | relative_url }}" alt="">
+            <a href="{{ distro.url }}" target="_blank" rel="noopener noreferrer">{{ distro.name }} ↗</a>
+            <span>{{ distro.description }}</span>
+          </li>
+          {%- endfor %}
+        </ul>
+      </div>
     </section>
+  </div>
 
-  
+  <div id="linuxPanelGuide" class="content-panel linux-ratgeber-content" role="tabpanel" aria-labelledby="linuxTabGuide" tabindex="0" hidden>
+    {% include linux-ratgeber.html %}
+  </div>
+</div>

@@ -44,18 +44,3 @@ layout: home
   </div>
 </section>
 </div>
-
-<section class="section compact" id="distributionen">
-  <div class="connection-card">
-  <h2>Distributionen meines Vertrauens</h2>
-  <ul class="entry-list connection-list distro-list">
-    {%- for distro in site.data.distributions %}
-    <li class="entry">
-      <img class="connection-icon" src="{{ distro.icon | relative_url }}" alt="">
-      <a href="{{ distro.url }}" target="_blank" rel="noopener noreferrer">{{ distro.name }} ↗</a>
-      <span>{{ distro.description }}</span>
-    </li>
-    {%- endfor %}
-  </ul>
-  </div>
-</section>

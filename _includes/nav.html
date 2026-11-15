@@ -8,7 +8,16 @@
   </button>
   <div class="nav-links" id="navLinks">
     {%- for item in site.data.navigation %}
-    {%- if item.children %}
+    {%- if item.mobile_children %}
+    <div class="nav-item-mobile-links">
+      <a href="{{ item.url | relative_url }}"{% assign target = item.url | uri_escape %}{% if current == target %} class="active"{% endif %}>{{ item.title }}</a>
+      <div class="mobile-submenu-items">
+        {%- for child in item.mobile_children %}
+        <a href="{{ child.url | relative_url }}">{{ child.title }}</a>
+        {%- endfor %}
+      </div>
+    </div>
+    {%- elsif item.children %}
     <div class="nav-item-dropdown">
       <a href="#">{{ item.title }}</a>
       <div class="dropdown-menu">

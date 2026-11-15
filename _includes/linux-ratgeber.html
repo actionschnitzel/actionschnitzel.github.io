@@ -1,0 +1,895 @@
+<style>
+  .ratgeber-question {
+    display: none;
+    margin-bottom: 1.75rem;
+  }
+
+  .ratgeber-procon {
+    list-style: none;
+    padding-left: 0;
+    margin: 0.2rem 0;
+  }
+
+  .ratgeber-procon li {
+    margin: 0;
+  }
+
+  .ratgeber-pro {
+    color: #1a7f37;
+  }
+
+  .ratgeber-con {
+    color: #cf222e;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .ratgeber-pro {
+      color: #3fb950;
+    }
+
+    .ratgeber-con {
+      color: #ff7b72;
+    }
+  }
+
+  .ratgeber-question.active {
+    display: block;
+  }
+
+  .ratgeber-question h3 {
+    margin-bottom: 0.6rem;
+  }
+
+  .ratgeber-options {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .ratgeber-option {
+    text-align: left;
+    font: inherit;
+    color: var(--text);
+    background: var(--card-bg);
+    border: 1px solid var(--adw-border);
+    border-radius: 6px;
+    padding: 0.7rem 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+
+  .ratgeber-option:hover {
+    background: color-mix(in srgb, var(--text) 8%, var(--card-bg));
+  }
+
+  .ratgeber-option[aria-pressed="true"] {
+    background: var(--accent);
+    color: #ffffff;
+  }
+
+  .ratgeber-progress {
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+  }
+
+  .ratgeber-result {
+    margin-top: 2rem;
+    padding: 1.25rem 1.5rem;
+    background: var(--card-bg);
+    border: 1px solid var(--adw-border);
+    border-radius: var(--adw-radius);
+    box-shadow: var(--adw-shadow);
+  }
+
+  .ratgeber-result[hidden],
+  .ratgeber-warning[hidden] {
+    display: none;
+  }
+
+  .ratgeber-warning {
+    margin-top: 0.75rem;
+    padding-left: 1.25rem;
+    color: #d13438;
+    font-weight: 600;
+  }
+
+  .ratgeber-category {
+    display: inline-block;
+    margin-bottom: 0.25rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--accent);
+  }
+
+  .ratgeber-tipp {
+    border: 1px solid var(--adw-border);
+    border-radius: var(--adw-radius);
+    background: var(--card-bg);
+    padding: 0.75rem 1rem;
+    margin: 1.5rem 0;
+  }
+
+  .ratgeber-distros {
+    padding-left: 1.25rem;
+    margin-bottom: 1rem;
+  }
+
+  .ratgeber-distros li {
+    margin-bottom: 0.25rem;
+  }
+
+  .ratgeber-distro-box {
+    border: 1px solid var(--adw-border);
+    border-radius: var(--adw-radius);
+    box-shadow: var(--adw-shadow);
+    background: var(--card-bg);
+    padding: 0.5rem 1.25rem;
+    margin-bottom: 1rem;
+  }
+
+  .ratgeber-distro-box summary {
+    cursor: pointer;
+    font-weight: 600;
+    padding: 0.6rem 0;
+  }
+
+  .ratgeber-distro-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .ratgeber-distro-list li {
+    padding: 0.4rem 0;
+  }
+
+  .ratgeber-reset,
+  .ratgeber-next {
+    font: inherit;
+    color: #ffffff;
+    background: var(--accent);
+    border: none;
+    border-radius: 6px;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    margin-top: 1rem;
+  }
+
+  .ratgeber-testhinweis {
+    font-size: 2.5rem;
+    line-height: 1.2;
+    font-weight: 700;
+    color: #d13438;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+  }
+</style>
+
+<section class="section">
+  <p class="ratgeber-testhinweis">Achtung: Der Ratgeber befindet sich in der Testphase und ist noch nicht aussagekräftig.</p>
+  <p>Seit dem Ende von Windows 10 rückt Linux stärker in den Fokus, und viele stellen es als einfachen Windows-Ersatz dar. Dieser Ratgeber prüft, ob Linux wirklich zu dir passt und welche Distribution für dich infrage kommt. Dafür beantwortest du einen kurzen Fragebogen zu deinen bisherigen Erfahrungen mit Windows, deiner Software und deiner Bereitschaft, dich einzuarbeiten. Am Ende erhältst du eine realistische Einschätzung, was der Umstieg für dich bedeutet, und eine Auswahl passender Distributionen.</p>
+  <p>Der Wille zu lernen lässt sich schlecht berechnen. Es werden natürlich keine Daten gesammelt oder weitergegeben.</p>
+  <p><a href="linux-ratgeber-manifest.html" target="_blank" rel="noopener">Mehr erfahren</a></p>
+</section>
+
+<section class="section">
+  <p class="ratgeber-progress" id="ratgeber-progress">Frage 1 von 21</p>
+
+  <div class="ratgeber-question" data-question="7" data-type="single">
+    <span class="ratgeber-category">Ziel</span>
+    <h3>Was ist dein Ziel mit dem System?</h3>
+    <div class="ratgeber-options">
+      <button type="button" class="ratgeber-option" data-score="2" data-tags="lernen" aria-pressed="false">Ich will Linux richtig lernen</button>
+      <button type="button" class="ratgeber-option" data-score="1" data-tags="einfach" aria-pressed="false">Ich will einfach nur meine Updates und meine Ruhe</button>
+      <button type="button" class="ratgeber-option" data-score="1" data-tags="windowsnah oberflaeche" aria-pressed="false">Ich will eine Oberfläche, die sich wie Windows anfühlt</button>
+      <button type="button" class="ratgeber-option" data-score="2" data-tags="komplett" aria-pressed="false">Ich will weg von Windows</button>
+      <button type="button" class="ratgeber-option" data-score="2" data-tags="komplett" aria-pressed="false">Windows brauche ich nur beruflich, privat nicht</button>
+      <button type="button" class="ratgeber-option" data-score="2" data-tags="lernen oberflaeche" aria-pressed="false">Ich will mehr Kontrolle über mein System</button>
+    </div>
+  </div>
+
+  <div class="ratgeber-question" data-question="18" data-type="single">
+    <span class="ratgeber-category">System</span>
+    <h3>Willst du Linux neben Windows nutzen oder Windows komplett ersetzen?</h3>
+    <div class="ratgeber-options">
+      <button type="button" class="ratgeber-option" data-score="1" data-tags="komplett install" aria-pressed="false">Windows komplett ersetzen</button>
+      <button type="button" class="ratgeber-option" data-score="1" data-tags="dualboot install" aria-pressed="false">Linux neben Windows (Dual-Boot)</button>
+      <button type="button" class="ratgeber-option" data-score="1" data-tags="ausprobieren topic:live" aria-pressed="false">Erst einmal ausprobieren</button>
+    </div>
+  </div>
+
+  <div class="ratgeber-question" data-question="6" data-type="single">
+    <span class="ratgeber-category">Nutzung</span>
+    <h3>Wie wichtig ist dir, Aufgaben mit der Maus statt mit Befehlen zu erledigen?</h3>
+    <div class="ratgeber-options">
+      <button type="button" class="ratgeber-option" data-score="0" data-tags="grafisch" aria-pressed="false">Sehr wichtig</button>
+      <button type="button" class="ratgeber-option" data-score="1" data-tags="grafisch" aria-pressed="false">Eher wichtig</button>
+      <button type="button" class="ratgeber-option" data-score="2" data-tags="terminal" aria-pressed="false">Egal, ich nutze auch gern das Terminal</button>
+    </div>
+  </div>
+
+  <div class="ratgeber-question" data-question="1" data-type="single">
+    <span class="ratgeber-category">Erfahrung</span>
+    <h3>Hast du schon einmal Windows neu installiert?</h3>
+    <div class="ratgeber-options">
+      <button type="button" class="ratgeber-option" data-score="2" data-tags="erfahren" aria-pressed="false">Ja, mehrmals</button>
+      <button type="button" class="ratgeber-option" data-score="1" data-tags="erfahren" aria-pressed="false">Ja, einmal oder zweimal</button>
+      <button type="button" class="ratgeber-option" data-score="0" data-tags="einsteiger topic:install" aria-pressed="false">Nein</button>
+    </div>
+  </div>
+
+  <div class="ratgeber-question" data-question="24" data-type="multi" data-scoring="min">
+    <span class="ratgeber-category">Erfahrung</span>
+    <h3>Wie installierst du Programme unter Windows? (Mehrfachauswahl)</h3>
+    <div class="ratgeber-options">
+      <button type="button" class="ratgeber-option" data-score="2" data-tags="store" aria-pressed="false">Über den Windows Store</button>
+      <button type="button" class="ratgeber-option" data-score="1" data-tags="webdownload" aria-pressed="false">Ich lade sie von Webseiten herunter</button>
+      <button type="button" class="ratgeber-option" data-score="0" data-tags="klickt-durch" aria-pressed="false">Ich klicke Installationen ohne zu lesen durch</button>
+      <button type="button" class="ratgeber-option" data-score="2" data-tags="aendert-einst" aria-pressed="false">Ich ändere bei der Installation etwas (z. B. Pfad oder Zusatzsoftware)</button>
+      <button type="button" class="ratgeber-option" data-score="0" data-tags="einsteiger nie-installiert" aria-pressed="false">Ich habe noch nie ein Programm installiert</button>
+    </div>
+    <button type="button" class="ratgeber-next">Weiter</button>
+  </div>
+
+  <div class="ratgeber-question" data-question="28" data-type="single">
+    <span class="ratgeber-category">Fähigkeiten</span>
+    <h3>Wenn etwas auf dem PC nicht funktioniert, wie gehst du vor?</h3>
+    <div class="ratgeber-options">
+      <button type="button" class="ratgeber-option" data-score="2" data-tags="erfahren" aria-pressed="false">Ich recherchiere selbst und probiere Lösungen aus</button>
+      <button type="button" class="ratgeber-option" data-score="2" data-tags="erfahren" aria-pressed="false">Ich starte den PC mindestens einmal, besser zweimal neu</button>
+      <button type="button" class="ratgeber-option" data-score="1" data-tags="lernen" aria-pressed="false">Manchmal recherchiere ich, manchmal frage ich nach</button>
+      <button type="button" class="ratgeber-option" data-score="0" data-tags="einsteiger freunde-helfen" aria-pressed="false">Ich frage lieber Freunde, Verwandte oder Bekannte</button>
+    </div>
+  </div>
+
+  <div class="ratgeber-question" data-question="29" data-type="single" data-hide-if="freunde-helfen">
+    <span class="ratgeber-category">Fähigkeiten</span>
+    <h3>Wie gehst du mit Anleitungen aus Tutorials auf YouTube um?</h3>
+    <div class="ratgeber-options">
+      <button type="button" class="ratgeber-option" data-score="2" data-tags="erfahren" aria-pressed="false">Ich prüfe Befehle und Quellen, bevor ich sie ausführe</button>
+      <button type="button" class="ratgeber-option" data-score="1" data-tags="lernen" aria-pressed="false">Je nach Thema prüfe ich genauer</button>
+      <button type="button" class="ratgeber-option" data-score="0" data-tags="einsteiger" aria-pressed="false">Ich übernehme einfach, was im Video gezeigt wird</button>
+    </div>
+  </div>
+
+  <div class="ratgeber-question" data-question="3" data-type="single">
+    <span class="ratgeber-category">Erfahrung</span>
+    <h3>Hast du schon einmal in der Eingabeaufforderung (CMD), in PowerShell oder mit .cmd-, .bat- oder .ps1-Dateien gearbeitet?</h3>
+    <div class="ratgeber-options">
+      <button type="button" class="ratgeber-option" data-score="2" data-tags="erfahren terminal" aria-pressed="false">Ja, regelmäßig</button>
+      <button type="button" class="ratgeber-option" data-score="1" data-tags="terminal topic:terminal" aria-pressed="false">Ein paar Mal</button>
+      <button type="button" class="ratgeber-option" data-score="0" data-tags="topic:terminal" aria-pressed="false">Nein, das kenne ich nicht</button>
+    </div>
+  </div>
+
+  <div class="ratgeber-question" data-question="4" data-type="single">
+    <span class="ratgeber-category">Hardware</span>
+    <h3>Weißt du, welche Hardware in deinem PC steckt?</h3>
+    <div class="ratgeber-options">
+      <button type="button" class="ratgeber-option" data-score="2" data-tags="erfahren" aria-pressed="false">Ja, genau</button>
+      <button type="button" class="ratgeber-option" data-score="1" data-tags="topic:hardware" aria-pressed="false">Grob</button>
+      <button type="button" class="ratgeber-option" data-score="0" data-tags="topic:hardware" aria-pressed="false">Nein</button>
+    </div>
+  </div>
+
+  <div class="ratgeber-question" data-question="2" data-type="single">
+    <span class="ratgeber-category">Hardware</span>
+    <h3>Kennst du die wichtigsten Komponenten deines PCs (z. B. Grafikkarte, Prozessor, Mainboard)?</h3>
+    <div class="ratgeber-options">
+      <button type="button" class="ratgeber-option" data-score="2" data-tags="erfahren" aria-pressed="false">Ja, ich kann sie benennen und selbst recherchieren</button>
+      <button type="button" class="ratgeber-option" data-score="1" data-tags="topic:hardware" aria-pressed="false">Ein paar davon</button>
+      <button type="button" class="ratgeber-option" data-score="0" data-tags="topic:hardware" aria-pressed="false">Nein</button>
+    </div>
+  </div>
+
+  <div class="ratgeber-question" data-question="5" data-type="single">
+    <span class="ratgeber-category">Hardware</span>
+    <h3>Wie alt ist deine Hardware?</h3>
+    <div class="ratgeber-options">
+      <button type="button" class="ratgeber-option" data-score="1" aria-pressed="false">Unter 3 Jahre</button>
+      <button type="button" class="ratgeber-option" data-score="1" aria-pressed="false">3 bis 6 Jahre</button>
+      <button type="button" class="ratgeber-option" data-score="2" data-tags="leicht topic:hardware" aria-pressed="false">Über 6 Jahre</button>
+    </div>
+  </div>
+
+  <div class="ratgeber-question" data-question="25" data-type="single" data-show-if="install">
+    <span class="ratgeber-category">Hardware</span>
+    <h3>Hast du mindestens 100 GiB freien Speicher auf deiner Festplatte oder SSD?</h3>
+    <div class="ratgeber-options">
+      <button type="button" class="ratgeber-option" data-score="2" aria-pressed="false">Ja</button>
+      <button type="button" class="ratgeber-option" data-score="1" aria-pressed="false">Weiß ich nicht</button>
+      <button type="button" class="ratgeber-option" data-score="1" data-tags="speicher-knapp" aria-pressed="false">Nein</button>
+    </div>
+  </div>
+
+  <div class="ratgeber-question" data-question="22" data-type="single">
+    <span class="ratgeber-category">Hardware</span>
+    <h3>Nutzt du eine Nvidia-Grafikkarte?</h3>
+    <div class="ratgeber-options">
+      <button type="button" class="ratgeber-option" data-score="1" data-tags="nvidia" aria-pressed="false">Ja</button>
+      <button type="button" class="ratgeber-option" data-score="2" aria-pressed="false">Nein, AMD, Intel oder keine dedizierte Karte</button>
+      <button type="button" class="ratgeber-option" data-score="1" data-tags="topic:nvidia" aria-pressed="false">Weiß ich nicht</button>
+    </div>
+  </div>
+
+  <div class="ratgeber-question" data-question="23" data-type="single" data-show-if="nvidia">
+    <span class="ratgeber-category">Hardware</span>
+    <h3>Welche Nvidia-Grafikkarte hast du? Den Namen findest du im Gerätemanager.</h3>
+    <div class="ratgeber-options">
+      <button type="button" class="ratgeber-option" data-score="2" data-tags="nvidia-modern" aria-pressed="false">RTX 50er, 40er, 30er oder 20er Serie</button>
+      <button type="button" class="ratgeber-option" data-score="2" data-tags="nvidia-modern" aria-pressed="false">GTX 16er Serie (z. B. GTX 1660, 1650)</button>
+      <button type="button" class="ratgeber-option" data-score="1" data-tags="nvidia topic:nvidia" aria-pressed="false">GTX 10er Serie oder GT 1030 (z. B. GTX 1080, 1060)</button>
+      <button type="button" class="ratgeber-option" data-score="0" data-tags="nouveau topic:nvidia" aria-pressed="false">GTX 900er Serie oder GTX 750 (z. B. GTX 970, 960)</button>
+      <button type="button" class="ratgeber-option" data-score="0" data-tags="nouveau topic:nvidia" aria-pressed="false">GT 700er, 600er, 500er oder 400er Serie (z. B. GT 730, GT 710, GT 640)</button>
+      <button type="button" class="ratgeber-option" data-score="1" data-tags="nvidia topic:nvidia" aria-pressed="false">MX-Serie oder Laptop-Grafik (z. B. MX450, MX150)</button>
+      <button type="button" class="ratgeber-option" data-score="1" data-tags="nvidia topic:nvidia" aria-pressed="false">Profi-Karte (Quadro, RTX A-Serie oder Tesla)</button>
+      <button type="button" class="ratgeber-option" data-score="1" data-tags="topic:nvidia" aria-pressed="false">Weiß ich nicht</button>
+    </div>
+  </div>
+
+  <div class="ratgeber-question" data-question="34" data-type="multi">
+    <span class="ratgeber-category">Hardware</span>
+    <h3>Nutzt du Spezial-Hardware mit eigener Software? (Mehrfachauswahl)</h3>
+    <div class="ratgeber-options">
+      <button type="button" class="ratgeber-option" data-tags="logitech" aria-pressed="false">Logitech-Maus oder -Tastatur mit G HUB oder Options+</button>
+      <button type="button" class="ratgeber-option" data-tags="rgb" aria-pressed="false">RGB-Beleuchtung mit Herstellersoftware (z. B. iCUE, Razer Synapse, SteelSeries GG)</button>
+      <button type="button" class="ratgeber-option" data-tags="spezial-hw" aria-pressed="false">Anderes Spezialgerät (z. B. Grafiktablett, Lenkrad, VR-Brille)</button>
+      <button type="button" class="ratgeber-option" data-tags="drucker" aria-pressed="false">Drucker oder Scanner</button>
+    </div>
+    <button type="button" class="ratgeber-next">Weiter</button>
+  </div>
+
+
+
+  <div class="ratgeber-question" data-question="8" data-type="multi">
+    <span class="ratgeber-category">Software</span>
+    <h3>Welche dieser Programme nutzt du unter Windows? (Mehrfachauswahl)</h3>
+    <div class="ratgeber-options">
+      <button type="button" class="ratgeber-option" data-blocker="Microsoft Word, Excel oder PowerPoint (Desktop-Version) laufen nicht unter Linux; LibreOffice oder Office im Browser ersetzen sie nur eingeschränkt." aria-pressed="false">Microsoft Word, Excel oder PowerPoint (Desktop)</button>
+      <button type="button" class="ratgeber-option" data-tags="office-alt outlook" aria-pressed="false">Microsoft Outlook</button>
+      <button type="button" class="ratgeber-option" data-blocker="Adobe Photoshop läuft unter Linux nicht; GIMP oder Krita sind Alternativen mit anderem Funktionsumfang." aria-pressed="false">Adobe Photoshop</button>
+      <button type="button" class="ratgeber-option" data-blocker="Adobe Premiere Pro läuft unter Linux nicht; Kdenlive oder DaVinci Resolve sind Alternativen." aria-pressed="false">Adobe Premiere Pro</button>
+      <button type="button" class="ratgeber-option" data-blocker="Adobe Lightroom läuft unter Linux nicht; darktable oder RawTherapee sind Alternativen." aria-pressed="false">Adobe Lightroom</button>
+      <button type="button" class="ratgeber-option" data-blocker="AutoCAD läuft unter Linux nicht; FreeCAD oder LibreCAD sind Alternativen mit eingeschränktem Funktionsumfang." aria-pressed="false">AutoCAD</button>
+      <button type="button" class="ratgeber-option" data-tags="os-software office-alt" aria-pressed="false">LibreOffice</button>
+      <button type="button" class="ratgeber-option" data-tags="os-software" aria-pressed="false">Firefox</button>
+      <button type="button" class="ratgeber-option" data-tags="os-software" aria-pressed="false">Thunderbird</button>
+      <button type="button" class="ratgeber-option" data-tags="os-software" aria-pressed="false">VLC</button>
+      <button type="button" class="ratgeber-option" data-tags="os-software" aria-pressed="false">GIMP</button>
+      <button type="button" class="ratgeber-option" data-tags="os-software" aria-pressed="false">Microsoft Edge</button>
+      <button type="button" class="ratgeber-option" data-tags="os-software" aria-pressed="false">Discord</button>
+      <button type="button" class="ratgeber-option" data-tags="os-software" aria-pressed="false">Steam</button>
+      <button type="button" class="ratgeber-option" data-tags="office-alt" aria-pressed="false">Microsoft 365 (Office im Browser)</button>
+      <button type="button" class="ratgeber-option" data-tags="andere-software" aria-pressed="false">Anderes Programm (nicht aufgelistet)</button>
+    </div>
+    <button type="button" class="ratgeber-next">Weiter</button>
+  </div>
+
+  <div class="ratgeber-question" data-question="32" data-type="single">
+    <span class="ratgeber-category">Software</span>
+    <h3>Ist dir wichtig, dass deine Software frei (Open Source, meist auch kostenlos) ist?</h3>
+    <div class="ratgeber-options">
+      <button type="button" class="ratgeber-option" data-score="2" data-tags="frei" aria-pressed="false">Ja, möglichst nur freie Software</button>
+      <button type="button" class="ratgeber-option" data-score="1" aria-pressed="false">Teils, dort wo es sinnvoll ist</button>
+      <button type="button" class="ratgeber-option" data-score="1" aria-pressed="false">Nein, Hauptsache es funktioniert</button>
+    </div>
+  </div>
+
+  <div class="ratgeber-question" data-question="10" data-type="single">
+    <span class="ratgeber-category">Gaming</span>
+    <h3>Wie viel zockst du?</h3>
+    <div class="ratgeber-options">
+      <button type="button" class="ratgeber-option" data-score="2" aria-pressed="false">Nein, ich zocke nicht</button>
+      <button type="button" class="ratgeber-option" data-score="1" data-tags="gaming" aria-pressed="false">Kaum oder gelegentlich</button>
+      <button type="button" class="ratgeber-option" data-score="0" data-tags="gaming gamer" aria-pressed="false">Regelmäßig</button>
+    </div>
+  </div>
+
+  <div class="ratgeber-question" data-question="11" data-type="multi" data-show-if="gaming">
+    <span class="ratgeber-category">Gaming</span>
+    <h3>Welche Spiele zockst du? (Mehrfachauswahl)</h3>
+    <div class="ratgeber-options">
+      <button type="button" class="ratgeber-option" data-blocker="Valorant nutzt Kernel-Anti-Cheat und läuft unter Linux nicht." aria-pressed="false">Valorant</button>
+      <button type="button" class="ratgeber-option" data-blocker="League of Legends nutzt Kernel-Anti-Cheat und läuft unter Linux nicht." aria-pressed="false">League of Legends</button>
+      <button type="button" class="ratgeber-option" data-blocker="Call of Duty nutzt Kernel-Anti-Cheat und läuft unter Linux nicht." aria-pressed="false">Call of Duty</button>
+      <button type="button" class="ratgeber-option" data-blocker="Battlefield 6 nutzt Kernel-Anti-Cheat und läuft unter Linux nicht." aria-pressed="false">Battlefield 6</button>
+      <button type="button" class="ratgeber-option" data-blocker="GTA Online nutzt den Anti-Cheat BattlEye und läuft unter Linux nicht." aria-pressed="false">GTA Online</button>
+      <button type="button" class="ratgeber-option" data-tags="gaming" aria-pressed="false">Fortnite</button>
+      <button type="button" class="ratgeber-option" data-tags="gaming" aria-pressed="false">Counter-Strike 2</button>
+      <button type="button" class="ratgeber-option" data-tags="gaming" aria-pressed="false">Minecraft</button>
+      <button type="button" class="ratgeber-option" data-tags="gaming" aria-pressed="false">Andere Spiele ohne Kernel-Anti-Cheat</button>
+    </div>
+    <button type="button" class="ratgeber-next">Weiter</button>
+  </div>
+
+  <div class="ratgeber-question" data-question="12" data-type="single">
+    <span class="ratgeber-category">Wartung</span>
+    <h3>Willst du regelmäßig Sicherheits- und Wartungsupdates einspielen?</h3>
+    <div class="ratgeber-options">
+      <button type="button" class="ratgeber-option" data-score="2" data-tags="updatefreund topic:wartung" aria-pressed="false">Ja, Updates gehören dazu</button>
+      <button type="button" class="ratgeber-option" data-score="1" data-tags="updatemuffel" aria-pressed="false">Nur gelegentlich</button>
+      <button type="button" class="ratgeber-option" data-score="1" data-tags="updatemuffel stabil" aria-pressed="false">Nein, ich will möglichst wenig Updates</button>
+    </div>
+  </div>
+
+  <div class="ratgeber-question" data-question="13" data-type="single" data-show-if="updatefreund">
+    <span class="ratgeber-category">Wartung</span>
+    <h3>Willst du immer die neueste Software haben?</h3>
+    <div class="ratgeber-options">
+      <button type="button" class="ratgeber-option" data-score="2" data-tags="neuste" aria-pressed="false">Ja, möglichst sofort</button>
+      <button type="button" class="ratgeber-option" data-score="1" aria-pressed="false">Neues ja, aber in Maßen</button>
+      <button type="button" class="ratgeber-option" data-score="1" data-tags="stabil" aria-pressed="false">Nein, Hauptsache es läuft stabil</button>
+    </div>
+  </div>
+
+  <div class="ratgeber-question" data-question="36" data-type="single" data-show-if="updatemuffel">
+    <span class="ratgeber-category">Wartung</span>
+    <h3>Was stört dich an Updates am meisten?</h3>
+    <div class="ratgeber-options">
+      <button type="button" class="ratgeber-option" data-score="1" data-tags="veraenderung" aria-pressed="false">Veränderung: danach sehe ich oft andere Menüs oder Oberflächen</button>
+      <button type="button" class="ratgeber-option" data-score="1" data-tags="stabil" aria-pressed="false">Die lästige Pflicht, obwohl ich keine Änderungen sehe</button>
+      <button type="button" class="ratgeber-option" data-score="0" data-tags="risiko" aria-pressed="false">Die mögliche Arbeit danach oder das Risiko, dass etwas kaputtgeht</button>
+      <button type="button" class="ratgeber-option" data-score="2" aria-pressed="false">Updates stören mich nicht</button>
+    </div>
+  </div>
+
+  <div class="ratgeber-question" data-question="37" data-type="single" data-show-if="oberflaeche">
+    <span class="ratgeber-category">Oberfläche</span>
+    <h3>Welche Windows-Version war dir am angenehmsten?</h3>
+    <div class="ratgeber-options">
+      <button type="button" class="ratgeber-option" data-score="1" data-tags="desk-xfce" aria-pressed="false">XP</button>
+      <button type="button" class="ratgeber-option" data-score="1" data-tags="desk-cinnamon" aria-pressed="false">7</button>
+      <button type="button" class="ratgeber-option" data-score="2" data-tags="desk-kde" aria-pressed="false">10</button>
+      <button type="button" class="ratgeber-option" data-score="2" data-tags="desk-kde" aria-pressed="false">Ich passe Windows selbst an (z. B. mit Classic Shell)</button>
+      <button type="button" class="ratgeber-option" data-score="2" data-tags="desk-gnome" aria-pressed="false">Keine, ich bin offen für Neues</button>
+    </div>
+  </div>
+
+  <div class="ratgeber-question" data-question="14" data-type="single" data-show-if="install">
+    <span class="ratgeber-category">Fähigkeiten</span>
+    <h3>Hast du schon einmal einen Windows-Installationsstick erstellt?</h3>
+    <div class="ratgeber-options">
+      <button type="button" class="ratgeber-option" data-score="2" data-tags="erfahren" aria-pressed="false">Ja</button>
+      <button type="button" class="ratgeber-option" data-score="1" data-tags="lernen topic:stick" aria-pressed="false">Nein, aber ich traue es mir zu</button>
+      <button type="button" class="ratgeber-option" data-score="0" data-tags="einfach topic:stick" aria-pressed="false">Nein</button>
+    </div>
+  </div>
+
+  <div class="ratgeber-question" data-question="15" data-type="single" data-show-if="dualboot">
+    <span class="ratgeber-category">Fähigkeiten</span>
+    <h3>Weißt du, was eine Partition ist?</h3>
+    <div class="ratgeber-options">
+      <button type="button" class="ratgeber-option" data-score="2" data-tags="erfahren" aria-pressed="false">Ja, sicher</button>
+      <button type="button" class="ratgeber-option" data-score="1" data-tags="lernen topic:partition" aria-pressed="false">Ungefähr</button>
+      <button type="button" class="ratgeber-option" data-score="0" data-tags="einfach topic:partition" aria-pressed="false">Nein</button>
+    </div>
+  </div>
+
+  <div class="ratgeber-question" data-question="17" data-type="single" data-show-if="dualboot">
+    <span class="ratgeber-category">Fähigkeiten</span>
+    <h3>Könntest du eine weitere Festplatte für Linux einbauen?</h3>
+    <div class="ratgeber-options">
+      <button type="button" class="ratgeber-option" data-score="2" data-tags="erfahren" aria-pressed="false">Ja, ohne Probleme</button>
+      <button type="button" class="ratgeber-option" data-score="1" data-tags="lernen topic:hdd" aria-pressed="false">Mit einer Anleitung</button>
+      <button type="button" class="ratgeber-option" data-score="0" data-tags="einfach topic:hdd" aria-pressed="false">Nein</button>
+    </div>
+  </div>
+
+  <div class="ratgeber-question" data-question="16" data-type="single" data-show-if="install">
+    <span class="ratgeber-category">Fähigkeiten</span>
+    <h3>Kennst du Secure Boot?</h3>
+    <div class="ratgeber-options">
+      <button type="button" class="ratgeber-option" data-score="2" data-tags="erfahren" aria-pressed="false">Ja, ich weiß, wie man es im BIOS/UEFI ändert</button>
+      <button type="button" class="ratgeber-option" data-score="1" data-tags="lernen topic:secureboot" aria-pressed="false">Ich habe davon gehört</button>
+      <button type="button" class="ratgeber-option" data-score="0" data-tags="einfach topic:secureboot" aria-pressed="false">Nein</button>
+    </div>
+  </div>
+
+
+
+  <div class="ratgeber-question" data-question="19" data-type="single">
+    <span class="ratgeber-category">Sprache</span>
+    <h3>Wie gut kannst du Englisch lesen?</h3>
+    <div class="ratgeber-options">
+      <button type="button" class="ratgeber-option" data-score="2" data-tags="englisch-gut" aria-pressed="false">Gut, ich verstehe englische Texte meist ohne Hilfe</button>
+      <button type="button" class="ratgeber-option" data-score="1" aria-pressed="false">Grundkenntnisse, mit Übersetzer komme ich klar</button>
+      <button type="button" class="ratgeber-option" data-score="0" data-tags="englisch-schwach" aria-pressed="false">Kaum</button>
+    </div>
+  </div>
+
+  <div class="ratgeber-question" data-question="20" data-type="single" data-hide-if="englisch-schwach">
+    <span class="ratgeber-category">Sprache</span>
+    <h3>Wie bereit bist du, englischsprachige Anleitungen und Foren zu nutzen? Die deutschsprachige Community ist groß, aber vieles gibt es nur auf Englisch.</h3>
+    <div class="ratgeber-options">
+      <button type="button" class="ratgeber-option" data-score="2" data-tags="englisch-gut" aria-pressed="false">Gerne, ich suche auch auf Englisch</button>
+      <button type="button" class="ratgeber-option" data-score="1" aria-pressed="false">Nur wenn deutsche Quellen nicht reichen</button>
+      <button type="button" class="ratgeber-option" data-score="0" data-tags="englisch-schwach" aria-pressed="false">Ich möchte möglichst nur deutsche Hilfe</button>
+    </div>
+  </div>
+
+  <div class="ratgeber-question" data-question="21" data-type="multi" data-scoring="known">
+    <span class="ratgeber-category">Fachwissen</span>
+    <h3>Welche dieser IT-Begriffe kennst du? Markiere alle, die du einordnen kannst. (Mehrfachauswahl)</h3>
+    <div class="ratgeber-options">
+      <button type="button" class="ratgeber-option" data-tags="topic:terminal" aria-pressed="false">Terminal / Shell</button>
+      <button type="button" class="ratgeber-option" data-tags="topic:paket" aria-pressed="false">Paketmanager (z. B. apt, dnf)</button>
+      <button type="button" class="ratgeber-option" data-tags="topic:hardware" aria-pressed="false">Treiber</button>
+      <button type="button" class="ratgeber-option" data-tags="topic:secureboot" aria-pressed="false">BIOS / UEFI</button>
+      <button type="button" class="ratgeber-option" data-tags="topic:partition" aria-pressed="false">Partition</button>
+      <button type="button" class="ratgeber-option" data-tags="topic:partition" aria-pressed="false">Dateisystem (z. B. ext4, NTFS)</button>
+      <button type="button" class="ratgeber-option" aria-pressed="false">Bootloader (z. B. GRUB)</button>
+      <button type="button" class="ratgeber-option" data-tags="topic:terminal" aria-pressed="false">Root-Rechte / sudo</button>
+      <button type="button" class="ratgeber-option" data-tags="topic:hdd" aria-pressed="false">Einhängen (mount)</button>
+    </div>
+    <button type="button" class="ratgeber-next">Weiter</button>
+  </div>
+
+  <div class="ratgeber-question" data-question="30" data-type="single">
+    <span class="ratgeber-category">Einrichtung</span>
+    <h3>Soll das System nach der Installation sofort einsatzbereit sein, mit allen wichtigen Programmen?</h3>
+    <div class="ratgeber-options">
+      <button type="button" class="ratgeber-option" data-score="2" data-tags="einfach" aria-pressed="false">Ja, alles Wichtige sollte sofort da sein</button>
+      <button type="button" class="ratgeber-option" data-score="1" aria-pressed="false">Teils, ich möchte aber einiges selbst auswählen</button>
+      <button type="button" class="ratgeber-option" data-score="2" data-tags="lernen" aria-pressed="false">Nein, ich will selbst festlegen, was installiert wird</button>
+    </div>
+  </div>
+
+</section>
+
+<section class="section">
+  <div class="ratgeber-result" id="ratgeber-result" hidden>
+    <h2 id="ratgeber-title"></h2>
+    <p id="ratgeber-text"></p>
+    <ul class="ratgeber-warning" id="ratgeber-warnings" hidden></ul>
+    <p id="ratgeber-dualboot" hidden></p>
+    <p id="ratgeber-english" hidden></p>
+    <p id="ratgeber-nvidia" hidden></p>
+    <p><strong>Speicherplatz:</strong> <span id="ratgeber-storage"></span></p>
+    <h3>Was auf dich zukommt</h3>
+    <ul class="ratgeber-distros" id="ratgeber-profile"></ul>
+    <aside class="ratgeber-tipp">
+      <p><strong>Tipp:</strong> Schreibe eine Liste mit ALLEN Programmen, Diensten und Services, die du am PC nutzt. Recherchiere genau, wie diese unter Linux laufen. Du kannst dich auch in einem Forum anmelden und dich von erfahrenen Usern beraten lassen.</p>
+    </aside>
+    <h3>Gängige Distributionen</h3>
+    <details class="ratgeber-distro-box">
+      <summary>Für Einsteiger</summary>
+      <ul class="ratgeber-distro-list" id="ratgeber-distros-einsteiger"></ul>
+    </details>
+    <details class="ratgeber-distro-box">
+      <summary>Für Fortgeschrittene</summary>
+      <ul class="ratgeber-distro-list" id="ratgeber-distros-fortgeschritten"></ul>
+    </details>
+    <button type="button" class="ratgeber-reset" id="ratgeber-reset">Neu starten</button>
+  </div>
+</section>
+
+<script>
+  (function () {
+    const questions = [...document.querySelectorAll(".ratgeber-question")];
+    const total = questions.length;
+    const answers = new Map();
+    const progress = document.getElementById("ratgeber-progress");
+    const result = document.getElementById("ratgeber-result");
+    const title = document.getElementById("ratgeber-title");
+    const text = document.getElementById("ratgeber-text");
+    const warnings = document.getElementById("ratgeber-warnings");
+    const dualboot = document.getElementById("ratgeber-dualboot");
+    const beginnerList = document.getElementById("ratgeber-distros-einsteiger");
+    const advancedList = document.getElementById("ratgeber-distros-fortgeschritten");
+    const englishNote = document.getElementById("ratgeber-english");
+    const nvidiaNote = document.getElementById("ratgeber-nvidia");
+    const storageNote = document.getElementById("ratgeber-storage");
+    const profileList = document.getElementById("ratgeber-profile");
+
+    const topicLabels = {
+      install: "Linux auf den PC aufspielen: Sprache, Benutzername und Festplatte auswählen, bis das System zum ersten Mal startet",
+      stick: "Einen USB-Stick mit dem Linux-Installationsprogramm beschreiben, z. B. mit Ventoy oder balenaEtcher",
+      partition: "Die Festplatte in Bereiche aufteilen (Partitionen), z. B. einen Teil für Linux und einen für Windows",
+      secureboot: "Im BIOS/UEFI-Menü des PCs Secure Boot prüfen, wenn Linux nach der Installation nicht startet",
+      hdd: "Eine zweite Festplatte so einrichten, dass Linux sie bei jedem Start automatisch einbindet",
+      terminal: "Textbefehle im Terminal eintippen, z. B. „sudo apt update“, und Fehlermeldungen lesen",
+      hardware: "Herausfinden, welche Teile im PC stecken (Grafikkarte, WLAN, Drucker), und prüfen, ob Linux sie erkennt",
+      wartung: "Updates einspielen und Probleme nach Updates beheben",
+      live: "Linux über einen Live-USB-Stick testen, ohne etwas auf der Festplatte zu ändern",
+      paket: "Programme über den Software-Manager oder Befehle wie „sudo apt install“ installieren und aktualisieren",
+      nvidia: "Nvidia-Treiber installieren oder Nouveau einrichten"
+    };
+
+    const distros = [
+      { id: "mint", name: "Linux Mint", pro: ["Vertraut wie unter Windows: Menüs, Taskleiste und Dateiverwaltung", "Multimedia-Codecs sind schon dabei", "Updates über den Update-Manager fallen kaum auf"], con: ["Bei neuer Hardware wie aktuellen Grafikkarten ab und zu Nachhilfe in der Treiberverwaltung"] },
+      { id: "zorin", name: "Zorin OS", pro: ["Layouts lassen sich mit einem Klick umschalten", "Office-Aufgaben über Web-Apps oder Wine"], con: ["Einige Layouts und Extras nur in der kostenpflichtigen Pro-Version"] },
+      { id: "ubu", name: "Ubuntu LTS", pro: ["Zu fast jedem Problem findet man eine Anleitung", "GNOME-Oberfläche, an die man sich schnell gewöhnt"], con: ["Firefox und andere Programme als Snap, beim ersten Start spürbar langsamer", "Drängt auf eigene Dienste wie Ubuntu Pro oder den Snap-Store"] },
+      { id: "kubu", name: "Kubuntu", pro: ["KDE Plasma erinnert stark an Windows", "Vieles lässt sich per Klick anpassen"], con: ["Einige Programme als Snap-Paket", "Die vielen Einstellungen können anfangs überfordern"] },
+      { id: "pop", name: "Pop!_OS", pro: ["Installation mit Nvidia-Grafikkarte ohne Umwege", "Spiele starten meist direkt", "Fenster lassen sich per Tastatur gut anordnen"], con: ["Der neue Desktop COSMIC ist noch sehr jung", "Wechsel auf neue Versionen verläuft nicht immer reibungslos"] },
+      { id: "mx", name: "MX Linux", pro: ["Ruhig und zuverlässig", "Läuft auch auf älteren Rechnern mit wenig Arbeitsspeicher", "Viele Einstellungen zentral über das MX-Tools-Menü"], con: ["Manches nur über Menü oder Terminal einzurichten", "Weniger Erklärungen als bei Mint"] },
+      { id: "suse", name: "openSUSE", pro: ["YaST bündelt Einstellungen, Treiber und Software", "Snapper-Snapshots zum Zurückrollen fehlerhafter Updates"], con: ["Bei Tumbleweed fast tägliche Updates", "Ab und zu bricht etwas, das man selbst reparieren muss"] },
+      { id: "xubu", name: "Xubuntu", pro: ["Läuft flott und schlicht", "XFCE bleibt auch auf älteren Geräten reaktionsschnell"], con: ["Einige Programme als Snap-Paket", "Weniger moderne Komfortfunktionen"] },
+      { id: "fedw", name: "Fedora Workstation", pro: ["Aktuelle Software", "Saubere GNOME-Oberfläche"], con: ["Jede Version wird nur etwa 13 Monate gepflegt, Versionswechsel etwa alle halbe Jahre", "Nvidia-Treiber und Codecs über RPM Fusion selbst nachrüsten"] },
+      { id: "fedk", name: "Fedora KDE Plasma", pro: ["KDE Plasma mit aktueller Software", "Vertrautes Bild"], con: ["Unterstützung endet nach etwa 13 Monaten", "Nvidia-Treiber und Codecs nicht vorinstalliert"] },
+      { id: "deb", name: "Debian", pro: ["Sehr ruhiges System, Updates brechen selten etwas"], con: ["Programme oft älter als bei anderen Distributionen", "Nvidia-Treiber oder WLAN-Chips brauchen die Option für nicht-freie Software"] },
+      { id: "arch", name: "Arch Linux", pro: ["System nach eigenen Wünschen zusammengestellt", "Aktuelle Software"], con: ["Installation komplett über das Terminal", "Updates brauchen gelegentlich manuelle Eingriffe, Updates länger liegen lassen ist riskant"] },
+      { id: "manj", name: "Manjaro", pro: ["Grafische Installation und Oberfläche funktionieren gut", "Updates werden vor der Auslieferung geprüft"], con: ["Manche Updates kommen verzögert", "Kernel-Wechsel oder Treiberprobleme ab und zu von Hand lösen"] },
+      { id: "endo", name: "EndeavourOS", pro: ["Geführte Installation", "Eigene Hilfswerkzeuge für Updates"], con: ["Wie bei Arch können Updates Probleme machen", "Lösungen oft nur im Forum oder in den Neuigkeiten"] },
+      { id: "cachy", name: "CachyOS", pro: ["Der Assistent installiert Treiber und Gaming-Werkzeuge gleich mit", "Spiele laufen oft flott"], con: ["Als Arch-Basis ab und zu manuelle Eingriffe bei Updates", "Die Neuigkeiten zu Updates sollte man lesen"] },
+      { id: "bazz", name: "Bazzite", pro: ["Auf Gaming ausgelegt, Steam, Proton und Nvidia-Treiber laufen sofort", "Grundsystem bleibt auch nach Updates stabil"], con: ["Nicht für Büro und Alltag gedacht", "Programme als Flatpak oder in einer Container-Umgebung, Systemänderungen laufen anders als gewohnt"] },
+      { id: "nob", name: "Nobara", pro: ["Gaming-Werkzeuge und Treiber vorkonfiguriert"], con: ["Das Projekt wird von wenigen Personen gepflegt", "Größere Updates bringen manchmal Änderungen, die man beachten muss"] }
+    ];
+    let current = 0;
+
+    function isVisible(question) {
+      const tags = [...answers.values()].flatMap(a => a.tags);
+      const need = question.dataset.showIf;
+      const hide = question.dataset.hideIf;
+      return (!need || tags.includes(need)) && !(hide && tags.includes(hide));
+    }
+
+    function nextVisible(from) {
+      for (let i = from + 1; i < total; i++) {
+        if (isVisible(questions[i])) return i;
+      }
+      return -1;
+    }
+
+    function showQuestion(index) {
+      current = index;
+      questions.forEach((q, i) => q.classList.toggle("active", i === index));
+      const visible = questions.filter(isVisible);
+      progress.textContent = `Frage ${visible.indexOf(questions[index]) + 1} von ${visible.length}`;
+    }
+
+    function readOption(btn) {
+      return {
+        score: Number(btn.dataset.score || 0),
+        tags: (btn.dataset.tags || "").split(" ").filter(Boolean),
+        blockers: btn.dataset.blocker ? [btn.dataset.blocker] : []
+      };
+    }
+
+    function saveAnswer(question, score, tags, blockers) {
+      answers.set(question.dataset.question, { score, tags, blockers });
+      const nextIndex = nextVisible(current);
+      if (nextIndex !== -1) {
+        showQuestion(nextIndex);
+      } else {
+        questions.forEach(q => q.classList.remove("active"));
+        progress.textContent = `${answers.size} von ${answers.size} beantwortet`;
+        showResult();
+      }
+    }
+
+    questions.forEach(question => {
+      const multi = question.dataset.type === "multi";
+
+      question.querySelectorAll(".ratgeber-option").forEach(btn => {
+        btn.addEventListener("click", () => {
+          if (question !== questions[current]) return;
+          if (multi) {
+            btn.setAttribute("aria-pressed", btn.getAttribute("aria-pressed") === "true" ? "false" : "true");
+            return;
+          }
+          btn.setAttribute("aria-pressed", "true");
+          const { score, tags, blockers } = readOption(btn);
+          saveAnswer(question, score, tags, blockers);
+        });
+      });
+
+      const next = question.querySelector(".ratgeber-next");
+      if (next) {
+        next.addEventListener("click", () => {
+          if (question !== questions[current]) return;
+          if (question.dataset.scoring === "min") {
+            const picked = [...question.querySelectorAll(".ratgeber-option[aria-pressed='true']")].map(readOption);
+            const score = picked.length ? Math.min(...picked.map(p => p.score)) : 0;
+            saveAnswer(question, score, picked.flatMap(p => p.tags), []);
+            return;
+          }
+          if (question.dataset.scoring === "known") {
+            const options = [...question.querySelectorAll(".ratgeber-option")];
+            const known = options.filter(b => b.getAttribute("aria-pressed") === "true");
+            const ratio = known.length / options.length;
+            const unknownTags = options
+              .filter(b => b.getAttribute("aria-pressed") !== "true")
+              .flatMap(b => readOption(b).tags);
+            saveAnswer(question, ratio >= 0.6 ? 2 : ratio >= 0.3 ? 1 : 0, unknownTags, []);
+            return;
+          }
+          const picked = [...question.querySelectorAll(".ratgeber-option[aria-pressed='true']")].map(readOption);
+          const blockers = picked.flatMap(p => p.blockers);
+          const tags = picked.flatMap(p => p.tags);
+          saveAnswer(question, blockers.length ? 0 : 2, tags, blockers);
+        });
+      }
+    });
+
+    const dimensions = [
+      { ids: [4, 2, 5, 22, 23, 25] },
+      { ids: [1, 3, 14, 15, 16, 17, 19, 20, 21, 24, 28, 29] },
+      { ids: [6, 12, 13, 18, 30, 36] },
+      { ids: [7, 8, 10, 11, 32] }
+    ];
+
+    function ratioOf(list) {
+      if (!list.length) return 0;
+      return list.reduce((sum, a) => sum + a.score, 0) / (list.length * 2);
+    }
+
+    function describeUser() {
+      const score = id => answers.get(String(id))?.score;
+      const avg = ids => {
+        const values = ids.map(score).filter(v => v !== undefined);
+        return values.length ? values.reduce((a, b) => a + b, 0) / (values.length * 2) : 0;
+      };
+      const has = tag => [...answers.values()].some(a => a.tags.includes(tag));
+      const lines = [];
+
+      const experience = avg([1, 2, 3, 15, 17, 24]);
+      lines.push(experience >= 0.7
+        ? "Du kennst dich mit der Einrichtung eines Computers aus. Die Installation sollte dir kaum Mühe machen, und neue Begriffe erschließst du dir schnell."
+        : experience >= 0.35
+          ? "Bei der Installation brauchst du an einzelnen Stellen Hilfe. Vor allem die Festplatteneinteilung (Partitionen) solltest du mit einer Anleitung neben dir durchgehen."
+          : "Die Installation ist für dich Neuland. Du wirst dich mit Begriffen wie „Partition“, „Bootloader“ und „Treiber“ vertraut machen müssen; plane für die ersten Tage mehrere Stunden ein.");
+
+      if (has("klickt-durch")) lines.push("Bei der Linux-Installation solltest du Optionen wie Partitionierung und Secure Boot bewusst prüfen. Der Installer fragt auch nach der Festplatte; eine falsche Auswahl kann Daten löschen.");
+      if (has("store")) lines.push("Linux-Software kommt meist über das Software-Center (Discover, GNOME Software) und oft als Flatpak.");
+      if (has("webdownload")) lines.push("Lade Software bevorzugt aus den Paketquellen oder als Flatpak und prüfe die Quelle, bevor du Dateien von Webseiten installierst.");
+      if (has("aendert-einst")) lines.push("Du gehst bei Installationen bewusst vor. Diese Gewohnheit hilft dir auch bei der Ersteinrichtung von Linux.");
+      if (has("nie-installiert")) lines.push("Starte am besten mit einem Live-USB-Stick und einer Anleitung, bevor du Linux installierst.");
+      if (score(2) < 2) lines.push("Kennst du die Komponenten deines PCs nicht, schau im Gerätemanager nach, bevor du gezielt nach Linux-Kompatibilität suchst.");
+
+      const willingness = avg([7, 12, 13, 20]);
+      lines.push(willingness >= 0.6
+        ? "Wenn etwas nicht funktioniert, suchst du die Fehlermeldung im Internet und probierst die Lösungen aus. Diese Bereitschaft hilft dir über die meisten Hürden."
+        : willingness >= 0.3
+          ? "Ab und zu musst du bei einem Problem nachschlagen, etwa wenn ein Gerät nicht erkannt wird."
+          : "Linux verlangt, dass du dich mit Problemen auseinandersetzt. Wenn du das nicht willst, ist eine Distribution mit viel Vorkonfiguration die bessere Wahl.");
+
+      if (has("desk-xfce")) lines.push("Eine schlichte, an XP erinnernde Oberfläche (XFCE) ist schnell und lässt sich leicht bedienen.");
+      if (has("desk-cinnamon")) lines.push("Cinnamon bietet ein klassisches Menü und eine Taskleiste, wie du sie von Windows 7 kennst.");
+      if (has("desk-kde")) lines.push("KDE Plasma lässt sich vielseitig anpassen und erinnert an Windows 10.");
+      if (has("desk-gnome")) lines.push("GNOME ist eine aufgeräumte, moderne Oberfläche, an die du dich schnell gewöhnst.");
+      if (has("komplett")) lines.push("Programme, die es nur für Windows gibt, musst du durch Alternativen ersetzen. Mit Wine oder Proton (Kompatibilitätsschichten) laufen manche trotzdem; prüfe deine Liste vorab.");
+      if (has("dualboot")) lines.push("Ein Windows-Update kann den Startmanager (Bootloader) überschreiben, dann startet Linux nicht mehr. Die Linux-Installation lässt sich meist mit einer Reparaturanleitung wiederherstellen.");
+      if (has("ausprobieren")) lines.push("Ein Live-USB-Stick startet Linux direkt vom Stick, ohne etwas auf deiner Festplatte zu ändern. So siehst du, ob Grafik, WLAN und Drucker funktionieren.");
+      if (has("gaming") || has("gamer")) lines.push("Für Spiele musst du Treiber und Kompatibilität prüfen. Ob ein Spiel unter Linux läuft, zeigt dir <a href=\"https://www.protondb.com\" target=\"_blank\" rel=\"noopener\">ProtonDB</a>, wo Nutzer die Kompatibilität mit Proton bewerten.");
+      if (has("office-alt")) lines.push("LibreOffice kann Word- und Excel-Dateien öffnen und speichern. Layout, Schriften und Formeln können sich aber verschieben; prüfe wichtige Dokumente nach dem Öffnen.");
+      if (has("outlook")) lines.push("Microsoft Outlook gibt es für Linux nicht als Desktop-Programm. Thunderbird ist eine gute Alternative; Outlook läuft im Browser über die Weboberfläche.");
+      if (has("logitech")) lines.push("Logitech-Software wie G HUB oder Options+ gibt es nicht für Linux. Solaar und Piper übernehmen einen Teil der Einstellungen; Beleuchtung und Makros lassen sich dann nur eingeschränkt anpassen.");
+      if (has("rgb")) lines.push("Die Herstellersoftware für RGB (z. B. iCUE oder Razer Synapse) fehlt unter Linux meist. OpenRGB steuert viele Geräte, bei einigen Modellen ist die Steuerung aber eingeschränkt.");
+      if (has("spezial-hw")) lines.push("Spezialgeräte wie Grafiktabletts oder Lenkräder brauchen oft eigene Treiber. Prüfe vorab, ob dein Modell unter Linux unterstützt wird.");
+      if (has("drucker")) lines.push("Viele Drucker laufen unter Linux über CUPS, das Drucksystem von Linux. Bei Scannern und Multifunktionsgeräten prüfe vorher, ob dein Modell unterstützt wird.");
+      if (has("os-software")) lines.push("Die Programme, die du nutzt, gibt es auch für Linux. Du kannst die meisten direkt über den Software-Manager installieren.");
+
+      const english = avg([19, 20]);
+      if (english < 0.7) lines.push(english >= 0.35
+        ? "Englische Fehlermeldungen brauchen gelegentlich einen Übersetzer, etwa über die Übersetzungsfunktion deines Browsers."
+        : "Viele Anleitungen und Fehlermeldungen gibt es nur auf Englisch. Ohne Übersetzer wird die Fehlersuche schwer; wichtige Begriffe wie „Partition“ oder „Treiber“ solltest du lernen.");
+
+      return lines;
+    }
+
+    function showResult() {
+      const entries = [...answers.entries()];
+      const values = entries.map(([, a]) => a);
+      const answersFor = ids => entries.filter(([id]) => ids.includes(Number(id))).map(([, a]) => a);
+      const dimensionRatios = dimensions.map(d => answersFor(d.ids)).filter(list => list.length).map(list => ratioOf(list));
+      const ratio = dimensionRatios.length ? dimensionRatios.reduce((a, b) => a + b, 0) / dimensionRatios.length : 0;
+      const fitRatio = ratio;
+      const readinessRatio = ratioOf(answersFor(dimensions[1].ids));
+      const blockers = [...new Set(values.flatMap(a => a.blockers))];
+      const profile = new Set(values.flatMap(a => a.tags));
+
+      if (blockers.length) {
+        title.textContent = "Einige Aspekte lassen sich nicht eins zu eins auf Linux übertragen";
+        text.textContent = "Für die folgenden Punkte gibt es unter Linux keine direkte Entsprechung. Alternativen sind Dual-Boot oder eine Windows-VM unter Linux:";
+      } else if (fitRatio < 0.45) {
+        title.textContent = "Einige deiner Anforderungen brauchen eine Alternative";
+        text.textContent = "Bei Software und Hardware gibt es unter Linux teils andere Lösungen. Die Auswahl dazu findest du unten.";
+      } else if (readinessRatio < 0.45) {
+        title.textContent = "Linux passt zu deinen Anforderungen, du musst dich aber einarbeiten";
+        text.textContent = "Software und Hardware passen gut. Für den Einstieg brauchst du Zeit und etwas Lernbereitschaft; Anleitungen und ein Live-USB-Stick helfen dabei.";
+      } else if (ratio >= 0.75) {
+        title.textContent = "Linux passt sehr gut zu dir";
+        text.textContent = "Deine Anforderungen lassen sich unter Linux gut abdecken.";
+      } else if (ratio >= 0.45) {
+        title.textContent = "Linux könnte für dich passen";
+        text.textContent = "Prüfe vorher einige Punkte. Probier Linux am besten erst über einen Live-USB-Stick oder Dual-Boot aus.";
+      } else {
+        title.textContent = "Linux kann einen Teil deiner Anforderungen erfüllen";
+        text.textContent = "Für einige Programme oder Geräte brauchst du eine Alternative. Ein Live-USB-Stick zeigt dir, wie gut Linux bei dir läuft.";
+      }
+
+      warnings.replaceChildren(...blockers.map(b => {
+        const li = document.createElement("li");
+        li.textContent = b;
+        return li;
+      }));
+      warnings.hidden = blockers.length === 0;
+      let dualbootText = "";
+      if (blockers.length && profile.has("komplett")) {
+        dualbootText = "Da du Windows komplett ersetzen willst, bietet sich für diese Software oder dieses Spiel Dual-Boot an, also Linux und Windows parallel. Alternativ läuft Windows in einer VM unter Linux.";
+      } else if (blockers.length) {
+        dualbootText = "Für diese Software oder dieses Spiel kannst du Dual-Boot nutzen, also Windows parallel zu Linux starten. Alternativ läuft Windows in einer VM unter Linux.";
+      } else if (profile.has("dualboot")) {
+        dualbootText = "Du willst Linux neben Windows nutzen. Plane dafür eine eigene Partition ein und sichere deine Daten vorher.";
+      }
+      dualboot.textContent = dualbootText;
+      dualboot.hidden = !dualbootText;
+
+      englishNote.textContent = profile.has("englisch-schwach")
+        ? "Viele Lösungen, Anleitungen und Fehlermeldungen findest du nur auf Englisch. Deutschsprachige Anlaufstellen wie ubuntuusers.de oder die Linux Guides Community helfen weiter, lohnt sich aber trotzdem, die wichtigsten englischen Begriffe nach und nach zu lernen."
+        : "";
+      englishNote.hidden = !profile.has("englisch-schwach");
+
+      storageNote.textContent = profile.has("speicher-knapp")
+        ? "Du hast nach eigener Angabe nicht genug freien Speicher. Gib zuerst Speicher frei, etwa durch Löschen oder Verkleinern einer Partition, oder plane eine weitere SSD oder HDD ein."
+        : "Plane mindestens 100 GiB freien Speicher ein, besser mehr. Lässt sich dieser nicht durch Partitionierung freigeben, brauchst du eine weitere SSD oder HDD.";
+
+      nvidiaNote.textContent = profile.has("nouveau")
+        ? "Für deine ältere Nvidia-Karte wäre der Open-Source-Treiber Nouveau die Standardlösung. Er läuft für den Desktop meist stabil, bietet aber oft weniger Leistung und ist für Spiele eingeschränkt. Prüfe auf der Nvidia-Seite, ob für deine Karte noch ein proprietärer Treiber verfügbar ist, denn die Unterstützung ändert sich mit neuen Treiberversionen."
+        : "";
+      nvidiaNote.hidden = !profile.has("nouveau");
+      if (profile.has("nvidia") || profile.has("nvidia-modern") || profile.has("nouveau")) {
+        const manual = "Bei Debian, Arch, EndeavourOS, Fedora und CachyOS musst du den Nvidia-Treiber in der Regel selbst nachinstallieren. Linux Mint, Ubuntu, Zorin, Pop!_OS, Bazzite und Nobara bringen ihn bereits mit oder über einen Treiber-Manager.";
+        nvidiaNote.textContent = nvidiaNote.textContent ? `${nvidiaNote.textContent} ${manual}` : manual;
+        nvidiaNote.hidden = false;
+      }
+
+      const topics = [...new Set([...profile].filter(t => t.startsWith("topic:")).map(t => topicLabels[t.slice(6)]))];
+      profileList.replaceChildren(...[...describeUser(), ...topics].map(text => {
+        const li = document.createElement("li");
+        li.innerHTML = text;
+        return li;
+      }));
+
+      const homepages = {
+        mint: "https://linuxmint.com", zorin: "https://zorin.com/os", ubu: "https://ubuntu.com",
+        kubu: "https://kubuntu.org", pop: "https://system76.com/pop", mx: "https://mxlinux.org",
+        suse: "https://www.opensuse.org", xubu: "https://xubuntu.org", manj: "https://manjaro.org", fedw: "https://fedoraproject.org/workstation",
+        fedk: "https://fedoraproject.org/kde", deb: "https://www.debian.org", arch: "https://archlinux.org",
+        endo: "https://endeavouros.com", cachy: "https://cachyos.org", bazz: "https://bazzite.gg", nob: "https://nobaraproject.org"
+      };
+      const beginnerIds = ["mint", "zorin", "ubu", "kubu", "pop", "mx", "xubu", "bazz"];
+      const sorted = [...distros].sort((a, b) => a.name.localeCompare(b.name, "de"));
+      const renderDistros = (list, items) => list.replaceChildren(...items.map(d => {
+        const li = document.createElement("li");
+        const name = document.createElement("strong");
+        name.textContent = d.name;
+        const procon = document.createElement("ul");
+        procon.className = "ratgeber-procon";
+        procon.append(
+          ...d.pro.map(t => Object.assign(document.createElement("li"), { className: "ratgeber-pro", textContent: `+ ${t}` })),
+          ...d.con.map(t => Object.assign(document.createElement("li"), { className: "ratgeber-con", textContent: `− ${t}` }))
+        );
+        const link = document.createElement("a");
+        link.href = homepages[d.id];
+        link.textContent = "Zur Website";
+        link.target = "_blank";
+        link.rel = "noopener noreferrer";
+        li.append(name, procon, link);
+        return li;
+      }));
+      const priority = ["mint", "ubu", "kubu", "zorin"];
+      const beginners = [
+        ...priority.map(id => distros.find(d => d.id === id)),
+        ...sorted.filter(d => beginnerIds.includes(d.id) && !priority.includes(d.id))
+      ];
+      renderDistros(beginnerList, beginners);
+      renderDistros(advancedList, sorted.filter(d => !beginnerIds.includes(d.id)));
+
+      result.hidden = false;
+      result.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+
+    document.getElementById("ratgeber-reset").addEventListener("click", () => {
+      answers.clear();
+      document.querySelectorAll(".ratgeber-option").forEach(o => o.setAttribute("aria-pressed", "false"));
+      result.hidden = true;
+      showQuestion(0);
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+    showQuestion(0);
+  })();
+</script>

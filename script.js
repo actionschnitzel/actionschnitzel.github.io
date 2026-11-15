@@ -61,6 +61,74 @@ document.querySelectorAll('a[href*="#"]').forEach(link => {
 
 blinkHeading(window.location.hash);
 
+// Content tabs
+const contentTabList = document.querySelector(".content-tabs");
+
+if (contentTabList) {
+  const tabs = Array.from(contentTabList.querySelectorAll('[role="tab"]'));
+
+  function activateContentTab(tab, moveFocus) {
+    tabs.forEach(candidate => {
+      const selected = candidate === tab;
+      candidate.setAttribute("aria-selected", String(selected));
+      candidate.tabIndex = selected ? 0 : -1;
+      document.getElementById(candidate.getAttribute("aria-controls")).hidden = !selected;
+    });
+
+    if (moveFocus) tab.focus();
+  }
+
+  tabs.forEach((tab, index) => {
+    tab.addEventListener("click", () => activateContentTab(tab, false));
+    tab.addEventListener("keydown", event => {
+      let nextIndex;
+      if (event.key === "ArrowRight") nextIndex = (index + 1) % tabs.length;
+      if (event.key === "ArrowLeft") nextIndex = (index - 1 + tabs.length) % tabs.length;
+      if (event.key === "Home") nextIndex = 0;
+      if (event.key === "End") nextIndex = tabs.length - 1;
+      if (nextIndex === undefined) return;
+
+      event.preventDefault();
+      activateContentTab(tabs[nextIndex], true);
+    });
+  });
+
+  function activateContentTabFromHash(hash) {
+    const panelId = hash.slice(1);
+    const tab = tabs.find(candidate => candidate.getAttribute("aria-controls") === panelId);
+    if (tab) activateContentTab(tab, false);
+  }
+
+  document.querySelectorAll(".mobile-submenu-items a").forEach(link => {
+    link.addEventListener("click", () => {
+      const url = new URL(link.href);
+      if (url.origin === window.location.origin && url.pathname === window.location.pathname) {
+        activateContentTabFromHash(url.hash);
+      }
+    });
+  });
+
+  activateContentTabFromHash(window.location.hash);
+  window.addEventListener("hashchange", () => activateContentTabFromHash(window.location.hash));
+}
+
+const gogSearch = document.getElementById("gogSearch");
+if (gogSearch) {
+  const rows = document.querySelectorAll("#gogTableBody tr");
+  const count = document.getElementById("gogCount");
+
+  gogSearch.addEventListener("input", () => {
+    const query = gogSearch.value.trim().toLowerCase();
+    let shown = 0;
+    rows.forEach(row => {
+      const matches = row.textContent.toLowerCase().includes(query);
+      row.hidden = !matches;
+      if (matches) shown++;
+    });
+    count.textContent = shown;
+  });
+}
+
 // Dark Mode Toggle Functionality
 const themeToggle = document.getElementById("themeToggle");
 const html = document.documentElement;

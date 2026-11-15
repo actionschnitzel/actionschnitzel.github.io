@@ -1,0 +1,103 @@
+---
+layout: page
+title: "Gaming"
+hero_class: page-hero-compact
+---
+{%- assign games = site.data.gog_games | sort_natural: "title" -%}
+{%- assign platforms = "native,wine,heroic,lutris" | split: "," -%}
+<div class="tabbed-page">
+  <div class="content-tabs" role="tablist" aria-label="Gaming-Inhalte">
+    <button id="gamingTabGog" type="button" role="tab" aria-selected="true" aria-controls="gamingPanelGog">GOG-Check</button>
+    <button id="gamingTabSurvey" type="button" role="tab" aria-selected="false" aria-controls="gamingPanelSurvey" tabindex="-1">Steam-Umfrage</button>
+    <button id="gamingTabLinks" type="button" role="tab" aria-selected="false" aria-controls="gamingPanelLinks" tabindex="-1">Links</button>
+  </div>
+
+  <section id="gamingPanelGog" class="content-panel section" role="tabpanel" aria-labelledby="gamingTabGog" tabindex="0">
+    <h2>GOG: Was läuft auf Linux</h2>
+    <p class="article-intro">
+      Community-Liste mit GOG-Spielen, die unter Linux laufen: ob sie laufen, wie sie laufen und was dafür nötig ist. Basiert auf dem Artikel im
+      <a href="https://forum.linuxguides.de/core/index.php?article/8-gog-auf-linux-funktionierende-spiele-und-notwendige-anpassungen/" target="_blank" rel="noopener noreferrer">Linux Guides Forum</a>.
+      Sofern keine genaue Proton-Version angegeben ist, wurde das Spiel mit der jeweils aktuellen Version getestet.
+    </p>
+    <input type="search" id="gogSearch" class="table-search" placeholder="Spiel oder Hinweis suchen …" aria-label="Spiele durchsuchen" autocomplete="off">
+    <p class="table-count"><span id="gogCount">{{ games.size }}</span> von {{ games.size }} Spielen</p>
+    <div class="table-scroll">
+      <table class="games-table gog-table">
+        <thead>
+          <tr>
+            <th>Titel</th>
+            <th class="gog-flag">Native</th>
+            <th class="gog-flag">Wine/Proton</th>
+            <th class="gog-flag">Heroic</th>
+            <th class="gog-flag">Lutris</th>
+            <th>Fix / Tweak</th>
+          </tr>
+        </thead>
+        <tbody id="gogTableBody">
+          {%- for game in games %}
+          <tr>
+            <td>{{ game.title | escape }}{% if game.playable == false %} <span class="gog-broken">kaputt</span>{% endif %}</td>
+            {%- for platform in platforms %}
+            <td class="gog-flag">{% if game.via contains platform %}<span aria-label="ja">✓</span>{% endif %}</td>
+            {%- endfor %}
+            <td>
+              {%- if game.note %}{{ game.note | escape | newline_to_br }}{% endif %}
+              {%- for link in game.links %}<br><a href="{{ link.url }}" target="_blank" rel="noopener noreferrer">{{ link.title | escape }} ↗</a>{% endfor %}
+            </td>
+          </tr>
+          {%- endfor %}
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="gamingPanelSurvey" class="content-panel section" role="tabpanel" aria-labelledby="gamingTabSurvey" tabindex="0" hidden>
+    <h2>Steam-Hard- &amp; Softwareumfrage: {{ site.data.steam_survey.month }}</h2>
+    <p class="article-intro">
+      Linux-Distributionen unter den Steam-Nutzern. Die Daten stammen aus der monatlichen Umfrage von Valve und werden automatisch aktualisiert.
+    </p>
+    <div class="table-scroll">
+      <table class="games-table">
+        <thead>
+          <tr>
+            <th>Distribution</th>
+            <th>Anteil</th>
+            <th>Änderung</th>
+          </tr>
+        </thead>
+        <tbody>
+          {%- for dist in site.data.steam_survey.distributions %}
+          <tr>
+            <td>{{ dist.name | escape }}</td>
+            <td>{{ dist.share }}</td>
+            <td>{{ dist.change }}</td>
+          </tr>
+          {%- endfor %}
+        </tbody>
+      </table>
+    </div>
+    <p>Quelle: <a href="{{ site.data.steam_survey.source }}" target="_blank" rel="noopener noreferrer">Steam Hardware Survey</a></p>
+  </section>
+
+  <section id="gamingPanelLinks" class="content-panel section" role="tabpanel" aria-labelledby="gamingTabLinks" tabindex="0" hidden>
+    <h2>Gaming-Websites</h2>
+    <p>Zocken auf Linux ist so einfach wie nie zuvor, trotzdem braucht man manchmal hilfreiche Websites, um das Beste aus seinem System herauszuholen. Hier findest du eine Auswahl an nützlichen Seiten rund ums Gaming auf Linux, die dir dabei helfen können.</p>
+    {%- for site_item in site.data.websites %}
+    <div class="game-card">
+      <div class="game-card-header">
+        <a href="{{ site_item.url }}" target="_blank" rel="noopener noreferrer">{{ site_item.title | escape }}</a>
+      </div>
+      <div class="game-card-body">
+        <div class="game-card-info">
+          <p>{{ site_item.description | escape }}</p>
+        </div>
+        <div class="game-card-image">
+          <div class="game-card-meta game-card-meta-end">
+            <a class="steam-button" href="{{ site_item.url }}" target="_blank" rel="noopener noreferrer">Zur Website ↗</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    {%- endfor %}
+  </section>
+</div>
