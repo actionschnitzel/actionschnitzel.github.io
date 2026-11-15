@@ -911,6 +911,63 @@ html.dark-mode .section li strong,
   display: block;
 }
 
+.gaming-guide-figure {
+  max-width: 700px;
+  margin: 1.5rem 0;
+}
+
+.gaming-guide-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.gaming-guide-figure figcaption {
+  margin-top: 0.4rem;
+  font-size: 0.85rem;
+  opacity: 0.8;
+}
+
+.gaming-guide-card > summary {
+  position: relative;
+  display: block;
+  padding-right: 3rem;
+  cursor: pointer;
+  list-style: none;
+}
+
+.gaming-guide-card > summary::-webkit-details-marker {
+  display: none;
+}
+
+.gaming-guide-hint {
+  margin: -1rem 0 1rem;
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+.gaming-guide-card > .game-card-header .gaming-guide-header-description {
+  display: block;
+  margin-top: 0.25rem;
+  font-size: 0.9rem;
+  font-weight: 400;
+  line-height: 1.35;
+}
+
+.gaming-guide-card > summary::after {
+  position: absolute;
+  top: 50%;
+  right: 1rem;
+  transform: translateY(-50%);
+  content: "+";
+  font-size: 1.35rem;
+}
+
+.gaming-guide-card[open] > summary::after {
+  content: "−";
+}
+
 .game-card-meta {
   display: flex;
   flex-wrap: wrap;

@@ -1,0 +1,117 @@
+# Each entry creates a Gaming-Tools card; guides are optional.
+- name: Steam
+  url: "https://store.steampowered.com/about/"
+  description: "PC-Spieleplattform mit nativer Linux-Unterstützung. Mit Proton lassen sich viele Windows-Spiele unter Linux spielen."
+  guide:
+    type: steam
+    title: "Steam"
+    source:
+      url: "https://gnulinux.ch/gaming-auf-debian-und-derivaten-teil-1-steam"
+      label: "Artikel auf GNU/Linux.ch"
+    intro: "Paketangebote können sich je nach Distribution und Version unterscheiden."
+    installation:
+      title: "Installation"
+      description: "In der Anwendungsverwaltung können mehrere Steam-Pakete auftauchen, etwa aus dem Distributions-Repository, von Flathub oder als Snap. Der Artikel empfiehlt für Debian und Derivate das offizielle DEB-Paket von Valve, um mögliche Einschränkungen durch anders paketierte oder sandboxed Varianten zu vermeiden."
+      steps:
+        - before: "Das DEB-Paket über die "
+          link_text: "offizielle Steam-Seite"
+          link_url: "https://store.steampowered.com/about/"
+          after: " herunterladen."
+        - before: "Die Datei "
+          code: "steam_latest.deb"
+          after: " mit der grafischen Paketverwaltung öffnen und installieren."
+        - before: "Falls die grafische Installation nicht angeboten wird, im Download-Ordner ein Terminal öffnen und "
+          code: "sudo apt install ./steam_latest.deb"
+          after: " ausführen."
+      image:
+        path: "/assets/images/games/steam-installation-deb.png"
+        alt: "Steam-DEB-Paket im Dateimanager und in der grafischen Paketverwaltung"
+        caption: "Das heruntergeladene DEB-Paket in der grafischen Paketverwaltung."
+    first_start:
+      description: "Beim ersten Start kann Steam weitere Abhängigkeiten installieren. Hinweise im Terminal lesen und die Abfragen zur Installation der benötigten Pakete bestätigen."
+      image:
+        path: "/assets/images/games/steam-first-launch.png"
+        alt: "Terminalabfrage beim ersten Start von Steam"
+        caption: "Abfrage beim ersten Start."
+    proton:
+      title: "Proton aktivieren"
+      settings: "Steam > Einstellungen > Kompatibilität"
+      description: "Steam Play für unterstützte Titel und für andere Titel aktivieren."
+      game_settings: "Eigenschaften > Kompatibilität"
+      game_description: "eine bestimmte Proton-Version oder Proton Experimental erzwingen."
+      further_reading:
+        url: "https://gnulinux.ch/gaming-unter-linux-braucht-es-zum-spielen-noch-windows"
+        label: "Gaming unter Linux: Braucht es zum Spielen noch Windows?"
+
+- name: "Heroic Games Launcher"
+  url: "https://heroicgameslauncher.com/"
+  description: "Launcher für Spiele aus GOG, Epic Games und Amazon Prime Gaming. Windows-Spiele können mit Wine oder Proton gestartet werden."
+
+- name: "Faugus Launcher"
+  url: "https://github.com/Faugus/faugus-launcher"
+  description: "Linux-Launcher zum Installieren und Starten von Windows-Spielen mit Wine oder Proton."
+
+- name: "Lutris"
+  url: "https://lutris.net/"
+  description: "Verwaltet Spiele aus verschiedenen Quellen und bietet Community-Installer sowie Konfigurationen für viele Spiele."
+  guide:
+    type: lutris
+    title: "Lutris"
+    source:
+      url: "https://gnulinux.ch/gaming-auf-debian-und-derivaten-teil-2-lutris"
+      label: "Artikel auf GNU/Linux.ch"
+    intro: "Lutris verwaltet Spiele aus unterschiedlichen Quellen. Hier geht es um Installation, Wine-Einrichtung und besondere Einsatzmöglichkeiten."
+    installation:
+      title: "Installation"
+      description: "Unter Linux Mint wird Lutris häufig als Flatpak angeboten. Der Artikel weist auf mögliche Integrationsprobleme dieser Variante hin. Die offizielle Download-Seite listet aktuelle Installationswege für verschiedene Distributionen."
+      store_image:
+        path: "/assets/images/games/lutris-game-library.png"
+        alt: "Lutris-Bibliothek mit integrierten Spielquellen"
+        caption: "Lutris-Bibliothek mit verbundenen Spieleplattformen."
+      ubuntu:
+        description: "Für Ubuntu und Derivate wie Linux Mint ist ein DEB-Paket auf der GitHub-Release-Seite verfügbar; aktuelle Pakete stehen unter"
+        url: "https://github.com/lutris/lutris/releases"
+        label: "Lutris-Releases"
+      debian:
+        description: "Für Debian gibt es Pakete über den openSUSE Build Service und distributionsspezifische Repository-Anleitungen; Details:"
+        url: "https://software.opensuse.org/download.html?project=home%3Astrycore%3Alutris&package=lutris"
+        label: "Lutris für Debian"
+      downloads:
+        url: "https://lutris.net/downloads"
+        label: "Aktuelle Installationshinweise auf lutris.net"
+      instructions_image:
+        path: "/assets/images/games/lutris-install-guide.png"
+        alt: "Installationshinweise für Lutris auf Ubuntu, Linux Mint und Debian"
+        caption: "Installationshinweise aus dem Artikel von 2024; die aktuellen Befehle stehen auf lutris.net."
+    wine:
+      title: "Wine und Grafiktreiber"
+      description: "Für Windows-Spiele empfiehlt Lutris eine aktuelle Wine-Version und passende Grafiktreiber. Bei der Flatpak-Variante ist eine separate Wine-Installation laut Lutris nicht erforderlich."
+      architecture: "Auf 64-Bit-Systemen kann die i386-Architektur für 32-Bit-Spiele benötigt werden. Richte Wine passend zu deiner Distribution ein und beachte deren aktuelle Dokumentation."
+      debian:
+        url: "https://wiki.winehq.org/Debian"
+        label: "Wine-Anleitung für Debian"
+      ubuntu:
+        url: "https://wiki.winehq.org/Ubuntu"
+        label: "Wine-Anleitung für Ubuntu"
+      test:
+        before: "Die Wine-Konfiguration lässt sich im Terminal mit "
+        command: "wine winecfg"
+        after: " testen. Wenn die Installation angeboten wird, sollten Mono und Gecko eingerichtet werden."
+      image:
+        path: "/assets/images/games/lutris-wine-setup.png"
+        alt: "Wine-Konfiguration und Mono-Installation auf einem Linux-Desktop"
+        caption: "Wine-Konfiguration und Mono-Installation."
+    first_start:
+      description: "Beim ersten Start gleicht Lutris noch Abhängigkeiten ab. Danach lassen sich Spiele und Plattformen einrichten."
+      image:
+        path: "/assets/images/games/lutris-game-config.png"
+        alt: "Community-Installer für Spiele in Lutris"
+        caption: "Beispiele für Community-Installer in Lutris."
+    strengths:
+      title: "Was Lutris besonders macht"
+      description: "Community-Installer helfen beim Einrichten vieler Spiele. Für ältere Spiele sammeln Nutzer außerdem Konfigurationen, Fehlerbehebungen und Grafik-Mods. Wo verfügbar, lassen sich auch native Versionen oder Open-Source-Engines einrichten."
+      comparison: "Heroic ist oft einfacher zu bedienen und auf Stores wie Epic ausgerichtet; Lutris bietet mehr Möglichkeiten für unterschiedliche Quellen und individuelle Konfigurationen."
+
+- name: "ProtonUp-Qt"
+  url: "https://github.com/DavidoTek/ProtonUp-Qt"
+  description: "Installiert und verwaltet zusätzliche Proton- und Wine-Versionen, zum Beispiel Proton-GE."

@@ -5,14 +5,101 @@ hero_class: page-hero-compact
 ---
 {%- assign games = site.data.gog_games | sort_natural: "title" -%}
 {%- assign platforms = "native,wine,heroic,lutris" | split: "," -%}
+{%- assign gaming_tools = site.data.gaming_tools -%}
 <div class="tabbed-page">
   <div class="content-tabs" role="tablist" aria-label="Gaming-Inhalte">
-    <button id="gamingTabGog" type="button" role="tab" aria-selected="true" aria-controls="gamingPanelGog">GOG-Check</button>
+    <button id="gamingTabTools" type="button" role="tab" aria-selected="true" aria-controls="gamingPanelTools">Gaming-Tools</button>
+    <button id="gamingTabGog" type="button" role="tab" aria-selected="false" aria-controls="gamingPanelGog" tabindex="-1">GOG-Check</button>
     <button id="gamingTabSurvey" type="button" role="tab" aria-selected="false" aria-controls="gamingPanelSurvey" tabindex="-1">Steam-Umfrage</button>
     <button id="gamingTabLinks" type="button" role="tab" aria-selected="false" aria-controls="gamingPanelLinks" tabindex="-1">Links</button>
   </div>
 
-  <section id="gamingPanelGog" class="content-panel section" role="tabpanel" aria-labelledby="gamingTabGog" tabindex="0">
+  <section id="gamingPanelTools" class="content-panel section" role="tabpanel" aria-labelledby="gamingTabTools" tabindex="0">
+    <h2>Gaming-Tools für Linux</h2>
+    <p class="article-intro">Mit diesen Programmen kannst du Spiele installieren, verwalten und ihre Kompatibilität mit Linux verbessern.</p>
+    <p class="gaming-guide-hint">Die Anleitungen klappen auf, wenn du auf die jeweilige Leiste klickst.</p>
+    {%- for tool in gaming_tools %}
+    {%- if tool.guide %}
+    {%- assign guide = tool.guide %}
+    <details class="game-card gaming-guide-card">
+      <summary class="game-card-header">
+        <span>{{ guide.title | escape }}</span>
+        <span class="gaming-guide-header-description">{{ tool.description | escape }}</span>
+      </summary>
+      <div class="game-card-body">
+        <div class="game-card-info">
+          <div class="gaming-guide">
+            <h3>{{ guide.title | escape }}</h3>
+            <p class="article-intro">Die Anleitung fasst die wichtigsten Schritte aus meinem <a href="{{ guide.source.url | escape }}" target="_blank" rel="noopener noreferrer">{{ guide.source.label | escape }}</a> zusammen. {{ guide.intro | escape }}</p>
+
+            {%- if guide.type == "steam" %}
+            <h4>{{ guide.installation.title | escape }}</h4>
+            <p>{{ guide.installation.description | escape }}</p>
+            <ol>
+              {%- for step in guide.installation.steps %}
+              <li>{{ step.text | escape }}{{ step.before | escape }}{% if step.link_text %}<a href="{{ step.link_url | escape }}" target="_blank" rel="noopener noreferrer">{{ step.link_text | escape }}</a>{% endif %}{% if step.code %}<code>{{ step.code | escape }}</code>{% endif %}{{ step.after | escape }}</li>
+              {%- endfor %}
+            </ol>
+            <figure class="gaming-guide-figure">
+              <img src="{{ guide.installation.image.path | relative_url }}" alt="{{ guide.installation.image.alt | escape }}">
+              <figcaption>{{ guide.installation.image.caption | escape }} Bild aus dem <a href="{{ guide.source.url | escape }}" target="_blank" rel="noopener noreferrer">Originalartikel</a>.</figcaption>
+            </figure>
+            <p>{{ guide.first_start.description | escape }}</p>
+            <figure class="gaming-guide-figure">
+              <img src="{{ guide.first_start.image.path | relative_url }}" alt="{{ guide.first_start.image.alt | escape }}">
+              <figcaption>{{ guide.first_start.image.caption | escape }} Bild aus dem <a href="{{ guide.source.url | escape }}" target="_blank" rel="noopener noreferrer">Originalartikel</a>.</figcaption>
+            </figure>
+
+            <h4>{{ guide.proton.title | escape }}</h4>
+            <p>Unter <strong>{{ guide.proton.settings | escape }}</strong> {{ guide.proton.description | escape }} Für ein einzelnes Spiel lässt sich unter <strong>{{ guide.proton.game_settings | escape }}</strong> {{ guide.proton.game_description | escape }} Weitere Hinweise stehen im Artikel <a href="{{ guide.proton.further_reading.url | escape }}" target="_blank" rel="noopener noreferrer">{{ guide.proton.further_reading.label | escape }}</a>.</p>
+            {%- elsif guide.type == "lutris" %}
+            <h4>{{ guide.installation.title | escape }}</h4>
+            <p>{{ guide.installation.description | escape }}</p>
+            <figure class="gaming-guide-figure">
+              <img src="{{ guide.installation.store_image.path | relative_url }}" alt="{{ guide.installation.store_image.alt | escape }}">
+              <figcaption>{{ guide.installation.store_image.caption | escape }} Bild aus dem <a href="{{ guide.source.url | escape }}" target="_blank" rel="noopener noreferrer">Originalartikel</a>.</figcaption>
+            </figure>
+            <p>{{ guide.installation.ubuntu.description | escape }} <a href="{{ guide.installation.ubuntu.url | escape }}" target="_blank" rel="noopener noreferrer">{{ guide.installation.ubuntu.label | escape }}</a>.</p>
+            <p>{{ guide.installation.debian.description | escape }} <a href="{{ guide.installation.debian.url | escape }}" target="_blank" rel="noopener noreferrer">{{ guide.installation.debian.label | escape }}</a>. Eine Übersicht für weitere Distributionen steht unter <a href="{{ guide.installation.downloads.url | escape }}" target="_blank" rel="noopener noreferrer">{{ guide.installation.downloads.label | escape }}</a>.</p>
+            <figure class="gaming-guide-figure">
+              <img src="{{ guide.installation.instructions_image.path | relative_url }}" alt="{{ guide.installation.instructions_image.alt | escape }}">
+              <figcaption>{{ guide.installation.instructions_image.caption | escape }} Bild aus dem <a href="{{ guide.source.url | escape }}" target="_blank" rel="noopener noreferrer">Originalartikel</a>.</figcaption>
+            </figure>
+
+            <h4>{{ guide.wine.title | escape }}</h4>
+            <p>{{ guide.wine.description | escape }}</p>
+            <p>{{ guide.wine.architecture | escape }} Anleitungen: <a href="{{ guide.wine.debian.url | escape }}" target="_blank" rel="noopener noreferrer">{{ guide.wine.debian.label | escape }}</a> und <a href="{{ guide.wine.ubuntu.url | escape }}" target="_blank" rel="noopener noreferrer">{{ guide.wine.ubuntu.label | escape }}</a>.</p>
+            <p>{{ guide.wine.test.before | escape }}<code>{{ guide.wine.test.command | escape }}</code>{{ guide.wine.test.after | escape }}</p>
+            <figure class="gaming-guide-figure">
+              <img src="{{ guide.wine.image.path | relative_url }}" alt="{{ guide.wine.image.alt | escape }}">
+              <figcaption>{{ guide.wine.image.caption | escape }} Bild aus dem <a href="{{ guide.source.url | escape }}" target="_blank" rel="noopener noreferrer">Originalartikel</a>.</figcaption>
+            </figure>
+
+            <h4>Erster Start und Spiele</h4>
+            <p>{{ guide.first_start.description | escape }}</p>
+            <figure class="gaming-guide-figure">
+              <img src="{{ guide.first_start.image.path | relative_url }}" alt="{{ guide.first_start.image.alt | escape }}">
+              <figcaption>{{ guide.first_start.image.caption | escape }} Bild aus dem <a href="{{ guide.source.url | escape }}" target="_blank" rel="noopener noreferrer">Originalartikel</a>.</figcaption>
+            </figure>
+
+            <h4>{{ guide.strengths.title | escape }}</h4>
+            <p>{{ guide.strengths.description | escape }}</p>
+            <p>{{ guide.strengths.comparison | escape }}</p>
+            {%- endif %}
+          </div>
+        </div>
+      </div>
+    </details>
+    {%- else %}
+    <div class="game-card">
+      <div class="game-card-header"><a href="{{ tool.url | escape }}" target="_blank" rel="noopener noreferrer">{{ tool.name | escape }} ↗</a></div>
+      <div class="game-card-body"><div class="game-card-info"><p>{{ tool.description | escape }}</p></div></div>
+    </div>
+    {%- endif %}
+    {%- endfor %}
+  </section>
+
+  <section id="gamingPanelGog" class="content-panel section" role="tabpanel" aria-labelledby="gamingTabGog" tabindex="0" hidden>
     <h2>GOG: Was läuft auf Linux</h2>
     <p class="article-intro">
       Community-Liste mit GOG-Spielen, die unter Linux laufen: ob sie laufen, wie sie laufen und was dafür nötig ist. Basiert auf dem Artikel im
