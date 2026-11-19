@@ -28,6 +28,10 @@
 - title: "Airline Tycoon – Deluxe"
   via: [native, lutris]
 
+- title: "Akimbot"
+  via: [heroic, lutris]
+  note: "Proton-GE"
+
 - title: "Alan Wake"
   via: [heroic, lutris]
   note: "Proton-GE"
@@ -75,6 +79,12 @@
   via: [wine]
   note: "Läuft Out-of-the-box"
 
+- title: "Ashes 2063"
+  via: [wine]
+  note: |-
+    Wine-GE bzw. Proton-GE
+    Getestet mit Heroic
+
 - title: "Asterix & Obelix XXL 1: Romastered"
   via: [wine]
   note: "Läuft Out-of-the-box"
@@ -97,6 +107,12 @@
 
 - title: "Beautiful Desolation"
   via: [native]
+
+- title: "Berserk Boy"
+  via: [wine]
+  note: |-
+    Wine-GE bzw. Proton-GE
+    Getestet mit Heroic
 
 - title: "Blackwell Series"
   via: [native]
@@ -134,9 +150,39 @@
   via: [wine]
   note: "Wine-GE (GamePad Support)"
 
+- title: "Bō: Path of the Teal Lotus"
+  via: [wine]
+  note: |-
+    Wine-GE bzw. Proton-GE
+    Getestet mit Heroic
+
 - title: "Broforce"
   via: [native, wine]
   note: "Wine-GE"
+
+- title: "Call of Juarez"
+  via: [wine]
+  note: |-
+    Wine-GE bzw. Proton-GE
+    Getestet mit Heroic
+
+- title: "Call of Juarez: Bound in Blood"
+  via: [wine]
+  note: |-
+    Wine-GE bzw. Proton-GE
+    Getestet mit Heroic
+
+- title: "Call of Juarez: Gunslinger"
+  via: [wine]
+  note: |-
+    Wine-GE bzw. Proton-GE
+    Getestet mit Heroic
+
+- title: "Call of the Void"
+  via: [wine]
+  note: |-
+    Wine-GE bzw. Proton-GE
+    Getestet mit Heroic
 
 - title: "Captain Blood"
   via: [wine, heroic]
@@ -222,6 +268,12 @@
 - title: "Dead Cells"
   via: [native]
 
+- title: "Death Squared"
+  via: [wine]
+  note: |-
+    Wine-GE bzw. Proton-GE
+    Getestet mit Heroic
+
 - title: "Deponia 1-4"
   via: [native]
 
@@ -275,7 +327,7 @@
 
 - title: "DOOM + DOOM II"
   via: [wine]
-  note: "Wine-GE"
+  note: "GE-Proton"
 
 - title: "Doom / Doom II"
   via: [native]
@@ -289,8 +341,15 @@
 - title: "Doom 3 / Doom 3: BFG Edition"
   via: [native, wine]
 
+- title: "DOOM 3: Phobos"
+  via: [wine]
+  note: |-
+    Wine-GE bzw. Proton-GE
+    Getestet mit Heroic
+
 - title: "Doom 64"
   via: [wine]
+  note: "[SteamOS] Startet im Game-Mode nur über Lutris"
 
 - title: "dotAGE"
   via: [wine]
@@ -307,7 +366,7 @@
   via: [wine, heroic]
   note: "Proton-GE"
 
-- title: "Echos of the End"
+- title: "Echoes of the End: Enhanced Edition"
   via: [wine, heroic]
   note: |-
     Getestet auf der Steam Machine. Mit Proton 11/ Proton-GE 11.1 stützt das Spiel nach eine weile regelmäßig ab.
@@ -334,7 +393,7 @@
 
 - title: "Everspace ™ 2"
   via: [wine, heroic]
-  note: "Proton-GE"
+  note: "Proton-GE, [SteamOS]Startet nicht im Game-Mode"
 
 - title: "Factorio"
   via: [native]
@@ -354,6 +413,12 @@
 - title: "FTL: Advanced Edition"
   via: [native]
 
+- title: "F.E.A.R. Platinum"
+  via: [wine]
+  note: |-
+    Wine-GE bzw. Proton-GE
+    Getestet mit Heroic
+
 - title: "Freedom Force"
   via: [wine]
   note: "Wine-GE bzw. Proton-GE"
@@ -368,6 +433,12 @@
 
 - title: "Full Throttle – Remastered"
   via: [native]
+
+- title: "Fury Unleashed"
+  via: [wine, native]
+  note: |-
+    Wine-GE bzw. Proton-GE
+    Getestet mit Heroic
 
 - title: "Gemini Rue"
   via: [native]
@@ -393,10 +464,16 @@
 
 - title: "Grim Dawn"
   via: [wine]
-  note: "Wine-GE"
+  note: "GE-Proton"
 
 - title: "Grim Fandango – Remastered"
   via: [native]
+
+- title: "GRIP"
+  via: [wine]
+  note: |-
+    Wine-GE bzw. Proton-GE
+    Getestet mit Heroic
 
 - title: "Gwent – The Witcher Card Game"
   via: [wine]
@@ -486,6 +563,12 @@
   via: [wine]
   note: "Wine-GE"
 
+- title: "Jazz Jackrabbit 2 Plus"
+  via: [wine]
+  note: |-
+    Wine-GE bzw. Proton-GE
+    Getestet mit Heroic
+
 - title: "Jotun: Valhalla Edition"
   via: [native]
 
@@ -497,6 +580,11 @@
   via: [wine, heroic]
   note: "Proton-GE; Alles drei Spiele laufen einwandfrei."
 
+- title: "Kao the Kangaroo: Mystery of the Volcano"
+  via: [wine]
+  note: |-
+    Wine-GE bzw. Proton-GE
+    Getestet mit Heroic
 
 - title: "Katana Zero"
   via: [wine]
@@ -511,7 +599,7 @@
   note: "Wine-GE"
 
 - title: "Kona"
-  via: [wine]
+  via: [wine, native]
   note: "Linux-Version zeig nur schwarzen Bildschirm"
 
 - title: "Krush Kill ‘N Destroy 2: Krossfire"
@@ -530,12 +618,24 @@
   via: [wine]
   note: "Wine-GE"
 
+- title: "LEGO® The Lord of the Rings™"
+  via: [wine]
+  note: |-
+    Wine-GE bzw. Proton-GE
+    Getestet mit Heroic
+
 - title: "Lost Ruins"
   via: [native]
 
 - title: "Mafia: Definitive Edition"
   via: [wine, heroic, lutris]
   note: "Wine-GE"
+
+- title: "Mafia II: Definitive Edition"
+  via: [wine]
+  note: |-
+    Wine-GE bzw. Proton-GE
+    Getestet mit Heroic
 
 - title: "Maniac Mansion"
   via: [native]
@@ -598,6 +698,12 @@
   via: [wine]
   note: "Wine-GE"
 
+- title: "Northgard"
+  via: [wine, native]
+  note: |-
+    Wine-GE bzw. Proton-GE
+    Getestet mit Heroic
+
 - title: "Observer: System Redux"
   via: [wine]
   note: "Wine-GE bzw. Proton-GE"
@@ -606,9 +712,15 @@
   via: [wine, heroic]
   note: "Proton-GE"
 
+- title: "Owlboy"
+  via: [wine, native]
+  note: |-
+    Wine-GE bzw. Proton-GE
+    Getestet mit Heroic
+
 - title: "Painkiller – Black Edition"
   via: [wine]
-  note: "Wine-GE"
+  note: "GE-Proton"
 
 - title: "Pathfinder – Kingmaker"
   via: [native]
@@ -628,6 +740,12 @@
 
 - title: "Planescape Torment – Enhanced Edition"
   via: [native]
+
+- title: "Planet of Lana"
+  via: [wine]
+  note: |-
+    Wine-GE bzw. Proton-GE
+    Getestet mit Heroic
 
 - title: "PowerSlave Exhumed"
   via: [wine]
@@ -702,7 +820,7 @@
 
 - title: "Quake 4"
   via: [wine]
-  note: "Wine-GE"
+  note: "Proton-GE"
 
 - title: "Rain World"
   via: [wine]
@@ -731,6 +849,12 @@
   links:
     - title: "PCGamingWiki - Fix Guide"
       url: "https://www.pcgamingwiki.com/wiki/Return_to_Castle_Wolfenstein"
+
+- title: "RealRTCW"
+  via: [wine]
+  note: |-
+    Wine-GE bzw. Proton-GE
+    Getestet mit Heroic
 
 - title: "Roadwarden"
   via: [native]
@@ -783,6 +907,12 @@
 - title: "Soma"
   via: [native]
 
+- title: "Spelunky"
+  via: [wine]
+  note: |-
+    Wine-GE bzw. Proton-GE
+    Getestet mit Heroic
+
 - title: "Streets of Rogue"
   via: [native]
 
@@ -823,6 +953,12 @@
     - title: "Widescreen Fix"
       url: "https://www.wsgf.org/dr/star-trek-elite-force-ii"
 
+- title: "STAR WARS™: Bounty Hunter™"
+  via: [wine]
+  note: |-
+    Wine-GE bzw. Proton-GE
+    Getestet mit Heroic
+
 - title: "Star Wars ™: Dark Force Remaster"
   via: [wine]
   note: "Wine-GE"
@@ -853,6 +989,14 @@
 
 - title: "Sudden Strike 4"
   via: [native, wine]
+  note: |-
+    Native benötigt openal
+
+- title: "Super Catboy"
+  via: [wine]
+  note: |-
+    Wine-GE bzw. Proton-GE
+    Getestet mit Heroic
 
 - title: "Sinking Island"
   via: [wine, heroic]
@@ -896,8 +1040,18 @@
   via: [wine]
   note: "Wine-GE"
 
+- title: "The Evil within 2"
+  via: [wine]
+  note: "Wine-GE"
+
+- title: "The Gunk"
+  via: [wine]
+  note: |-
+    Wine-GE bzw. Proton-GE
+    Getestet mit Heroic
+
 - title: "This War of Mine"
-  via: [native]
+  via: [wine, native]
 
 - title: "Thronebreaker: The Witcher Tales"
   via: [wine]
@@ -916,8 +1070,26 @@
 - title: "Thimbleweed Park"
   via: [native]
 
+- title: "Tomb Raider: Anniversary"
+  via: [wine]
+  note: |-
+    Wine-GE bzw. Proton-GE
+    Getestet mit Heroic
+
+- title: "Tomb Raider GOTY"
+  via: [wine]
+  note: |-
+    Wine-GE bzw. Proton-GE
+    Getestet mit Heroic
+
 - title: "Torchlight 2"
   via: [native]
+
+- title: "Trepang2"
+  via: [wine]
+  note: |-
+    Wine-GE bzw. Proton-GE
+    Getestet mit Heroic
 
 - title: "Tropico"
   via: [wine, lutris]
@@ -927,6 +1099,12 @@
   links:
     - title: "Lutris"
       url: "https://lutris.net/games/tropico/"
+
+- title: "Undying Renewal"
+  via: [wine]
+  note: |-
+    Wine-GE bzw. Proton-GE
+    Getestet mit Heroic
 
 - title: "Unreal Gold"
   via: [native, wine, lutris]
@@ -971,7 +1149,7 @@
   note: "Wine-GE"
 
 - title: "Wonder Boy: The Dragon’s Trap"
-  via: [native]
+  via: [native, wine]
   note: |-
     Benötigt openal
     sudo apt-get install libopenal-dev
